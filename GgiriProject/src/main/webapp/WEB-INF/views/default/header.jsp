@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>header</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
 <style type="text/css">
 * {
@@ -65,13 +65,13 @@ nav ul li a:hover {
 	<!-- // wrap -->
 	<div class="navdiv">
 		<div class="wrap">
-			<a href="/root/index"><img width="300px" height="95px" alt="" src="image/logo6.png"></a>
+			<a href="/root/index"><img width="300px" height="95px" src="resources/image/logo6.png"></a>
 			<nav>
 				<ul>
 					<li><a href="/root/free/freeList"> 프리랜서 보기 </a></li>
-					<a>|</a>
+					<li> | </li>
 					<li><a href="/root/project/projectList"> 프로젝트 보기 </a></li>
-					<a>|</a>
+					<li> | </li>
 					<li>
 						<c:if test="${loginUser != null }">
 							<a href="/root/member/logout"> LOGOUT </a>

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>footer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=IBM+Plex+Sans+KR&display=swap" rel="stylesheet">
 <style type="text/css">
 * {
@@ -31,7 +31,7 @@ span {
 	<div class="footer">
 		<hr>
 		<br>
-		<a href="/root/index"><img width="100px" height="33px" alt="" src="image/logoDark.png"></a>
+		<a href="/root/index"><img width="100px" height="33px" alt="" src="resources/image/logoDark.png"></a>
 		<br>
 		<span>Copyright &copy; GGIRI</span>
 	</div>
