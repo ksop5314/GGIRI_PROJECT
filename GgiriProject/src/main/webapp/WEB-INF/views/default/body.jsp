@@ -64,7 +64,7 @@ body{
     padding: 0 6px;
 }
 .background {
-   	background-image: url('image/mainBack.jpg');
+   	background-image: url('resources/image/mainBack.jpg');
 }
 .banner-txt {
 	font-size: 2rem;

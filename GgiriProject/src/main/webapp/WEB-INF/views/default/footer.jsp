@@ -31,7 +31,7 @@ span {
 	<div class="footer">
 		<hr>
 		<br>
-		<a href="/root/index"><img width="100px" height="33px" alt="" src="resources/image/logoDark.png"></a>
+		<a href="/root/index"><img width="100px" height="33px" alt="" src="/root/resources/image/logoDark.png"></a>
 		<br>
 		<span>Copyright &copy; GGIRI</span>
 	</div>

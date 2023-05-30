@@ -65,7 +65,7 @@ nav ul li a:hover {
 	<!-- // wrap -->
 	<div class="navdiv">
 		<div class="wrap">
-			<a href="/root/index"><img width="300px" height="95px" src="resources/image/logo6.png"></a>
+			<a href="/root/index"><img width="300px" height="95px" src="/root/resources/image/logo6.png"></a>
 			<nav>
 				<ul>
 					<li><a href="/root/free/freeList"> 프리랜서 보기 </a></li>
@@ -77,7 +77,7 @@ nav ul li a:hover {
 							<a href="/root/member/logout"> LOGOUT </a>
 						</c:if>
 						<c:if test="${loginUser == null }">
-							<a href="/root/member/login"> LOGIN </a>
+							<a href="/root/ggiriMember/ggiriLogin"> LOGIN </a>
 						</c:if>
 					</li>
 				</ul>
