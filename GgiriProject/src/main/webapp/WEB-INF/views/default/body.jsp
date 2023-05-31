@@ -72,7 +72,21 @@ body{
 	line-height: 35px;
 	font-family: 'IBM Plex Sans KR', sans-serif;
 }
+.back button {
+    background-color: #FA8072;
+    color: white;
+    border:none; 
+    border-radius:15px; 
+    min-height: 40px; 
+    min-width: 150px;
+   	font-family: 'IBM Plex Sans KR', sans-serif;
+}
 
+.back button:hover {
+      background-color:#FFA07A;
+      transition: 0.5s;
+      color: white;
+}
 </style>
 </head>
 <body>
@@ -97,9 +111,8 @@ body{
 				<button><a href="#">동료 찾기으러 ㄱㄱ</a></button>			
 			</c:if>
 			<c:if test="${loginUser == null }">
-				<button class="signup" style="font-size:14px;width:150px;height:50px;"><a href="/root/ggiriMember/signup_free">프리랜서 회원가입</a></button>
+			<button class="signup" type="button" onclick="location.href='/root/ggiriMember/signup_free'">프리랜서 회원가입</button>
 			</c:if>		
-<!-- 			<span class="signup" style="font-size:1.2rem;width:10rem"><a href="/signup-free">프리랜서 회원가입</a></span> -->			
 			<br><br>
 		</div>
     </div>

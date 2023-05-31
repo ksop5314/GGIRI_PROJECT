@@ -361,16 +361,26 @@ ul {
 	margin-left: 200px;
 	width: 600px;
 	height: 50px;
+	border:none; 
 	border-radius: 9999px;
 	font-size: 24px;
-	background: orange;
+	background: #FA8072;
+	font-family: 'IBM Plex Sans KR', sans-serif;
 }
-
+#button1:hover {
+	background-color:#FFA07A;
+    transition: 0.5s;
+}
 #emailChk {
 	background: orange;
 	border-radius: 9999px;
 	cursor: pointer;
 	padding: 5px;
+}
+#title{
+    width:fit-content;
+    margin:auto;
+    font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
 </style>
