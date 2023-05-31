@@ -24,7 +24,8 @@
 		<br>
 		<input type="password" name="pwd" placeholder="PASSWORD"><br>
 		<br>
-		<input type="submit" value="login"> &nbsp; <a href="${contextPath }/ggiriMember/signup_free">회원가입</a>
+		<input type="submit" value="login"> &nbsp; <a href="${contextPath }/ggiriMember/signup_free">회원가입</a><br><br>
+		<a href="${contextPath }/ggiriMember/findIdPwd"> 아이디/비밀번호 찾기 </a>
 	</form>
 	</div>
 	<c:import url="../default/footer.jsp"/>

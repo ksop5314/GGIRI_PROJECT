@@ -87,6 +87,10 @@ body{
       transition: 0.5s;
       color: white;
 }
+
+.signup {
+	cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -111,7 +115,7 @@ body{
 				<button><a href="#">동료 찾기으러 ㄱㄱ</a></button>			
 			</c:if>
 			<c:if test="${loginUser == null }">
-			<button class="signup" type="button" onclick="location.href='/root/ggiriMember/signup_free'">프리랜서 회원가입</button>
+				<button class="signup" type="button" onclick="location.href='/root/ggiriMember/signup_free'">프리랜서 회원가입</button>
 			</c:if>		
 			<br><br>
 		</div>

@@ -68,9 +68,9 @@ nav ul li a:hover {
 			<a href="/root/index"><img width="300px" height="95px" src="/root/resources/image/logo6.png"></a>
 			<nav>
 				<ul>
-					<li><a href="/root/free/freeList"> 프리랜서 보기 </a></li>
+					<li><a href="/root/ggiriMember/memberList"> 프리랜서 보기 </a></li>
 					<li> | </li>
-					<li><a href="/root/project/projectList"> 프로젝트 보기 </a></li>
+					<li><a href="/root/ggiriProject/projectList"> 프로젝트 보기 </a></li>
 					<li> | </li>
 					<li>
 						<c:if test="${loginUser != null }">

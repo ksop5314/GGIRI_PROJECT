@@ -42,4 +42,14 @@ public class GgiriServiceImpl implements GgiriService{
 		return 1;
 	}
 	
+	@Override
+	public int joinPhone(String userTel) {
+		return gmm.joinPhone(userTel);
+	}
+	
+	@Override
+	public GgiriMemberDTO findEmail(String email) {
+		return gmm.findEmail(email);
+	}
+	
 }
