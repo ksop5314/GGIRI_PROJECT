@@ -23,6 +23,7 @@ public class GgiriMemberDTO {
 	private String name;
 	private String id;
 	private String pwd;
+	private String birth;
 	private String gender;
 	private String email;
 	private String tel;
@@ -49,6 +50,12 @@ public class GgiriMemberDTO {
 	}
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
+	}
+	public String getBirth() {
+		return birth;
+	}
+	public void setBirth(String birth) {
+		this.birth = birth;
 	}
 	public String getGender() {
 		return gender;
