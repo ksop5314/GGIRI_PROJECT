@@ -19,7 +19,7 @@
 	<c:import url="../default/header.jsp"/>
 	<div class="ggiriPage">
 	<br>
-	<form action="${contextPath }/ggiriMember/user_check" method="post">
+	<form action="${contextPath }/ggiriMember/login_check" method="post">
 		<input type="text" name="id" placeholder="ID"><br>
 		<br>
 		<input type="password" name="pwd" placeholder="PASSWORD"><br>

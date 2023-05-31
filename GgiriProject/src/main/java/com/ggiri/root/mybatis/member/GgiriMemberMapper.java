@@ -6,4 +6,6 @@ public interface GgiriMemberMapper {
 	
 	public int register(GgiriMemberDTO member);
 	public int idCheck(String id);
+	public GgiriMemberDTO loginCheck(String id);
+	
 }

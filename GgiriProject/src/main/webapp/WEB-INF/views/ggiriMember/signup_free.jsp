@@ -72,6 +72,9 @@ $(function(){
 			$(".successPwd").text("비밀번호를 입력해주세요.");
 			$(".successPwd").css("color", "red");
 			return;
+		} else {
+			$(".successPwd").text("");
+			return;
 		}
 	});
 	
@@ -100,6 +103,20 @@ $(function(){
 		}
 	});
 	
+	$("#birth").blur(function(){
+		var birth = $("#birth").val();
+		if(birth.length < 8) { 
+			$(".successBirthChk").text("생년월일은 8자로 입력해주세요.");
+			$(".successBirthChk").css("color", "red");
+			$("#birthChkResult").val("false");
+			return;
+		} else {
+			$(".successBirthChk").text("");
+			$("#birthChkResult").val("true");
+			return;
+		}
+	});
+	
 	$("#addr3").blur(function(){
 		if($("#addr1").val() != "" && $("#addr2").val() != "" && $("#addr3").val() != ""){
 			$(".successAddrChk").text("");
@@ -122,11 +139,11 @@ $(function(){
 	var code = "";
 	$("#emailChk").click(function(){
 		var contextPath = "${pageContext.request.contextPath}";
-		var email = $("#email").val() + $("#domain").val();
+		var email = $("#email1").val() + $("#email2").val();
 		
 		if(email == ""){
 			alert("이메일을 입력 후 인증번호를 보내주세요.");
-			$("#email").focus();
+			$("#email1").focus();
 			return;
 		}
 		
@@ -137,7 +154,7 @@ $(function(){
 			success : function(data) {
 				if(data == "error" || data == ""){
 					alert("이메일 주소가 올바르지 않습니다.");
-					$("#email").attr("autofocus", true);
+					$("#email1").attr("autofocus", true);
 					$(".successEmailChk").text("유효한 이메일 주소를 입력하세요.");
 					$(".successEmailChk").css("color", "red");
 				} else {
@@ -234,6 +251,7 @@ $(function(){
 		var addr = $("#addr1").val() + $("#addr2").val() + $("#addr3").val();
 		var email = $("#email1").val() + $("#email2").val();
 		
+		
 		if($("#idDoubleChk").val() != "true"){
 			alert("아이디를 확인해주세요.");
 			$("#id").focus();
@@ -243,6 +261,12 @@ $(function(){
 		if($("#pwdChkResult").val() != "true"){
 			alert("비밀번호를 확인해주세요.");
 			$("#pwd").focus();
+			return rv = false;
+		}
+		
+		if($("#birthChkResult").val() != "true"){
+			alert("생년월일을 확인해주세요.");
+			$("#birth").focus();
 			return rv = false;
 		}
 		
@@ -275,7 +299,6 @@ $(function(){
 			alert("주소를 확인해주세요.");
 			return rv = false;
 		}
-		
 		
 		
 		
@@ -384,9 +407,17 @@ ul {
 				<tr>
 					<th> 비밀번호 확인 </th>
 					<td>
-						<input type="password" name="pwdchk" id="pwdchk" placeholder="비밀번호 확인"><br>
+						<input type="password" id="pwdchk" placeholder="비밀번호 확인"><br>
 						<span class="point successPwdChk"></span><br>
 						<input type="hidden" id="pwdChkResult" value="false">
+					</td>
+				</tr>
+				<tr>
+					<th> 생년월일 </th>
+					<td>
+						<input type="text" name="birth" id="birth" maxlength="8" placeholder="ex)19901231"><br>
+						<span class="point successBirthChk"></span><br>
+						<input type="hidden" id="birthChkResult" value="false">
 					</td>
 				</tr>
 				<tr>
@@ -420,7 +451,7 @@ ul {
 				<tr>
 					<th>이메인 인증확인</th>
 					<td>
-						<input type="text" id="userEmail2" name="userEmail2" autocomplete="none"><br>
+						<input type="text" id="userEmail2" autocomplete="none"><br>
 						<span class="point successEmailChk">※ 이메일 입력 후 인증번호 클릭 </span>
 						<input type="hidden" id="emailDoubleChk">
 					</td>

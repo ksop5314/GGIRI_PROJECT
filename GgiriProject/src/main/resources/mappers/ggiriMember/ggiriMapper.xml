@@ -8,6 +8,7 @@
 		<id property="id" column="id"/>
 		<result property="name" column="name"/>
 		<result property="pwd" column="pwd"/>
+		<result property="birth" column="birth"/>
 		<result property="gender" column="gender"/>
 		<result property="email" column="email"/>
 		<result property="tel" column="tel"/>
@@ -18,11 +19,15 @@
 	</resultMap>
 	
 	<insert id="register">
-		INSERT INTO ggirimember VALUES(#{name}, #{id}, #{pwd}, #{gender}, #{email}, #{tel}, #{addr}, #{job}, #{skill})
+		INSERT INTO ggirimember(id, name, pwd, birth, gender, email, tel, addr, job, skill) VALUES(#{id}, #{name}, #{pwd}, #{birth}, #{gender}, #{email}, #{tel}, #{addr}, #{job}, #{skill})
 	</insert>
 	
 	<select id="idCheck" resultType="integer">
 		SELECT COUNT(id) FROM ggirimember WHERE id=#{id}
+	</select>
+	
+	<select id="loginCheck" resultMap="ggiri">
+		SELECT * FROM ggirimember WHERE id=#{id}
 	</select>
 	
 </mapper>

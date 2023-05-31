@@ -1,5 +1,8 @@
 package com.ggiri.root.member.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,14 +10,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ggiri.root.member.dto.GgiriMemberDTO;
 import com.ggiri.root.member.service.GgiriService;
 import com.ggiri.root.member.service.MailSendService;
+import com.ggiri.root.session.login.GgiriMemberSession;
 
 @Controller
 @RequestMapping("ggiriMember")
-public class GgiriController {
+public class GgiriController implements GgiriMemberSession {
 	
 	@Autowired
 	private GgiriService gs;
@@ -30,6 +35,31 @@ public class GgiriController {
 	@GetMapping("signup_free")
 	public String signupFree() {
 		return "ggiriMember/signup_free";
+	}
+	
+	
+	@PostMapping("login_check")
+	public String loginCheck(HttpServletRequest request, RedirectAttributes ra) {
+		int result = gs.loginCheck(request);
+		if(result == 0) {
+			ra.addAttribute("id", request.getParameter("id"));
+			return "redirect:successLogin";
+		}
+		return "redirect:login";
+	}
+	
+	@RequestMapping("successLogin")
+	public String successLogin(@RequestParam("id") String id, HttpSession session) {
+		session.setAttribute(LOGIN, id);
+		return "ggiriMember/successLogin";
+	}
+	
+	@GetMapping("ggiriLogout")
+	public String logout(HttpSession session) {
+		if(session.getAttribute("loginUser") != null) {
+			session.invalidate();
+		}
+		return "ggiriMember/ggiriLogout";
 	}
 	
 	@RequestMapping("register")

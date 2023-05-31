@@ -1,5 +1,7 @@
 package com.ggiri.root.member.service;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,4 +30,16 @@ public class GgiriServiceImpl implements GgiriService{
 	public int idCheck(String id) {
 		return gmm.idCheck(id);
 	}
+	
+	@Override
+	public int loginCheck(HttpServletRequest request) {
+		GgiriMemberDTO dto = gmm.loginCheck(request.getParameter("id"));
+		if(dto != null) {
+			if(request.getParameter("pwd").equals(dto.getPwd())) {
+				return 0;
+			}
+		}
+		return 1;
+	}
+	
 }

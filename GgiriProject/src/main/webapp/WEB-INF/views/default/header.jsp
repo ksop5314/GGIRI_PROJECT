@@ -74,7 +74,7 @@ nav ul li a:hover {
 					<li> | </li>
 					<li>
 						<c:if test="${loginUser != null }">
-							<a href="/root/member/logout"> LOGOUT </a>
+							<a href="/root/ggiriMember/ggiriLogout"> LOGOUT </a>
 						</c:if>
 						<c:if test="${loginUser == null }">
 							<a href="/root/ggiriMember/ggiriLogin"> LOGIN </a>
