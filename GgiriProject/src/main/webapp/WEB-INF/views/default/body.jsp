@@ -63,6 +63,7 @@ body{
 .search-box:hover > .search-txt{
     width: 240px;
     padding: 0 6px;
+    cursor: pointer;
 }
 .background {
    	background-image: url('resources/image/mainBack.jpg');
@@ -79,17 +80,14 @@ body{
     border-radius:15px; 
     min-height: 40px; 
     min-width: 150px;
-   	font-family: 'IBM Plex Sans KR', sans-serif;
+   	font-family: 'IBM Plex Sans KR', sans-serif; 
+   	cursor: pointer;
 }
 
 .back button:hover {
       background-color:#FFA07A;
       transition: 0.5s;
       color: white;
-}
-
-.signup {
-	cursor: pointer;
 }
 </style>
 </head>
@@ -112,11 +110,12 @@ body{
  			<img width="150px" height="45px" alt="" src="resources/image/logo6.png">
 			<br>
 			<c:if test="${loginUser != null }">
-				<button><a href="#">동료 찾기으러 ㄱㄱ</a></button>			
+				<button class="findmem" type="button" onclick="location href='#'">동료 찾기 >></button>			
 			</c:if>
 			<c:if test="${loginUser == null }">
-				<button class="signup" type="button" onclick="location.href='/root/ggiriMember/signup_free'">프리랜서 회원가입</button>
+			<button class="signup" type="button" onclick="location.href='/root/ggiriMember/signup_free'">프리랜서 회원가입</button>
 			</c:if>		
+			<br><br>
 			<br><br>
 		</div>
     </div>

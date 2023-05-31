@@ -8,25 +8,80 @@
 <meta charset="UTF-8">
 <title>member/login.jsp</title>
 <style type="text/css">
-	.ggiriPage {
-		width: 1000px;
-		margin: auto;
-		text-align: center;
-	}
+.ggiriPage {
+	width: 1000px;
+	margin: auto;
+}
+.ggiriPage login {
+	text-align: left;
+}
+.ggiriLoginTxt {
+	text-align: center;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-weight: bold;
+}
+.ggiriLogin {
+	border-radius: 40px 80px / 80px 40px;
+	background-color: #EBF7FF;
+}
+
+.ggiriLogin submit {
+	background-color: #FA8072;
+    color: white;
+    border:none; 
+    border-radius:15px; 
+    min-height: 30px; 
+    min-width: 75px;
+   	font-family: 'IBM Plex Sans KR', sans-serif; 
+   	cursor: pointer;
+}
+
+.ggiriLogin button {
+    background-color: #FA8072;
+    color: white;
+    border:none; 
+    border-radius:15px; 
+    min-height: 30px; 
+    min-width: 75px;
+   	font-family: 'IBM Plex Sans KR', sans-serif; 
+   	cursor: pointer;
+}
+
+.ggiriLogin button:hover {
+      background-color:#FFA07A;
+      transition: 0.5s;
+      color: white;
+}
 </style>
 </head>
 <body>
 	<c:import url="../default/header.jsp"/>
 	<div class="ggiriPage">
 	<br>
-	<form action="${contextPath }/ggiriMember/login_check" method="post">
-		<input type="text" name="id" placeholder="ID"><br>
+	<h1 id="login">Login</h1>
+	<br>
+		<div class="ggiriLoginTxt"><br>
+		함께 나눌수록 더욱 커지는 가치,<br>
+		IT 전문가 세상 '끼리'에 오신것을 환영합니다.
+		<br><br>
+		'끼리'는 기업과 프리랜서를<br>
+		연결합니다
+		<br><br>
+		<div class="ggiriLogin">
 		<br>
-		<input type="password" name="pwd" placeholder="PASSWORD"><br>
+		<form action="${contextPath }/ggiriMember/login_check" method="post">
+			<input type="text" name="id" placeholder="ID"><br>
+			<br>
+			<input type="password" name="pwd" placeholder="PASSWORD"><br>
+			<br>
+			<input type="submit" value="로그인"> &nbsp;
+			<button class="signup" type="button" onclick="location.href='${contextPath}/ggiriMember/signup_free'">회원가입</button>
+			<br><br>
+			<a href="${contextPath }/ggiriMember/findIdPwd"> 아이디/비밀번호 찾기 </a>
+		</form>
 		<br>
-		<input type="submit" value="login"> &nbsp; <a href="${contextPath }/ggiriMember/signup_free">회원가입</a><br><br>
-		<a href="${contextPath }/ggiriMember/findIdPwd"> 아이디/비밀번호 찾기 </a>
-	</form>
+		</div>
+		</div>
 	</div>
 	<c:import url="../default/footer.jsp"/>
 </body>
