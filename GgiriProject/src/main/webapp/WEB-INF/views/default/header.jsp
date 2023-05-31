@@ -70,7 +70,7 @@ nav ul li a:hover {
 				<ul>
 					<li><a href="/root/ggiriMember/memberList"> 프리랜서 보기 </a></li>
 					<li> | </li>
-					<li><a href="/root/project/projectList"> 프로젝트 보기 </a></li>
+					<li><a href="/root/ggiriProject/projectList"> 프로젝트 보기 </a></li>
 					<li> | </li>
 					<li>
 						<c:if test="${loginUser != null }">

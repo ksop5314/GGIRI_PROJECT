@@ -11,6 +11,8 @@ public interface GgiriService {
 	public int register(GgiriMemberDTO member);
 	public int idCheck(String id);
 	public int loginCheck(HttpServletRequest request);
+	public int joinPhone(String userTel);
+	public GgiriMemberDTO findEmail(String email);
 	
 	// 안태준
 	public void boardAllList(Model model);

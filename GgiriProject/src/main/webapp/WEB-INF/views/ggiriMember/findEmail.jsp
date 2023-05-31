@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>successLogin</title>
+<title>findEmail</title>
 </head>
 <body>
 	<script type="text/javascript">
 		window.onload = function(){
-			location.href="../index";
+			alert("아이디와 비밀번호가 이메일로 발송되었습니다.");
+			location.href="ggiriLogin";
 		}
 	</script>
 </body>

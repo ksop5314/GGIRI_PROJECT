@@ -33,6 +33,11 @@ public class GgiriController implements GgiriMemberSession {
 		return "ggiriMember/ggiriLogin";
 	}
 	
+	@GetMapping("findIdPwd")
+	public String findIdPwd() {
+		return "ggiriMember/findIdPwd";
+	}
+	
 	@GetMapping("signup_free")
 	public String signupFree() {
 		return "ggiriMember/signup_free";
@@ -46,7 +51,12 @@ public class GgiriController implements GgiriMemberSession {
 			ra.addAttribute("id", request.getParameter("id"));
 			return "redirect:successLogin";
 		}
-		return "redirect:login";
+		return "redirect:failLogin";
+	}
+	
+	@RequestMapping("failLogin")
+	public String failLogin() {
+		return "ggiriMember/failLogin";
 	}
 	
 	@RequestMapping("successLogin")
@@ -77,6 +87,12 @@ public class GgiriController implements GgiriMemberSession {
 		return gs.idCheck(id);
 	}
 	
+	@GetMapping("telCheck")
+	@ResponseBody
+	public int userTelChk(@RequestParam("tel") String userTel) {
+		return gs.joinPhone(userTel);
+	}
+	
 	@GetMapping("mailCheck")
 	@ResponseBody
 	public String mailCheck(@RequestParam("email") String userEmail) {
@@ -85,6 +101,7 @@ public class GgiriController implements GgiriMemberSession {
 		return mss.joinEmail(userEmail);
 	}
 	
+
 	// 안태준 
 	@GetMapping("memberList")
 	public String AllList(Model model) {
@@ -101,5 +118,15 @@ public class GgiriController implements GgiriMemberSession {
 		return "ggiriMember/writeFree";
 	}
 	// 안태준 끝
+
+	@PostMapping("findEmail")
+	public String findEmail(@RequestParam("findEmail") String email) {
+		GgiriMemberDTO dto = gs.findEmail(email);
+		if(dto != null) {
+			return mss.findEmail(dto);
+		}
+		return "ggiriMember/failEmail";
+	}
+
 	
 }

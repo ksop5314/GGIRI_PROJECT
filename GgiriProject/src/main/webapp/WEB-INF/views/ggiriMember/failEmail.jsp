@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>successLogin</title>
+<title>failEmail</title>
 </head>
 <body>
 	<script type="text/javascript">
 		window.onload = function(){
-			location.href="../index";
+			alert("유효하지 않은 이메일 입니다.");
+			location.href="findIdPwd";
 		}
 	</script>
 </body>

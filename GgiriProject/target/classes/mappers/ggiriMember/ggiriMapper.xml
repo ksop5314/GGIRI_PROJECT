@@ -40,4 +40,12 @@
 	</select>
 	
 	<!-- 안태준 끝 -->
+	<select id="joinPhone" resultType="integer">
+		SELECT COUNT(tel) FROM ggirimember WHERE tel=#{userTel}
+	</select>
+	
+	<select id="findEmail" resultMap="ggiri">
+		SELECT * FROM ggirimember WHERE email=#{email}	
+	</select>
+	
 </mapper>

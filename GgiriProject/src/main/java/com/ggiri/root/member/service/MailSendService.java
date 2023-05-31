@@ -9,6 +9,8 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
+import com.ggiri.root.member.dto.GgiriMemberDTO;
+
 @Component
 public class MailSendService {
 	
@@ -46,7 +48,17 @@ public class MailSendService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
+	public String findEmail(GgiriMemberDTO dto) {
+		String setFrom = "ksop6580@naver.com";
+		String toMail = dto.getEmail();
+		String title = "[Ggiri] 아이디 비밀번호 찾기 메일입니다.";
+		String content = "아이디와 비밀번호를 확인해주세요." + "<br><br>"
+						+ "ID : " + dto.getId() + "<br>"
+						+ "PW : " + dto.getPwd() + "<br>"
+						+ "아이디와 비밀번호가 노출되지않게 주의바랍니다.";
+		mailSend(setFrom, toMail, title, content);
+		return "ggiriMember/findEmail";
+	}
 }

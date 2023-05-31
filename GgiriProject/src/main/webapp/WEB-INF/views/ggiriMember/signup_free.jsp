@@ -64,7 +64,7 @@ $(function(){
 				}
 			});
 		}
-		
+	
 	});
 	
 	$("#pwd").blur(function(){
@@ -187,7 +187,30 @@ $(function(){
 	});
 	
 	
-	
+	$("#tel_3").blur(function(){
+		var contextPath = "${pageContext.request.contextPath}";
+		var tel = $("#tel_1").val() + $("#tel_2").val() + $("#tel_3").val();
+			
+		$.ajax({
+			url : contextPath + "/ggiriMember/telCheck?tel=" + tel,
+			type : "GET",
+			cache : false,
+			success : function(data) {
+				if(data == 0){
+					$(".successTelChk").text("");
+					$("#telDoubleChk").val("true");
+				} else {
+					$(".successTelChk").text("이미 가입 되어있는 휴대폰번호 입니다.");
+					$(".successTelChk").css("color", "red");
+					$("#telDoubleChk").val("false");
+				}
+			},
+			error : function(){
+				console.log("실패");
+			}
+		});
+	});
+		
 	<%--
 	var code2 = "";
 	$("#telChk").click(function(){
@@ -284,7 +307,7 @@ $(function(){
 		}	
 		--%>
 		
-		if($("#tel_1").val() == "" || $("#tel_2").val() == "" || $("#tel_3").val() == ""){
+		if($("#tel_1").val() == "" || $("#tel_2").val() == "" || $("#tel_3").val() == "" || $("#telDoubleChk").val() != "true"){
 			alert("휴대폰 번호를 확인해주세요.");
 			$("#tel_2").focus();
 			return rv = false;
@@ -300,6 +323,9 @@ $(function(){
 			return rv = false;
 		}
 		
+		$("input[name=tel]").val(tel);
+		$("input[name=addr]").val(addr);
+		$("input[name=email]").val(email);
 		
 		
 		alert($("#id").val() + "님 환영합니다.");
@@ -361,16 +387,27 @@ ul {
 	margin-left: 200px;
 	width: 600px;
 	height: 50px;
+	border:none; 
 	border-radius: 9999px;
 	font-size: 24px;
-	background: orange;
+	background: #FA8072;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	cursor: pointer;
 }
-
+#button1:hover {
+	background-color:#FFA07A;
+    transition: 0.5s;
+}
 #emailChk {
 	background: orange;
 	border-radius: 9999px;
 	cursor: pointer;
 	padding: 5px;
+}
+#title{
+    width:fit-content;
+    margin:auto;
+    font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
 </style>
@@ -393,7 +430,7 @@ ul {
 						<input type="text" name="id" id="id" placeholder="아이디" maxlength="10" autocomplete="none"><br>
 						<span class="point">※ 2 ~ 10 글자 입력가능 </span><br>
 						<span class="point successIdChk"></span>
-						<input type="hidden" id="idDoubleChk">
+						<input type="hidden" id="idDoubleChk" value="false">
 					</td>
 				</tr>
 				<tr>
@@ -453,19 +490,17 @@ ul {
 					<td>
 						<input type="text" id="userEmail2" autocomplete="none"><br>
 						<span class="point successEmailChk">※ 이메일 입력 후 인증번호 클릭 </span>
-						<input type="hidden" id="emailDoubleChk">
+						<input type="hidden" id="emailDoubleChk" value="false">
 					</td>
 				</tr>
 				<tr>
 					<th> Tel </th>
 					<td>
-						<select name="tel" id="tel_1">
-							<option> 010 </option>
-							<option> 018 </option>
-							<option> 019 </option>
-						</select> - 
+						<input type="text" name="tel" id="tel_1" size="3" maxlength="3" value="010" readonly="readonly"> - 
 						<input type="text" id="tel_2" size="4" maxlength="4"> - 
-						<input type="text" id="tel_3" size="4" maxlength="4">
+						<input type="text" id="tel_3" size="4" maxlength="4"><br>
+						<span class="point successTelChk"></span>
+						<input type="hidden" id="telDoubleChk" value="false">
 					</td>
 				</tr>
 				<!-- 
