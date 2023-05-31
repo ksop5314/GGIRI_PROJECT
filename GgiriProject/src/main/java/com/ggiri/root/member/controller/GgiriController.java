@@ -100,11 +100,13 @@ public class GgiriController implements GgiriMemberSession {
 		return mss.joinEmail(userEmail);
 	}
 	
-	
 	@PostMapping("findEmail")
 	public String findEmail(@RequestParam("findEmail") String email) {
 		GgiriMemberDTO dto = gs.findEmail(email);
-		return mss.findEmail(dto);
+		if(dto != null) {
+			return mss.findEmail(dto);
+		}
+		return "ggiriMember/failEmail";
 	}
 	
 }
