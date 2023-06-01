@@ -35,21 +35,19 @@ form{
 	width: 1000px;
 	height: 200px;
 }
-div #h{
-	font-size: 20px;
-	font-weight: bold;
-}
+
 #h3{
-	padding: 10px 20px;
+	padding: 10px 15px;
 	font-size: 15px;
 	text-align: center;
 	background-color: white;
-	border-color: black;
-	opacity:1.0;
+	border-color: gray;
 	font-family: 'IBM Plex Sans KR', sans-serif;
 }
 #h3:hover{
 	background-color: #EAEAEA;
+	border-color: black;
+	cursor: pointer;
 }
 #id{
 	border: 1px solid white;
@@ -63,8 +61,12 @@ div #h{
 }
 .freeTxt {
 	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-weight: bold;
+	float:left;
+}
+div #h{
+	font-size: 24px;
 	font-weight: bolder;
-	float:left
 }
 a{
 	text-decoration: none;
@@ -82,7 +84,7 @@ a{
 	cursor: pointer;
 }
 #freeInput:hover {
-	background-color: #DAD9FF;
+	background-color: white;
 	transition: 0.5s;
 }
 </style>
@@ -100,7 +102,7 @@ a{
 		<div>
 			<button class="freeInput" id="freeInput" type="button" onclick="location.href='${contextPath}/ggiriMember/writeFree'">프리랜서 등록하기</button>
 		</div>
-		<br><br><br><br><br><br>
+		<br><br><br><br><br><br><br>
 		<div class="skill">
 			<form method="get" action="main">
 				<button id="h3" type="submit" style=" border-radius: 30px;"> ⚙️  개발자 </button>
