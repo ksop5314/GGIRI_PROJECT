@@ -74,7 +74,7 @@ nav ul li a:hover {
 					<li> | </li>
 					<c:if test="${loginUser != null }">
 						<li>
-							<a href="/root/ggiriChat/chatEcho"> chat </a>
+							<a href="/root/ggiriChat/chat"> chat </a>
 						</li>
 					</c:if>					
 					<li>

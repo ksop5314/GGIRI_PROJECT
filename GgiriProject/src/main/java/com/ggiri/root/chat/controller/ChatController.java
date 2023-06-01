@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("ggiriChat")
 public class ChatController {
 
-	@RequestMapping("chatEcho")
+	@RequestMapping("chat")
 	public String chat (HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		return "ggiriChat/chatEcho";
+		return "ggiriChat/chat";
 	}
 	
 }

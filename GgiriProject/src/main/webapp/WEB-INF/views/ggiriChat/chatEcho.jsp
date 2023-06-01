@@ -10,7 +10,7 @@
 <script type="text/javascript">
 
 $(function(){
-	let sock = new SockJS("http://localhost:8080/root/echo/");
+	let sock = new SockJS("http://192.168.12.1/root/echo/");
 	sock.onmessage = onMessage;
 	sock.onclose = onClose;
 	
