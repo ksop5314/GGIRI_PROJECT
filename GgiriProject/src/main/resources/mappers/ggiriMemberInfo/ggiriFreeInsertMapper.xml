@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ggiri.root.mybatis.member.GgiriFreeInsertMapper">
+	
+	<resultMap type="com.ggiri.root.member.dto.GgiriFreeInsertDTO" id="ggiri">
+		<result property="id" column="id"/>
+		<result property="introduce" column="introduce"/>
+		<result property="project_name" column="project_name"/>
+		<result property="project_period" column="project_period"/>
+		<result property="project_cliente" column="project_cliente"/>
+		<result property="project_ex" column="project_ex"/>
+		<result property="insertdate" column="insertdate"/>
+	</resultMap>
+	
+	<!-- <select id="boardAllList" resultMap="board">
+		SELECT * FROM mvc_board
+	</select> -->
+	
+	<insert id="writeSave">
+		INSERT INTO ggiriFree_insert(id, introduce, project_name, project_period, project_cliente, project_ex)
+		 VALUES(#{id}, #{introduce}, #{project_name}, #{project_period}, #{project_cliente}, #{project_ex})
+    </insert>
+   
+    
+    
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

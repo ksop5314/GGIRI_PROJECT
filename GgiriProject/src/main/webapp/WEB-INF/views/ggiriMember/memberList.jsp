@@ -4,16 +4,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>     
+<c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>default/main.jsp</title>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function fReg(){
-		window.location.assign("../ggiriMember/writeFree");
+		window.location.assign("$/ggiriMember/writeFree");
 	}
-</script>
+</script> -->
 <style type="text/css">
 *{
 	margin: 0;
@@ -94,7 +95,7 @@ a{
 			
 		</div> 
 		<div>
-			<button type="submit" style="border-radius: 10px;border-width: 2px;font-size: 15px;padding-top: 5px;padding-bottom: 5px;border-color: #f76a22;background-color: #fff;color: #000;" onclick="fReg()">프리랜서 등록하기 </button>
+			<a href="${contextPath}/ggiriMember/writeFree"><button type="button" style="border-radius: 10px;border-width: 2px;font-size: 15px;padding-top: 5px;padding-bottom: 5px;border-color: #f76a22;background-color: #fff;color: #000;"> 프리랜서 등록하기 </button></a>
 		</div>
 		<br><br>
 		<div   class="skill">
@@ -125,8 +126,8 @@ a{
 					<tr>
 					<!-- <input type="hidden" id="writeNo" name="writeNo"> -->
 						<td id="id"><a href="Info?id=${board.id }">"${board.id }"</a></td>
-						<%-- <td id="title"><b>소개 : </b>"${board.title }"</td>
-						<td id="proof"><b>경력 : </b>"${board.proof_of_experience }"</td> --%>
+						<td id="skill"><b>기술 : </b>"${board.skill }"</td>
+						<%-- <td id="proof"><b>경력 : </b>"${board.proof_of_experience }"</td> --%>
 					</tr>
 				</c:forEach>
 			</table>

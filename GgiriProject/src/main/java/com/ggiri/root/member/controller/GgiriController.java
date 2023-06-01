@@ -1,6 +1,10 @@
 package com.ggiri.root.member.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +18,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ggiri.root.member.dto.GgiriMemberDTO;
+import com.ggiri.root.member.service.GgiriFreeInsertService;
 import com.ggiri.root.member.service.GgiriService;
 import com.ggiri.root.member.service.MailSendService;
+import com.ggiri.root.mybatis.member.GgiriFreeInsertMapper;
 import com.ggiri.root.session.login.GgiriMemberSession;
 
 @Controller
@@ -24,6 +30,12 @@ public class GgiriController implements GgiriMemberSession {
 	
 	@Autowired
 	private GgiriService gs;
+	
+	// 안태준
+	@Autowired
+	private GgiriFreeInsertService gfs;
+	@Autowired
+	private GgiriFreeInsertMapper gfi;
 	
 	@Autowired
 	private MailSendService mss;
@@ -116,6 +128,14 @@ public class GgiriController implements GgiriMemberSession {
 	@GetMapping("writeFree")
 	public String writeFree() {
 		return "ggiriMember/writeFree";
+	}
+	@PostMapping("writeSave")
+	public void writeSave(HttpServletResponse response,
+							HttpServletRequest request) throws IOException{
+		String message = gfs.writeSave(request);
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println(message);
 	}
 	// 안태준 끝
 

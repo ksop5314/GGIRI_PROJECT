@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
 import com.ggiri.root.member.dto.GgiriMemberDTO;
 import com.ggiri.root.mybatis.member.GgiriMemberMapper;
 
@@ -14,6 +15,9 @@ public class GgiriServiceImpl implements GgiriService{
 
 	@Autowired
 	private GgiriMemberMapper gmm;
+	
+	@Autowired
+	private GgiriFreeInsertService gfi;
 	
 	@Override
 	public int register(GgiriMemberDTO member) {
@@ -46,7 +50,6 @@ public class GgiriServiceImpl implements GgiriService{
 	@Override
 	public void boardAllList(Model model) {
 		model.addAttribute("boardList", gmm.boardAllList());
-		
 	}
 
 
