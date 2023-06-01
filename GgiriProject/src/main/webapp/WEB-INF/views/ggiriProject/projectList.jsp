@@ -16,11 +16,11 @@ table { border-collapse: collapse; }
 	<h1>프로젝트 보기</h1>
 		<table border="1">
 			<tr style="text-align: center">
-				<th width="50px"> 번 호 </th>
+				<th style="display: none"  width="50px"> 번 호 </th>
 				<th style="display: none" width="100px"> ID </th>
-				<th width="600px"> 제 목 </th>
-				<th width="300px"> 날 짜 </th>
-				<th width="50px"> 조회수 </th>
+				<th width="700px"> 제 목 </th>
+				<th width="200px"> 날 짜 </th>
+				<th width="100px"> 조회수 </th>
 			</tr>
 			<c:if test="${projectList.size()==0 }">
 				<tr>
@@ -29,7 +29,7 @@ table { border-collapse: collapse; }
 			</c:if>
 			<c:forEach var="dto" items="${projectList }">
 				<tr style="text-align: right">
-					<td>${dto.projectNum }</td>
+					<td style="display: none" >${dto.projectNum }</td>
 					<td style="display: none">${dto.id }</td>
 					<td><a href="../ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a></td>
 					<td>${dto.prodate }</td>

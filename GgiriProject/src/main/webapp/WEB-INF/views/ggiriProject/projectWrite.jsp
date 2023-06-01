@@ -23,7 +23,7 @@
 				<b> 내 용 </b><br>
 				<textarea rows="20" cols="100" name="content"></textarea><br>
 				<br>
-				<input type="submit" value="완료"> &nbsp;
+				<input type="submit" value="등록"> &nbsp;
 				<input type="button" value="프로젝트 목록" onclick="location.href='../project/projectList'">
 			</form>
 		</div>
