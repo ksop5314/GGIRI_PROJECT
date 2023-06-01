@@ -45,5 +45,22 @@ public class ProjectController {
 		return "redirect:projectList";
 	}
 	
+	@GetMapping("modifyForm")
+	public String modifyForm(@RequestParam("projectNum") int projectNum, Model model) {
+		ps.projectView(projectNum, model);
+		return "ggiriProject/modifyForm";
+	}
+	
+	@PostMapping("modify")
+	public String modify(ProjectDTO dto) {
+		ps.modify(dto);
+		return "redirect:projectList";
+	}
+	
+	@GetMapping("delete")
+	public String delete(@RequestParam("projectNum") int projectNum) {
+		ps.delete(projectNum);
+		return "redirect:projectList";
+	}
 	
 }
