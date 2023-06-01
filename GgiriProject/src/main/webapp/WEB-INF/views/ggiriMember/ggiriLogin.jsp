@@ -13,7 +13,8 @@
 	margin: auto;
 }
 .ggiriPage login {
-	text-align: left;
+	text-align: left;	
+	font-family: 'IBM Plex Sans KR', sans-serif;
 }
 .ggiriLoginTxt {
 	text-align: center;
@@ -36,7 +37,7 @@
    	cursor: pointer;
 }
 
-.ggiriLogin button {
+#signup {
     background-color: #FA8072;
     color: white;
     border:none; 
@@ -47,10 +48,37 @@
    	cursor: pointer;
 }
 
-.ggiriLogin button:hover {
+#signup:hover {
       background-color:#FFA07A;
       transition: 0.5s;
-      color: white;
+}
+#login {
+	background-color: #FA8072;
+    color: white;
+    border:none; 
+    border-radius:15px; 
+    min-height: 30px; 
+    min-width: 75px;
+   	font-family: 'IBM Plex Sans KR', sans-serif; 
+   	cursor: pointer;
+}
+#login:hover {
+	background-color:#FFA07A;
+    transition: 0.5s;
+}
+#findIdPwd {
+	background-color:#FFA07A;
+	color: white;
+    border:none; 
+    border-radius:15px; 
+    min-height: 30px; 
+    min-width: 163px;
+   	font-family: 'IBM Plex Sans KR', sans-serif; 
+   	cursor: pointer;
+}
+#findIdPwd:hover {
+	background-color: #FA8072;
+	transition: 0.5s;
 }
 </style>
 </head>
@@ -58,7 +86,7 @@
 	<c:import url="../default/header.jsp"/>
 	<div class="ggiriPage">
 	<br>
-	<h1 id="login">Login</h1>
+	<h1 id="loginTitle">Login</h1>
 	<br>
 		<div class="ggiriLoginTxt"><br>
 		함께 나눌수록 더욱 커지는 가치,<br>
@@ -74,10 +102,10 @@
 			<br>
 			<input type="password" name="pwd" placeholder="PASSWORD"><br>
 			<br>
-			<input type="submit" value="로그인"> &nbsp;
-			<button class="signup" type="button" onclick="location.href='${contextPath}/ggiriMember/signup_free'">회원가입</button>
+			<input type="submit" id="login" value="로그인"> &nbsp;
+			<button class="signup" id="signup" type="button" onclick="location.href='${contextPath}/ggiriMember/signup_free'">회원가입</button>
 			<br><br>
-			<a href="${contextPath }/ggiriMember/findIdPwd"> 아이디/비밀번호 찾기 </a>
+			<button class="findIdPwd" id="findIdPwd" type="button" onclick="location.href='${contextPath }/ggiriMember/findIdPwd'">아이디/비밀번호 찾기</button>
 		</form>
 		<br>
 		</div>
@@ -86,32 +114,4 @@
 	<c:import url="../default/footer.jsp"/>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -9,7 +9,6 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script>
-
 function count_check(obj){
 	var chkBox = document.getElementsByName("skill");
 	var chkCnt = 0;
@@ -355,9 +354,12 @@ function daumPost(){
 <style type="text/css">
 table {
 	margin: 0 auto;
-	width: 600px;
+	font-family: 'IBM Plex Sans KR', sans-serif;
 }
-
+table th {
+	text-align: center;
+	width: 125px;
+}
 table th,td {
 	border-bottom: 2px solid gray;
 	padding: 60px 0 60px 0;
@@ -366,6 +368,7 @@ table th,td {
 table td {
 	padding: 5px 0 7px 8px;
 	text-align: left;
+	width: 500px;
 }
 
 .point {
@@ -387,7 +390,7 @@ ul {
 	margin-left: 200px;
 	width: 600px;
 	height: 50px;
-	border:none; 
+	border: none; 
 	border-radius: 9999px;
 	font-size: 24px;
 	background: #FA8072;
@@ -399,23 +402,42 @@ ul {
     transition: 0.5s;
 }
 #emailChk {
-	background: orange;
+	background: #EBF7FF;
 	border-radius: 9999px;
 	cursor: pointer;
 	padding: 5px;
+	border: none;
+}
+#emailChk:hover {
+	background-color: #B2CCFF;
+    transition: 0.5s;
 }
 #title{
+	padding: 10px;
     width:fit-content;
     margin:auto;
     font-family: 'IBM Plex Sans KR', sans-serif;
+    border-radius: 40px 80px / 80px 40px;
+	background-color: #EBF7FF;
 }
-
+#daumAddr {
+	background: #EBF7FF;
+	border-radius: 9999px;
+	cursor: pointer;
+	padding: 5px;
+	border: none;
+}
+#daumAddr:hover {
+	background-color: #B2CCFF;
+    transition: 0.5s;
+}
 </style>
 </head>
 <body>
 	<c:import url="../default/header.jsp"/>
 	<div class="wrap">
-		<h1 style="padding-left: 400px;">회원 가입</h1>
+	<br>
+		<h1 id="title">회원 가입</h1>
 		<form id="signup_free" action="register" method="post">
 			<table>
 				<tr>
@@ -442,7 +464,7 @@ ul {
 					</td>
 				</tr>
 				<tr>
-					<th> 비밀번호 확인 </th>
+					<th> 비밀번호<br>확인 </th>
 					<td>
 						<input type="password" id="pwdchk" placeholder="비밀번호 확인"><br>
 						<span class="point successPwdChk"></span><br>
@@ -477,8 +499,8 @@ ul {
 						<select id="email2">
 							<option value=""> 도메인 선택 </option>
 							<option value="@naver.com"> Naver </option>
-							<option value="@google.com"> Google </option>
-							<option value="@gmail.com"> Gmail </option>
+							<option value="@gmail.com"> Google </option>
+							<option value="@daum.net"> Daum </option>
 						</select> &nbsp;
 						<span id="emailChk" class="sendNum"> 인증번호 </span><br>
 						<span class="point successEmail"></span><br>
@@ -486,7 +508,7 @@ ul {
 					</td>
 				</tr>
 				<tr>
-					<th>이메인 인증확인</th>
+					<th>이메일<br>인증확인</th>
 					<td>
 						<input type="text" id="userEmail2" autocomplete="none"><br>
 						<span class="point successEmailChk">※ 이메일 입력 후 인증번호 클릭 </span>
@@ -517,7 +539,7 @@ ul {
 					<th> 주소 </th>
 					<td>
 						<input type="text" id="addr1" name="addr" placeholder="우편번호" readonly>
-						<input type="button" class="btn btn-info" value="우편번호 찾기" onclick="daumPost()"><br>
+						<input type="button" id="daumAddr" class="btn btn-info" value="우편번호 찾기" onclick="daumPost()"><br>
 						<input type="text" id="addr2" placeholder="주소" readonly><br>
 						<input type="text" id="addr3" placeholder="상세주소" ><br>
 						<span class="point successAddrChk"></span><br>
@@ -542,7 +564,7 @@ ul {
 					</td>
 				</tr>
 				<tr>
-					<th> 활용가능 기술 </th>
+					<th> 활용가능<br>기술 </th>
 					<td>
 						<ul>
 							<li>
