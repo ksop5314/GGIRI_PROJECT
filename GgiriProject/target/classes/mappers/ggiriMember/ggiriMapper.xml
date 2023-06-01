@@ -30,6 +30,16 @@
 		SELECT * FROM ggirimember WHERE id=#{id}
 	</select>
 	
+	<!-- 안태준 -->
+	<select id="boardAllList" resultMap="ggiri">
+		SELECT * FROM ggirimember
+	</select>
+	
+	<select id="getBoard" resultMap="ggiri">
+		SELECT * FROM ggirimember WHERE id=#{userid}
+	</select>
+	
+	<!-- 안태준 끝 -->
 	<select id="joinPhone" resultType="integer">
 		SELECT COUNT(tel) FROM ggirimember WHERE tel=#{userTel}
 	</select>
