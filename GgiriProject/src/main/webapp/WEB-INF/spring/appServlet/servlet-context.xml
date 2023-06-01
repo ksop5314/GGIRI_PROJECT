@@ -44,6 +44,16 @@
 	
 	<context:component-scan base-package="com.ggiri.root" />
 	
+	<!-- 프리랜서 등록 로그인 check -->
+	<!-- member 회원정보 확인시  -->
+	<beans:bean id="GgiriMemberInterceptor" class="com.ggiri.root.member.Interceptor.GgiriMemberInterceptor"/>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/ggiriMember/writeFree"/>
+			<beans:ref bean="GgiriMemberInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 	
 </beans:beans>
