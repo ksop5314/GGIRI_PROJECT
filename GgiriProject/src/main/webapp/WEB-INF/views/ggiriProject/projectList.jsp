@@ -45,7 +45,7 @@ table { border-collapse: collapse; }
 			</tr>
 			<tr style="text-align: right">
 				<td colspan="6">
-					<a href="${contextPath }/ggiriProject/projectWrite">글 쓰기</a>
+					<a href="../ggiriProject/projectWrite">글 쓰기</a>
 				</td>
 			</tr>
 		</table>
