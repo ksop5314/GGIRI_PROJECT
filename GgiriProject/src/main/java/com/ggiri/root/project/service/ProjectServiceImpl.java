@@ -2,11 +2,11 @@
 package com.ggiri.root.project.service;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.ggiri.root.mybatis.project.ProjectMapper;
 import com.ggiri.root.project.dto.ProjectDTO;
@@ -33,5 +33,14 @@ public class ProjectServiceImpl implements ProjectService {
 		pm.insertPro(dto);
 	}
 	
+	@Override
+	public void modify(ProjectDTO dto) {
+		pm.modify(dto);
+	}
+	
+	@Override
+	public void delete(int projectNum) {
+		pm.delete(projectNum);
+	}
 	
 }

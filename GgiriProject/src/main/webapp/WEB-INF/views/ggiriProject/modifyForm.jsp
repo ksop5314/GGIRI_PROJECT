@@ -20,12 +20,12 @@
 				<b> 작성자 </b><br>
 				<input type="text" name="id" value="${loginUser }"><br>
 				<b> 제 목 </b><br>
-				<input type="text" name="title" size="50"><br>
+				<input type="text" name="title" size="50" value="${data.title }"><br>
 				<b> 내 용 </b><br>
-				<textarea rows="20" cols="100" name="content"></textarea><br>
+				<textarea rows="20" cols="100" name="content">${data.content }</textarea><br>
 				<br>
-				<input type="submit" value="등록"> &nbsp;
-				<input type="button" value="프로젝트 목록" onclick="location.href='../project/projectList'">
+				<input type="submit" value="수정완료"> &nbsp;
+				<input type="button" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'">
 			</form>
 		</div>
 	</div>

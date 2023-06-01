@@ -30,5 +30,12 @@
 		UPDATE ggiriProject SET proHit=proHit+1 WHERE projectNum=#{projectNum}
 	</update>
 	
+	<update id="modify">
+		UPDATE ggiriProject SET title=#{title}, content=#{content} WHERE projectNum=#{projectNum}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM ggiriProject WHERE projectNum=#{projectNum}
+	</delete>
 	
 </mapper>
