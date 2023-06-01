@@ -72,6 +72,11 @@ nav ul li a:hover {
 					<li> | </li>
 					<li><a href="/root/ggiriProject/projectList"> 프로젝트 보기 </a></li>
 					<li> | </li>
+					<c:if test="${loginUser != null }">
+						<li>
+							<a href="/root/ggiriChat/chatEcho"> chat </a>
+						</li>
+					</c:if>					
 					<li>
 						<c:if test="${loginUser != null }">
 							<a href="/root/ggiriMember/ggiriLogout"> LOGOUT </a>
