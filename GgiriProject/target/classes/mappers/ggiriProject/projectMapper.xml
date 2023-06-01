@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ggiri.root.mybatis.project.ProjectMapper">
+
+	<resultMap type="com.ggiri.root.project.dto.ProjectDTO" id="project">
+		<result property="projectNum" column="projectNum"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="members" column="members"/>
+		<result property="prodate" column="prodate"/>
+		<result property="proHit" column="proHit"/>
+		<result property="id" column="id"/>
+	</resultMap>
+	
+	<select id="projectList" resultMap="project">
+		SELECT * FROM ggiriProject
+	</select>
+	
+</mapper>
