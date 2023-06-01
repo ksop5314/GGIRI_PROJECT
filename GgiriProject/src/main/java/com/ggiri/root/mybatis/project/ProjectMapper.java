@@ -15,4 +15,6 @@ public interface ProjectMapper {
 	
 	public void insertPro(ProjectDTO dto);
 	
+	public void proHit(int projectNum);
+	
 }

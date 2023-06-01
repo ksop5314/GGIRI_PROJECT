@@ -1,5 +1,5 @@
 
-<!-- ggiriProject/projectWrite.jsp -->
+<!-- ggiriProject/modifyForm.jsp -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -8,14 +8,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ggiriProject/projectWrite.jsp</title>
+<title>ggiriProject/modifyForm.jsp</title>
 </head>
 <body>
 	<c:import url="../default/header.jsp"></c:import>
-	<div class="wrap write_form">
+	<div class="wrap modify_form">
 	<h1>프로젝트 등록</h1>
-		<div class="write_save">
-			<form action="../ggiriProject/projectSave" method="post">
+		<div class="modify">
+			<form action="../ggiriProject/modify" method="post">
+				<input type="hidden" name="projectNum" value="${data.projectNum }">
 				<b> 작성자 </b><br>
 				<input type="text" name="id" value="${loginUser }"><br>
 				<b> 제 목 </b><br>

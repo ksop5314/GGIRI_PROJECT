@@ -26,5 +26,9 @@
 		INSERT INTO ggiriProject(projectNum, title, content, id) VALUES(ggiriProject_seq.nextval, #{title}, #{content}, #{id})
 	</insert>
 	
+	<update id="proHit">
+		UPDATE ggiriProject SET proHit=proHit+1 WHERE projectNum=#{projectNum}
+	</update>
+	
 	
 </mapper>
