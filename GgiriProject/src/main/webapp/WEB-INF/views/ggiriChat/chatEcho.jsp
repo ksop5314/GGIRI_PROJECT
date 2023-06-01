@@ -37,12 +37,24 @@ $(function(){
 });
 	
 </script>
+<style type="text/css">
+	#messageArea {
+		border: 1px solid orange;
+		border-radius: 10px;
+		width: 300px;
+		height: 500px;
+		margin-top: 10px;
+	}
+</style>
 </head>
 <body>
-	<input type="hidden" id="user" value="${loginUser }"/>
-	<label>${loginUser }</label> :  
-	<input type="text" id="message" />
-	<input type="button" id="sendBtn" value="submit"/>
-	<div id="messageArea"></div>
+	<div>
+		<h1>Chat</h1><br>
+		<input type="hidden" id="user" value="${loginUser }"/>
+		<label>${loginUser }</label> :  
+		<input type="text" id="message" />
+		<input type="button" id="sendBtn" value="submit"/>
+		<div id="messageArea"></div>
+	</div>
 </body>
 </html>

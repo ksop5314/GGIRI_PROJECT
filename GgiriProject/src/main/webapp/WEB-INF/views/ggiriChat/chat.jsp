@@ -7,7 +7,9 @@
 <title>chat</title>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script type="text/javascript">
-	let url = "ws://localhost:8090/spring/chatserver";
+$(function(){
+	
+	let url = "http://localhost:8080/root/chatserver";
 	let ws;
 	
 	$("#btnConnect").click(function(){
@@ -115,8 +117,7 @@
 		$("#message").val("");
 		$("#message").attr("disabled", true);
 	});
-	
-	
+});
 </script>
 </head>
 <body>
