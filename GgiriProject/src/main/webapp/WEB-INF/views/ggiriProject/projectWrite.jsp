@@ -17,7 +17,7 @@
 		<div class="write_save">
 			<form action="../ggiriProject/projectSave" method="post">
 				<b> 작성자 </b><br>
-				<input type="text" name="id"><br>
+				<input type="text" name="id" value="${loginUser }"><br>
 				<b> 제 목 </b><br>
 				<input type="text" name="title" size="50"><br>
 				<b> 내 용 </b><br>

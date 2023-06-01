@@ -37,8 +37,8 @@ table { border-collapse: collapse; }
 				<td colspan="4" align="center">
 					<div id="reply"></div>
 					<c:if test="${data.id==loginUser }">
-						<input type="button" value="수정" onclick="location.href='${contextPath }/board/modifyForm?writeNo=${data.writeNo }'"> &nbsp;
-						<input type="button" value="삭제" onclick="location.href='${contextPath }/board/delete?writeNo=${data.writeNo }&imageFileName=${data.imageFileName }'"> &nbsp;
+						<input type="button" value="수정" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+						<input type="button" value="삭제" onclick="location.href='../ggiriProject/projectDelete?projectNum=${data.projectNum }'"> &nbsp;
 					</c:if>
 					<input type="button" value="답글달기" onclick="slide_click()"> &nbsp;
 					<input type="button" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'">
