@@ -19,15 +19,19 @@ table { border-collapse: collapse; }
 	<h1> 프로젝트 내용 </h1>
 		<table border="1">
 			<tr>
-				<th width="100px"> 글 번호 </th><td width="200px">${data.projectNum }</td>
-				<th width="100px"> 작성자 </th><td width="200px">${data.id }</td>
+				<th width="150px"> 번 호 </th><td width="850px">${data.projectNum }</td>
 			</tr>
 			<tr>
-				<th width="100px"> 제 목 </th><td width="200px">${data.title }</td>
-				<th width="100px"> 작성일 </th><td width="200px">${data.prodate }</td>
+				<th> 작성자 </th><td>${data.id }</td>
 			</tr>
 			<tr>
-				<th> 내 용 </th><td>${data.content }</td>
+				<th> 제 목 </th><td>${data.title }</td>
+			</tr>
+			<tr>
+				<th> 작성일 </th><td>${data.prodate }</td>
+			</tr>
+			<tr>
+				<th> 프로젝트 설명 </th><td><pre><c:out value="${data.content }"/></pre></td>
 			</tr>
 			<tr>
 				<td colspan="4" align="center">

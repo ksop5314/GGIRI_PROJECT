@@ -28,4 +28,10 @@ public class ProjectServiceImpl implements ProjectService {
 		//pm.updateHit(projectNum);
 	}
 	
+	@Override
+	public void insertPro(ProjectDTO dto) {
+		pm.insertPro(dto);
+	}
+	
+	
 }

@@ -22,5 +22,9 @@
 		SELECT * FROM ggiriProject WHERE projectNum=#{projectNum}
 	</select>
 	
+	<insert id="insertPro">
+		INSERT INTO ggiriProject(projectNum, title, content, id) VALUES(ggiriProject_seq.nextval, #{title}, #{content}, #{id})
+	</insert>
+	
 	
 </mapper>
