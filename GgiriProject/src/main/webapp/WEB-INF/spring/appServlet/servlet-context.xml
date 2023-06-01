@@ -65,4 +65,15 @@
 	</interceptors>
 	
 	
+	<!-- 프로젝트 글쓰기 누를 때 로그인 check -->
+	<beans:bean id="projectInterceptor" class="com.ggiri.root.project.Interceptor.projectInterceptor"/>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/ggiriProject/projectWrite"/>
+			<beans:ref bean="projectInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	
 </beans:beans>
