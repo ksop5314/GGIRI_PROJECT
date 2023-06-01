@@ -120,6 +120,7 @@
 		    <version>${org.springframework-version}</version>
 		</dependency>
 		
+<<<<<<< HEAD
 		<!-- JSON -->
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
@@ -140,6 +141,8 @@
 		    <version>1.1</version>
 		</dependency>
 		
+=======
+>>>>>>> branch 'main' of https://github.com/Jh1227/junho.git
 		<!-- Ajax사용하기 -->
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 		<dependency>

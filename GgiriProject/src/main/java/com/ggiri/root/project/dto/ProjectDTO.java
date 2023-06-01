@@ -1,6 +1,9 @@
 
 package com.ggiri.root.project.dto;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+
 /*
 create table ggiriProject(
 projectNum NUMBER(10) PRIMARY KEY,
@@ -76,8 +79,9 @@ public class ProjectDTO {
 		return prodate;
 	}
 	
-	public void setProdate(String prodate) {
-		this.prodate = prodate;
+	public void setProdate(Timestamp prodate) {
+		SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-dd");
+		this.prodate = format.format(prodate);
 	}
 	
 	public int getProHit() {

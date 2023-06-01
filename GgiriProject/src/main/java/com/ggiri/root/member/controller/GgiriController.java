@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -100,6 +101,24 @@ public class GgiriController implements GgiriMemberSession {
 		return mss.joinEmail(userEmail);
 	}
 	
+
+	// 안태준 
+	@GetMapping("memberList")
+	public String AllList(Model model) {
+		gs.boardAllList(model);
+		return "ggiriMember/memberList";
+	}
+	@GetMapping("Info")
+	public String MemberList(@RequestParam("id") String userid, Model model) {
+		gs.Info(userid ,model);
+		return "ggiriMember/Info";
+	}
+	@GetMapping("writeFree")
+	public String writeFree() {
+		return "ggiriMember/writeFree";
+	}
+	// 안태준 끝
+
 	@PostMapping("findEmail")
 	public String findEmail(@RequestParam("findEmail") String email) {
 		GgiriMemberDTO dto = gs.findEmail(email);
@@ -108,5 +127,6 @@ public class GgiriController implements GgiriMemberSession {
 		}
 		return "ggiriMember/failEmail";
 	}
+
 	
 }

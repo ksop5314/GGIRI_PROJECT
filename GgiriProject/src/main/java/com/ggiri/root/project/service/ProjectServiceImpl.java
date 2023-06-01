@@ -22,5 +22,10 @@ public class ProjectServiceImpl implements ProjectService {
 		model.addAttribute("projectList", pm.projectList());
 	}
 	
+	@Override
+	public void projectView(int projectNum, Model model) {
+		model.addAttribute("data", pm.projectView(projectNum));
+		//pm.updateHit(projectNum);
+	}
 	
 }

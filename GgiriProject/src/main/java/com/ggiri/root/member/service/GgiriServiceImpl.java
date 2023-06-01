@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.ggiri.root.member.dto.GgiriMemberDTO;
 import com.ggiri.root.mybatis.member.GgiriMemberMapper;
@@ -41,6 +42,21 @@ public class GgiriServiceImpl implements GgiriService{
 		}
 		return 1;
 	}
+	// 안테준
+	@Override
+	public void boardAllList(Model model) {
+		model.addAttribute("boardList", gmm.boardAllList());
+		
+	}
+
+
+	@Override
+	public void Info(String userid, Model model) {
+		// TODO Auto-generated method stub
+		GgiriMemberDTO dto = gmm.getBoard(userid);
+		model.addAttribute("info", dto);
+	}
+	// 안태준 끝
 	
 	@Override
 	public int joinPhone(String userTel) {
