@@ -16,16 +16,17 @@
 	}
 </script> -->
 <style type="text/css">
-*{
-	margin: 0;
+.wrap{
+	width: 1000px;
+	margin: auto;
+	text-align: left;
 }
 .skill{
-	
+	font-family: 'IBM Plex Sans KR', sans-serif;
 	display: inline-block;
 	
 }
 form{
-	
 	float:left; 
 	margin-right: 15px;
 }
@@ -34,39 +35,22 @@ form{
 	width: 1000px;
 	height: 200px;
 }
-div {
-	padding: 20px 0 15px 300px;
-}
 div #h{
 	font-size: 20px;
 	font-weight: bold;
 }
 #h3{
+	padding: 10px 20px;
+	font-size: 15px;
 	text-align: center;
 	background-color: white;
 	border-color: black;
 	opacity:1.0;
-	
+	font-family: 'IBM Plex Sans KR', sans-serif;
 }
 #h3:hover{
-	background-color: gray;
+	background-color: #EAEAEA;
 }
-
-/* #h2{
-	background-color: white;
-	border-color: #f76a22;
-	font-weight: bold;
-	color: #000;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	border: 4px solid orange;
-	border-radius: 10px;
-	border-width: 2px;
-	font-size: 15px;
-	float: left;
-	clear: both;
-	margin: 0 1000px 0p 0;
-} */
 #id{
 	border: 1px solid white;
 	background-color: blue;
@@ -76,29 +60,48 @@ div #h{
 	text-align: center;
 	color: black;
 	font-size: 30px;
-	
+}
+.freeTxt {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-weight: bolder;
+	float:left
 }
 a{
 	text-decoration: none;
 	color: white;
 }
-
+#freeInput {
+ 	border-radius: 15px;
+	font-size: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	float: right;
+    min-height: 50px; 
+    min-width: 170px;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	cursor: pointer;
+}
+#freeInput:hover {
+	background-color: #DAD9FF;
+	transition: 0.5s;
+}
 </style>
 </head>
 <body>
 	<c:import url="../default/header.jsp"/>
-	<div style="border: 1px solid white; width: 1000px; height: 1000px;">
-		<div style="float:left; margin-right: 100px ">
+ 		<br>
+ 		<div class="wrap">
+		<div class="freeTxt">
 			<p>끼리가 보증하는 IT파트너</p>
 			<p id="h">프로젝트 등록하면<br>
 			더 정확한 추천을 받을 수 있어요</p>
-			
+			<br>
 		</div> 
 		<div>
-			<a href="${contextPath}/ggiriMember/writeFree"><button type="button" style="border-radius: 10px;border-width: 2px;font-size: 15px;padding-top: 5px;padding-bottom: 5px;border-color: #f76a22;background-color: #fff;color: #000;"> 프리랜서 등록하기 </button></a>
+			<button class="freeInput" id="freeInput" type="button" onclick="location.href='${contextPath}/ggiriMember/writeFree'">프리랜서 등록하기</button>
 		</div>
-		<br><br>
-		<div   class="skill">
+		<br><br><br><br><br><br>
+		<div class="skill">
 			<form method="get" action="main">
 				<button id="h3" type="submit" style=" border-radius: 30px;"> ⚙️  개발자 </button>
 			</form>
@@ -116,7 +119,6 @@ a{
 		<br><br>
 		<hr>
 		<table style="border:1px solid white;">
-		
 			<tr>
 				<th width="50px"></th>
 				<th width="300px"></th>
@@ -131,7 +133,7 @@ a{
 					</tr>
 				</c:forEach>
 			</table>
-	</div>
+		</div>
 	<c:import url="../default/footer.jsp"/>
 </body>
 </html>

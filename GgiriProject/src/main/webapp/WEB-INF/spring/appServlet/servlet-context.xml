@@ -32,6 +32,7 @@
 				<beans:prop key="mail.smtps.checkserveridentity">true</beans:prop>
 				<beans:prop key="mail.transport.protocol">smtp</beans:prop>
 				<beans:prop key="mail.smtps.ssl.trust">smtp.naver.com</beans:prop>
+				<beans:prop key="mail.smtp.ssl.protocols">TLSv1.2</beans:prop>
 				<beans:prop key="mail.debug">true</beans:prop>
 				<beans:prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</beans:prop>
 			</beans:props>
