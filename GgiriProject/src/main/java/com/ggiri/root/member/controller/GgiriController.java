@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.lang.SystemUtils;
+import org.apache.groovy.util.SystemUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -90,14 +90,15 @@ public class GgiriController implements GgiriMemberSession {
 		session.setAttribute("sessionConfigVO", configVO);
 		session.setAttribute("kakaoToken", kakaoToken);
 		
+		
 		return "redirect:/index";
 	}
 	
 //	@RequestMapping("kakaoLogout")
 //	public String kakaoLogout(ModelMap modelMap, HttpSession session) throws IOException {
-////		if(SystemUtil.EmptyCheck((String)session.getAttribute("kakaoToken"))) {
-////			카카오 로그인 06/02  17:00
-////		}
+//		if(SystemUtil {
+//			
+//		}
 //	}
 	
 	@PostMapping("login_check")

@@ -86,20 +86,18 @@ nav ul li a:hover {
 						<li><a href="/root/ggiriMember/kakaoLogOut">Logout</a></li>
 					</c:if>
 					<c:if test="${sessionConfigVO == null }">
-						
+						<c:if test="${loginUser == null }">
+								<a href="/root/ggiriMember/ggiriLogin"> LOGIN </a>
+							</c:if>
 					</c:if>
 					<li><a href="/root/ggiriComplete/completeList"> 진행한 프로젝트 </a></li>
 					<li> | </li>
 					<c:if test="${loginUser != null }">
 						<li>
-							<c:if test="${loginUser != null }">
-								<a href="/root/ggiriMember/ggiriLogout"> LOGOUT </a>
-							</c:if>
-							<c:if test="${loginUser == null }">
-								<a href="/root/ggiriMember/ggiriLogin"> LOGIN </a>
-							</c:if>
+							<a href="/root/ggiriMember/ggiriLogout"> LOGOUT </a>
+
 						</li>
-					</c:if>					
+					</c:if>				
 				</ul>
 			</nav>
 		</div>
