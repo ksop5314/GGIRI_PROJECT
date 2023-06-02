@@ -116,7 +116,6 @@ a{
 			<form action="#">
 				<button id="h3" type="submit" style=" border-radius: 30px;"> 📝  기획자 </button> 
 			</form>
-			
 		</div>
 		<br><br>
 		<hr>

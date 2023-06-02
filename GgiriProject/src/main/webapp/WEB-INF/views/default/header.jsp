@@ -80,6 +80,8 @@ nav ul li a:hover {
 					<li> | </li>
 					<li><a href="/root/ggiriProject/projectList"> 프로젝트 보기 </a></li>
 					<li> | </li>
+					<li><a href="/root/ggiriComplete/completeList"> 진행한 프로젝트 </a></li>
+					<li> | </li>
 					<c:if test="${loginUser != null }">
 						<li>
 							<button type="button" onclick="new_chat()"><a href="#"> chat </a></button>
