@@ -57,6 +57,14 @@ nav ul li a:hover {
 	color: #D8D8D8;
 }
 </style>
+<script type="text/javascript">
+	function new_chat(){
+		window.open(
+			"/root/ggiriChat/chatEcho",
+		)
+		
+	}
+</script>
 </head>
 <body>
 	<div class="wrap">
@@ -74,7 +82,7 @@ nav ul li a:hover {
 					<li> | </li>
 					<c:if test="${loginUser != null }">
 						<li>
-							<a href="/root/ggiriChat/chat"> chat </a>
+							<button type="button" onclick="new_chat()"><a href="#"> chat </a></button>
 						</li>
 					</c:if>					
 					<li>

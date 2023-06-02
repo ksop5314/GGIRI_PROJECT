@@ -10,9 +10,11 @@
 <script type="text/javascript">
 
 $(function(){
-	let sock = new SockJS("http://192.168.12.1/root/echo/");
+	
+	let sock = new SockJS("http://localhost:8080/root/echo");
 	sock.onmessage = onMessage;
 	sock.onclose = onClose;
+	let loguser = $("#user").val();
 	
 	// 메시지 전송
 	function sendMessage() {
@@ -27,15 +29,15 @@ $(function(){
 	// 서버로부터 메시지를 받았을 때
 	function onMessage(msg) {
 		var data = msg.data;
-		$("#messageArea").append(data + "<br/>");
+		$("#messageArea").append(loguser + "님이 보낸메세지 : " + data + "<br/>");
 	}
 	
 	// 서버와 연결을 끊었을 때
 	function onClose(evt) {
 		$("#messageArea").append("연결 끊김");
 	}
-});
 	
+});	
 </script>
 <style type="text/css">
 	#messageArea {

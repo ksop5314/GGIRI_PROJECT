@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -12,9 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("ggiriChat")
 public class ChatController {
 
-	@RequestMapping("chat")
+	@RequestMapping("chatEcho")
 	public String chat (HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		return "ggiriChat/chat";
+		return "ggiriChat/chatEcho";
+	}
+	
+	@GetMapping("chatAct")
+	public String chatAct() {
+		return "ggiriChat/chatAct";
 	}
 	
 }

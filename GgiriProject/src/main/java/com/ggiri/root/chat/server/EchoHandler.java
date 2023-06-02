@@ -11,7 +11,7 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-@RequestMapping("/echo")
+
 public class EchoHandler extends TextWebSocketHandler{
 
 	private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
