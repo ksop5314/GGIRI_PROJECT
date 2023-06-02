@@ -2,14 +2,17 @@ package com.ggiri.root.member.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.SystemUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.ggiri.root.kakao.service.KakaoService;
+import com.ggiri.root.kakao.vo.SessionConfigVO;
 import com.ggiri.root.member.dto.GgiriMemberDTO;
 import com.ggiri.root.member.service.GgiriFreeInsertService;
 import com.ggiri.root.member.service.GgiriService;
@@ -30,6 +35,9 @@ public class GgiriController implements GgiriMemberSession {
 	
 	@Autowired
 	private GgiriService gs;
+	
+	@Autowired
+	private KakaoService kakaoService;
 	
 	// 안태준
 	@Autowired
@@ -55,6 +63,42 @@ public class GgiriController implements GgiriMemberSession {
 		return "ggiriMember/signup_free";
 	}
 	
+	@RequestMapping("kakaoLogin")
+	public String kakaoLogin() {
+		StringBuffer loginUrl = new StringBuffer();
+		loginUrl.append("https://kauth.kakao.com/oauth/authorize?client_id=");
+		loginUrl.append("0bc794d215c15ba457b2eb709fecd070");
+		loginUrl.append("&redirect_uri=");
+		loginUrl.append("http://localhost:8080/root/ggiriMember/kakao_callback");
+		loginUrl.append("&response_type=code");
+		
+		return "redirect:"+loginUrl.toString();
+	}
+	
+	@RequestMapping("kakao_callback")
+	public String redirectkakao(@RequestParam("code") String code, HttpSession session) throws IOException{
+		System.out.println(code);
+		
+		String kakaoToken = kakaoService.getReturnAccessToken(code);
+		System.out.println("controller access_token : " + kakaoToken);
+		
+		Map<String, Object> result = kakaoService.getUserInfo(kakaoToken);
+		SessionConfigVO configVO = new SessionConfigVO();
+		configVO.setUserId((String)result.get("profile_nickname"));
+		configVO.setUserName((String)result.get("account_email"));
+		
+		session.setAttribute("sessionConfigVO", configVO);
+		session.setAttribute("kakaoToken", kakaoToken);
+		
+		return "redirect:/index";
+	}
+	
+//	@RequestMapping("kakaoLogout")
+//	public String kakaoLogout(ModelMap modelMap, HttpSession session) throws IOException {
+////		if(SystemUtil.EmptyCheck((String)session.getAttribute("kakaoToken"))) {
+////			카카오 로그인 06/02  17:00
+////		}
+//	}
 	
 	@PostMapping("login_check")
 	public String loginCheck(HttpServletRequest request, RedirectAttributes ra) {

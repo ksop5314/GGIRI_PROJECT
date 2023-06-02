@@ -39,16 +39,6 @@
 		</beans:property>
 	</beans:bean>
 	
-	<websocket:handlers allowed-origins="http://192.168.12.35, http://localhost:8080">
-		<websocket:mapping handler="echoHandler" path="/echo" />
-		<websocket:handshake-interceptors>
-			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
-		</websocket:handshake-interceptors>
-		<websocket:sockjs />
-	</websocket:handlers>
-	
-	<beans:bean id="echoHandler" class="com.ggiri.root.chat.server.EchoHandler"/>
-	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />

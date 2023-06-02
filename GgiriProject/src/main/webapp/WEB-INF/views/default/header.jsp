@@ -80,19 +80,21 @@ nav ul li a:hover {
 					<li> | </li>
 					<li><a href="/root/ggiriProject/projectList"> 프로젝트 보기 </a></li>
 					<li> | </li>
-					<c:if test="${loginUser != null }">
+					<c:if test="${sessionConfigVO != null }">
+						<li><a>${sessionConfigVO.userId}</a></li>
+						<li><p>Kakao 계정으로 접속중</p></li>
+						<li><a href="/root/ggiriMember/kakaoLogOut">Logout</a></li>
+					</c:if>
+					<c:if test="${sessionConfigVO == null }">
 						<li>
-							<button type="button" onclick="new_chat()"><a href="#"> chat </a></button>
+							<c:if test="${loginUser != null }">
+								<a href="/root/ggiriMember/ggiriLogout"> LOGOUT </a>
+							</c:if>
+							<c:if test="${loginUser == null }">
+								<a href="/root/ggiriMember/ggiriLogin"> LOGIN </a>
+							</c:if>
 						</li>
 					</c:if>					
-					<li>
-						<c:if test="${loginUser != null }">
-							<a href="/root/ggiriMember/ggiriLogout"> LOGOUT </a>
-						</c:if>
-						<c:if test="${loginUser == null }">
-							<a href="/root/ggiriMember/ggiriLogin"> LOGIN </a>
-						</c:if>
-					</li>
 				</ul>
 			</nav>
 		</div>

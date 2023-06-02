@@ -143,9 +143,8 @@ body{
 				<button class="findmem" type="button" onclick="location href='#'">동료 찾기 >></button>			
 			</c:if>
 			<c:if test="${loginUser == null }">
-			<button class="signup" type="button" onclick="location.href='/root/ggiriMember/signup_free'">프리랜서 회원가입</button>
+				<button class="signup" type="button" onclick="location.href='/root/ggiriMember/signup_free'">프리랜서 회원가입</button>
 			</c:if>
-			<img src="/root/resources/image/GgiriHelp.webp" id="chat" onclick="chatActivate()">		
 			<br><br>
 			<br><br>
 		</div>
