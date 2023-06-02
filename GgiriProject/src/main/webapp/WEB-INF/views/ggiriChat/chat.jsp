@@ -6,20 +6,22 @@
 <meta charset="UTF-8">
 <title>chat</title>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	
 	let url = "http://localhost:8080/root/chatserver";
 	let ws;
+	let loguser = $("#user").val();
 	
 	$("#btnConnect").click(function(){
-		if($("#user").val().trim() != ''){
+		if(loguser != ""){
 			ws = new WebSocket(url);
 			
 			ws.onopen = function (evt){
-				print($("#user").val(), "님이 입장했습니다.");
+				print(loguser, "님이 입장했습니다.");
 				
-				ws.send("1#" + $("#user").val() + "#");
+				ws.send("1#" + loguser + "#");
 				
 				$("#user").attr("readonly", true);
 				$("#btnConnect").attr("disabled", true);
@@ -125,7 +127,7 @@ $(function(){
 		<h1>Chat</h1>
 		<table>
 			<tr>
-				<td><input type="text" name="user" id="user" class="form-control" placeholder="유저명"></td>
+				<td><input type="text" name="user" id="user" value="${loginUser }" class="form-control" placeholder="유저명"></td>
 				<td>
 					<button type="button" class="btn btn-default" id="btnConnect"> 연결 </button>
 					<button type="button" class="btn btn-default" id="btnDisconnect"> 종료 </button>

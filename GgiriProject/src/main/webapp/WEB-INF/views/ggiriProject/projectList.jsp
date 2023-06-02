@@ -8,12 +8,112 @@
 <title>projectList.jsp</title>
 <style type="text/css">
 table { border-collapse: collapse; }
+.wrap{
+	width: 1000px;
+	margin: auto;
+	text-align: left;
+}
+.skill{
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	display: inline-block;
+	
+}
+form{
+	float:left; 
+	margin-right: 15px;
+}
+.box_area{
+	border: 1px solid white;
+	width: 1000px;
+	height: 200px;
+}
+
+#h3{
+	padding: 10px 15px;
+	font-size: 15px;
+	text-align: center;
+	background-color: white;
+	border-color: gray;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+#h3:hover{
+	background-color: #EAEAEA;
+	border-color: black;
+	cursor: pointer;
+}
+#id{
+	border: 1px solid white;
+	background-color: blue;
+	text-weight: bold;
+	width: 300px; 
+	height: 300px;
+	text-align: center;
+	color: black;
+	font-size: 30px;
+}
+.freeTxt {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-weight: bold;
+	float:left;
+}
+div #h{
+	font-size: 24px;
+	font-weight: bolder;
+}
+a{
+	text-decoration: none;
+	/* color: white; */
+}
+#freeInput {
+ 	border-radius: 15px;
+	font-size: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	float: right;
+    min-height: 50px; 
+    min-width: 170px;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	cursor: pointer;
+}
+#freeInput:hover {
+	background-color: white;
+	transition: 0.5s;
+}
 </style>
 </head>
 <body>
 	<c:import url="../default/header.jsp"></c:import>
+	<br>
+	<div class="wrap">
+		<div class="freeTxt">
+			<p>끼리가 보증하는 IT파트너</p>
+			<p id="h">프로젝트 등록하면<br>
+			더 정확한 추천을 받을 수 있어요</p>
+			<br>
+		</div> 
+		<div>
+			<button class="freeInput" id="freeInput" type="button" onclick="location.href='../ggiriProject/projectWrite'">프로젝트 등록하기</button>
+		</div>
+		<br><br><br><br><br><br><br>
+		<div class="skill">
+			<form method="get" action="main">
+				<button id="h3" type="submit" style=" border-radius: 30px;"> ⚙️  개발 </button>
+			</form>
+			<form action="#">
+				<button id="h3" type="submit" style=" border-radius: 30px;"> 🛠  퍼블리싱  </button> 
+			</form>
+			<form action="#">
+			 	<button id="h3" type="submit" style=" border-radius: 30px;"> 🎨  디자인 </button> 
+			</form>
+			<form action="#">
+				<button id="h3" type="submit" style=" border-radius: 30px;"> 📝  기획 </button> 
+			</form>
+		</div>
+	</div>
+	<br>
 	<div class="wrap board_table">
 	<h1>프로젝트 보기</h1>
+	<br>
 		<table border="1">
 			<tr style="text-align: center">
 				<th style="display: none"  width="50px"> 번 호 </th>
@@ -36,18 +136,6 @@ table { border-collapse: collapse; }
 					<td>${dto.proHit }</td>
 				</tr>
 			</c:forEach>
-			<tr>
-				<td colspan="6" align="center">
-					<c:forEach var="num" begin="1" end="${repeat }">
-						<a href="projectList?num=${num }">[ ${num } ]</a>
-					</c:forEach>
-				</td>
-			</tr>
-			<tr style="text-align: right">
-				<td colspan="6">
-					<a href="../ggiriProject/projectWrite">글 쓰기</a>
-				</td>
-			</tr>
 		</table>
 	</div>
 	<c:import url="../default/footer.jsp"></c:import>

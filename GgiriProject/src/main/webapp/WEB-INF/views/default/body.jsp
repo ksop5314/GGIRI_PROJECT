@@ -89,7 +89,37 @@ body{
       transition: 0.5s;
       color: white;
 }
+
+
+#chat {
+    position: fixed;
+    right: 60px;
+    bottom: 150px;
+    width: 110px;
+    height: 100px;
+    cursor: pointer;
+}
+
 </style>
+<script type="text/javascript">
+   
+	<!--Start of Tawk.to Script-->
+	var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+	(function(){
+		var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+		s1.async=true;
+		s1.src='https://embed.tawk.to/64792a8b74285f0ec46f0cd5/1h1skscbn';
+		s1.charset='UTF-8';
+		s1.setAttribute('crossorigin','*');
+		s0.parentNode.insertBefore(s1,s0);
+	})();
+	<!--End of Tawk.to Script-->
+   
+   function chatActivate(){
+      window.open("/root/ggiriChat/chatAct", "_blank", "width=500px, height=1500px");
+   }
+
+</script>
 </head>
 <body>
 	<div class="search-box">
@@ -114,7 +144,8 @@ body{
 			</c:if>
 			<c:if test="${loginUser == null }">
 			<button class="signup" type="button" onclick="location.href='/root/ggiriMember/signup_free'">프리랜서 회원가입</button>
-			</c:if>		
+			</c:if>
+			<img src="/root/resources/image/GgiriHelp.webp" id="chat" onclick="chatActivate()">		
 			<br><br>
 			<br><br>
 		</div>
