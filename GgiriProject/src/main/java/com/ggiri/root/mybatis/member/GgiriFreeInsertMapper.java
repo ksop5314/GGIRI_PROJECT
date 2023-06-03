@@ -9,5 +9,5 @@ public interface GgiriFreeInsertMapper {
 	// 프리랜서 등록하기 
 	public int writeSave(GgiriFreeInsertDTO dto);
 	
-	
+	public GgiriFreeInsertDTO developer(String job);
 }

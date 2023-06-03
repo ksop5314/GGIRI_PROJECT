@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
 import com.ggiri.root.mybatis.member.GgiriFreeInsertMapper;
@@ -23,13 +24,13 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 		
 		dto.setId(request.getParameter("id"));
 		dto.setIntroduce(request.getParameter("introduce"));
+		dto.setJob(request.getParameter("job"));
+		dto.setSkill(request.getParameter("skill"));
 		dto.setProject_name(request.getParameter("project_name"));
-		dto.setProject_cliente(request.getParameter("project_cliente"));
 		dto.setProject_period(Integer.parseInt(request.getParameter("project_period")));
 		dto.setProject_cliente(request.getParameter("project_cliente"));
 		dto.setProject_ex(request.getParameter("project_ex"));
 		dto.setInsertdate(request.getParameter("insertdate"));
-		
 		
 		int result = 0;
 		try {
@@ -51,7 +52,13 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 
 	}
 
-	
+	@Override
+	public void developer(String job, Model model) {
+		// TODO Auto-generated method stub
+		
+		GgiriFreeInsertDTO dto = gfm.developer(job);
+		model.addAttribute("developer", dto);
+	}
 	
 	
 	

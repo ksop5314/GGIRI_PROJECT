@@ -4,6 +4,8 @@ public class GgiriFreeInsertDTO {
 	
 	private String id; // GgiriMember (Primary key) id
 	private String introduce; // 자기소개
+	private String job; // 직업 
+	private String skill; // 기술
 	private String project_name; // 프로젝트명
 	private int project_period; // 프로젝트 기간
 	private String project_cliente; // 고객사
@@ -22,6 +24,18 @@ public class GgiriFreeInsertDTO {
 	}
 	public void setIntroduce(String introduce) {
 		this.introduce = introduce;
+	}
+	public String getJob() {
+		return job;
+	}
+	public void setJob(String job) {
+		this.job = job;
+	}
+	public String getSkill() {
+		return skill;
+	}
+	public void setSkill(String skill) {
+		this.skill = skill;
 	}
 	public String getProject_name() {
 		return project_name;
