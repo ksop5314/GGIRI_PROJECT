@@ -17,6 +17,8 @@ public interface GgiriService {
 	// 안태준
 	public void boardAllList(Model model);
 	
+	
+	
 	public void Info(String userid, Model model);
 	// 안태준 끝
 }

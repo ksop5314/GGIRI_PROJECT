@@ -2,6 +2,7 @@ package com.ggiri.root.member.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ggiri.root.kakao.service.KakaoService;
 import com.ggiri.root.kakao.vo.SessionConfigVO;
+import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
 import com.ggiri.root.member.dto.GgiriMemberDTO;
 import com.ggiri.root.member.service.GgiriFreeInsertService;
 import com.ggiri.root.member.service.GgiriService;
@@ -170,6 +173,16 @@ public class GgiriController implements GgiriMemberSession {
 		gs.Info(userid ,model);
 		return "ggiriMember/Info";
 	}
+//	@GetMapping(value="developer/{job}", produces="application/json; charset=utf-8")
+	@GetMapping("developer")
+	public String Developer(@RequestParam("job") String job, Model model) {
+//	public List<GgiriFreeInsertDTO> developer(@PathVariable String job, Model model){	
+		gfs.developer(job, model);
+
+		return "ggiriMember/memberList";
+	
+	}
+	
 	@GetMapping("writeFree")
 	public String writeFree() {
 		return "ggiriMember/writeFree";

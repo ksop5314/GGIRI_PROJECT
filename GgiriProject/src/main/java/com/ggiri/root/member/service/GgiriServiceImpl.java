@@ -51,7 +51,8 @@ public class GgiriServiceImpl implements GgiriService{
 	public void boardAllList(Model model) {
 		model.addAttribute("boardList", gmm.boardAllList());
 	}
-
+	
+	
 
 	@Override
 	public void Info(String userid, Model model) {
@@ -65,6 +66,8 @@ public class GgiriServiceImpl implements GgiriService{
 	public int joinPhone(String userTel) {
 		return gmm.joinPhone(userTel);
 	}
+	
+	
 	
 	@Override
 	public GgiriMemberDTO findEmail(String email) {
