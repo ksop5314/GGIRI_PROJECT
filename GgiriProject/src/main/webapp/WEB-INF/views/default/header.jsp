@@ -81,9 +81,9 @@ nav ul li a:hover {
 					<li><a href="/root/ggiriProject/projectList"> 프로젝트 보기 </a></li>
 					<li> | </li>
 					<c:if test="${sessionConfigVO != null }">
-						<li><a>${sessionConfigVO.userId}</a></li>
+						<li><a>${sessionConfigVO.kakaoNickname}</a></li>
 						<li><p>Kakao 계정으로 접속중</p></li>
-						<li><a href="/root/ggiriMember/kakaoLogOut">Logout</a></li>
+						<li><a href="/root/ggiriMember/kakaoLogout">Logout</a></li>
 					</c:if>
 					<c:if test="${sessionConfigVO == null }">
 						<c:if test="${loginUser == null }">

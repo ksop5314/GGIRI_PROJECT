@@ -2,12 +2,14 @@ package com.ggiri.root.kakao.service;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
 
@@ -37,10 +39,13 @@ public class KakaoServiceImpl implements KakaoService{
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
 			sb.append("&client_id=0bc794d215c15ba457b2eb709fecd070");
-			sb.append("&redirect_uri=http://localhost:8080/root/ggiriMember/kakao_callback");
+			sb.append("&redirect_uri=http://192.168.219.100:8080/root/ggiriMember/kakao_callback");
 			sb.append("&code=" + code);
 			bw.write(sb.toString());
 			bw.flush();
+			
+			int responseCode = conn.getResponseCode();
+			System.out.println("responseCode : " + responseCode);
 			
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			String br_line = "";
@@ -49,12 +54,16 @@ public class KakaoServiceImpl implements KakaoService{
 			while((br_line = br.readLine()) != null) {
 				result += br_line;
 			}
+			System.out.println("response : " + result);
 			
 			JsonParser parser = new JsonParser();
 			JsonElement element = parser.parse(result);
 			
 			access_token = element.getAsJsonObject().get("access_token").getAsString();
 			refresh_token = element.getAsJsonObject().get("refresh_token").getAsString();
+			
+			System.out.println("access_token : " + access_token);
+			System.out.println("refresh_token : " + refresh_token);
 			
 			br.close();
 			bw.close();
@@ -75,10 +84,23 @@ public class KakaoServiceImpl implements KakaoService{
 			URL url = new URL(reqURL);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Authorization", "Bearer"+access_token);
+			conn.setRequestProperty("Authorization", "Bearer" + access_token);
+			conn.setRequestProperty("charset", "UTF-8");
 			
 			int responseCode = conn.getResponseCode();
+			String errorCode = conn.getResponseMessage();
+			System.out.println("errorCode : " + errorCode);
 			System.out.println("responseCode : " + responseCode);
+
+			String response;
+			InputStream stream = conn.getErrorStream();
+			if (stream != null) {
+				try (Scanner scanner = new Scanner(stream)) {
+					scanner.useDelimiter("\\Z");
+					response = scanner.next();
+				}
+				System.out.println("error response : " + response);
+			}
 			
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			String br_line = "";
@@ -91,15 +113,18 @@ public class KakaoServiceImpl implements KakaoService{
 			JsonParser parser = new JsonParser();
 			JsonElement element = parser.parse(result);
 			
+			JsonObject kakaoid = element.getAsJsonObject().get("id").getAsJsonObject();
 			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 			
-			String id = properties.getAsJsonObject().get("id").getAsString();
-			String profile_nickname = properties.getAsJsonObject().get("profile_nickname").getAsString();
-			String account_email = properties.getAsJsonObject().get("account_email").getAsString();
+			String id = kakaoid.getAsJsonObject().getAsString();
+			String email = kakao_account.getAsJsonObject().get("email").getAsString();
+			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 			
-			resultMap.put("profile_nickname", profile_nickname);
-			resultMap.put("account_email", account_email);
+			resultMap.put("access_token", access_token);
+			resultMap.put("id", id);
+			resultMap.put("email", email);
+			resultMap.put("nickname", nickname);
 			
 			
 		} catch (Exception e) {
@@ -116,7 +141,7 @@ public class KakaoServiceImpl implements KakaoService{
 
 			URL url = new URL(reqURL);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("POST");
+			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Authorization", "Bearer" + access_token);
 			
 			int responseCode = conn.getResponseCode();

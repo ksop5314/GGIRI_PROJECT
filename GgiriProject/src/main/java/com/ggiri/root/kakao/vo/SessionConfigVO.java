@@ -1,28 +1,47 @@
 package com.ggiri.root.kakao.vo;
 
+import java.sql.Date;
+
 public class SessionConfigVO {
 
-	private String userName;
-	private String userId;
-	private boolean kakao_login;
+	private String kakaoNickname;
+	private String kakaoEmail;
+	private String kakaoBirth;
+	private String kakaoGender;
+	private Date logdate;
 	
-	public String getUserName() {
-		return userName;
+	public String getKakaoNickname() {
+		return kakaoNickname;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setKakaoNickname(String kakaoNickname) {
+		this.kakaoNickname = kakaoNickname;
 	}
-	public String getUserId() {
-		return userId;
+	public String getKakaoEmail() {
+		return kakaoEmail;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setKakaoEmail(String kakaoEmail) {
+		this.kakaoEmail = kakaoEmail;
 	}
-	public boolean isKakao_login() {
-		return kakao_login;
+	public String getKakaoBirth() {
+		return kakaoBirth;
 	}
-	public void setKakao_login(boolean kakao_login) {
-		this.kakao_login = kakao_login;
+	public void setKakaoBirth(String kakaoBirth) {
+		this.kakaoBirth = kakaoBirth;
 	}
+	public String getKakaoGender() {
+		return kakaoGender;
+	}
+	public void setKakaoGender(String kakaoGender) {
+		this.kakaoGender = kakaoGender;
+	}
+	public Date getLogdate() {
+		return logdate;
+	}
+	public void setLogdate(Date logdate) {
+		this.logdate = logdate;
+	}
+	
+	
+	
 	
 }
