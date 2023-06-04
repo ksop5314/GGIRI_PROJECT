@@ -28,8 +28,6 @@ public class GgiriMemberDTO {
 	private String email;
 	private String tel;
 	private String addr;
-	private String job;
-	private String skill;
 	private String logdate;
 	
 	
@@ -82,19 +80,7 @@ public class GgiriMemberDTO {
 		this.addr = addr;
 	}
 	
-	public String getJob() {
-		return job;
-	}
-	public void setJob(String job) {
-		this.job = job;
-	}
 	
-	public String getSkill() {
-		return skill;
-	}
-	public void setSkill(String skill) {
-		this.skill = skill;
-	}
 	public String getLogdate() {
 		return logdate;
 	}

@@ -54,19 +54,10 @@ public class GgiriServiceImpl implements GgiriService{
 		model.addAttribute("boardList", gmm.boardAllList());
 	}
 	
-	@Override
-	public List<GgiriMemberDTO> selectJob(String job) {
-		List<GgiriMemberDTO> list = gmm.selectJob(job);
-		return list;
-	}
+	
 	
 
-	@Override
-	public void Info(String userid, Model model) {
-		// TODO Auto-generated method stub
-		GgiriMemberDTO dto = gmm.getBoard(userid);
-		model.addAttribute("info", dto);
-	}
+	
 	// 안태준 끝
 	
 	@Override

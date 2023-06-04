@@ -6,10 +6,8 @@ public class GgiriFreeInsertDTO {
 	private String introduce; // 자기소개
 	private String job; // 직업 
 	private String skill; // 기술
-	private String project_name; // 프로젝트명
 	private int project_period; // 프로젝트 기간
-	private String project_cliente; // 고객사
-	private String project_ex;	// 프로젝트 설명
+	private String place_of_work; // 근무지
 	private String insertdate; // 작성일자
 	
 	
@@ -37,30 +35,20 @@ public class GgiriFreeInsertDTO {
 	public void setSkill(String skill) {
 		this.skill = skill;
 	}
-	public String getProject_name() {
-		return project_name;
-	}
-	public void setProject_name(String project_name) {
-		this.project_name = project_name;
-	}
+	
 	public int getProject_period() {
 		return project_period;
 	}
 	public void setProject_period(int project_period) {
 		this.project_period = project_period;
 	}
-	public String getProject_cliente() {
-		return project_cliente;
+	public String getPlace_of_work() {
+		return place_of_work;
 	}
-	public void setProject_cliente(String project_cliente) {
-		this.project_cliente = project_cliente;
+	public void setPlace_of_work(String place_of_work) {
+		this.place_of_work = place_of_work;
 	}
-	public String getProject_ex() {
-		return project_ex;
-	}
-	public void setProject_ex(String project_ex) {
-		this.project_ex = project_ex;
-	}
+	
 	public String getInsertdate() {
 		return insertdate;
 	}

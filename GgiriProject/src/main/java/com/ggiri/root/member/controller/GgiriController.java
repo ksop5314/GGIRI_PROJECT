@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ggiri.root.kakao.service.KakaoService;
 import com.ggiri.root.kakao.service.SystemUtil;
 import com.ggiri.root.kakao.vo.SessionConfigVO;
+import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
 import com.ggiri.root.member.dto.GgiriMemberDTO;
 import com.ggiri.root.member.service.GgiriFreeInsertService;
 import com.ggiri.root.member.service.GgiriService;
@@ -175,16 +176,16 @@ public class GgiriController implements GgiriMemberSession {
 	
 	@GetMapping("Info")
 	public String MemberList(@RequestParam("id") String userid, Model model) {
-		gs.Info(userid ,model);
+		gfs.Info(userid ,model);
 		return "ggiriMember/Info";
 	}
 //	@GetMapping(value="developer/{job}", produces="application/json; charset=utf-8")
 	@GetMapping("selectJob")
 	@ResponseBody
-	public List<GgiriMemberDTO> selectJob(@RequestParam("job") String job) {
+	public List<GgiriFreeInsertDTO> selectJob(@RequestParam("job") String job) {
 //	public List<GgiriFreeInsertDTO> developer(@PathVariable String job, Model model){	
 
-		return gs.selectJob(job);
+		return gfs.selectJob(job);
 	}
 	
 	@GetMapping("writeFree")

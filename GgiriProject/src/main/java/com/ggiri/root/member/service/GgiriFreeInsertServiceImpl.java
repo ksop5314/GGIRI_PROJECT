@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
 import com.ggiri.root.member.dto.GgiriMemberDTO;
@@ -28,10 +29,8 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 		dto.setIntroduce(request.getParameter("introduce"));
 		dto.setJob(request.getParameter("job"));
 		dto.setSkill(request.getParameter("skill"));
-		dto.setProject_name(request.getParameter("project_name"));
 		dto.setProject_period(Integer.parseInt(request.getParameter("project_period")));
-		dto.setProject_cliente(request.getParameter("project_cliente"));
-		dto.setProject_ex(request.getParameter("project_ex"));
+		dto.setPlace_of_work(request.getParameter("place_of_work"));
 		dto.setInsertdate(request.getParameter("insertdate"));
 		
 		int result = 0;
@@ -53,5 +52,20 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 		return gm.getMessage(request, msg, url);
 
 	}
+	
+	@Override
+	public void Info(String userid, Model model) {
+		// TODO Auto-generated method stub
+		GgiriFreeInsertDTO dto = gfm.getBoard(userid);
+		model.addAttribute("info", dto);
+	}
+	
+	@Override
+	public List<GgiriFreeInsertDTO> selectJob(String job) {
+		List<GgiriFreeInsertDTO> list = gfm.selectJob(job);
+		return list;
+	}
+	
+	
 	
 }

@@ -9,10 +9,8 @@
 		<result property="introduce" column="introduce"/>
 		<result property="job" column="job"/>
 		<result property="skill" column="skill"/>
-		<result property="project_name" column="project_name"/>
 		<result property="project_period" column="project_period"/>
-		<result property="project_cliente" column="project_cliente"/>
-		<result property="project_ex" column="project_ex"/>
+		<result property="place_of_work" column="place_of_work"/>
 		<result property="insertdate" column="insertdate"/>
 	</resultMap>
 	
@@ -21,10 +19,18 @@
 	</select> -->
 	
 	<insert id="writeSave">
-		INSERT INTO ggiriFree_insert(id, introduce, job,  skill,project_name, project_period, project_cliente, project_ex)
-		 VALUES(#{id}, #{introduce}, #{job}, #{skill},#{project_name}, #{project_period}, #{project_cliente}, #{project_ex})
+		INSERT INTO ggiriFree_insert(id, introduce, job,  skill, project_period, place_of_work)
+		 VALUES(#{id}, #{introduce}, #{job}, #{skill}, #{project_period}, #{place_of_work})
     </insert>
     
+    <select id="getBoard" resultMap="ggiri">
+		SELECT * FROM ggiriFree_insert WHERE id=#{userid} 
+	</select>
+    
+    
+    <select id="selectJob" resultMap="ggiri">
+		SELECT * FROM ggiriFree_insert WHERE job=#{job} ORDER BY insertdate DESC
+	</select>
 </mapper>
 
 

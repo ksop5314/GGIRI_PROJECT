@@ -13,8 +13,6 @@
 		<result property="email" column="email"/>
 		<result property="tel" column="tel"/>
 		<result property="addr" column="addr"/>
-		<result property="job" column="job"/>
-		<result property="skill" column="skill"/>
 		<result property="logdate" column="logdate"/>
 	</resultMap>
 	
@@ -35,13 +33,9 @@
 		SELECT * FROM ggirimember
 	</select>
 	
-	<select id="selectJob" resultMap="ggiri">
-		SELECT * FROM ggirimember WHERE job=#{job}
-	</select>
 	
-	<select id="getBoard" resultMap="ggiri">
-		SELECT * FROM ggirimember WHERE id=#{userid}
-	</select>
+	
+	
 	
 	<!-- 안태준 끝 -->
 	<select id="joinPhone" resultType="integer">

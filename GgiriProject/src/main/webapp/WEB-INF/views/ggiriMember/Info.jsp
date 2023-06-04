@@ -40,9 +40,7 @@
 	height: 350px;
 	background: rgba(210, 240, 250, 0.9);
 } */
-body{
-	text-align: left;
-}
+
 #id{
 	margin-right: auto;
 	margin-left: auto;
@@ -55,6 +53,10 @@ body{
 	font-size: 50px;
 	color: white;
 }
+table {
+	margin-right: auto;
+	margin-left: auto;
+}
 </style>
 </head>
 <body>
@@ -62,24 +64,16 @@ body{
 			
 			<!-- <input type="hidden" id="writeNo" name="writeNo"> -->
 				<p id="id">"${info.id }"</p>
-				<p id="title"><b>소개 : </b>"${info.title }"</p>
-				<p id="proof"><b>경력 : </b>"${info.proof_of_experience }"</p>
+				<table>
+					<tr>
+						<td><b>소개 : </b>"${info.introduce }"</td>
+					</tr>
+					<tr>	
+						<td><b>가능한 기술 : </b>"${info.skill }"</td>
+					</tr>
+				</table>
 			<br>
-	<div id="modal_wrap">
-		<div id="first">
-			<div style="width: 250px; margin: 0 auto; padding-top: 20px;">
-				<form id="frm">
-					<b>${info.id }</b>
-					<br>
-					<b>내 용</b><br>
-					<textarea id="content" name="content" rows="5" cols="30"></textarea>
-					<hr>
-					<button type="button" onclick="rep()"> 요청 </button>
-					<button type="button" onclick="slide_hide()"> 취소 </button>
-				</form>
-			</div>
-		</div>
-	</div>
+	
 	<c:import url="../default/footer.jsp"/>
 </body>
 </html>
