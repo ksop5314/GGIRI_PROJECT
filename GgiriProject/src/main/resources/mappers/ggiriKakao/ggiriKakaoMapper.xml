@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ggiri.root.mybatis.member.GgiriKakaoMapper">
+
+	<resultMap type="com.ggiri.root.kakao.vo.SessionConfigVO" id="kakao">
+		<id property="kakaoEmail" column="kakao_email"/>
+		<result property="kakaoNickname" column="kakao_nickname"/>
+		<result property="kakaoBirth" column="kakao_birth"/>
+		<result property="kakaoGender" column="kakao_gender"/>
+		<result property="logdate" column="logtime"/>
+	</resultMap>
+
+	<!-- kakao Mapper -->
+	
+	<select id="findKakao" resultType="integer">
+		select count(kakao_email) from kakaoMember where kakao_email=#{kakaoEmail}
+	</select>
+	
+	<insert id="kakaoinsert">
+		insert into kakaoMember(kakao_nickname, kakao_email) values(#{kakaoNickname}, #{kakaoEmail})
+	</insert>
+	
+</mapper>
