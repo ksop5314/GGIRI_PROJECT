@@ -84,7 +84,7 @@ public class KakaoServiceImpl implements KakaoService{
 			URL url = new URL(reqURL);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Authorization", "Bearer" + access_token);
+			conn.setRequestProperty("Authorization", "Bearer " + access_token);
 			conn.setRequestProperty("charset", "UTF-8");
 			
 			int responseCode = conn.getResponseCode();
@@ -118,7 +118,7 @@ public class KakaoServiceImpl implements KakaoService{
 			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 			
 			String id = kakaoid.getAsJsonObject().getAsString();
-			String email = kakao_account.getAsJsonObject().get("email").getAsString();
+			String email = properties.getAsJsonObject().get("email").getAsString();
 			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 			
 			resultMap.put("access_token", access_token);
@@ -142,7 +142,7 @@ public class KakaoServiceImpl implements KakaoService{
 			URL url = new URL(reqURL);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Authorization", "Bearer" + access_token);
+			conn.setRequestProperty("Authorization", "Bearer " + access_token);
 			
 			int responseCode = conn.getResponseCode();
 			

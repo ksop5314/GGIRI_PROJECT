@@ -15,6 +15,8 @@ public interface GgiriMemberMapper {
 	// 안태준
 	public List<GgiriMemberDTO> boardAllList();
 	
+	public List<GgiriMemberDTO> selectJob(String job);
+	
 	public GgiriMemberDTO getBoard(String userid);
 	// 안태준 끝
 }

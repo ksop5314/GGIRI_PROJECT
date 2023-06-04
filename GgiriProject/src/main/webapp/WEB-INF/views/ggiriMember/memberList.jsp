@@ -10,11 +10,115 @@
 <head>
 <meta charset="UTF-8">
 <title>default/main.jsp</title>
-<!-- <script type="text/javascript">
-	function fReg(){
-		window.location.assign("$/ggiriMember/writeFree");
-	}
-</script> -->
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+var job;
+	
+function developer(){
+	
+	$("#devList").empty();
+	job = $("#jobDev").val();
+	
+	var contextPath = "${pageContext.request.contextPath}";
+	
+	
+	$.ajax({
+		url : contextPath + '/ggiriMember/selectJob?job=' + job,
+		type : 'get',
+		success : function(list){
+			let html = ""
+			$(list).each(function(index, item){
+				$("#devList").append("<div id='id'>" + item.id + "</div>" + "<div>" + item.job + "</div>");
+			});
+		},
+		error : function(xhr, status, errorThrown){
+			alert(xhr);
+			alert(status);
+			alert(errorThrown);
+		}
+	});
+}
+
+function publisher(){
+	
+	$("#devList").empty();
+	job = $("#jobPub").val();
+	
+	var contextPath = "${pageContext.request.contextPath}";
+	
+	$.ajax({
+		url : contextPath + '/ggiriMember/selectJob?job=' + job,
+		type : 'get',
+		success : function(list){
+			let html = ""
+			$(list).each(function(){
+				html += "<div id='id'>" + this.id + "</div>" + "<div>" + this.job + "</div>";
+			});
+			$("#devList").html(html);
+		},
+		error : function(xhr, status, errorThrown){
+			alert(xhr);
+			alert(status);
+			alert(errorThrown);
+		}
+		
+	});
+}
+
+function designer(){
+	
+	$("#devList").empty();
+	job = $("#jobDes").val();
+	
+	var contextPath = "${pageContext.request.contextPath}";
+	
+	$.ajax({
+		url : contextPath + '/ggiriMember/selectJob?job=' + job,
+		type : 'get',
+		success : function(list){
+			let html = ""
+			$(list).each(function(){
+				html += "<div id='id'>" + this.id + "</div>" + "<div>" + this.job + "</div>";
+			});
+			$("#devList").html(html);
+		},
+		error : function(xhr, status, errorThrown){
+			alert(xhr);
+			alert(status);
+			alert(errorThrown);
+		}
+		
+	});
+}
+
+function planner(){
+	
+	$("#devList").empty();
+	job = $("#jobPla").val();
+	
+	var contextPath = "${pageContext.request.contextPath}";
+	
+	$.ajax({
+		url : contextPath + '/ggiriMember/selectJob?job=' + job,
+		type : 'get',
+		success : function(list){
+			let html = ""
+			$(list).each(function(){
+				html += "<div id='id'>" + this.id + "</div>" + "<div>" + this.job + "</div>";
+			});
+			$("#devList").html(html);
+		},
+		error : function(xhr, status, errorThrown){
+			alert(xhr);
+			alert(status);
+			alert(errorThrown);
+		}
+		
+	});
+}
+
+</script>
 <style type="text/css">
 .wrap{
 	width: 1000px;
@@ -24,7 +128,6 @@
 .skill{
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	display: inline-block;
-	
 }
 form{
 	float:left; 
@@ -36,7 +139,7 @@ form{
 	height: 200px;
 }
 
-#h3{
+.h3{
 	padding: 10px 15px;
 	font-size: 15px;
 	text-align: center;
@@ -44,7 +147,7 @@ form{
 	border-color: gray;
 	font-family: 'IBM Plex Sans KR', sans-serif;
 }
-#h3:hover{
+.h3:hover{
 	background-color: #EAEAEA;
 	border-color: black;
 	cursor: pointer;
@@ -87,6 +190,7 @@ a{
 	background-color: white;
 	transition: 0.5s;
 }
+
 </style>
 </head>
 <body>
@@ -98,41 +202,36 @@ a{
 			<p id="h">프로젝트 등록하면<br>
 			더 정확한 추천을 받을 수 있어요</p>
 			<br>
-		</div> 
+		</div>
 		<div>
 			<button class="freeInput" id="freeInput" type="button" onclick="location.href='${contextPath}/ggiriMember/writeFree'">프리랜서 등록하기</button>
 		</div>
 		<br><br><br><br><br><br><br>
 		<div class="skill">
-			<form method="get" action="main">
-				<button id="h3" type="submit" style=" border-radius: 30px;"> ⚙️  개발자 </button>
-			</form>
-			<form action="#">
-				<button id="h3" type="submit" style=" border-radius: 30px;"> 🛠  퍼블리셔  </button> 
-			</form>
-			<form action="#">
-			 	<button id="h3" type="submit" style=" border-radius: 30px;"> 🎨  디자이너 </button> 
-			</form>
-			<form action="#">
-				<button id="h3" type="submit" style=" border-radius: 30px;"> 📝  기획자 </button> 
-			</form>
+			<input type="hidden" name="job" id="jobDev" value="developer">
+			<input type="hidden" name="job" id="jobPub" value="publisher">
+			<input type="hidden" name="job" id="jobDes" value="designer">
+			<input type="hidden" name="job" id="jobPla" value="planner">
+			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="developer()" id="dev"> ⚙️  개발자 </button>
+			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="publisher()" id="pub"> 🛠  퍼블리셔  </button> 
+		 	<button class="h3" type="submit" style=" border-radius: 30px;" onclick="designer()" id="des"> 🎨  디자이너 </button> 
+			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="planner()" id="pla"> 📝  기획자 </button> 
 		</div>
-		<br><br>
-		<hr>
-		<table style="border:1px solid white;">
-			<tr>
-				<th width="50px"></th>
-				<th width="300px"></th>
-				<th width="300px"></th>
-			</tr>
-				<c:forEach var="board" items="${boardList }">
-					<tr>
-					<!-- <input type="hidden" id="writeNo" name="writeNo"> -->
-						<td id="id"><a href="Info?id=${board.id }">"${board.id }"</a></td>
-						<td id="skill"><b>기술 : </b>"${board.skill }"</td>
-						<%-- <td id="proof"><b>경력 : </b>"${board.proof_of_experience }"</td> --%>
-					</tr>
-				</c:forEach>
+			<br><br>
+			<hr>
+			<table style="border:1px solid white;">
+				<tr>
+					<th width="50px"></th>
+					<th width="300px"></th>
+					<th width="300px"></th>
+				</tr>
+				<tr>
+					<td>
+						<div id="devList">
+							
+						</div>
+					</td>
+				</tr>
 			</table>
 		</div>
 	<c:import url="../default/footer.jsp"/>

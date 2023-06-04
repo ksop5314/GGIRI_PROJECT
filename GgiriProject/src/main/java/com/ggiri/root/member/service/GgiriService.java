@@ -1,5 +1,7 @@
 package com.ggiri.root.member.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
@@ -16,6 +18,9 @@ public interface GgiriService {
 	
 	// 안태준
 	public void boardAllList(Model model);
+	
+	public List<GgiriMemberDTO> selectJob(String job);
+	
 	
 	public void Info(String userid, Model model);
 	// 안태준 끝

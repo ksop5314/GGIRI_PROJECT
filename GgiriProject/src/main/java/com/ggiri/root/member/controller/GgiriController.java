@@ -2,7 +2,7 @@ package com.ggiri.root.member.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -173,11 +172,21 @@ public class GgiriController implements GgiriMemberSession {
 		gs.boardAllList(model);
 		return "ggiriMember/memberList";
 	}
+	
 	@GetMapping("Info")
 	public String MemberList(@RequestParam("id") String userid, Model model) {
 		gs.Info(userid ,model);
 		return "ggiriMember/Info";
 	}
+//	@GetMapping(value="developer/{job}", produces="application/json; charset=utf-8")
+	@GetMapping("selectJob")
+	@ResponseBody
+	public List<GgiriMemberDTO> selectJob(@RequestParam("job") String job) {
+//	public List<GgiriFreeInsertDTO> developer(@PathVariable String job, Model model){	
+
+		return gs.selectJob(job);
+	}
+	
 	@GetMapping("writeFree")
 	public String writeFree() {
 		return "ggiriMember/writeFree";

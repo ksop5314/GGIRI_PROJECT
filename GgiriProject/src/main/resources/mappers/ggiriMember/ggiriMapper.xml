@@ -19,7 +19,7 @@
 	</resultMap>
 	
 	<insert id="register">
-		INSERT INTO ggirimember(id, name, pwd, birth, gender, email, tel, addr, job, skill) VALUES(#{id}, #{name}, #{pwd}, #{birth}, #{gender}, #{email}, #{tel}, #{addr}, #{job}, #{skill})
+		INSERT INTO ggirimember(id, name, pwd, birth, gender, email, tel, addr) VALUES(#{id}, #{name}, #{pwd}, #{birth}, #{gender}, #{email}, #{tel}, #{addr})
 	</insert>
 	
 	<select id="idCheck" resultType="integer">
@@ -33,6 +33,10 @@
 	<!-- 안태준 -->
 	<select id="boardAllList" resultMap="ggiri">
 		SELECT * FROM ggirimember
+	</select>
+	
+	<select id="selectJob" resultMap="ggiri">
+		SELECT * FROM ggirimember WHERE job=#{job}
 	</select>
 	
 	<select id="getBoard" resultMap="ggiri">

@@ -7,6 +7,8 @@
 	<resultMap type="com.ggiri.root.member.dto.GgiriFreeInsertDTO" id="ggiri">
 		<result property="id" column="id"/>
 		<result property="introduce" column="introduce"/>
+		<result property="job" column="job"/>
+		<result property="skill" column="skill"/>
 		<result property="project_name" column="project_name"/>
 		<result property="project_period" column="project_period"/>
 		<result property="project_cliente" column="project_cliente"/>
@@ -19,11 +21,9 @@
 	</select> -->
 	
 	<insert id="writeSave">
-		INSERT INTO ggiriFree_insert(id, introduce, project_name, project_period, project_cliente, project_ex)
-		 VALUES(#{id}, #{introduce}, #{project_name}, #{project_period}, #{project_cliente}, #{project_ex})
+		INSERT INTO ggiriFree_insert(id, introduce, job,  skill,project_name, project_period, project_cliente, project_ex)
+		 VALUES(#{id}, #{introduce}, #{job}, #{skill},#{project_name}, #{project_period}, #{project_cliente}, #{project_ex})
     </insert>
-   
-    
     
 </mapper>
 

@@ -81,12 +81,14 @@ public class GgiriMemberDTO {
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
+	
 	public String getJob() {
 		return job;
 	}
 	public void setJob(String job) {
 		this.job = job;
 	}
+	
 	public String getSkill() {
 		return skill;
 	}

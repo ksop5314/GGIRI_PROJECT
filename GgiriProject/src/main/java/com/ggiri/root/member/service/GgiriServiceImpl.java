@@ -1,5 +1,7 @@
 package com.ggiri.root.member.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +53,13 @@ public class GgiriServiceImpl implements GgiriService{
 	public void boardAllList(Model model) {
 		model.addAttribute("boardList", gmm.boardAllList());
 	}
-
+	
+	@Override
+	public List<GgiriMemberDTO> selectJob(String job) {
+		List<GgiriMemberDTO> list = gmm.selectJob(job);
+		return list;
+	}
+	
 
 	@Override
 	public void Info(String userid, Model model) {
@@ -65,6 +73,8 @@ public class GgiriServiceImpl implements GgiriService{
 	public int joinPhone(String userTel) {
 		return gmm.joinPhone(userTel);
 	}
+	
+	
 	
 	@Override
 	public GgiriMemberDTO findEmail(String email) {
