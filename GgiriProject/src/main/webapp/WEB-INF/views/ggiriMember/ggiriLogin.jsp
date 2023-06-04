@@ -85,6 +85,7 @@
 	cursor: pointer;
 	margin-top: 20px;
 }
+
 </style>
 <script src = "https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type='text/javascript'>
