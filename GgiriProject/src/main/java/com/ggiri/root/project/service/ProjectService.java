@@ -1,8 +1,7 @@
 
 package com.ggiri.root.project.service;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 import org.springframework.ui.Model;
 
@@ -20,4 +19,13 @@ public interface ProjectService {
 	
 	public void delete(int projectNum);
 	
+	public List<ProjectDTO> search(String keyword, String condition);
+    
+    public int getProjectCountBySearch(String keyword, String condition);
+    
+    public List<ProjectDTO> getProjectListBySearch(String keyword, String condition, int startRow, int endRow);
+    
+    public List<ProjectDTO> getProjectList(int page, int perPage);
+
+    public int getProjectCount();
 }
