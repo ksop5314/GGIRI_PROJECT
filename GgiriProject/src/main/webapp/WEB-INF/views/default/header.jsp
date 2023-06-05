@@ -80,12 +80,14 @@ nav ul li a:hover {
 					<li> | </li>
 					<li><a href="/root/ggiriProject/projectList"> 프로젝트 보기 </a></li>
 					<li> | </li>
+					<li><a href="/root/ggiriComplete/completeList"> 진행한 프로젝트 </a></li>
+					<li> | </li>
 					<c:if test="${sessionConfigVO != null}">
 						<li><a>${sessionConfigVO.kakaoNickname}</a></li>
 						<li style="font-size: 10px;"><a>${sessionConfigVO.kakaoEmail}</a></li>
 						<li style="font-size: 12px;"><p><b>Kakao</b> 계정으로 접속중</p></li>
 						<li> | </li>
-						<li><a href="/root/ggiriMember/kakaoLogout">Logout</a></li>
+						<li><a href="/root/ggiriMember/kakaoLogout">LOGOUT</a></li>
 					</c:if>
 					<c:if test="${naverMember != null}">
 						<li><a>${naverMember.name}</a></li>
@@ -97,14 +99,13 @@ nav ul li a:hover {
 					<c:if test="${sessionConfigVO == null && loginUser == null && naverMember == null}">
 						<li><a href="/root/ggiriMember/ggiriLogin"> LOGIN </a></li>
 					</c:if>
-					<li><a href="/root/ggiriComplete/completeList"> 진행한 프로젝트 </a></li>
-					<li> | </li>
+					
 					<c:if test="${loginUser != null}">
 						<li>
 							<a href="/root/ggiriMember/ggiriLogout"> LOGOUT </a>
 
 						</li>
-					</c:if>				
+					</c:if>	
 				</ul>
 			</nav>
 		</div>

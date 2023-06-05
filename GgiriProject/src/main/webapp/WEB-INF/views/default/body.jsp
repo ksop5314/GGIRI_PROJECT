@@ -118,16 +118,23 @@ body{
    function chatActivate(){
       window.open("/root/ggiriChat/chatAct", "_blank", "width=500px, height=1500px");
    }
-
+	
+   function searchProject() {
+	    var keyword = document.getElementById("searchTxt").value;
+	    var url = "/root/ggiriProject/projectList.do?condition=titleContent&keyword=" + encodeURIComponent(keyword);
+	    window.location.href = url;
+	}
+   
 </script>
 </head>
 <body>
 	<div class="search-box">
-		<input type="text" name="s" id="search-txt" placeholder="어떤 프로젝트 찾으세요?" class="search-txt" >
-    	<a class="search-btn" href="#">
-			<i class="fas fa-search"></i>
-   		</a>
-    </div>
+    <input type="text" id="searchTxt" name="s" placeholder="어떤 프로젝트를 찾으세요?" class="search-txt" />
+	    <a class="search-btn" href="#" onclick="searchProject()">
+	        <i class="fas fa-search"></i>
+	    </a>
+	</div>
+
     <br><br>
     <div class="background">
 		<div class="back" style="text-align:center; padding-top:8rem; padding-bottom:2rem; font-family: 'IBM Plex Sans KR', sans-serif;">
@@ -143,7 +150,7 @@ body{
 				<button class="findmem" type="button" onclick="location href='#'">동료 찾기 >></button>			
 			</c:if>
 			<c:if test="${loginUser == null }">
-				<button class="signup" type="button" onclick="location.href='/root/ggiriMember/signup_free'">프리랜서 회원가입</button>
+			<button class="signup" type="button" onclick="location.href='/root/ggiriMember/signup_free'">프리랜서 회원가입</button>
 			</c:if>
 			<br><br>
 			<br><br>

@@ -15,17 +15,15 @@
 	}
 	
 	.findTitle {
-		margin-top: 100px;
 		text-align: left;
 	}
 	
 	.findarea {
-		border: 3px solid navy;
-		border-radius: 50px;
+  		border-radius: 40px 80px / 80px 40px;
 		width: 100%;
 		height: 300px;
 		margin-top: 30px;
-		background: navy;
+		background: #EBF7FF;
 	}
 	
 	input[type=text] {
@@ -35,28 +33,36 @@
 		height: 40px;
 		margin: 90px 0 80px 0;
 		font-size: 18px;
+		font-family: 'IBM Plex Sans KR', sans-serif;
 	}
 	
 	input[type=submit] {
-		border: 1px solid black;
-		border-radius: 10px;
-		width: 150px;
-		height: 60px;
-		font-size: 22px;
-		font-weight: bold;
-		background: orange;
+		background-color:#FFA07A;
+		color: black;
+	    border:none; 
+	    font-size: 20px;
+	    border-radius:15px; 
+	    min-height: 40px; 
+	    min-width: 150px;
+	   	font-family: 'IBM Plex Sans KR', sans-serif; 
+	   	cursor: pointer;
+	}
+	input[type=submit]:hover{
+		background-color: #FA8072;
+	transition: 0.5s;
 	}
 </style>
 </head>
 <body>
 	<c:import url="../default/header.jsp"/>
 	<div class="findIdPwdPage">
+	<br>
 		<div class="findTitle">
-			<h1> 아이디/비밀번호 찾기 </h1>
+			<h1 style="font-family: 'IBM Plex Sans KR', sans-serif"> 아이디/비밀번호 찾기 </h1>
 		</div>
 		<form action="${contextPath }/ggiriMember/findEmail" method="post">
 			<div class="findarea">
-				<label for="findEmail" style="font-size: 18px; font-weight: bold; color: orange;">이메일</label>&nbsp;
+				<label for="findEmail" style="font-size: 18px; font-weight: bold; color: orange; font-family: 'IBM Plex Sans KR', sans-serif;">이메일</label>&nbsp;
 				<input type="text" id="findEmail" name="findEmail"><br>
 				<input type="submit" value="확인">
 			</div>
