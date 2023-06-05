@@ -275,7 +275,7 @@ public class GgiriController implements GgiriMemberSession {
 	// 안태준 
 	@GetMapping("memberList")
 	public String AllList(Model model) {
-		gs.boardAllList(model);
+		gfs.boardAllList(model);
 		return "ggiriMember/memberList";
 	}
 	

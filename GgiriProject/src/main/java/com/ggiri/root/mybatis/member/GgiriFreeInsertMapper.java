@@ -16,4 +16,11 @@ public interface GgiriFreeInsertMapper {
 	
 	
 	public GgiriFreeInsertDTO getBoard(String userid);
+	
+	public List<GgiriMemberDTO> boardAllList();
+		
+		
+		
+		
+
 }

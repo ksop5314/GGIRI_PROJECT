@@ -17,4 +17,11 @@ public interface GgiriFreeInsertService {
 	public List<GgiriFreeInsertDTO> selectJob(String job);
 	
 	public void Info(String userid, Model model);
+	
+	public void boardAllList(Model model);
+		
+		
+		
+		
+		
 }

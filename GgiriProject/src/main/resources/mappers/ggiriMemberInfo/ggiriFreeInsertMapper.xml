@@ -32,6 +32,17 @@
     <select id="selectJob" resultMap="ggiri">
 		SELECT * FROM ggiriFree_insert WHERE job=#{job} ORDER BY insertdate DESC
 	</select>
+	
+	<!-- 안태준 -->
+	<select id="boardAllList" resultMap="ggiri">
+		SELECT * FROM ggiriFree_insert 
+	</select>
+	
+	
+	
+	
+	
+	<!-- 안태준 끝 -->
 </mapper>
 
 

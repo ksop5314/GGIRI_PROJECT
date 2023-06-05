@@ -45,7 +45,15 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 		List<GgiriFreeInsertDTO> list = gfm.selectJob(job);
 		return list;
 	}
-	
+	@Override
+	public void boardAllList(Model model) {
+		model.addAttribute("boardList", gfm.boardAllList());
+	}
+		
+		
+		
+
+		
 	
 	
 }

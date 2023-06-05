@@ -17,12 +17,5 @@ public interface GgiriMemberMapper {
 	public void kakaoinsert(GgiriMemberDTO kakaoInsert);
 	
 	
-	// 안태준
-	public List<GgiriMemberDTO> boardAllList();
 	
-	
-	
-	
-	// 안태준 끝
-
 }
