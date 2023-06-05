@@ -1,36 +1,26 @@
-
 package com.ggiri.root.project.dto;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-/*
-create table ggiriProject(
-projectNum NUMBER(10) PRIMARY KEY,
-title VARCHAR2(300),
-content VARCHAR2(3000),
-prodate DATE DEFAULT SYSDATE,
-proHit NUMBER(10) DEFAULT 0,
-id VARCHAR2(20) NOT NULL,
-CONSTRAINT fk_ggiri FOREIGN KEY(id) REFERENCES ggiriMember(id) ON DELETE CASCADE
-);
-*/
-
 public class ProjectDTO {
 
-	private int projectNum;
-	private String title;
-	private String content;
-	private String prodate;
-	private int proHit;
-	private String id;
+	private int projectNum; // 프로젝트 번호
+	private String title; // 제목
+	private String content; // 내용
+	private String prodate; // 등록일
+	private int proHit; // 조회수
+	private String id; // 작성자 아이디
+	
+	// 페이징 필드
+	private int pageNo; // 페이지 번호
+	private int pageSize; // 페이지 크기
 	
 	public ProjectDTO() {
 		super();
 	}
 
-	public ProjectDTO(int projectNum, String title, String content, String prodate, int proHit,
-			String id) {
+	public ProjectDTO(int projectNum, String title, String content, String prodate, int proHit, String id) {
 		super();
 		this.projectNum = projectNum;
 		this.title = title;
@@ -89,5 +79,20 @@ public class ProjectDTO {
 		this.id = id;
 	}
 	
+	// 페이징 필드 getter/setter
+	public int getPageNo() {
+		return pageNo;
+	}
 	
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
+	}
+	
+	public int getPageSize() {
+		return pageSize;
+	}
+	
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
 }

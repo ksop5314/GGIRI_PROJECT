@@ -7,7 +7,9 @@
 <meta charset="UTF-8">
 <title>projectList.jsp</title>
 <style type="text/css">
-table { border-collapse: collapse; }
+table {
+	border-collapse: collapse; 
+}
 .wrap{
 	width: 1000px;
 	margin: auto;
@@ -115,6 +117,7 @@ a{
 	<div class="wrap board_table">
 	<h1>프로젝트 보기</h1>
 	<br>
+	<br>
 		<table border="1">
 			<tr style="text-align: center">
 				<th style="display: none"  width="50px"> 번 호 </th>
@@ -138,6 +141,19 @@ a{
 				</tr>
 			</c:forEach>
 		</table>
+		<br>
+		
+		<form action="projectList.do" method="get"> <%-- <c:if test="${condition eq 'titlename' }">selected</c:if>	 --%>
+			<label for="condition">검색조건</label>
+			<select name="condition" id="condition">
+				<option value="titleContent" <c:if test="${condition eq 'titleContent' }">selected</c:if>>제목 + 본문</option>
+				<option value="title" <c:if test="${condition eq 'title' }">selected</c:if>>제목</option>
+				<option value="id" <c:if test="${condition eq 'id' }">selected</c:if>>작성자</option>
+			</select>
+			<input type="text" name="keyword" id="keyword"
+				placeholder="검색어" value="${keyword }"/>
+			<button type="submit">검색</button>
+			</form>
 	</div>
 	<c:import url="../default/footer.jsp"></c:import>
 </body>

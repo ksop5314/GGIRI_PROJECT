@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_CLIENT_ID&submodules=geocoder"></script> <!-- 네이버 지도 API 스크립트 -->
 <script type="text/javascript">
 function count_check(obj){
 	var chkBox = document.getElementsByName("skill");
@@ -160,31 +159,73 @@ table textarea{
 			<tr>
 				<th>근무 가능기간 : </th><td><input type="text" name="project_period" id="project_period" placeholder="200101" width="20" height="20"></td>
 			</tr>
-			<tr>
-			<tr>
-				<td><input type="submit" value="등록하기" ></td>
-			</tr>
+			
 			<tr>
 				<td> * 근무 가능한 역을 선택해주세요</td>
 			</tr>
 			<tr>
 			    <th>근무지 : </th>
-			    <td>
-			        <input type="text" name="place_of_work" id="place_of_work_1" placeholder="근무지" width="20" height="20">
-			       <!--  <input type="text" name="place_of_work" id="place_of_work_2" placeholder="근무지" width="20" height="20">
-			        <input type="text" name="place_of_work" id="place_of_work_3" placeholder="근무지" width="20" height="20"> -->
-			        <button onclick="searchSubway()">지하철역 검색</button>
-			        <div id="subwayResults"></div>
-			    </td>
 			</tr>
-			<!-- <tr>	
-				<th>근무지 : </th><td><input type="text" name="place_of_work" id="place_of_work_1" placeholder="근무지" width="20" height="20">
-									<input type="text" name="place_of_work" id="place_of_work_2" placeholder="근무지" width="20" height="20">
-									<input type="text" name="place_of_work" id="place_of_work_3" placeholder="근무지" width="20" height="20"></td>
-			</tr> -->
-			
+			<tr>
+				<td>주소</td>
+				<td><input type="text" id="address"></td>
+				<td><button type="button" id="searchBtn">검색</button></td>
+			</tr>
+			<tr>
+				<td>상세 주소</td>
+				<td><input type="text" name="detailAddress2"></td>
+				<td></td>
+			</tr> 
+			   
 		</table>
 		
+		<div id="map" style="width:100%;height:350px;"></div>
+   
+		<!-- kakao API -->
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6eae4143fc932ba5e777b9fb5cd5fd48&libraries=services"></script>
+		<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+		        level: 3 // 지도의 확대 레벨
+		    };  
+		
+		
+		$('#searchBtn').click(function(){
+			// 버튼을 click했을때
+			
+			// 지도를 생성합니다    
+			var map = new kakao.maps.Map(mapContainer, mapOption); 
+			
+			// 주소-좌표 변환 객체를 생성합니다
+			var geocoder = new kakao.maps.services.Geocoder();
+			
+			// 주소로 좌표를 검색합니다
+			geocoder.addressSearch($('#address').val(), function(result, status) {
+		
+			    // 정상적으로 검색이 완료됐으면 
+			     if (status === kakao.maps.services.Status.OK) {
+			        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+			        
+			        // 결과값으로 받은 위치를 마커로 표시합니다
+			        var marker = new kakao.maps.Marker({
+			            map: map,
+			            position: coords
+			        });
+		
+			        // 인포윈도우로 장소에 대한 설명을 표시합니다
+			        var infowindow = new kakao.maps.InfoWindow({
+			            content: '<div style="width:150px;text-align:center;padding:6px 0;">장소</div>'
+			        });
+			        infowindow.open(map, marker);
+		
+			        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+			        map.setCenter(coords);
+			    } 
+			});  
+		});
+		  
+		</script>
 	</form>
 	<c:import url="../default/footer.jsp"/>
 </body>

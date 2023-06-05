@@ -37,4 +37,88 @@
 		DELETE FROM ggiriProject WHERE projectNum=#{projectNum}
 	</delete>
 	
+	<!-- 전체 프로젝트 개수 조회 -->
+	<select id="getProjectCount" resultType="int">
+	    SELECT COUNT(*) FROM ggiriProject
+	</select>
+	
+	<!-- 페이지 단위로 프로젝트 목록 조회 -->
+	<select id="getProjectList" parameterType="map" resultMap="project">
+	    SELECT *
+	    FROM (
+	        SELECT ROWNUM AS rnum, p.*
+	        FROM (
+	            SELECT *
+	            FROM ggiriProject
+	            ORDER BY projectNum DESC
+	        ) p
+	        WHERE ROWNUM &lt;= #{endRow}
+	    )
+	    WHERE rnum &gt;= #{startRow}
+	</select>
+	
+	<!-- 검색 조건에 따른 프로젝트 개수 조회 -->
+	<select id="getProjectCountBySearch" resultType="int">
+	    SELECT COUNT(*) FROM ggiriProject
+	    WHERE
+	    <choose>
+	        <when test="condition == 'titleContent'">
+	            (title LIKE '%' || #{keyword} || '%' OR content LIKE '%' || #{keyword} || '%')
+	        </when>
+	        <when test="condition == 'title'">
+	            title LIKE '%' || #{keyword} || '%'
+	        </when>
+	        <when test="condition == 'id'">
+	            id LIKE '%' || #{keyword} || '%'
+	        </when>
+	    </choose>
+	</select>
+	
+	<!-- 검색 조건에 따른 프로젝트 목록 조회 -->
+	<select id="getProjectListBySearch" parameterType="map" resultMap="project">
+	    SELECT *
+	    FROM (
+	        SELECT ROWNUM AS rnum, p.*
+	        FROM (
+	            SELECT *
+	            FROM ggiriProject
+	            WHERE
+	            <choose>
+	                <when test="condition == 'titleContent'">
+	                    (title LIKE '%' || #{keyword} || '%' OR content LIKE '%' || #{keyword} || '%')
+	                </when>
+	                <when test="condition == 'title'">
+	                    title LIKE '%' || #{keyword} || '%'
+	                </when>
+	                <when test="condition == 'id'">
+	                    id LIKE '%' || #{keyword} || '%'
+	                </when>
+	            </choose>
+	            ORDER BY projectNum DESC
+	        ) p
+	        WHERE ROWNUM &lt;= #{endRow}
+	    )
+	    WHERE rnum &gt;= #{startRow}
+	</select>
+
+	<!-- <select id="searchByTitleAndContent" resultType="ProjectDTO">
+	    SELECT *
+	    FROM project
+	    WHERE title LIKE CONCAT('%', #{keyword}, '%')
+	        OR content LIKE CONCAT('%', #{keyword}, '%')
+	</select>
+	
+	<select id="searchByTitle" resultType="ProjectDTO">
+	    SELECT *
+	    FROM project
+	    WHERE title LIKE CONCAT('%', #{keyword}, '%')
+	</select>
+
+	
+	<select id="searchByAuthor" resultType="ProjectDTO">
+	    SELECT *
+	    FROM project
+	    WHERE id LIKE CONCAT('%', #{keyword}, '%')
+	</select> -->
+	
 </mapper>
