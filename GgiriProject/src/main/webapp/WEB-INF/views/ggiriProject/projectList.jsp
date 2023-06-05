@@ -143,7 +143,7 @@ a{
 		<br>
 		
 		<form action="projectList.do" method="get"> <%-- <c:if test="${condition eq 'titlename' }">selected</c:if>	 --%>
-			<label for="condition">검색조건</label>
+			<label for="condition">검색조건</label><br>
 			<select name="condition" id="condition">
 				<option value="titleContent" <c:if test="${condition eq 'titleContent' }">selected</c:if>>제목 + 본문</option>
 				<option value="title" <c:if test="${condition eq 'title' }">selected</c:if>>제목</option>

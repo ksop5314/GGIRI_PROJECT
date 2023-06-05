@@ -11,6 +11,7 @@ public class ProjectDTO {
 	private String prodate; // 등록일
 	private int proHit; // 조회수
 	private String id; // 작성자 아이디
+	private String skill;
 	
 	// 페이징 필드
 	private int pageNo; // 페이지 번호
@@ -79,6 +80,14 @@ public class ProjectDTO {
 		this.id = id;
 	}
 	
+	public String getSkill() {
+		return skill;
+	}
+
+	public void setSkill(String skill) {
+		this.skill = skill;
+	}
+
 	// 페이징 필드 getter/setter
 	public int getPageNo() {
 		return pageNo;
