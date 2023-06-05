@@ -248,6 +248,9 @@ public class GgiriController implements GgiriMemberSession {
 		return "ggiriMember/naverLogout";
 	}
 	
+	//@RequestMapping("google_callback")
+	
+	
 	
 	@PostMapping("IdCheck")
 	@ResponseBody
