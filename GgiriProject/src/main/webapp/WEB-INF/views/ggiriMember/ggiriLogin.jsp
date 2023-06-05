@@ -140,6 +140,10 @@ $(function(){
 		<a href="https://kauth.kakao.com/oauth/authorize?client_id=0bc794d215c15ba457b2eb709fecd070&redirect_uri=http://localhost:8080/root/ggiriMember/kakao_callback&response_type=code">
     		<img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" class="button-login" width="20%" height ="60px" />
     	</a>
+    	<br>
+    	<a href="${contextPath }/ggiriMember/naver_login">
+    		<img src="http://static.nid.naver.com/oauth/small_g_in.PNG" class="button-login" width="20%" height ="60px" />
+    	</a>
     </div>
 	<c:import url="../default/footer.jsp"/>
 </body>

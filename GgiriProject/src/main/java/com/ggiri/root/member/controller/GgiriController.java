@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,17 +29,31 @@ import com.ggiri.root.member.service.GgiriFreeInsertService;
 import com.ggiri.root.member.service.GgiriService;
 import com.ggiri.root.member.service.MailSendService;
 import com.ggiri.root.mybatis.member.GgiriFreeInsertMapper;
+import com.ggiri.root.naver.service.NaverServiceImpl;
 import com.ggiri.root.session.login.GgiriMemberSession;
+import com.github.scribejava.core.model.OAuth2AccessToken;
+
 
 @Controller
 @RequestMapping("ggiriMember")
 public class GgiriController implements GgiriMemberSession {
 	
+	//준호
+	private NaverServiceImpl naverLogin;
+	private String naverApiResult = null;
 	@Autowired
-	private GgiriService gs;
+	private void setNaverLogin(NaverServiceImpl naverLogin) {
+		this.naverLogin = naverLogin;
+	}
 	
 	@Autowired
+	private GgiriService gs;
+	@Autowired
 	private KakaoService kakaoService;
+	@Autowired
+	private MailSendService mss;
+	
+	
 	
 	// 안태준
 	@Autowired
@@ -45,8 +61,6 @@ public class GgiriController implements GgiriMemberSession {
 	@Autowired
 	private GgiriFreeInsertMapper gfi;
 	
-	@Autowired
-	private MailSendService mss;
 	
 	@GetMapping("ggiriLogin")
 	public String login() {
@@ -154,6 +168,59 @@ public class GgiriController implements GgiriMemberSession {
 			return "redirect:ggiriLogin";
 		return "redirect:signup_free";
 	}
+	
+	@RequestMapping("naver_login")
+	public String naverLogin(Model model, HttpSession session) {
+		String naverAuthUrl = naverLogin.getAuthorizationUrl(session);
+		System.out.println("네이버 : " + naverAuthUrl);
+		model.addAttribute("urlNaver", naverAuthUrl);
+		return "redirect:" + naverAuthUrl.toString();
+		
+	}
+	
+	@RequestMapping("naver_callback")
+	public String naverCallback(@RequestParam String code, @RequestParam String state, HttpSession session) throws Exception{
+		
+		System.out.println("네이버 로그인 성공 callback");
+		OAuth2AccessToken oauthToken;
+		oauthToken = naverLogin.getAccessToken(session, code, state);
+		naverApiResult = naverLogin.getUserProfile(oauthToken);
+		
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jsonObject;
+		
+		jsonObject = (JSONObject)jsonParser.parse(naverApiResult);
+		JSONObject responseObj = (JSONObject)jsonObject.get("response");
+		
+		String email = (String) responseObj.get("email");
+		String name = (String) responseObj.get("name");
+		
+		GgiriMemberDTO naverMember = new GgiriMemberDTO();
+		naverMember.setName(name);
+		naverMember.setId(email);
+		
+		System.out.println("email : " + email);
+		System.out.println("name : " + name);
+		System.out.println("naverApiResult : " + (String)naverApiResult);
+		
+		session.setAttribute("signIn", naverApiResult);
+		session.setAttribute("naverMember", naverMember);
+		
+		return "redirect:/index";
+	}
+	
+	@RequestMapping("naverLogout")
+	public String naverLogout(HttpSession session) throws Exception {
+		if(SystemUtil.EmptyCheck((String)session.getAttribute("signIn"))) {
+		} else {
+			session.setAttribute("signIn", null);
+		}
+		
+		session.setAttribute("naverMember", null);
+		
+		return "ggiriMember/naverLogout";
+	}
+	
 	
 	@PostMapping("IdCheck")
 	@ResponseBody

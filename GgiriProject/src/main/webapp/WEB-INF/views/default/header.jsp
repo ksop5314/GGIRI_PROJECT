@@ -87,7 +87,14 @@ nav ul li a:hover {
 						<li> | </li>
 						<li><a href="/root/ggiriMember/kakaoLogout">Logout</a></li>
 					</c:if>
-					<c:if test="${sessionConfigVO == null && loginUser == null}">
+					<c:if test="${naverMember != null}">
+						<li><a>${naverMember.name}</a></li>
+						<li style="font-size: 10px;"><a>${naverMember.id}</a></li>
+						<li style="font-size: 12px;"><p><b>Naver</b> 계정으로 접속중</p></li>
+						<li> | </li>
+						<li><a href="/root/ggiriMember/naverLogout">Logout</a></li>
+					</c:if>
+					<c:if test="${sessionConfigVO == null && loginUser == null && naverMember == null}">
 						<li><a href="/root/ggiriMember/ggiriLogin"> LOGIN </a></li>
 					</c:if>
 					<li><a href="/root/ggiriComplete/completeList"> 진행한 프로젝트 </a></li>

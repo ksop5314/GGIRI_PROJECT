@@ -9,9 +9,9 @@
 </head>
 <body>
 	<c:import url="default/header.jsp"/>
-	<div class="wrap">
-		<c:import url="default/body.jsp"/>
-	</div>
+		<div class="wrap">
+			<c:import url="default/body.jsp"/>
+		</div>
 	<c:import url="default/footer.jsp"/>
 </body>
 </html>

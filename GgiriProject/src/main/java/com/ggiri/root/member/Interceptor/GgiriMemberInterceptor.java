@@ -17,7 +17,7 @@ public class GgiriMemberInterceptor extends HandlerInterceptorAdapter implements
 			throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		if(session.getAttribute(LOGIN)==null && session.getAttribute("sessionConfigVO")==null) {
+		if(session.getAttribute(LOGIN)==null && session.getAttribute("sessionConfigVO")==null && session.getAttribute("naverMember")==null) {
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
 			out.print("<script>alert('로그인 하세요!');"

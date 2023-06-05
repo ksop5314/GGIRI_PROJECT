@@ -47,6 +47,8 @@
 	
 	<context:component-scan base-package="com.ggiri.root" />
 	
+	<beans:bean id="naverLogin" class="com.ggiri.root.naver.service.NaverServiceImpl"></beans:bean>
+	
 	<!-- 프리랜서 등록 로그인 check -->
 	<!-- member 회원정보 확인시  -->
 	<beans:bean id="GgiriMemberInterceptor" class="com.ggiri.root.member.Interceptor.GgiriMemberInterceptor"/>
