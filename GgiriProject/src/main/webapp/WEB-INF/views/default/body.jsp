@@ -154,7 +154,7 @@ body{
 			</c:if>
 			<img src="/root/resources/image/GgiriHelp.webp" id="chat" onclick="chatActivate()">		
 			<br><br><br><br><br>
-			
+			<a href="${path}/board/best_list.do">베스트 게시물 게시판</a>
 			<!-- 
 			<div class="eblock-project">
 			<a href="/root/ggiriProject/projectList.do?condition=titleContent&keyword=JAVA">
