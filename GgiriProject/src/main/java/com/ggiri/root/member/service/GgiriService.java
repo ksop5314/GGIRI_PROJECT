@@ -15,6 +15,10 @@ public interface GgiriService {
 	public int loginCheck(HttpServletRequest request);
 	public int joinPhone(String userTel);
 	public GgiriMemberDTO findEmail(String email);
+	public int findNaver(String naverMember);
+	public void naverInsert(GgiriMemberDTO naverInsert);
+	public int findKakao(String kakaoMember);
+	public void kakaoinsert(GgiriMemberDTO kakaoInsert);
 	
 	// 안태준
 	public void boardAllList(Model model);

@@ -10,6 +10,10 @@ public interface GgiriMemberMapper {
 	public GgiriMemberDTO loginCheck(String id);
 	public int joinPhone(String userTel);
 	public GgiriMemberDTO findEmail(String email);
+	public int findNaver(String naverMember);
+	public void naverInsert(GgiriMemberDTO naverInsert);
+	public int findKakao(String kakaoMember);
+	public void kakaoinsert(GgiriMemberDTO kakaoInsert);
 	
 	
 	// 안태준
