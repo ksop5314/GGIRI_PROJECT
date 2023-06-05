@@ -12,7 +12,7 @@ import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
 public interface GgiriFreeInsertService {
 	
 	// 프리랜서 등록하기
-	public String writeSave(HttpServletRequest request);
+	public int writeSave(GgiriFreeInsertDTO dto);
 	
 	public List<GgiriFreeInsertDTO> selectJob(String job);
 	

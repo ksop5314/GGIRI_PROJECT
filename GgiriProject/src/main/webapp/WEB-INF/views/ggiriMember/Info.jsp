@@ -62,7 +62,7 @@ table {
 				</tr>
 			</table>
 			<br>
-			<strong>kakao 지도 시작하기</strong>
+			<!-- <strong>kakao 지도 시작하기</strong>
 			<div id="map" style="width:500px;height:400px;"></div>
 			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6eae4143fc932ba5e777b9fb5cd5fd48&libraries=services"></script>
 			<script>
@@ -124,7 +124,7 @@ table {
 				        infowindow.close();
 				    };
 				}
-			</script>
+			</script> -->
 	
 	<c:import url="../default/footer.jsp"/>
 </body>

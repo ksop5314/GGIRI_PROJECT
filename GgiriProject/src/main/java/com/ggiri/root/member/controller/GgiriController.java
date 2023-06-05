@@ -20,15 +20,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.ggiri.root.kakao.service.KakaoService;
-import com.ggiri.root.kakao.service.SystemUtil;
-import com.ggiri.root.kakao.vo.SessionConfigVO;
 import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
+
+
 import com.ggiri.root.member.dto.GgiriMemberDTO;
 import com.ggiri.root.member.service.GgiriFreeInsertService;
 import com.ggiri.root.member.service.GgiriService;
 import com.ggiri.root.member.service.MailSendService;
+import com.ggiri.root.member.service.SystemUtil;
 import com.ggiri.root.mybatis.member.GgiriFreeInsertMapper;
 import com.ggiri.root.naver.service.NaverServiceImpl;
 import com.ggiri.root.session.login.GgiriMemberSession;
@@ -134,17 +134,26 @@ public class GgiriController implements GgiriMemberSession {
 //		System.out.println("컨트롤러 출력 : " + result.getKakaoNickname());
 //		SessionConfigVO configVO = new SessionConfigVO();
 		
-		SessionConfigVO configVO = new SessionConfigVO();
+		GgiriMemberDTO ggiriMember = new GgiriMemberDTO();
 		
-		configVO.setKakaoEmail((String)result.get("email"));
-		configVO.setKakaoNickname((String)result.get("nickname"));
+		String email = (String)result.get("email");
+		String name = (String)result.get("nickname");
 		
-		int findKakao = kakaoService.findKakao(configVO);
+		int index = email.indexOf("@");
+		String id = email.substring(0, index);
+		
+		
+		ggiriMember.setName(name);
+		ggiriMember.setId(id);
+		ggiriMember.setEmail(email);
+		
+		
+		int findKakao = gs.findKakao(id);
 		if(findKakao == 0) {
-			kakaoService.kakaoinsert(configVO);
+			gs.kakaoinsert(ggiriMember);
 		}
 		
-		session.setAttribute("sessionConfigVO", configVO);
+		session.setAttribute("kakaoMember", ggiriMember);
 		session.setAttribute("kakaoToken", kakaoToken);
 		
 		return "redirect:/index";
@@ -157,7 +166,7 @@ public class GgiriController implements GgiriMemberSession {
 			kakaoService.getLogout((String)session.getAttribute("kakaoToken"));
 		}
 		
-		session.setAttribute("sessionConfigVO", null);
+		session.setAttribute("kakaoMember", null);
 		
 		return "ggiriMember/kakaoLogout";
 	}
@@ -195,13 +204,32 @@ public class GgiriController implements GgiriMemberSession {
 		
 		String email = (String) responseObj.get("email");
 		String name = (String) responseObj.get("name");
+		String gender = (String) responseObj.get("gender");
+		String mobile = (String) responseObj.get("mobile");
+		String birthday = (String) responseObj.get("birthday");
+		
+		int index = email.indexOf("@");
+		String id = email.substring(0, index);
 		
 		GgiriMemberDTO naverMember = new GgiriMemberDTO();
 		naverMember.setName(name);
-		naverMember.setId(email);
+		naverMember.setId(id);
+		naverMember.setEmail(email);
+		naverMember.setGender(gender);
+		naverMember.setTel(mobile);
+		naverMember.setBirth(birthday);
 		
+		int findKakao = gs.findNaver(id);
+		if(findKakao == 0) {
+			gs.naverInsert(naverMember);
+		}
+		
+		System.out.println("id : " + id);
 		System.out.println("email : " + email);
 		System.out.println("name : " + name);
+		System.out.println("gender : " + gender);
+		System.out.println("mobile : " + mobile);
+		System.out.println("birthday : " + birthday);
 		System.out.println("naverApiResult : " + (String)naverApiResult);
 		
 		session.setAttribute("signIn", naverApiResult);
@@ -269,13 +297,20 @@ public class GgiriController implements GgiriMemberSession {
 	public String writeFree() {
 		return "ggiriMember/writeFree";
 	}
+	
+	@GetMapping("writeFreeFail")
+	public String writeFail() {
+		return "ggiriMember/writeFreeFail";
+	}
+	
+	
+	
 	@PostMapping("writeSave")
-	public void writeSave(HttpServletResponse response,
-							HttpServletRequest request) throws IOException{
-		String message = gfs.writeSave(request);
-		response.setContentType("text/html; charset=utf-8");
-		PrintWriter out = response.getWriter();
-		out.println(message);
+	public String writeSave(GgiriFreeInsertDTO dto){
+		int result = gfs.writeSave(dto);
+		if(result == 1)
+			return "redirect:memberList";
+		return "redirect:writeFreeFail";
 	}
 	// 안태준 끝
 

@@ -29,7 +29,8 @@ function developer(){
 		success : function(list){
 			let html = ""
 			$(list).each(function(index, item){
-				$("#devList").append("<a href='Info?id=" + item.id + "'><div id='id'>" + item.id + "</div></a>" + "<div>" + item.job + "</div>");
+				$("#devList").append("<a href='Info?id=" + item.id + "'><div id='id'>" + item.id + "</div></a>"+"<div>"+ item.introduce+"</div>" + "<div>" + item.job + "</div>"
+									+"<div>"+ item.skill + "<div>");
 			});
 		},
 		error : function(xhr, status, errorThrown){
@@ -105,7 +106,7 @@ function planner(){
 		success : function(list){
 			let html = ""
 			$(list).each(function(){
-				html += "<a href='Info?id="+ this.id +"'><div id='id'>" + this.id + "</div></a>" + "<div>" + this.job + "</div>";
+				html += "<table><a href='Info?id="+ this.id +"'><div id='id'>" + this.id + "</div></a>" + "<div>" + this.job + "</div></table>";
 			});
 			$("#devList").html(html);
 		},
@@ -128,6 +129,10 @@ function planner(){
 .skill{
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	display: inline-block;
+}
+div{
+	margin-right: auto;
+	margin-left: auto;
 }
 form{
 	float:left; 

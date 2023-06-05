@@ -2,6 +2,7 @@ package com.ggiri.root.member.dto;
 
 public class GgiriFreeInsertDTO {
 	
+	private String name;
 	private String id; // GgiriMember (Primary key) id
 	private String introduce; // 자기소개
 	private String job; // 직업 
@@ -11,6 +12,14 @@ public class GgiriFreeInsertDTO {
 	private String insertdate; // 작성일자
 	
 	
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getId() {
 		return id;
 	}

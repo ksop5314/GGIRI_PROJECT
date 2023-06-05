@@ -21,35 +21,15 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 	private GgiriMessageService gm;
 
 	@Override
-	public String writeSave(HttpServletRequest request) {
+	public int writeSave(GgiriFreeInsertDTO dto) {
 		
-		GgiriFreeInsertDTO dto = new GgiriFreeInsertDTO();
-		
-		dto.setId(request.getParameter("id"));
-		dto.setIntroduce(request.getParameter("introduce"));
-		dto.setJob(request.getParameter("job"));
-		dto.setSkill(request.getParameter("skill"));
-		dto.setProject_period(Integer.parseInt(request.getParameter("project_period")));
-		dto.setPlace_of_work(request.getParameter("place_of_work"));
-		dto.setInsertdate(request.getParameter("insertdate"));
-		
-		int result = 0;
 		try {
-			result = gfm.writeSave(dto);
+			return gfm.writeSave(dto);
 		}catch (Exception e) {
 			e.printStackTrace();
+			return 0;
 		}
 		
-		String msg, url;
-		if(result == 1) {
-			msg = "글이 등록 되었습니다";
-			url = "/ggiriMember/writeFree";
-		}else {
-			msg = "글등록 실패";
-			url = "/ggiriMember/writeFree";
-		}
-		
-		return gm.getMessage(request, msg, url);
 
 	}
 	

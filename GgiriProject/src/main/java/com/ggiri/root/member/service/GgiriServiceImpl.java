@@ -21,6 +21,7 @@ public class GgiriServiceImpl implements GgiriService{
 	@Autowired
 	private GgiriFreeInsertService gfi;
 	
+	// 강준호
 	@Override
 	public int register(GgiriMemberDTO member) {
 		try {
@@ -48,6 +49,45 @@ public class GgiriServiceImpl implements GgiriService{
 		}
 		return 1;
 	}
+	
+	@Override
+	public GgiriMemberDTO findEmail(String email) {
+		return gmm.findEmail(email);
+	}
+	
+	@Override
+	public int findNaver(String naverMember) {
+		int findNaver = gmm.findNaver(naverMember);
+		if(findNaver == 0) {
+			return 0;
+		}
+		return 1;
+	}
+	
+	@Override
+	public void naverInsert(GgiriMemberDTO naverInsert) {
+		gmm.naverInsert(naverInsert);
+	}
+	
+	@Override
+	public int findKakao(String kakaoMember) {
+		int findKakao = gmm.findKakao(kakaoMember);
+		if(findKakao == 0) {
+			return 0;
+		}
+		return 1;
+	}
+	
+	
+	@Override
+	public void kakaoinsert(GgiriMemberDTO kakaoInsert) {
+		gmm.kakaoinsert(kakaoInsert);
+		
+	}
+	
+	// 강준호 끝
+	
+	
 	// 안테준
 	@Override
 	public void boardAllList(Model model) {
@@ -65,13 +105,6 @@ public class GgiriServiceImpl implements GgiriService{
 	@Override
 	public int joinPhone(String userTel) {
 		return gmm.joinPhone(userTel);
-	}
-	
-	
-	
-	@Override
-	public GgiriMemberDTO findEmail(String email) {
-		return gmm.findEmail(email);
 	}
 	
 }

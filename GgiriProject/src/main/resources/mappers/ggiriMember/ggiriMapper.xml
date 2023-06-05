@@ -16,6 +16,7 @@
 		<result property="logdate" column="logdate"/>
 	</resultMap>
 	
+	<!-- 강준호 -->
 	<insert id="register">
 		INSERT INTO ggirimember(id, name, pwd, birth, gender, email, tel, addr) VALUES(#{id}, #{name}, #{pwd}, #{birth}, #{gender}, #{email}, #{tel}, #{addr})
 	</insert>
@@ -28,6 +29,35 @@
 		SELECT * FROM ggirimember WHERE id=#{id}
 	</select>
 	
+	<select id="joinPhone" resultType="integer">
+		SELECT COUNT(tel) FROM ggirimember WHERE tel=#{userTel}
+	</select>
+	
+	<select id="findEmail" resultMap="ggiri">
+		SELECT * FROM ggirimember WHERE email=#{email}	
+	</select>
+	
+	<!-- Kakao -->
+	
+	<select id="findKakao" resultType="integer">
+		select count(id) from ggirimember where id=#{kakaoMember}
+	</select>
+	
+	<insert id="kakaoinsert">
+		insert into ggirimember(name, id, email) values(#{name}, #{id}, #{email})
+	</insert>
+	
+	
+	<!-- Naver -->
+	<select id="findNaver" resultType="integer">
+		SELECT COUNT(id) FROM ggirimember WHERE id=#{naverMember}
+	</select>
+	
+	<insert id="naverInsert">
+		INSERT INTO ggirimember(id, name, birth, gender, email, tel) VALUES(#{id}, #{name}, #{birth}, #{gender}, #{email}, #{tel})
+	</insert>
+	<!-- 강준호 끝 -->
+	
 	<!-- 안태준 -->
 	<select id="boardAllList" resultMap="ggiri">
 		SELECT * FROM ggirimember
@@ -38,12 +68,5 @@
 	
 	
 	<!-- 안태준 끝 -->
-	<select id="joinPhone" resultType="integer">
-		SELECT COUNT(tel) FROM ggirimember WHERE tel=#{userTel}
-	</select>
-	
-	<select id="findEmail" resultMap="ggiri">
-		SELECT * FROM ggirimember WHERE email=#{email}	
-	</select>
 	
 </mapper>

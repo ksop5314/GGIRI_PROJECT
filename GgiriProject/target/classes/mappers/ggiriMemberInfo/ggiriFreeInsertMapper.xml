@@ -5,6 +5,7 @@
 <mapper namespace="com.ggiri.root.mybatis.member.GgiriFreeInsertMapper">
 	
 	<resultMap type="com.ggiri.root.member.dto.GgiriFreeInsertDTO" id="ggiri">
+		<id property="name" column="name"/>
 		<result property="id" column="id"/>
 		<result property="introduce" column="introduce"/>
 		<result property="job" column="job"/>
@@ -19,8 +20,8 @@
 	</select> -->
 	
 	<insert id="writeSave">
-		INSERT INTO ggiriFree_insert(id, introduce, job,  skill, project_period, place_of_work)
-		 VALUES(#{id}, #{introduce}, #{job}, #{skill}, #{project_period}, #{place_of_work})
+		INSERT INTO ggiriFree_insert(name,id, introduce, job,  skill, project_period, place_of_work)
+		 VALUES(#{name}, #{id}, #{introduce}, #{job}, #{skill}, #{project_period}, #{place_of_work})
     </insert>
     
     <select id="getBoard" resultMap="ggiri">
