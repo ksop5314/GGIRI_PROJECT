@@ -20,11 +20,11 @@ public interface ProjectMapper {
 	
 	public void delete(int projectNum);
 
-	public List<ProjectDTO> search(@Param("keyword") String keyword, @Param("searchType") String searchType);
+	public List<ProjectDTO> search(@Param("keyword") String keyword, @Param("condition") String condition);
 
-	public int getProjectCountBySearch(@Param("keyword") String keyword, @Param("searchType") String searchType);
+	public int getProjectCountBySearch(@Param("keyword") String keyword, @Param("condition") String condition);
 
-	public List<ProjectDTO> getProjectListBySearch(@Param("keyword") String keyword, @Param("searchType") String searchType,
+	public List<ProjectDTO> getProjectListBySearch(@Param("keyword") String keyword, @Param("condition") String condition,
 	                                               @Param("startRow") int startRow, @Param("endRow") int endRow);
 
 	public List<ProjectDTO> getProjectList(@Param("startRow") int startRow, @Param("endRow") int endRow);
@@ -36,4 +36,10 @@ public interface ProjectMapper {
     int getProjectCountBySearch(Map<String, Object> searchParams);
 
     List<ProjectDTO> getProjectListBySearch(Map<String, Object> searchParams);
+    
+    public List<ProjectDTO> searchByTitleAndContent(@Param("keyword") String keyword);
+
+    public List<ProjectDTO> searchByTitle(@Param("keyword") String keyword);
+
+    public List<ProjectDTO> searchByAuthor(@Param("keyword") String keyword);
 }

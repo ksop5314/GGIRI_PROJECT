@@ -11,8 +11,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ggiri.root.kakao.vo.SessionConfigVO;
+import com.ggiri.root.mybatis.member.GgiriKakaoMapper;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -20,6 +23,9 @@ import com.google.gson.JsonParser;
 
 @Service
 public class KakaoServiceImpl implements KakaoService{
+	
+	@Autowired
+	private GgiriKakaoMapper gkm;
 	
 	@Override
 	public String getReturnAccessToken(String code) {
@@ -39,7 +45,7 @@ public class KakaoServiceImpl implements KakaoService{
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
 			sb.append("&client_id=0bc794d215c15ba457b2eb709fecd070");
-			sb.append("&redirect_uri=http://192.168.219.100:8080/root/ggiriMember/kakao_callback");
+			sb.append("&redirect_uri=http://localhost:8080/root/ggiriMember/kakao_callback");
 			sb.append("&code=" + code);
 			bw.write(sb.toString());
 			bw.flush();
@@ -110,28 +116,55 @@ public class KakaoServiceImpl implements KakaoService{
 				result += br_line;
 			}
 			
+			System.out.println("response body : " + result);
+			System.out.println("result type : " + result.getClass().getName());
+			
+//			ObjectMapper objectMapper = new ObjectMapper();
+//			Map<String, Object> jsonMap = objectMapper.readValue(result, new TypeReference<Map<String, Object>>() {});
+//			Map<String, Object> properties = (Map<String, Object>) jsonMap.get("properties");
+//			Map<String, Object> kakao_account = (Map<String, Object>) jsonMap.get("kakao_account");
+//			String nickname = properties.get("nickname").toString();
+//			String email = properties.get("email").toString();
+			
 			JsonParser parser = new JsonParser();
 			JsonElement element = parser.parse(result);
-			
-			JsonObject kakaoid = element.getAsJsonObject().get("id").getAsJsonObject();
 			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 			
-			String id = kakaoid.getAsJsonObject().getAsString();
-			String email = properties.getAsJsonObject().get("email").getAsString();
+			String email = kakao_account.getAsJsonObject().get("email").getAsString();
 			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 			
-			resultMap.put("access_token", access_token);
-			resultMap.put("id", id);
 			resultMap.put("email", email);
 			resultMap.put("nickname", nickname);
-			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
+//		SessionConfigVO kakaoresult = gkm.findKakao(resultMap);
+//		
+//		if(kakaoresult == null) {
+//			gkm.kakaoinsert(resultMap);
+//			
+//			return gkm.findKakao(resultMap);
+//		} else {
+//			return kakaoresult;
+//		}
 		return resultMap;
+	}
+	
+	@Override
+	public int findKakao(SessionConfigVO vo) {
+		int findKakao = gkm.findKakao(vo);
+		if(findKakao == 0) {
+			return 0;
+		}
+		return 1;
+	}
+	
+	@Override
+	public void kakaoinsert(SessionConfigVO vo) {
+		gkm.kakaoinsert(vo);
 	}
 	
 	@Override

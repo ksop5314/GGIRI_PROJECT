@@ -21,7 +21,6 @@ public interface GgiriService {
 	
 	public List<GgiriMemberDTO> selectJob(String job);
 	
-	
 	public void Info(String userid, Model model);
 	// 안태준 끝
 }

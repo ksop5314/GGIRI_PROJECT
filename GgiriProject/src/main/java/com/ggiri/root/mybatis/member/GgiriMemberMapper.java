@@ -19,4 +19,5 @@ public interface GgiriMemberMapper {
 	
 	public GgiriMemberDTO getBoard(String userid);
 	// 안태준 끝
+
 }

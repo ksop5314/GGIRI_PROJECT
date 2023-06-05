@@ -19,11 +19,11 @@ public interface ProjectService {
 	
 	public void delete(int projectNum);
 	
-	public List<ProjectDTO> search(String keyword, String searchType);
+	public List<ProjectDTO> search(String keyword, String condition);
     
-    public int getProjectCountBySearch(String keyword, String searchType);
+    public int getProjectCountBySearch(String keyword, String condition);
     
-    public List<ProjectDTO> getProjectListBySearch(String keyword, String searchType, int startRow, int endRow);
+    public List<ProjectDTO> getProjectListBySearch(String keyword, String condition, int startRow, int endRow);
     
     public List<ProjectDTO> getProjectList(int page, int perPage);
 

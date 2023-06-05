@@ -61,21 +61,21 @@ public class ProjectController {
     public String projectList(
         @RequestParam(value = "page", defaultValue = "1") int page,
         @RequestParam(value = "keyword", required = false) String keyword,
-        @RequestParam(value = "searchType", defaultValue = "title") String searchType,
+        @RequestParam(value = "condition", defaultValue = "title") String condition,
         Model model
     ) {
         int perPage = 10; // 한 페이지에 보여줄 프로젝트 개수
         
         if (keyword != null && !keyword.isEmpty()) {
             // 검색어가 입력된 경우 검색 기능 적용
-            int totalCount = ps.getProjectCountBySearch(keyword, searchType);
+            int totalCount = ps.getProjectCountBySearch(keyword, condition);
             int totalPages = (int) Math.ceil((double) totalCount / perPage);
             int startRow = (page - 1) * perPage + 1;
             int endRow = startRow + perPage - 1;
-            List<ProjectDTO> projectList = ps.getProjectListBySearch(keyword, searchType, startRow, endRow);
+            List<ProjectDTO> projectList = ps.getProjectListBySearch(keyword, condition, startRow, endRow);
             
             model.addAttribute("keyword", keyword);
-            model.addAttribute("searchType", searchType);
+            model.addAttribute("condition", condition);
             model.addAttribute("projectList", projectList);
             model.addAttribute("currentPage", page);
             model.addAttribute("totalPages", totalPages);
