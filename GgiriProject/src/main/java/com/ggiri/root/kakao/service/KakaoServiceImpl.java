@@ -11,11 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ggiri.root.kakao.vo.SessionConfigVO;
-import com.ggiri.root.mybatis.member.GgiriKakaoMapper;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -23,9 +20,6 @@ import com.google.gson.JsonParser;
 
 @Service
 public class KakaoServiceImpl implements KakaoService{
-	
-	@Autowired
-	private GgiriKakaoMapper gkm;
 	
 	@Override
 	public String getReturnAccessToken(String code) {
@@ -151,20 +145,6 @@ public class KakaoServiceImpl implements KakaoService{
 //			return kakaoresult;
 //		}
 		return resultMap;
-	}
-	
-	@Override
-	public int findKakao(SessionConfigVO vo) {
-		int findKakao = gkm.findKakao(vo);
-		if(findKakao == 0) {
-			return 0;
-		}
-		return 1;
-	}
-	
-	@Override
-	public void kakaoinsert(SessionConfigVO vo) {
-		gkm.kakaoinsert(vo);
 	}
 	
 	@Override

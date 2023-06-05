@@ -1,4 +1,4 @@
-package com.ggiri.root.kakao.service;
+package com.ggiri.root.member.service;
 
 public class SystemUtil {
 	
