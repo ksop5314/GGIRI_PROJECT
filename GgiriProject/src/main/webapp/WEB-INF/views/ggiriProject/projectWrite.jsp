@@ -18,26 +18,47 @@ function count_check(obj){
 			chkCnt++;
 		}
 	}
-	if(chkCnt > 3){
-		alert("요구 스킬은 3개까지 선택할 수 있습니다.");
+	if(chkCnt > 5){
+		alert("요구 스킬은 5개까지 선택할 수 있습니다.");
 		obj.checked = false;
 		return false;
 	}
 }
 </script>
+<style type="text/css">
+
+
+</style>
 </head>
 <body>
 	<c:import url="../default/header.jsp"></c:import>
 	<div class="wrap write_form">
-	<h1>프로젝트 등록</h1>
+<!-- 	<h1>프로젝트 등록</h1> -->		
 		<div class="write_save">
-			<form action="../ggiriProject/projectSave" method="post">
-				<b> 작성자 </b><br>
-				<input type="text" name="id" value="${loginUser }"><br>
-				<b> 제 목 </b><br>
-				<input type="text" name="title" size="50"><br>
-				<b> 스 킬 </b>
+			<form action="../ggiriProject/projectSave" method="post"><br>
+				<h3> 작성자 </h3>
+				<input type="text" name="id" value="${loginUser }"><br><br>
+				<h3> 제 목 </h3>
+				<input type="text" name="title" size="50"><br><br>
+				<h3> 스 킬 </h3>
 					<ul>
+						<!-- <li>
+						<li class="inline-block" @click="">
+							<input name="available_0" type="checkbox" class="hidden" id=""available_0"" value="frontEnd" onclick="count_check(this)">
+							<label for="joinpath_0">"frontEnd"</label>
+						</li>
+						<li class="inline-block" @click="">
+							<input name="available_1" type="checkbox" class="hidden" id=""available_1"" value="backEnd" onclick="count_check(this)">
+							<label for="joinpath_1">backEnd</label>
+						</li>
+						<li class="inline-block" @click="">
+							<input name="available_2" type="checkbox" class="hidden" id=""available_2"" value="Java" onclick="count_check(this)">
+							<label for="joinpath_2">Java</label>
+						</li>
+						<li class="inline-block" @click="">
+							<input name="available_3" type="checkbox" class="hidden" id=""available_3"" value="Spring" onclick="count_check(this)">
+							<label for="joinpath_3">Spring</label>
+						</li> -->
 						<li>
 							<label for="available_0">Front-End</label>
 							<input type="checkbox" class="hidden" name="skill" id="available_0" value="frontEnd" onclick="count_check(this)">
@@ -107,7 +128,7 @@ function count_check(obj){
 							<input type="checkbox" class="hidden" name="skill" id="available_32" value="ios" onclick="count_check(this)">
 						</li>
 					</ul>
-				<b> 내 용 </b><br>
+				<h3> 내 용 </h3><br>
 				<textarea rows="20" cols="100" name="content"></textarea><br>
 				<br>
 				<input type="submit" value="등록"> &nbsp;

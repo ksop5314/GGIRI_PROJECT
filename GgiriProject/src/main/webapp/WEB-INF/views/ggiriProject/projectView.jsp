@@ -16,6 +16,7 @@ table { border-collapse: collapse; }
 <body>
 	<c:import url="../default/header.jsp"></c:import>
 	<div class="wrap projectView">
+	<br>
 	<h1> 프로젝트 내용 </h1>
 		<table border="1">
 			<tr>
@@ -31,7 +32,12 @@ table { border-collapse: collapse; }
 				<th> 작성일 </th><td>${data.prodate }</td>
 			</tr>
 			<tr>
-				<th> 스 킬 </th><td>${data.skill }</td>
+    			<th>스 킬</th>
+   				 <td>
+			        <c:forEach var="selectedSkill" items="${data.skill}">
+			            ${selectedSkill}<br>
+			        </c:forEach>
+   				 </td>
 			</tr>
 			<tr>
 				<th> 프로젝트 설명 </th><td><pre><c:out value="${data.content }"/></pre></td>

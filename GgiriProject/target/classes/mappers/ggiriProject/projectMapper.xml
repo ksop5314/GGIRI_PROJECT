@@ -22,7 +22,7 @@
 	</select>
 	
 	<insert id="insertPro">
-		INSERT INTO ggiriProject(projectNum, title, content, id) VALUES(ggiriProject_seq.nextval, #{title}, #{content}, #{id})
+		INSERT INTO ggiriProject(projectNum, title, skill, content, id) VALUES(ggiriProject_seq.nextval, #{title}, #{skill}, #{content}, #{id})
 	</insert>
 	
 	<update id="proHit">

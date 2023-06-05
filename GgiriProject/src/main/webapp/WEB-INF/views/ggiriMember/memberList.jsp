@@ -228,7 +228,6 @@ a{
 				<tr>
 					<td>
 						<div id="devList">
-							
 						</div>
 					</td>
 				</tr>

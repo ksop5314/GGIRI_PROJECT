@@ -8,7 +8,21 @@
 <title>projectList.jsp</title>
 <style type="text/css">
 table {
-	border-collapse: collapse; 
+	margin: 0 auto;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+table th {
+	text-align: center;
+}
+table th,td {
+	border-bottom: 2px solid gray;
+	padding: 20px 0 20px 0;
+}
+
+table td {
+	padding: 5px 0 7px 8px;
+	text-align: center;
+	width: 100px;
 }
 .wrap{
 	width: 1000px;
@@ -18,7 +32,6 @@ table {
 .skill{
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	display: inline-block;
-	
 }
 form{
 	float:left; 
@@ -30,7 +43,7 @@ form{
 	height: 200px;
 }
 
-#h3{
+.h3{
 	padding: 10px 15px;
 	font-size: 15px;
 	text-align: center;
@@ -38,7 +51,7 @@ form{
 	border-color: gray;
 	font-family: 'IBM Plex Sans KR', sans-serif;
 }
-#h3:hover{
+.h3:hover{
 	background-color: #EAEAEA;
 	border-color: black;
 	cursor: pointer;
@@ -64,7 +77,7 @@ div #h{
 }
 a{
 	text-decoration: none;
-	/* color: white; */
+	color: black;
 }
 #freeInput {
  	border-radius: 15px;
@@ -80,6 +93,20 @@ a{
 #freeInput:hover {
 	background-color: white;
 	transition: 0.5s;
+}
+#button1 {
+	width: 60px;
+	height: 28px;
+	border: none; 
+	border-radius: 9999px;
+	font-size: 14px;
+	background: #B2CCFF;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	cursor: pointer;
+}
+#button1:hover {
+	background-color:#EBF7FF;
+    transition: 0.5s;
 }
 </style>
 </head>
@@ -98,33 +125,26 @@ a{
 		</div>
 		<br><br><br><br><br><br><br>
 		<div class="skill">
-			<form method="get" action="main">
-				<button id="h3" type="submit" style=" border-radius: 30px;"> ⚙️  개발 </button>
-			</form>
-			<form action="#">
-				<button id="h3" type="submit" style=" border-radius: 30px;"> 🛠  퍼블리싱  </button> 
-			</form>
-			<form action="#">
-			 	<button id="h3" type="submit" style=" border-radius: 30px;"> 🎨  디자인 </button> 
-			</form>
-			<form action="#">
-				<button id="h3" type="submit" style=" border-radius: 30px;"> 📝  기획 </button> 
-			</form>
+			<input type="hidden" name="skill" id="jobDev" value="develop">
+			<input type="hidden" name="skill" id="jobPub" value="publish">
+			<input type="hidden" name="skill" id="jobDes" value="design">
+			<input type="hidden" name="skill" id="jobPla" value="plan">
+			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="develop()" id="dev"> ⚙️  개발 </button>
+			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="publish()" id="pub"> 🛠  퍼블리싱  </button> 
+		 	<button class="h3" type="submit" style=" border-radius: 30px;" onclick="design()" id="des"> 🎨  디자인 </button> 
+			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="plan()" id="pla"> 📝  기획 </button> 
 		</div>
-	</div>
-	<br>
-	<div class="wrap board_table">
-	<h1>프로젝트 보기</h1>
-	<br>
-	<br>
-		<table border="1">
-			<tr style="text-align: center">
-				<th style="display: none"  width="50px"> 번 호 </th>
-				<th style="display: none" width="100px"> ID </th>
-				<th width="700px"> 제 목 </th>
-				<th width="200px"> 날 짜 </th>
-				<th width="100px"> 조회수 </th>
-			</tr>
+			<br><br>
+			<hr>
+<!-- 	<h1>프로젝트 보기</h1> -->	
+			<table style="border:1px solid white;">
+				<tr>
+					<th style="display: none"  width="50px"> 번 호 </th>
+					<th style="display: none" width="100px"> ID </th>
+					<th width="700px"> 제 목 </th>
+					<th width="200px"> 날 짜 </th>
+					<th width="100px"> 조회수 </th>
+				</tr>
 			<c:if test="${projectList.size()==0 }">
 				<tr>
 					<th colspan="6"> 등록된 글이 없습니다 </th>
@@ -141,19 +161,19 @@ a{
 			</c:forEach>
 		</table>
 		<br>
-		
 		<form action="projectList.do" method="get"> <%-- <c:if test="${condition eq 'titlename' }">selected</c:if>	 --%>
-			<label for="condition">검색조건</label><br>
-			<select name="condition" id="condition">
+			<label for="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">검색조건</label><br>
+			<select name="condition" id="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">
 				<option value="titleContent" <c:if test="${condition eq 'titleContent' }">selected</c:if>>제목 + 본문</option>
 				<option value="title" <c:if test="${condition eq 'title' }">selected</c:if>>제목</option>
 				<option value="id" <c:if test="${condition eq 'id' }">selected</c:if>>작성자</option>
 			</select>
-			<input type="text" name="keyword" id="keyword"
+			<input type="text" name="keyword" id="keyword" style="font-family: 'IBM Plex Sans KR', sans-serif"
 				placeholder="검색어" value="${keyword }"/>
-			<button type="submit">검색</button>
+			<button id="button1" type="submit">검색</button>
 			</form>
-	</div>
+		</div>
+		<br>
 	<c:import url="../default/footer.jsp"></c:import>
 </body>
 </html>

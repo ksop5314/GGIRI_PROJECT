@@ -154,6 +154,8 @@ body{
 			</c:if>
 			<img src="/root/resources/image/GgiriHelp.webp" id="chat" onclick="chatActivate()">		
 			<br><br><br><br><br>
+			
+			<!-- 
 			<div class="eblock-project">
 			<a href="/root/ggiriProject/projectList.do?condition=titleContent&keyword=JAVA">
             <div class="emain-project bg-gradation-10">
@@ -216,7 +218,7 @@ body{
 			<button class="design" type="button" onclick="searchProject()">디자인</button>			
 			<button class="planning" type="button" onclick="searchProject()">기획</button>			
 			<button class="sundry" type="button" onclick="searchProject()">기타</button>			
-			
+			 -->
 		</div>
     </div>
 </body>
