@@ -114,11 +114,21 @@ public class GgiriController implements GgiriMemberSession {
 		System.out.println("controller access_token : " + kakaoToken);
 		
 		Map<String, Object> result = kakaoService.getUserInfo(kakaoToken);
-		System.out.println("컨트롤러 출력 : " + result.get("account_email"));
+		System.out.println("컨트롤러 출력 : " + result.get("email"));
+		System.out.println("컨트롤러 출력 : " + result.get("nickname"));
+//		System.out.println("컨트롤러 출력 : " + result.getKakaoEmail());
+//		System.out.println("컨트롤러 출력 : " + result.getKakaoNickname());
+//		SessionConfigVO configVO = new SessionConfigVO();
+		
 		SessionConfigVO configVO = new SessionConfigVO();
 		
 		configVO.setKakaoEmail((String)result.get("email"));
 		configVO.setKakaoNickname((String)result.get("nickname"));
+		
+		int findKakao = kakaoService.findKakao(configVO);
+		if(findKakao == 0) {
+			kakaoService.kakaoinsert(configVO);
+		}
 		
 		session.setAttribute("sessionConfigVO", configVO);
 		session.setAttribute("kakaoToken", kakaoToken);

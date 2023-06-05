@@ -159,7 +159,7 @@ form{
 	width: 300px; 
 	height: 300px;
 	text-align: center;
-	color: black;
+	color: white;
 	font-size: 30px;
 }
 .freeTxt {

@@ -164,7 +164,8 @@ table textarea{
 			<tr>
 				<td><input type="submit" value="등록하기" ></td>
 			</tr>
-			<td> * 근무 가능한 역을 선택해주세요</td>
+			<tr>
+				<td> * 근무 가능한 역을 선택해주세요</td>
 			</tr>
 			<tr>
 			    <th>근무지 : </th>

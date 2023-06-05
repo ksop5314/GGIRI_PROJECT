@@ -60,6 +60,8 @@ public class GgiriServiceImpl implements GgiriService{
 	
 	// 안태준 끝
 	
+	
+
 	@Override
 	public int joinPhone(String userTel) {
 		return gmm.joinPhone(userTel);

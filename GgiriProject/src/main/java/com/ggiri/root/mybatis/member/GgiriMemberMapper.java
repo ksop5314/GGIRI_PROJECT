@@ -20,4 +20,5 @@ public interface GgiriMemberMapper {
 	
 	
 	// 안태준 끝
+
 }
