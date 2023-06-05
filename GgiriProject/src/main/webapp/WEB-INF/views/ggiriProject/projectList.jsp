@@ -113,6 +113,7 @@ a{
 		</div>
 	</div>
 	<br>
+	<hr>
 	<div class="wrap board_table">
 	<h1>프로젝트 보기</h1>
 	<br>

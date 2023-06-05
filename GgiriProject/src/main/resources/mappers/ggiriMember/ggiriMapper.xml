@@ -63,13 +63,9 @@
 		SELECT * FROM ggirimember
 	</select>
 	
-	<select id="selectJob" resultMap="ggiri">
-		SELECT * FROM ggirimember WHERE job=#{job}
-	</select>
 	
-	<select id="getBoard" resultMap="ggiri">
-		SELECT * FROM ggirimember WHERE id=#{userid}
-	</select>
+	
+	
 	
 	<!-- 안태준 끝 -->
 	

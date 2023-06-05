@@ -12,4 +12,8 @@ public interface GgiriFreeInsertMapper {
 	// 프리랜서 등록하기 
 	public int writeSave(GgiriFreeInsertDTO dto);
 	
+	public List<GgiriFreeInsertDTO> selectJob(String job);
+	
+	
+	public GgiriFreeInsertDTO getBoard(String userid);
 }

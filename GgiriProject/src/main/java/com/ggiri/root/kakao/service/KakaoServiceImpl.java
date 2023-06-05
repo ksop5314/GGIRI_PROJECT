@@ -128,6 +128,9 @@ public class KakaoServiceImpl implements KakaoService{
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();
 			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 			
+			System.out.println("email : " + email);
+			System.out.println("nickname : " + nickname);
+			
 			resultMap.put("email", email);
 			resultMap.put("nickname", nickname);
 			

@@ -7,7 +7,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+function count_check(obj){
+	var chkBox = document.getElementsByName("skill");
+	var chkCnt = 0;
+	for(var i = 0; i < chkBox.length ; i++){
+		if(chkBox[i].checked){
+			chkCnt++;
+		}
+	}
+	if(chkCnt > 10){
+		alert("보유 기술은 10개까지 선택할 수 있습니다.");
+		obj.checked = false;
+		return false;
+	}
+}
+/* function clear(){
+		
+} */
+</script>
 <style type="text/css">
 *{
 	margin: 0;
@@ -27,6 +46,7 @@ table textarea{
 	height: 6.25em;
 	resize: none;
 }
+
 </style>
 </head>
 <body>
@@ -34,6 +54,9 @@ table textarea{
 	<h1>프리랜서 등록하기</h1>
 	<form action="${contextPath }/ggiriMember/writeSave" method="post">
 		<table >
+			<tr>
+				<td><input type="hidden" id="name" name="name" value="${loginUser }" readonly></td>
+			</tr>
 			<tr> 
 				<th>작성자 </th><td><input type="text" name="id" id="id" value="${loginUser }" readonly></td>
 			</tr>
@@ -137,23 +160,20 @@ table textarea{
 				</td>
 			</tr>
 			<tr>
-				<th>프로젝트명 : </th><td><input type="text" name="project_name" id="project_name" placeholder="프로젝트명을 입력하세요" width="20" height="20"></td>
+				<th>근무 가능기간 : </th><td><input type="text" name="project_period" id="project_period" placeholder="200101" width="20" height="20"></td>
 			</tr>
 			<tr>
-				<th>기간 : </th><td><input type="text" name="project_period" id="project_period" placeholder="200101" width="20" height="20">~<input type="text" name="project_period" id="project_period" placeholder="200101" width="20" height="20"></td>
-			</tr>
-			<tr>
-				<th>고객사 : </th><td><input type="text" name="project_cliente" id="project_cliente" placeholder="고객사" width="20" height="20"><input type="text" name="project_cliente" id="project_cliente" placeholder="근무사를 입력하세요" width="20" height="20"></td>
-			</tr>
-			<tr>
-				<th>프로젝트 상세설명 : </th><td><textarea name="project_ex" id="project_ex" placeholder="프로젝트 상세설명을 상사하게 적어주시면 감사합니다" ></textarea></td>
+				<th>선호하는 근무장소 : </th><td><input type="text" name="place_of_work" id="place_of_work" placeholder="도시입력 예)서울:인천:대전"></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="등록하기" ></td>
 			</tr>
-		</table>
+			</table>
+			</form>
+			
 		
-	</form>
+		
+	
 	<c:import url="../default/footer.jsp"/>
 </body>
 </html>
