@@ -80,6 +80,7 @@ public class GgiriMemberDTO {
 		this.addr = addr;
 	}
 	
+	
 	public String getLogdate() {
 		return logdate;
 	}

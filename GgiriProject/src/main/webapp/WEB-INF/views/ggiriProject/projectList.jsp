@@ -134,6 +134,7 @@ a{
 		 	<button class="h3" type="submit" style=" border-radius: 30px;" onclick="design()" id="des"> 🎨  디자인 </button> 
 			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="plan()" id="pla"> 📝  기획 </button> 
 		</div>
+<<<<<<< HEAD
 			<br><br>
 			<hr>
 <!-- 	<h1>프로젝트 보기</h1> -->	
@@ -145,6 +146,23 @@ a{
 					<th width="200px"> 날 짜 </th>
 					<th width="100px"> 조회수 </th>
 				</tr>
+=======
+	</div>
+	<br>
+	<hr>
+	<div class="wrap board_table">
+	<h1>프로젝트 보기</h1>
+	<br>
+	<br>
+		<table border="1">
+			<tr style="text-align: center">
+				<th style="display: none"  width="50px"> 번 호 </th>
+				<th style="display: none" width="100px"> ID </th>
+				<th width="700px"> 제 목 </th>
+				<th width="200px"> 날 짜 </th>
+				<th width="100px"> 조회수 </th>
+			</tr>
+>>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
 			<c:if test="${projectList.size()==0 }">
 				<tr>
 					<th colspan="6"> 등록된 글이 없습니다 </th>

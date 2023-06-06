@@ -29,7 +29,8 @@ function developer(){
 		success : function(list){
 			let html = ""
 			$(list).each(function(index, item){
-				$("#devList").append("<div id='id'>" + item.id + "</div>" + "<div>" + item.job + "</div>");
+				$("#devList").append("<a href='Info?id=" + item.id + "'><div id='id'>" + item.id + "</div></a>"+"<div>"+ item.introduce+"</div>" + "<div>" + item.job + "</div>"
+									+"<div>"+ item.skill + "<div>");
 			});
 		},
 		error : function(xhr, status, errorThrown){
@@ -53,7 +54,7 @@ function publisher(){
 		success : function(list){
 			let html = ""
 			$(list).each(function(){
-				html += "<div id='id'>" + this.id + "</div>" + "<div>" + this.job + "</div>";
+				html += "<a href='Info?id="+ this.id +"'><div id='id'>" + this.id + "</div></a>" + "<div>" + this.job + "</div>";
 			});
 			$("#devList").html(html);
 		},
@@ -79,7 +80,7 @@ function designer(){
 		success : function(list){
 			let html = ""
 			$(list).each(function(){
-				html += "<div id='id'>" + this.id + "</div>" + "<div>" + this.job + "</div>";
+				html += "<a href='Info?id="+ this.id +"'><div id='id'>" + this.id + "</div></a>" + "<div>" + this.job + "</div>";
 			});
 			$("#devList").html(html);
 		},
@@ -105,7 +106,7 @@ function planner(){
 		success : function(list){
 			let html = ""
 			$(list).each(function(){
-				html += "<div id='id'>" + this.id + "</div>" + "<div>" + this.job + "</div>";
+				html += "<table><a href='Info?id="+ this.id +"'><div id='id'>" + this.id + "</div></a>" + "<div>" + this.job + "</div></table>";
 			});
 			$("#devList").html(html);
 		},
@@ -128,6 +129,10 @@ function planner(){
 .skill{
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	display: inline-block;
+}
+div{
+	margin-right: auto;
+	margin-left: auto;
 }
 form{
 	float:left; 
@@ -159,7 +164,7 @@ form{
 	width: 300px; 
 	height: 300px;
 	text-align: center;
-	color: black;
+	color: white;
 	font-size: 30px;
 }
 .freeTxt {

@@ -1,5 +1,6 @@
 package com.ggiri.root.mybatis.member;
 
+import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
 import com.ggiri.root.member.dto.GgiriMemberDTO;
 
 import java.util.List;
@@ -19,9 +20,9 @@ public interface GgiriMemberMapper {
 	// 안태준
 	public List<GgiriMemberDTO> boardAllList();
 	
-	public List<GgiriMemberDTO> selectJob(String job);
 	
-	public GgiriMemberDTO getBoard(String userid);
+	
+	
 	// 안태준 끝
 
 }
