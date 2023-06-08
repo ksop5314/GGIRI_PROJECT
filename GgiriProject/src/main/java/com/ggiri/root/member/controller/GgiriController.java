@@ -313,6 +313,27 @@ public class GgiriController implements GgiriMemberSession {
 			return "redirect:memberList";
 		return "redirect:writeFreeFail";
 	}
+	
+	@GetMapping("writeFreeModifyForm")
+	public String writeFreeModifyForm(@RequestParam("id") String userid, Model model) {
+		gfs.Info(userid, model);
+		return "ggiriMember/writeFreeModifyForm";
+	}
+	@PostMapping("modify")
+	public String modify(GgiriFreeInsertDTO dto) {
+		int result = gfs.modify(dto);
+		if(result == 1)
+			return "redirect:modifySuccess";
+		return "redirect:modifyFail";
+	}
+	@GetMapping("modifyFail")
+	public String modifyFail() {
+		return "ggiriMember/modifyFail";
+	}
+	@GetMapping("modifySuccess")
+	public String modifySuccess() {
+		return "ggiriMember/modifySuccess";
+	}
 	// 안태준 끝
 
 	@PostMapping("findEmail")
@@ -323,6 +344,10 @@ public class GgiriController implements GgiriMemberSession {
 		}
 		return "ggiriMember/failEmail";
 	}
-
+	
+	
+	
+	
+	
 	
 }

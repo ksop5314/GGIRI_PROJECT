@@ -11,11 +11,16 @@ import org.springframework.ui.Model;
 import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
 import com.ggiri.root.member.dto.GgiriMemberDTO;
 import com.ggiri.root.mybatis.member.GgiriFreeInsertMapper;
+
+import edu.emory.mathcs.backport.java.util.Arrays;
 @Service
 public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 	
 	@Autowired
 	private GgiriFreeInsertMapper gfm;
+	
+	@Autowired
+	private GgiriFreeInsertService gfs;
 	
 	@Autowired
 	private GgiriMessageService gm;
@@ -49,10 +54,39 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 	public void boardAllList(Model model) {
 		model.addAttribute("boardList", gfm.boardAllList());
 	}
-		
-		
-		
 
+	@Override
+	public void modifyForm(String userid, Model model) {
+		// TODO Auto-generated method stub
+		
+		GgiriFreeInsertDTO dto = gfm.getBoard(userid);
+
+		
+		model.addAttribute("info", dto);
+	}
+
+	@Override
+	public int modify(GgiriFreeInsertDTO dto) {
+		try {
+			return gfm.writeFreeModify(dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+
+	
+	
+	
+	
+	
+	
+//	GgiriFreeInsertDTO dto = gfm.getBoard(userid);
+//	model.addAttribute("info", dto);
+		
+		
+		
+	
 		
 	
 	
