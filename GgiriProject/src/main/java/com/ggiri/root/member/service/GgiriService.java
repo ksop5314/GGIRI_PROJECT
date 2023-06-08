@@ -24,12 +24,5 @@ public interface GgiriService {
 	public void ggiriMemberInfo(String id, Model model);
 	public void ggiriSnsInfo(String id, Model model);
 	
-	// 안태준
-	public void boardAllList(Model model);
 	
-	
-	
-	
-	
-	// 안태준 끝
 }

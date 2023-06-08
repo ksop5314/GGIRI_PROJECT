@@ -9,6 +9,7 @@ public class GgiriFreeInsertDTO {
 	private String skill; // 기술
 	private int project_period; // 프로젝트 기간
 	private String place_of_work; // 근무지
+	private String url_name;
 	private String insertdate; // 작성일자
 	
 	
@@ -58,6 +59,13 @@ public class GgiriFreeInsertDTO {
 		this.place_of_work = place_of_work;
 	}
 	
+	
+	public String getUrl_name() {
+		return url_name;
+	}
+	public void setUrl_name(String url_name) {
+		this.url_name = url_name;
+	}
 	public String getInsertdate() {
 		return insertdate;
 	}

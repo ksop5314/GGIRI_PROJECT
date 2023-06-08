@@ -233,7 +233,12 @@ a{
 				<tr>
 					<td>
 						<div id="devList">
-							
+							<c:forEach var="list" items="${boardList }">
+								<a href="Info?id=${list.id }"><p id="id"><c:out value="${list.id }"/></p></a>
+								<p><c:out value="${list.introduce }"/></p>
+								<p><c:out value="${list.job }"/></p>
+								<p><c:out value="${list.skill }"/></p>
+							</c:forEach>
 						</div>
 					</td>
 				</tr>

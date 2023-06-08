@@ -124,17 +124,7 @@ public class GgiriServiceImpl implements GgiriService{
 	// 강준호 끝
 	
 	
-	// 안테준
-	@Override
-	public void boardAllList(Model model) {
-		model.addAttribute("boardList", gmm.boardAllList());
-	}
 	
-	
-	
-
-	
-	// 안태준 끝
 	
 	
 

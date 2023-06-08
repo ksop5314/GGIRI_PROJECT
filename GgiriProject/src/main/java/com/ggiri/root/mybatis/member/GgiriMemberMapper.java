@@ -20,12 +20,5 @@ public interface GgiriMemberMapper {
 	public GgiriMemberDTO ggiriMemberInfo(String id);
 	public GgiriMemberDTO ggiriSnsInfo(String id);
 	
-	// 안태준
-	public List<GgiriMemberDTO> boardAllList();
 	
-	
-	
-	
-	// 안태준 끝
-
 }
