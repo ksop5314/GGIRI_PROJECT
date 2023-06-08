@@ -1,4 +1,3 @@
-
 package com.ggiri.root.project.service;
 
 import java.util.List;
@@ -9,9 +8,9 @@ import com.ggiri.root.project.dto.ProjectDTO;
 
 public interface ProjectService {
 
-	public void projectList(Model model);
-	
-	public void projectView(int projectNum, Model model);
+    public void projectList(Model model);
+
+    public void projectView(int projectNum, Model model);
 	
 	public void insertPro(ProjectDTO dto);
 	
@@ -28,4 +27,11 @@ public interface ProjectService {
     public List<ProjectDTO> getProjectList(int page, int perPage);
 
     public int getProjectCount();
+
+    void increaseLikeCount(int projectNum);
+
+    public void increaseLikeCountByUser(int projectNum, String id);
+
+	int getLikeIdByUser(int projectNum, String id);
+
 }

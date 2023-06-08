@@ -134,64 +134,48 @@ a{
 		 	<button class="h3" type="submit" style=" border-radius: 30px;" onclick="design()" id="des"> 🎨  디자인 </button> 
 			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="plan()" id="pla"> 📝  기획 </button> 
 		</div>
-<<<<<<< HEAD
 			<br><br>
 			<hr>
 <!-- 	<h1>프로젝트 보기</h1> -->	
-			<table style="border:1px solid white;">
-				<tr>
-					<th style="display: none"  width="50px"> 번 호 </th>
-					<th style="display: none" width="100px"> ID </th>
-					<th width="700px"> 제 목 </th>
-					<th width="200px"> 날 짜 </th>
-					<th width="100px"> 조회수 </th>
-				</tr>
-=======
-	</div>
-	<br>
-	<hr>
-	<div class="wrap board_table">
-	<h1>프로젝트 보기</h1>
-	<br>
-	<br>
-		<table border="1">
-			<tr style="text-align: center">
-				<th style="display: none"  width="50px"> 번 호 </th>
-				<th style="display: none" width="100px"> ID </th>
-				<th width="700px"> 제 목 </th>
-				<th width="200px"> 날 짜 </th>
-				<th width="100px"> 조회수 </th>
-			</tr>
->>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
-			<c:if test="${projectList.size()==0 }">
-				<tr>
-					<th colspan="6"> 등록된 글이 없습니다 </th>
-				</tr>
-			</c:if>
-			<c:forEach var="dto" items="${projectList }">
-				<tr style="text-align: right">
-					<td style="display: none" >${dto.projectNum }</td>
-					<td style="display: none">${dto.id }</td>
-					<td><a href="../ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a></td>
-					<td>${dto.prodate }</td>
-					<td>${dto.proHit }</td>
-				</tr>
-			</c:forEach>
-		</table>
-		<br>
-		<form action="projectList.do" method="get"> <%-- <c:if test="${condition eq 'titlename' }">selected</c:if>	 --%>
-			<label for="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">검색조건</label><br>
-			<select name="condition" id="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">
-				<option value="titleContent" <c:if test="${condition eq 'titleContent' }">selected</c:if>>제목 + 본문</option>
-				<option value="title" <c:if test="${condition eq 'title' }">selected</c:if>>제목</option>
-				<option value="id" <c:if test="${condition eq 'id' }">selected</c:if>>작성자</option>
-			</select>
-			<input type="text" name="keyword" id="keyword" style="font-family: 'IBM Plex Sans KR', sans-serif"
-				placeholder="검색어" value="${keyword }"/>
-			<button id="button1" type="submit">검색</button>
-			</form>
-		</div>
-		<br>
-	<c:import url="../default/footer.jsp"></c:import>
+			 <table style="border:1px solid white;">
+    <tr>
+      <th style="display: none" width="50px"> 번 호 </th>
+      <th style="display: none" width="100px"> ID </th>
+      <th width="700px"> 제 목 </th>
+      <th width="200px"> 날 짜 </th>
+      <th width="100px"> 조회수 </th>
+      <th width="100px"> 좋아요 </th>
+    </tr>
+    <c:if test="${projectList.size()==0 }">
+      <tr>
+        <th colspan="6"> 등록된 글이 없습니다 </th>
+      </tr>
+    </c:if>
+    <c:forEach var="dto" items="${projectList }">
+      <tr style="text-align: right">
+        <td style="display: none" >${dto.projectNum }</td>
+        <td style="display: none">${dto.id }</td>
+        <td><a href="/root/ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a></td>
+        <td>${dto.prodate }</td>
+        <td>${dto.proHit }</td>
+        <td>${dto.likeCount }</td>
+      </tr>
+    </c:forEach>
+  </table>
+  <br>
+  <form action="projectList.do" method="get">
+    <label for="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">검색조건</label><br>
+    <select name="condition" id="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">
+      <option value="titleContent" <c:if test="${condition eq 'titleContent' }">selected</c:if>>제목 + 본문</option>
+      <option value="title" <c:if test="${condition eq 'title' }">selected</c:if>>제목</option>
+      <option value="id" <c:if test="${condition eq 'id' }">selected</c:if>>작성자</option>
+    </select>
+    <input type="text" name="keyword" id="keyword" style="font-family: 'IBM Plex Sans KR', sans-serif"
+           placeholder="검색어" value="${keyword }"/>
+    <button id="button1" type="submit">검색</button>
+  </form>
+</div>
+<br>
+<c:import url="../default/footer.jsp"></c:import>
 </body>
 </html>

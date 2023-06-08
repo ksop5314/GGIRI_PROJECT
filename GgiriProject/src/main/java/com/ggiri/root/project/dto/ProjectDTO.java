@@ -12,6 +12,7 @@ public class ProjectDTO {
 	private int proHit; // 조회수
 	private String id; // 작성자 아이디
 	private String skill;
+    private int likeCount;
 	
 	// 페이징 필드
 	private int pageNo; // 페이지 번호
@@ -88,6 +89,18 @@ public class ProjectDTO {
 		this.skill = skill;
 	}
 
+    public int getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(int likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    public void incrementLikeCount() {
+        this.likeCount++;
+    }
+	
 	// 페이징 필드 getter/setter
 	public int getPageNo() {
 		return pageNo;

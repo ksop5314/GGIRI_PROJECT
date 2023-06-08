@@ -125,6 +125,12 @@ body{
 	    window.location.href = url;
 	}
    
+   function searchPro() {
+	    var keyword = document.getElementById("key").value;
+	    var url = "/root/ggiriProject/projectList.do?condition=titleContent&keyword=" + encodeURIComponent(key);
+	    window.location.href = url;
+	}
+   
 </script>
 </head>
 <body>
@@ -152,11 +158,11 @@ body{
 			<c:if test="${loginUser == null }">
 			<button class="signup" type="button" onclick="location.href='/root/ggiriMember/signup_free'">프리랜서 회원가입</button>
 			</c:if>
-			<img src="/root/resources/image/GgiriHelp.webp" id="chat" onclick="chatActivate()">		
 			<br><br><br><br><br>
 			<a href="${path}/board/best_list.do">베스트 게시물 게시판</a>
-			<!-- 
-			<div class="eblock-project">
+			<br>
+			
+			<!-- <div class="eblock-project">
 			<a href="/root/ggiriProject/projectList.do?condition=titleContent&keyword=JAVA">
             <div class="emain-project bg-gradation-10">
                 <p class="emain-project-img"><img class="w-10" src="./public/images/icon-main-java.png"></p>
@@ -169,7 +175,6 @@ body{
                 <p class="emain-project-name">ASP.NET</p>
             </div>
 			</a>
-			<a href="/root/ggiriProject/projectList.do?condition=titleContent&keyword=PHP">
             <div class="emain-project bg-gradation-50">
                 <p class="emain-project-img"><img class="w-10" src="./public/images/icon-main-php.png"></p>
                 <p class="emain-project-name">PHP</p>             
@@ -206,19 +211,18 @@ body{
             </div>
 			</a>
         </div>
+         -->
+			<button class="JAVA" id="key" onclick="searchPro()">JAVA</button>	
+			<button class="SERVER" id="key" onclick="searchPro()">SERVER</button>	
+			<button class="PHP" ID="key" onclick="/root/ggiriProject/projectList.do?condition=titleContent&keyword=">PHP</button>	
+			<button class="ios" ID="key" onclick="/root/ggiriProject/projectList.do?condition=titleContent&keyword=">ios, Android</button>			
 			
-			<button class="JAVA" type="button" onclick="/root/ggiriProject/projectList.do?condition=titleContent&keyword=">JAVA</button>	
-			
-			<button class="ASP" type="button" onclick="/root/ggiriProject/projectList.do?condition=titleContent&keyword=">ASP.NET</button>	
-			<button class="PHP" type="button" onclick="/root/ggiriProject/projectList.do?condition=titleContent&keyword=">PHP</button>	
-					
-			<button class="ios" type="button" onclick="/root/ggiriProject/projectList.do?condition=titleContent&keyword=">ios, Android</button>			
 			<br><br>
 			<button class="publishing" type="button" onclick="searchProject()">퍼블리싱</button>			
 			<button class="design" type="button" onclick="searchProject()">디자인</button>			
 			<button class="planning" type="button" onclick="searchProject()">기획</button>			
 			<button class="sundry" type="button" onclick="searchProject()">기타</button>			
-			 -->
+			 
 		</div>
     </div>
 </body>

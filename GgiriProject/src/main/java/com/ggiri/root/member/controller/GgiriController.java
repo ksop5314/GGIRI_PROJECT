@@ -55,13 +55,11 @@ public class GgiriController implements GgiriMemberSession {
 	private MailSendService mss;
 	
 	
-	
 	// 안태준
 	@Autowired
 	private GgiriFreeInsertService gfs;
 	@Autowired
 	private GgiriFreeInsertMapper gfi;
-	
 	
 	@GetMapping("ggiriLogin")
 	public String login() {
@@ -249,6 +247,9 @@ public class GgiriController implements GgiriMemberSession {
 		
 		return "ggiriMember/naverLogout";
 	}
+	
+	//@RequestMapping("google_callback")
+	
 	
 	
 	@PostMapping("IdCheck")

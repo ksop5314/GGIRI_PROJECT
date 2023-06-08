@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,8 +16,6 @@ function list(page){
 };
  
 </script>
- 
- 
  
 <body>
 	<c:import url="default/header.jsp"/>
@@ -52,39 +51,31 @@ function list(page){
         <td>${row.reg_date}</td>    <!-- 날짜의 출력형식을 변경함 -->
         <td>${row.viewcnt}</td>    <!-- 조회수 -->
         <td>${row.recommend}</td>    <!-- 추천수 -->
- 
- 
     
     </tr>
     </c:forEach>
-    
  
 </table>
  
- 
-<form name="form1" method="post" action="list.do">
-    <select name="search_option">
-        <option value="user_id"
-<c:if test="${map.search_option == 'user_id'}">selected</c:if>
-        >작성자</option>
-        <option value="title" 
-<c:if test="${map.search_option == 'title'}">selected</c:if>
-        >제목</option>
-        <option value="content" 
-<c:if test="${map.search_option == 'content'}">selected</c:if>
-        >내용</option>
-        <option value="all" 
-<c:if test="${map.search_option == 'all'}">selected</c:if>
-        >작성자+내용+제목</option>
-    </select>
-    <input name="keyword" value="${map.keyword}">
-    <input type="submit" value="조회">
-   
-</form>
- 
- 
- 
- 
-<br><br><%@ include file="../include/Botton.jsp"%>
+	<form name="form1" method="post" action="list.do">
+	    <select name="search_option">
+	        <option value="user_id"
+	<c:if test="${map.search_option == 'user_id'}">selected</c:if>
+	        >작성자</option>
+	        <option value="title" 
+	<c:if test="${map.search_option == 'title'}">selected</c:if>
+	        >제목</option>
+	        <option value="content" 
+	<c:if test="${map.search_option == 'content'}">selected</c:if>
+	        >내용</option>
+	        <option value="all" 
+	<c:if test="${map.search_option == 'all'}">selected</c:if>
+	        >작성자+내용+제목</option>
+	    </select>
+	    <input name="keyword" value="${map.keyword}">
+	    <input type="submit" value="조회">
+	   
+	</form>
+	<c:import url="default/footer.jsp"/>
 </body>
 </html>
