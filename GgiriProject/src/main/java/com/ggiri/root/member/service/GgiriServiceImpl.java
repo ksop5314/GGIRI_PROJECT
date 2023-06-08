@@ -1,6 +1,5 @@
 package com.ggiri.root.member.service;
 
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
 import com.ggiri.root.member.dto.GgiriMemberDTO;
 import com.ggiri.root.mybatis.member.GgiriMemberMapper;
 
@@ -51,6 +49,18 @@ public class GgiriServiceImpl implements GgiriService{
 	}
 	
 	@Override
+	public int modifyResult(GgiriMemberDTO modifyMember) {
+		try {
+			
+			return gmm.modifyResult(modifyMember);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
+	@Override
 	public GgiriMemberDTO findEmail(String email) {
 		return gmm.findEmail(email);
 	}
@@ -83,6 +93,32 @@ public class GgiriServiceImpl implements GgiriService{
 	public void kakaoinsert(GgiriMemberDTO kakaoInsert) {
 		gmm.kakaoinsert(kakaoInsert);
 		
+	}
+	
+	@Override
+	public int findGoogle(String googleMember) {
+		int findKakao = gmm.findGoogle(googleMember);
+		if(findKakao == 0) {
+			return 0;
+		}
+		return 1;
+	}
+	
+	@Override
+	public void googleinsert(GgiriMemberDTO googleInsert) {
+		gmm.googleinsert(googleInsert);
+	}
+	
+	@Override
+	public void ggiriMemberInfo(String id, Model model) {
+		GgiriMemberDTO dto = gmm.ggiriMemberInfo(id);
+		model.addAttribute("ggiriMemberInfo", dto);
+	}
+	
+	@Override
+	public void ggiriSnsInfo(String id, Model model) {
+		GgiriMemberDTO dto = gmm.ggiriSnsInfo(id);
+		model.addAttribute("ggiriSnsInfo", dto);
 	}
 	
 	// 강준호 끝
