@@ -58,15 +58,6 @@
 	</insert>
 	<!-- 강준호 끝 -->
 	
-	<!-- 안태준 -->
-	<select id="boardAllList" resultMap="ggiri">
-		SELECT * FROM ggirimember
-	</select>
 	
-	
-	
-	
-	
-	<!-- 안태준 끝 -->
 	
 </mapper>
