@@ -1,8 +1,7 @@
 
 package com.ggiri.root.complete.dto;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
+import java.sql.Date;
 
 /*
 create table ggiriComplete(
@@ -12,7 +11,7 @@ content VARCHAR2(3000),
 skill VARCHAR2(500),
 members VARCHAR2(100),
 tag VARCHAR2(300),
-comdate DATE DEFAULT SYSDATE,
+comdate DATE,
 comHit NUMBER(10) DEFAULT 0,
 id VARCHAR2(20) NOT NULL
 );
@@ -27,7 +26,9 @@ public class CompleteDTO {
 	private String skill;
 	private String members;
 	private String tag;
-	private String comdate;
+	
+	private Date comdate;
+	
 	private int comHit;
 	private String id;
 	
@@ -36,7 +37,7 @@ public class CompleteDTO {
 	}
 
 	public CompleteDTO(int completeNum, String title, String content, String skill, String members, String tag,
-			String comdate, int comHit, String id) {
+			Date comdate, int comHit, String id) {
 		super();
 		this.completeNum = completeNum;
 		this.title = title;
@@ -97,13 +98,12 @@ public class CompleteDTO {
 		this.tag = tag;
 	}
 
-	public String getComdate() {
+	public Date getComdate() {
 		return comdate;
 	}
 
-	public void setComdate(Timestamp comdate) {
-		SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-dd");
-		this.comdate = format.format(comdate);
+	public void setComdate(Date comdate) {
+		this.comdate = comdate;
 	}
 
 	public int getComHit() {
