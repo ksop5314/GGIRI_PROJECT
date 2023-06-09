@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 
 import com.ggiri.root.mybatis.project.ProjectMapper;
 import com.ggiri.root.project.dto.ProjectDTO;
+import com.ggiri.root.project.dto.ProjectRepDTO;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -68,4 +69,34 @@ public class ProjectServiceImpl implements ProjectService {
     public int getProjectCount() {
         return pm.getProjectCount();
     }	
+    
+    // 댓글
+//    @Override
+//	public void addReply(ProjectRepDTO dto) {
+//		pm.addReply(dto);
+//	}
+
+    @Override
+    public int addReplyTest(ProjectRepDTO dto) {
+    	
+    	return pm.addReplyTest(dto);
+    }
+    
+	@Override
+	public List<ProjectRepDTO> getRepList(int bno) {
+		return pm.getRepList(bno);
+	}
+    
+	// 대댓글
+	@Override
+	public int re_addReplyTest(ProjectRepDTO dto) {
+		return pm.re_addReplyTest(dto);
+	}
+    
+	@Override
+	public List<ProjectRepDTO> re_getRepList(int bno) {
+		return pm.re_getRepList(bno);
+	}
+	
+    
 }
