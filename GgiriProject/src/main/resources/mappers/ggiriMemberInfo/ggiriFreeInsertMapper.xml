@@ -16,6 +16,18 @@
 		<result property="insertdate" column="insertdate"/>
 	</resultMap>
 	
+	<resultMap type="com.ggiri.root.complete.dto.CompleteDTO" id="complete">
+		<result property="completeNum" column="completeNum"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="skill" column="skill"/>
+		<result property="members" column="members"/>
+		<result property="tag" column="tag"/>
+		<result property="comdate" column="comdate"/>
+		<result property="comHit" column="comHit"/>
+		<result property="id" column="id"/>
+	</resultMap>
+	
 	<!-- <select id="boardAllList" resultMap="board">
 		SELECT * FROM mvc_board
 	</select> -->
@@ -48,6 +60,10 @@
 		DELETE ggiriFree_insert WHERE id =#{id}
 	</delete>
 	
+	
+	<select id="getProject" resultMap="complete">
+		SELECT * FROM ggiriComplete WHERE id=#{id}
+	</select>
 </mapper>
 
 

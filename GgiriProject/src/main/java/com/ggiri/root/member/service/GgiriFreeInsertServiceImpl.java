@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.ggiri.root.complete.dto.CompleteDTO;
 import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
 import com.ggiri.root.member.dto.GgiriMemberDTO;
 import com.ggiri.root.mybatis.member.GgiriFreeInsertMapper;
@@ -42,7 +43,9 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 	public void Info(String userid, Model model) {
 		// TODO Auto-generated method stub
 		GgiriFreeInsertDTO dto = gfm.getBoard(userid);
+		List<CompleteDTO> Dto = gfm.getProject(userid);
 		model.addAttribute("info", dto);
+		model.addAttribute("list",Dto);
 	}
 	
 	@Override
@@ -75,6 +78,13 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 	@Override
 	public void writeFreeDelete(String userid) {
 		gfm.writeFreeDelete(userid);
+	}
+
+	@Override
+	public List<CompleteDTO> projectInfo(String usertid, Model model) {
+		// TODO Auto-generated method stub
+		List<CompleteDTO> dto = gfm.getProject(usertid);
+		return dto;
 	}
 
 	

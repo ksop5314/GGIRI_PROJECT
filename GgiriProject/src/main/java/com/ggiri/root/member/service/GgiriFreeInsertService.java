@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 
+import com.ggiri.root.complete.dto.CompleteDTO;
 import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
 
 
@@ -29,4 +30,6 @@ public interface GgiriFreeInsertService {
 	public int modify(GgiriFreeInsertDTO dto);
 	
 	public void writeFreeDelete(String userid);
+	
+	public List<CompleteDTO> projectInfo(String usertid, Model model);
 }
