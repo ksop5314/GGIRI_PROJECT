@@ -1,12 +1,10 @@
 package com.ggiri.root.member.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
@@ -14,16 +12,18 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+
+import com.ggiri.root.google.service.GoogleService;
 import com.ggiri.root.kakao.service.KakaoService;
 import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
-
-
 import com.ggiri.root.member.dto.GgiriMemberDTO;
 import com.ggiri.root.member.service.GgiriFreeInsertService;
 import com.ggiri.root.member.service.GgiriService;
@@ -51,6 +51,8 @@ public class GgiriController implements GgiriMemberSession {
 	private GgiriService gs;
 	@Autowired
 	private KakaoService kakaoService;
+	@Autowired
+	private GoogleService googleService;
 	@Autowired
 	private MailSendService mss;
 	
@@ -105,6 +107,13 @@ public class GgiriController implements GgiriMemberSession {
 		return "ggiriMember/ggiriLogout";
 	}
 	
+	@RequestMapping("register")
+	public String register(GgiriMemberDTO member) {
+		int result = gs.register(member);
+		if(result == 1)
+			return "redirect:ggiriLogin";
+		return "redirect:signup_free";
+	}
 //	@RequestMapping("kakaoLogin")
 //	public String kakaoLogin() {
 //		StringBuffer loginUrl = new StringBuffer();
@@ -169,13 +178,6 @@ public class GgiriController implements GgiriMemberSession {
 		return "ggiriMember/kakaoLogout";
 	}
 	
-	@RequestMapping("register")
-	public String register(GgiriMemberDTO member) {
-		int result = gs.register(member);
-		if(result == 1)
-			return "redirect:ggiriLogin";
-		return "redirect:signup_free";
-	}
 	
 	@RequestMapping("naver_login")
 	public String naverLogin(Model model, HttpSession session) {
@@ -248,9 +250,49 @@ public class GgiriController implements GgiriMemberSession {
 		return "ggiriMember/naverLogout";
 	}
 	
-	//@RequestMapping("google_callback")
+	@RequestMapping("google_callback")
+	public String googleLogin(@RequestParam("code") String code, HttpSession session) {
+		System.out.println(code);
+//    	String googleBaseURL = "https://accounts.google.com/o/oauth2/v2/auth";
+//		String googleClientId = "15714476982-d6tnk6tv8f7hptqjh6qrhqsm42aglq72.apps.googleusercontent.com";
+//		String googleClientSecret = "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";
+//		String googleRedirectURL = "http://localhost:8080/root/ggiriMember/api/v1/oauth2/google";
+//		String googleTokenURL = "https://oauth2.googleapis.com/token";
+
+		return "redirect:/index";
+	}
 	
+	@RequestMapping("myInfo")
+	public String ggiriMemberInfo(HttpSession session, Model model) {
+			String loginUser = (String)session.getAttribute(LOGIN);
+			gs.ggiriMemberInfo(loginUser, model);
+		return "ggiriMember/myInfo";
+	}
 	
+	@RequestMapping("snsInfo")
+	public String ggiriSnsInfo() {
+		return "ggiriMember/snsInfo";
+	}
+	
+	@RequestMapping("modifyMyInfo")
+	public String modifyMyInfo(HttpSession session, Model model) {
+		String id = (String)session.getAttribute(LOGIN);
+		gs.ggiriMemberInfo(id, model);
+		return "ggiriMember/modifyMyInfo";
+	}
+	
+	@RequestMapping("modifySnsInfo")
+	public String modifySnsInfo() {
+		return "ggiriMember/modifySnsInfo";
+	}
+	
+	@RequestMapping("modifyResult")
+	public String modifyResult(GgiriMemberDTO member) {
+		int result = gs.modifyResult(member);
+		if(result == 1)
+			return "redirect:/index";
+		return "redirect:modifyMyInfo";
+	}
 	
 	@PostMapping("IdCheck")
 	@ResponseBody

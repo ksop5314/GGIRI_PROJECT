@@ -104,6 +104,7 @@ body{
 <script type="text/javascript">
    
 	<!--Start of Tawk.to Script-->
+	
 	var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 	(function(){
 		var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -115,9 +116,9 @@ body{
 	})();
 	<!--End of Tawk.to Script-->
    
-   function chatActivate(){
+/*    function chatActivate(){
       window.open("/root/ggiriChat/chatAct", "_blank", "width=500px, height=1500px");
-   }
+   } */
 	
    function searchProject() {
 	    var keyword = document.getElementById("searchTxt").value;
@@ -152,10 +153,10 @@ body{
 			우리 '끼리' 계속 성장하는</p>
  			<img width="150px" height="45px" alt="" src="resources/image/logo6.png">
 			<br>
-			<c:if test="${loginUser != null }">
+			<c:if test="${loginUser != null || naverMember != null || kakaoMember != null }">
 				<button class="findmem" type="button" onclick="location href='#'">동료 찾기 >></button>			
 			</c:if>
-			<c:if test="${loginUser == null }">
+			<c:if test="${loginUser == null && naverMember == null && kakaoMember == null }">
 			<button class="signup" type="button" onclick="location.href='/root/ggiriMember/signup_free'">프리랜서 회원가입</button>
 			</c:if>
 			<br><br><br><br><br>
