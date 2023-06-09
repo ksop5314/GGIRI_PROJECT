@@ -22,10 +22,10 @@ function count_check(obj){
 		obj.checked = false;
 		return false;
 	}
+	
 }
-/* function clear(){
-		
-} */
+
+
 </script>
 <style type="text/css">
 *{
@@ -62,10 +62,6 @@ table textarea{
 			</tr>
 			<tr>
 				<th>자기소개 : </th><td><input type="text" name="introduce" id="introduce" placeholder="한줄로 자기소개 해주세요!" maxlength="20"></td>
-			</tr>
-			
-			<tr>
-				<th>프로젝트 수행이력</th>
 			</tr>
 			<tr>
 				<th> 구인직종 </th>
@@ -166,13 +162,15 @@ table textarea{
 				<th>선호하는 근무장소 : </th><td><input type="text" name="place_of_work" id="place_of_work" placeholder="도시입력 예)서울:인천:대전"></td>
 			</tr>
 			<tr>
+				<th>소개할 url : </th><td><input type="text" name="url_name" id="url_name" placeholder="소개할 url을 입력해주세요"></td>
+			</tr>
+			<tr>
 				<td><input type="submit" value="등록하기" ></td>
 			</tr>
 			</table>
-			</form>
 			
-		
-		
+			</form >
+			
 	
 	<c:import url="../default/footer.jsp"/>
 </body>

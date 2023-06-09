@@ -111,17 +111,17 @@ public class ProjectController {
         return "ggiriProject/projectList";
     }
     
-    @PostMapping("/project/increase-like-count/{projectNum}")
-    @ResponseBody
-    public ResponseEntity<String> increaseLikeCount(@PathVariable("projectNum") int projectNum, HttpSession session) {
-        String id = (String) session.getAttribute("id");
-        try {
-            projectService.increaseLikeCountByUser(projectNum, id);
-            return ResponseEntity.ok("좋아요 개수가 증가되었습니다.");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).body("좋아요 개수 증가에 실패했습니다.");
-        }
-    }
+//    @PostMapping("/project/increase-like-count/{projectNum}")
+//    @ResponseBody
+//    public ResponseEntity<String> increaseLikeCount(@PathVariable("projectNum") int projectNum, HttpSession session) {
+//        String id = (String) session.getAttribute("id");
+//        try {
+//            projectService.increaseLikeCountByUser(projectNum, id);
+//            return ResponseEntity.ok("좋아요 개수가 증가되었습니다.");
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).body("좋아요 개수 증가에 실패했습니다.");
+//        }
+//    }
 
 
 

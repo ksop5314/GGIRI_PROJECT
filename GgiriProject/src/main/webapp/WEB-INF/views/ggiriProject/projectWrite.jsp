@@ -26,8 +26,57 @@ function count_check(obj){
 }
 </script>
 <style type="text/css">
-
-
+.write_save {
+    font-family: 'IBM Plex Sans KR', sans-serif;
+}
+input {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+textarea {
+	width: 1000px;
+	hegith: 300px;
+}
+input[type=button] {
+	background-color: #B2CCFF;
+    color: black;
+    border: none;
+    width: 145px;
+    height: 50px;
+    font-size: 18px;     
+    border-radius: 9999px;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    cursor: pointer;
+}
+input[type=button]:hover {
+    background-color: #EBF7FF;
+    transition: 0.5s;
+}
+h3 {
+    font-size: 20px;
+   /*  padding: 10px;
+    width: fit-content;
+    margin: auto;
+    font-family: 'IBM Plex Sans KR', sans-serif; */
+}
+#submit{
+	background-color: #B2CCFF;
+    color: black;
+    border: none;
+    width: 145px;
+    height: 50px;
+    font-size: 18px;     
+    border-radius: 9999px;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    cursor: pointer;
+}
+#submit:hover{
+    background-color: #EBF7FF;
+    transition: 0.5s;
+}
+ #select {
+    display: flex;
+    justify-content: center;
+}
 </style>
 </head>
 <body>
@@ -36,10 +85,8 @@ function count_check(obj){
 <!-- 	<h1>프로젝트 등록</h1> -->		
 		<div class="write_save">
 			<form action="../ggiriProject/projectSave" method="post"><br>
-				<h3> 작성자 </h3>
-				<input type="text" name="id" value="${loginUser }"><br><br>
 				<h3> 제 목 </h3>
-				<input type="text" name="title" size="50"><br><br>
+				<input type="text" name="title" size="50"><br><br><hr><br>
 				<h3> 스 킬 </h3>
 					<ul>
 						<!-- <li>
@@ -131,8 +178,10 @@ function count_check(obj){
 				<h3> 내 용 </h3><br>
 				<textarea rows="20" cols="100" name="content"></textarea><br>
 				<br>
-				<input type="submit" value="등록"> &nbsp;
-				<input type="button" value="프로젝트 목록" onclick="location.href='../project/projectList'">
+				<div id="select">
+					<input type="submit" id="submit" value="등록"> &nbsp;
+					<input type="button" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'">
+				</div>
 			</form>
 		</div>
 	</div>

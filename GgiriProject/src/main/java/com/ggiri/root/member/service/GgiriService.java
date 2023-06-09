@@ -21,12 +21,5 @@ public interface GgiriService {
 	public int findKakao(String kakaoMember);
 	public void kakaoinsert(GgiriMemberDTO kakaoInsert);
 	
-	// 안태준
-	public void boardAllList(Model model);
 	
-	
-	
-	
-	
-	// 안태준 끝
 }

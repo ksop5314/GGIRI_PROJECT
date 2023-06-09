@@ -145,6 +145,33 @@
 	    WHERE projectNum = #{projectNum} AND id = #{id}	
 	</select>
 	
+	<!-- 좋아요 추가 -->
+	<insert id="picture_heart_save" parameterType="com.exam.model1.pictureHeart.PictureHeartTO">
+	    insert into p_heart
+	    values(0, #{bno}, #{userid})
+	</insert>
+	<update id="picture_heart_up" parameterType="com.exam.model1.picture.PictureTO">
+	    update p_board set heart=heart+1 
+	    where no=#{no}
+	</update>
+	
+	<!-- 좋아요 삭제 -->
+	<delete id="picture_heart_remove" parameterType="com.exam.model1.pictureHeart.PictureHeartTO">
+	    delete from p_heart
+	    where bno=#{bno} and userid=#{userid}
+	</delete>
+	<update id="picture_heart_down" parameterType="com.exam.model1.picture.PictureTO">
+	    update p_board set heart=heart-1 
+	    where no=#{no}
+	</update>
+	
+	<!-- 좋아요 추가/삭제시 좋아요 갯수 가져오기 -->
+	<select id="picture_heart_count" parameterType="com.exam.model1.picture.PictureTO" resultType="com.exam.model1.picture.PictureTO">
+	    select heart 
+	    from p_board
+	    where no=#{no}
+	</select>
+	
 	<!-- <update id="increaseLikeCount">
 	    UPDATE ggiriProject
 	    SET likeID = likeID + 1

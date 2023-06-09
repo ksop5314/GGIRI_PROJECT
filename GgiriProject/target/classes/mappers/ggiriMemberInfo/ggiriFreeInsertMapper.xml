@@ -12,6 +12,7 @@
 		<result property="skill" column="skill"/>
 		<result property="project_period" column="project_period"/>
 		<result property="place_of_work" column="place_of_work"/>
+		<result property="url_name" column="url_name"/>
 		<result property="insertdate" column="insertdate"/>
 	</resultMap>
 	
@@ -20,8 +21,8 @@
 	</select> -->
 	
 	<insert id="writeSave">
-		INSERT INTO ggiriFree_insert(name,id, introduce, job,  skill, project_period, place_of_work)
-		 VALUES(#{name}, #{id}, #{introduce}, #{job}, #{skill}, #{project_period}, #{place_of_work})
+		INSERT INTO ggiriFree_insert(name,id, introduce, job,  skill, project_period, place_of_work, url_name)
+		 VALUES(#{name}, #{id}, #{introduce}, #{job}, #{skill}, #{project_period}, #{place_of_work}, #{url_name})
     </insert>
     
     <select id="getBoard" resultMap="ggiri">
@@ -32,12 +33,18 @@
     <select id="selectJob" resultMap="ggiri">
 		SELECT * FROM ggiriFree_insert WHERE job=#{job} ORDER BY insertdate DESC
 	</select>
+	
+	<select id="boardAllList" resultMap="ggiri">
+		SELECT * FROM ggiriFree_insert 
+	</select>
+	
+	<update id="writeFreeModify">
+		UPDATE ggiriFree_insert
+		 SET  id=#{id}, introduce=#{introduce}, job=#{job}, skill=#{skill}, project_period=#{project_period}, place_of_work=#{place_of_work}, url_name=#{url_name}
+		 WHERE id =#{id}
+	</update>
+	
 </mapper>
-
-
-
-
-
 
 
 

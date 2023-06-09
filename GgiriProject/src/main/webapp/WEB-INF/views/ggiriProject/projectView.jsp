@@ -74,6 +74,7 @@
             <div style="display:inline" id="skill">${selectedSkill}</div>
         </c:forEach>
     <div id="like">
+    
 	    <c:if test="${likeId  == 0}">
 	        <button type="button" class="btn btn-light like-btn" data-projectnum="${data.projectNum}">좋아요</button>
 	        <input type="hidden" id="likecheck" value="${likeId}">
