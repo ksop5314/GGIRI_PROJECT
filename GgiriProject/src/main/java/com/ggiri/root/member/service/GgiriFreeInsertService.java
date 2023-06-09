@@ -27,4 +27,6 @@ public interface GgiriFreeInsertService {
 	public void modifyForm(String userid, Model model);	
 	
 	public int modify(GgiriFreeInsertDTO dto);
+	
+	public void writeFreeDelete(String userid);
 }
