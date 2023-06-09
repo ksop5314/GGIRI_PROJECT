@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ggiri.root.mybatis.message.GgiriMessageMapper">
+
+	<resultMap type="com.ggiri.root.message.to.MessageTO" id="messageTO">
+		<id property="no" column="no"/>
+		<result property="room" column="room"/>
+		<result property="sendNick" column="send_nick"/>
+		<result property="recvNick" column="recv_nick"/>
+		<result property="sendTime" column="send_time"/>
+		<result property="readTime" column="read_time"/>
+		<result property="content" column="content"/>
+		<result property="readChk" column="read_chk"/>
+	</resultMap>
+	
+	<select id="messageList" resultMap="messageTO">
+		SELECT * FROM message WHERE no IN (SELECT max(no) FROM message GROUP BY room)
+		AND (send_nick = #{nick} or recv_nick=#{nick}) ORDER BY no DESC
+	</select>
+	
+	<select id="countUnread">
+		SELECT COUNT(no) FROM message
+		WHERE recv_nick = #{nick} AND read_chk=0 AND room=#{room}
+	</select>
+	
+	<select id="roomContentList" resultMap="messageTO">
+		SELECT m.no, m.room, m.send_nick, m.recv_nick, m.send_time, m.read_time, m.content, m.read_chk
+		FROM message m left outer join ggirimember u
+		on m.send_nick = u.id
+		<choose>
+			<when test="room != 0">
+				WHERE room=#{room}
+			</when>
+			<otherwise>
+				where (recv_nick = #{recvNick} and send_nick = #{nick}) or (send_nick = #{recvNick} and recv_nick = #{nick})
+			</otherwise>
+		</choose>
+	</select>
+	
+	<update id="updateReadChk">
+		update message set read_chk=1
+		<choose>
+			<when test="room != 0">
+				where room=#{room} and read_chk=0 and recv_nick=#{nick}
+			</when>
+			<otherwise>
+				where send_nick=#{recv_nick} and read_chk=0 and recv_nick=#{nick}
+			</otherwise>
+		</choose>	
+	</update>
+	
+	<insert id="messageSendList">
+		<choose>
+			<when test="room != 0">
+				insert into message values(0, #{room}, #{sendNick}, #{recvNick}, #{content}, 0)
+			</when>
+			<otherwise>
+				insert into message values(0, #{room}, #{sendNick}, #{recvNick}, #{content}, 0)
+			</otherwise>
+		</choose>	
+	</insert>
+	
+	<select id="maxRoom" resultType="Integer">
+		SELECT max(room) FROM message
+	</select>
+	
+	<select id="existChat" resultType="Integer">
+		SELECT COUNT(no) FROM message	
+		WHERE (recv_nick = #{recvNick} and send_nick=#{sendNick}) or (send_nick = #{recvNick} and recv_nick=#{sendNick})
+	</select>
+	
+	<select id="selectRoom" resultType="String">
+		SELECT room FROM(
+		SELECT ROWNUM AS no FROM message WHERE recv_nick = #{recvNick} and send_nick=#{sendNick} or send_nick = #{recvNick} and recv_nick=#{sendNick})
+		)
+		WHERE no BETWEEN 0 AND 1
+	</select>
+	
+</mapper>

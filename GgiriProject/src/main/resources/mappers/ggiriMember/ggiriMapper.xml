@@ -37,6 +37,18 @@
 		SELECT * FROM ggirimember WHERE email=#{email}	
 	</select>
 	
+	<select id="ggiriMemberInfo" resultMap="ggiri">
+		SELECT * FROM ggirimember WHERE id=#{id}
+	</select>
+	
+	<select id="ggiriSnsInfo" resultMap="ggiri">
+		SELECT * FROM ggirimember WHERE id=#{id}
+	</select>
+	
+	<update id="modifyResult" >
+		UPDATE ggirimember SET name=#{name}, pwd=#{pwd}, birth=#{birth}, gender=#{gender}, email=#{email}, tel=#{tel}, addr=#{addr} WHERE id=#{id}
+	</update>
+	
 	<!-- Kakao -->
 	
 	<select id="findKakao" resultType="integer">

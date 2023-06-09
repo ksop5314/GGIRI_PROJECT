@@ -146,8 +146,8 @@ $(function(){
     		<img src="http://static.nid.naver.com/oauth/small_g_in.PNG" class="button-login" width="20%" height ="60px" />
     	</a>
     	<br>
-    	<a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=15714476982-d6tnk6tv8f7hptqjh6qrhqsm42aglq72.apps.googleusercontent.com&redirect_uri=http://localhost:8080/root/ggiriMember/google_callback/api/v1/oauth2/google&response_type=code&scope=email%20profile%20openid&access_type=offline">
-    		<img src="${contextPath }/resources/image/btn_google_signin_light_focus_web@2x.png" style="width: 380px;height: 80px; margin-top: 15px;">
+    	<a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=15714476982-d6tnk6tv8f7hptqjh6qrhqsm42aglq72.apps.googleusercontent.com&redirect_uri=http://localhost:8080/root/ggiriMember/google_callback&response_type=code&scope=email%20profile%20openid&access_type=offline">
+    		<img src="${contextPath }/resources/image/btn_google_signin_light_focus_web@2x.png" style="width: 20%;height: 60px; margin-top: 15px;">
     	</a>
     </div>
 	<c:import url="../default/footer.jsp"/>

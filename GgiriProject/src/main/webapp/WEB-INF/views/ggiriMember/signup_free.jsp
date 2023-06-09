@@ -269,7 +269,7 @@ $(function(){
 	
 	$("#button1").click(function(){
 		var rv = true;
-		var tel = $("#tel_1").val() + $("#tel_2").val() + $("#tel_3").val();
+		var tel = $("#tel_1").val() + "-" + $("#tel_2").val() + "-" + $("#tel_3").val();
 		var addr = $("#addr1").val() + $("#addr2").val() + $("#addr3").val();
 		var email = $("#email1").val() + $("#email2").val();
 		
