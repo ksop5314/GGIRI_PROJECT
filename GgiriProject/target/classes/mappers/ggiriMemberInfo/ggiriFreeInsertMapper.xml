@@ -60,6 +60,10 @@
 		DELETE ggiriFree_insert WHERE id =#{id}
 	</delete>
 	
+	
+	<select id="usercompleteProject" resultMap="complete">
+		SELECT * FROM ggiriComplete WHERE id=#{id}
+	</select>
 </mapper>
 
 

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.maven.model.Model;
 
+import com.ggiri.root.complete.dto.CompleteDTO;
 import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
 import com.ggiri.root.member.dto.GgiriMemberDTO;
 
@@ -25,5 +26,5 @@ public interface GgiriFreeInsertMapper {
 	
 	public void writeFreeDelete(String userid);
 	
-//	public ggiriComplete
+//	public CompleteDTO  
 }
