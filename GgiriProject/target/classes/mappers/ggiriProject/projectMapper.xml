@@ -5,14 +5,26 @@
 <mapper namespace="com.ggiri.root.mybatis.project.ProjectMapper">
 
 	<resultMap type="com.ggiri.root.project.dto.ProjectDTO" id="project">
-		<result property="projectNum" column="projectNum"/>
+		<id property="projectNum" column="projectNum"/>
 		<result property="title" column="title"/>
 		<result property="content" column="content"/>
 		<result property="prodate" column="prodate"/>
 		<result property="proHit" column="proHit"/>
 		<result property="id" column="id"/>
 	</resultMap>
-	
+
+	<resultMap type="com.ggiri.root.project.dto.ProjectRepDTO" id="reply">
+		<result property="no" column="no"/>
+		<result property="bno" column="bno"/>
+		<result property="grp" column="grp"/>
+		<result property="grps" column="grps"/>
+		<result property="grpl" column="grpl"/>
+		<result property="id" column="id"/>
+		<result property="content" column="content"/>
+		<result property="wdate" column="wdate"/>
+	</resultMap>
+
+
 	<select id="projectList" resultMap="project">
 		SELECT * FROM ggiriProject
 	</select>
@@ -22,7 +34,12 @@
 	</select>
 	
 	<insert id="insertPro">
+<<<<<<< HEAD
 		INSERT INTO ggiriProject(projectNum, title, skill, content, id) VALUES(ggiriProject_seq.nextval, #{title}, #{skill}, #{content}, #{id})
+=======
+		INSERT INTO ggiriProject(projectNum, title, content, id) 
+		VALUES(ggiriProject_seq.nextval, #{title}, #{content}, #{id})
+>>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
 	</insert>
 	
 	<update id="proHit">
@@ -209,4 +226,33 @@
 	    )
 	    WHERE rnum &gt;= #{startRow}
 	</select> -->
+<<<<<<< HEAD
+=======
+	
+	<!-- 댓글 -->
+	<insert id="addReply">
+		INSERT INTO reply(id, content, write_num)
+		VALUES(#{id}, #{content}, #{write_num})
+	</insert>
+	
+	<insert id="addReplyTest">
+		INSERT INTO reply(no, bno, grp, grps, grpl, id, content)
+		VALUES(reply_seq.nextval, #{bno}, #{grp}, 0, 0, #{id}, #{content})
+	</insert>
+	
+	<select id="getRepList" resultMap="reply">
+		SELECT * FROM reply WHERE bno=#{bno}
+	</select>
+	
+	<!-- 대댓글 -->
+	<insert id="re_addReplyTest">
+		INSERT INTO reply(bno, grp, grps, grpl, id, content)
+		VALUES(#{bno}, #{grp}, 0, #{grpl}, #{id}, #{content})
+	</insert>
+	
+	<select id="re_getRepList" resultMap="reply">
+		SELECT * FROM reply WHERE bno=#{bno}
+	</select>
+	
+>>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
 </mapper>

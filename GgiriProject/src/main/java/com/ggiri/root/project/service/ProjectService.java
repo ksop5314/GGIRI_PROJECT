@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.ui.Model;
 
 import com.ggiri.root.project.dto.ProjectDTO;
+import com.ggiri.root.project.dto.ProjectRepDTO;
 
 public interface ProjectService {
 
@@ -27,6 +28,7 @@ public interface ProjectService {
     public List<ProjectDTO> getProjectList(int page, int perPage);
 
     public int getProjectCount();
+<<<<<<< HEAD
 
     void increaseLikeCount(int projectNum);
 
@@ -34,4 +36,17 @@ public interface ProjectService {
 
 	int getLikeIdByUser(int projectNum, String id);
 
+=======
+    
+    // 댓글
+//    public void addReply(ProjectRepDTO dto);
+    public int addReplyTest(ProjectRepDTO dto);
+	public List<ProjectRepDTO> getRepList(int bno);
+	
+	// 대댓글
+	public int re_addReplyTest(ProjectRepDTO dto);
+    public List<ProjectRepDTO> re_getRepList(int bno);
+	
+	
+>>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
 }
