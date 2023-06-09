@@ -17,7 +17,15 @@
 		<div class="write_save">
 			<form action="../ggiriProject/projectSave" method="post">
 				<b> 작성자 </b><br>
-				<input type="text" name="id" value="${loginUser }"><br>
+				<c:if test="${loginUser != null}">
+				<input type="text" name="id" id="id" value="${loginUser }" readonly>
+				</c:if>
+				<c:if test="${kakaoMember != null}">
+				<input type="text" name="id" id="id" value="${kakaoMember.id }" readonly>
+				</c:if>
+				<c:if test="${naverMember != null}">
+				<input type="text" name="id" id="id" value="${naverMember.id}" readonly>
+				</c:if><br>
 				<b> 제 목 </b><br>
 				<input type="text" name="title" size="50"><br>
 				<b> 내 용 </b><br>
