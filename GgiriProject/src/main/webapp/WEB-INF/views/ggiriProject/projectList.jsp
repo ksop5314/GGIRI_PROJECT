@@ -125,7 +125,6 @@ a{
 				<th width="700px"> 제 목 </th>
 				<th width="200px"> 날 짜 </th>
 				<th width="100px"> 조회수 </th>
-				<th width="100px"> 좋아요 </th>
 			</tr>
 			<c:if test="${projectList.size()==0 }">
 				<tr>
