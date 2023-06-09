@@ -57,11 +57,8 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 
 	@Override
 	public void modifyForm(String userid, Model model) {
-		// TODO Auto-generated method stub
-		
 		GgiriFreeInsertDTO dto = gfm.getBoard(userid);
 
-		
 		model.addAttribute("info", dto);
 	}
 
@@ -75,6 +72,15 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 		}
 	}
 
+	@Override
+	public void writeFreeDelete(String userid) {
+		gfm.writeFreeDelete(userid);
+	}
+
+	
+
+	
+	
 	
 	
 	
