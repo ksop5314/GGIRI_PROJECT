@@ -1,34 +1,43 @@
 
 package com.ggiri.root.project.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ggiri.root.project.dto.ProjectDTO;
+import com.ggiri.root.project.dto.ProjectRepDTO;
 import com.ggiri.root.project.service.ProjectService;
+import com.ggiri.root.session.login.GgiriMemberSession;
 
 @Controller
 @RequestMapping("ggiriProject")
-public class ProjectController {
+public class ProjectController implements GgiriMemberSession{
 	
 	@Autowired
 	private ProjectService ps;
-	
 
+	
     @RequestMapping("projectWrite")
     public String proWrite() {
         return "ggiriProject/projectWrite";
     }
 
     @GetMapping("projectView")
-    public String projectView(@RequestParam("projectNum") int projectNum, Model model) {
+    public String projectView(@RequestParam("projectNum") int projectNum, Model model) throws Exception {
         ps.projectView(projectNum, model);
         return "ggiriProject/projectView";
     }
@@ -92,4 +101,110 @@ public class ProjectController {
 
         return "ggiriProject/projectList";
     }
+    
+    
+    // 댓글
+    @PostMapping("addReply")
+    @ResponseBody
+	public int addReply(@RequestBody Map<String, Object> map, HttpSession session) {
+		
+		ProjectRepDTO dto = new ProjectRepDTO();
+		
+		String projectNum = (String) map.get("projectNum");
+		System.out.println(projectNum);
+		
+		dto.setId((String)session.getAttribute(LOGIN));
+		dto.setBno(Integer.parseInt((String)map.get("projectNum")));
+		//dto.setGrp(map.get());
+		dto.setContent((String)map.get("content"));
+		
+		int rep = ps.addReplyTest(dto);
+		
+
+		return rep;
+	}
+    
+    //value="addReply", produces="application/json; charset=UTF-8"
+    /*
+    @PostMapping("addReply")
+	public String addReply(@RequestBody Map<String, Object> map, HttpSession session) {
+		
+    	ProjectRepDTO dto = new ProjectRepDTO();
+		dto.setId((String)session.getAttribute(LOGIN));
+		dto.setWrite_num(Integer.parseInt((String)map.get("projectNum")));
+		dto.setContent((String)map.get("content"));
+		
+		ps.addReply(dto);
+		
+		return "redirect:projectView";
+	}
+    */
+    
+    //value="replyData", produces="application/json; charset=UTF-8"
+    //@PathVariable int write_num
+	@GetMapping(value="replyData", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public List<ProjectRepDTO> replyData(@RequestParam("projectNum") String bno) {
+		
+		return ps.getRepList(Integer.parseInt(bno));
+		
+	}
+    
+    // 대댓글
+	
+	@PostMapping("re_addReply")
+    @ResponseBody
+	public int re_addReply(@RequestBody Map<String, Object> map, HttpSession session) {
+		
+		ProjectRepDTO dto = new ProjectRepDTO();
+		
+		String projectNum = (String) map.get("projectNum");
+		String grp = (String) map.get("grp");
+		String grps = (String) map.get("grps");
+		String grpl = (String) map.get("grpl");
+		System.out.println(projectNum);
+		System.out.println(grp);
+		System.out.println(grps);
+		System.out.println(grpl);
+		
+		dto.setId((String)session.getAttribute(LOGIN));
+		dto.setBno(Integer.parseInt((String) map.get("projectNum")));
+		dto.setGrp(Integer.parseInt((String) map.get(grp)));
+		dto.setGrps(Integer.parseInt((String) map.get("grps")));
+		dto.setGrpl(Integer.parseInt((String) map.get("grpl")));
+		dto.setContent((String)map.get("content"));
+		
+		int re_rep = ps.re_addReplyTest(dto);
+		
+
+		return re_rep;
+	}
+ 
+	@GetMapping(value="re_replyData", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public List<ProjectRepDTO> re_replyData(@RequestParam("projectNum") String bno) {
+		
+		return ps.re_getRepList(Integer.parseInt(bno));
+		
+	}
+    
+    /*
+    String projectNum = (String) map.get("projectNum");
+		System.out.println(projectNum);
+		
+		dto.setId((String)session.getAttribute(LOGIN));
+		dto.setBno(Integer.parseInt((String)map.get("projectNum")));
+		dto.setGrp(Integer.parseInt((String)map.get("grp")));
+		dto.setGrp(Integer.parseInt((String)map.get("grps")));
+		dto.setGrp(Integer.parseInt((String)map.get("grpl")));
+		dto.setContent((String)map.get("content"));
+		
+		int re_rep = ps.re_addReplyTest(dto);
+		
+		return re_rep;
+    */
+	
+	
+	
+    
 }
