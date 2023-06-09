@@ -12,6 +12,7 @@
 *{
 	margin: 0;
 }
+
 /* #modal_wrap{
 	position: fixed;
 	z-index: 9;
@@ -30,7 +31,7 @@
 	height: 350px;
 	background: rgba(210, 240, 250, 0.9);
 } */
-div .project{
+div{
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -49,7 +50,16 @@ div .project{
 table {
 	margin-right: auto;
 	margin-left: auto;
+	
+	border-radious: 30px;
 }
+table tr{
+	border-style: hidden;
+}
+table td{
+	context-align: center;
+}
+	
 </style>
 </head>
 <body>
@@ -77,9 +87,31 @@ table {
 				</c:if>
 			</table>
 			<br>
-			<div class="project">
-				<button class="h1" type="submit" onclick="projecList()" id="pro"> 내가 완료한 프로젝트 </button>
-			</div>
+	<h1 style="text-align: center;"> 완성한 프로젝트 내용 </h1>
+	<c:forEach var="list" items="${list }">
+		<hr>
+		<table border="1">
+			<tr>
+				<th><br> 프로젝트 제목 </th>
+			</tr>
+			<tr>
+				<td id="porTitle"><br><a href="${contextPath }/ggiriComplete/completeView?completeNum=${list.completeNum }">${list.title }</a></td>
+			</tr>
+			<tr>
+				<th><br> 이런 스킬을 사용했어요. </th>
+			</tr>
+			<tr>
+				<td><br><pre><c:out value="${list.skill }"/></pre></td>
+			</tr>
+			<tr>
+				<th><br> 함께 진행한 팀원들을 소개할게요. </th>
+			</tr>
+			<tr>
+				<td><br>${list.members }</td>
+			</tr>
+			
+		</table>
+		</c:forEach>
 	
 	<c:import url="../default/footer.jsp"/>
 </body>

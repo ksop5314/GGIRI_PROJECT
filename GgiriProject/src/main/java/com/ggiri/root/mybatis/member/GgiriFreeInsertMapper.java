@@ -26,5 +26,5 @@ public interface GgiriFreeInsertMapper {
 	
 	public void writeFreeDelete(String userid);
 	
-//	public CompleteDTO  
+	public List<CompleteDTO> getProject(String userid);
 }

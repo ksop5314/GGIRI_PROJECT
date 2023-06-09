@@ -61,7 +61,7 @@
 	</delete>
 	
 	
-	<select id="usercompleteProject" resultMap="complete">
+	<select id="getProject" resultMap="complete">
 		SELECT * FROM ggiriComplete WHERE id=#{id}
 	</select>
 </mapper>
