@@ -53,7 +53,16 @@ table tr{
 				<td><input type="hidden" id="name" name="name" value="${loginUser }" readonly></td>
 			</tr>
 			<tr> 
-				<th>작성자 </th><td><input type="text" name="id" id="id" value="${loginUser }" readonly></td>
+				<c:if test="${loginUser != null}">
+					<th>작성자 </th><td><input type="text" name="id" id="id" value="${loginUser }" readonly></td>
+				</c:if>
+				<c:if test="${kakaoMember != null}">
+					<th>작성자 </th><td><input type="text" name="id" id="id" value="${kakaoMember.id }" readonly></td>
+				</c:if>
+				<c:if test="${naverMember != null}">
+					<th>작성자 </th><td><input type="text" name="id" id="id" value="${naverMember.id}" readonly></td>
+				</c:if>
+				
 			</tr>
 			<tr>
 				<th>자기소개  </th><td><input type="text" name="introduce" id="introduce" placeholder="한줄로 자기소개 해주세요!" maxlength="20"></td>
