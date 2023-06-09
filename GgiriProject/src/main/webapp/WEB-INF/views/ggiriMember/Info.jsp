@@ -30,7 +30,10 @@
 	height: 350px;
 	background: rgba(210, 240, 250, 0.9);
 } */
-
+div .project{
+	margin-right: auto;
+	margin-left: auto;
+}
 #id{
 	margin-right: auto;
 	margin-left: auto;
@@ -63,6 +66,9 @@ table {
 					<td><b>가능한 기술 : </b>"${info.skill }"</td>
 				</tr>
 				<tr>
+				<tr>
+					<td><b>${info.id}님의 깃주소 : </b><a href="${info.url_name }" target="_blank">${info.url_name }</a></td>
+				</tr>
 				<c:set var="id" value="${info.id }"/>
 				<c:if test="${info.id == loginUser }">
 				<tr>
@@ -71,7 +77,9 @@ table {
 				</c:if>
 			</table>
 			<br>
-			
+			<div class="project">
+				<button class="h1" type="submit" onclick="projecList()" id="pro"> 내가 완료한 프로젝트 </button>
+			</div>
 	
 	<c:import url="../default/footer.jsp"/>
 </body>
