@@ -16,6 +16,33 @@
 		<result property="id" column="id"/>
 	</resultMap>
 	
+	<select id="completeList" resultMap="complete">
+		SELECT * FROM ggiriComplete
+	</select>
+	
+	<select id="comView" resultMap="complete">
+		SELECT * FROM ggiriComplete WHERE completeNum=#{completeNum}
+	</select>
+	
+	<insert id="insertCom">
+		INSERT INTO ggiriComplete(completeNum, title, content, skill, members, tag, comdate, id)
+		VALUES(ggiriComplete_seq.nextval, #{title}, #{content}, #{skill}, #{members}, #{tag}, #{comdate}, #{id})
+	</insert>
+	
+	<update id="comHit">
+		UPDATE ggiriComplete SET comHit=comHit+1 WHERE completeNum=#{completeNum}
+	</update>
+	
+	<update id="modify">
+		UPDATE ggiriComplete SET title=#{title}, content=#{content}, skill=#{skill}, tag=#{tag}
+		WHERE completeNum=#{completeNum}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM ggiriComplete WHERE completeNum=#{completeNum}
+	</delete>
+	
+	
 	
 	
 </mapper>
