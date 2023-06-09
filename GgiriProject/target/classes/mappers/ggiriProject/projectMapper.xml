@@ -136,27 +136,27 @@
 	
 	<!-- 댓글 -->
 	<insert id="addReply">
-		INSERT INTO reply(id, content, write_num)
+		INSERT INTO ggiriReply(id, content, write_num)
 		VALUES(#{id}, #{content}, #{write_num})
 	</insert>
 	
 	<insert id="addReplyTest">
-		INSERT INTO reply(no, bno, grp, grps, grpl, id, content)
-		VALUES(reply_seq.nextval, #{bno}, #{grp}, 0, 0, #{id}, #{content})
+		INSERT INTO ggiriReply(no, bno, id, content)
+		VALUES(reply_seq.nextval, #{bno}, #{id}, #{content})
 	</insert>
 	
 	<select id="getRepList" resultMap="reply">
-		SELECT * FROM reply WHERE bno=#{bno}
+		SELECT * FROM ggiriReply WHERE bno=#{bno}
 	</select>
 	
 	<!-- 대댓글 -->
 	<insert id="re_addReplyTest">
-		INSERT INTO reply(bno, grp, grps, grpl, id, content)
-		VALUES(#{bno}, #{grp}, 0, #{grpl}, #{id}, #{content})
+		INSERT INTO ggiriReply(bno, id, content)
+		VALUES(#{bno}, #{id}, #{content})
 	</insert>
 	
 	<select id="re_getRepList" resultMap="reply">
-		SELECT * FROM reply WHERE bno=#{bno}
+		SELECT * FROM ggiriReply WHERE bno=#{bno}
 	</select>
 	
 </mapper>

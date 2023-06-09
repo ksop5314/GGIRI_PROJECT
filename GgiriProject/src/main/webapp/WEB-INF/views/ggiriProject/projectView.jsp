@@ -38,6 +38,8 @@
 		var id = $("#id").val();
 		var content = $("#content").val();
 		
+		console.log(id);
+		
 		
 		let form = { projectNum:projectNum, id:id, content:content}
 		
@@ -142,13 +144,10 @@
 		var contextPath = "${pageContext.request.contextPath}";
 		
 		var projectNum = $("#projectNum").val();
-		var grp = $("#grp").val();
-		var grps = $("#grps").val();
-		var grpl = $("#grpl").val();
 		var id = $("#id").val();
 		var content = $("#content").val();
 		
-		let form = { projectNum:projectNum, grp:grp, grps:grps, grpl:grpl, id:id, content:content }
+		let form = { projectNum:projectNum, id:id, content:content }
 		
 		$.ajax({
 			url: contextPath + "/ggiriProject/re_addReply", 
@@ -175,7 +174,7 @@
 		var projectNum = $("#projectNum").val();
 		
 		$.ajax({
-			url: contextPath + "/ggiriProject/re_replyData?projectNum=" + projectNum, type: "get",
+			url: contextPath + "/ggiriProject/re_replyData?projectNum=" + projectNum + "&no=" + no, type: "get",
 			success: function(re_rep) {
 				let rehtml = ""
 				$(re_rep).each(function(index, redata) {
@@ -260,10 +259,20 @@ table { border-collapse: collapse; }
 				<div style="width: 1000px; margin: 0 auto; padding-top: 20px;">
 					<form id="frm">
 						<input type="hidden" name="projectNum" id="projectNum"  value="${data.projectNum }">
-						<input type="hidden" name="id" id="id" value="${data.id }">
 						<b>댓글을 작성해보세요.</b>
 						<hr>
-						<b>작성자 : ${loginUser }</b><br>
+						<c:if test="${loginUser != null}">
+							<b>작성자 : ${loginUser }</b><br>
+							<input type="hidden" name="id" id="id" value="${loginUser }">
+						</c:if>
+						<c:if test="${kakaoMember != null}">
+							<b>작성자 : ${kakaoMember.id }</b><br>
+							<input type="hidden" name="id" id="id" value="${kakaoMember.id }">
+						</c:if>
+						<c:if test="${naverMember != null}">
+							<b>작성자 : ${naverMember.id }</b><br>
+							<input type="hidden" name="id" id="id" value="${naverMember.id }">
+						</c:if><br>
 						<div>
 							<textarea id="content" name="content" rows="3" cols="100"></textarea> &nbsp;
 							<button type="button" onclick="rep()">등 록</button> &nbsp;

@@ -49,6 +49,10 @@
 		UPDATE ggirimember SET name=#{name}, pwd=#{pwd}, birth=#{birth}, gender=#{gender}, email=#{email}, tel=#{tel}, addr=#{addr} WHERE id=#{id}
 	</update>
 	
+	<select id="allMember" resultMap="ggiri">
+		SELECT * FROM ggirimember WHERE id!=#{id}
+	</select>
+	
 	<!-- Kakao -->
 	
 	<select id="findKakao" resultType="integer">
