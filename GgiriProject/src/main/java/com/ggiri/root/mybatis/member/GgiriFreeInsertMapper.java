@@ -25,4 +25,5 @@ public interface GgiriFreeInsertMapper {
 	
 	public void writeFreeDelete(String userid);
 	
+//	public ggiriComplete
 }
