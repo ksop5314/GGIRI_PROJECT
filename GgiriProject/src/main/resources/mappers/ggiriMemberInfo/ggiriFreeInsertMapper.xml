@@ -44,6 +44,10 @@
 		 WHERE id =#{id}
 	</update>
 	
+	<delete id="writeFreeDelete">
+		DELETE ggiriFree_insert WHERE id =#{id}
+	</delete>
+	
 </mapper>
 
 

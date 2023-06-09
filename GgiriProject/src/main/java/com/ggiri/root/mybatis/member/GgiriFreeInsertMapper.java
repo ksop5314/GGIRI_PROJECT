@@ -23,4 +23,6 @@ public interface GgiriFreeInsertMapper {
 		
 	public int writeFreeModify(GgiriFreeInsertDTO dto);	
 	
+	public void writeFreeDelete(String userid);
+	
 }
