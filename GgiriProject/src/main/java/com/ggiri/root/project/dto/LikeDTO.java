@@ -1,15 +1,16 @@
-package com.ggiri.root.picture;
+package com.ggiri.root.project.dto;
 
-public class PictureHeartTO {
-	private String hno;
+public class LikeDTO {
+
+	private String likeId;
 	private String projectNo;
 	private String userid;
 	
-	public String getHno() {
-		return hno;
+	public String getLikeId() {
+		return likeId;
 	}
-	public void setHno(String hno) {
-		this.hno = hno;
+	public void setHno(String likeId) {
+		this.likeId = likeId;
 	}
 	public String getProjectNo() {
 		return projectNo;

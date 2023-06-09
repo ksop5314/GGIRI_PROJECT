@@ -1,6 +1,6 @@
-package com.ggiri.root.picture;
+package com.ggiri.root.project.dto;
 
-public class PictureTO {
+public class PictureDTO {
 	private String projectNum;
 	private String subject;
 	private String content;
@@ -77,7 +77,7 @@ public class PictureTO {
 	public String getProjectNum() {
 		return projectNum;
 	}
-	public void setProjectNumo(String no) {
+	public void setProjectNum(String projectNum) {
 		this.projectNum = projectNum;
 	}
 	public String getSubject() {

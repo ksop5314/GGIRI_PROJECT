@@ -376,6 +376,12 @@ public class GgiriController implements GgiriMemberSession {
 	public String modifySuccess() {
 		return "ggiriMember/modifySuccess";
 	}
+	@GetMapping("writeFreeDelete")
+	public String writeFreeDelete(@RequestParam("id") String userid) {
+		gfs.writeFreeDelete(userid);
+		return "ggiriMember/writeFreeDelete";
+	}
+	
 	// 안태준 끝
 
 	@PostMapping("findEmail")
