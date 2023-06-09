@@ -6,4 +6,5 @@ public interface LikeMapper {
 	void saveHeart(String projectNum, String userid);
 	boolean isLiked(String projectNum, String userid);
 	void removeHeart(String projectNum, String userid);
+	int getLikeCount(String projectNum);
 }

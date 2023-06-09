@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 
 import com.ggiri.root.project.dto.ProjectDTO;
+import com.ggiri.root.project.dto.LikeDTO;
 import com.ggiri.root.project.dto.PictureDTO;
 
 public interface ProjectMapper {

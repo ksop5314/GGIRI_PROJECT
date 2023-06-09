@@ -10,7 +10,7 @@ public class PictureDTO {
 	private String location;
 	private String media;
 	private String reply;
-	private String heart;
+	private int heart;
 	
 	// 현재사용자가 좋아요 누른건지 아닌지
 	private String hno;
@@ -128,11 +128,15 @@ public class PictureDTO {
 	public void setReply(String reply) {
 		this.reply = reply;
 	}
-	public String getHeart() {
+	public int getHeart() {
 		return heart;
 	}
-	public void setHeart(String heart) {
+	public void setHeart(int heart) {
 		this.heart = heart;
+	}
+	public void setHeartCount(int heartCount) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

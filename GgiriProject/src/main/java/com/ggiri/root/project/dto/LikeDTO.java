@@ -9,7 +9,7 @@ public class LikeDTO {
 	public String getLikeId() {
 		return likeId;
 	}
-	public void setHno(String likeId) {
+	public void setgetLikeId(String likeId) {
 		this.likeId = likeId;
 	}
 	public String getProjectNo() {
@@ -24,4 +24,5 @@ public class LikeDTO {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
+	
 }

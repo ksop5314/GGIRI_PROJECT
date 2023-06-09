@@ -19,9 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ggiri.root.mybatis.picture.PictureHeartTO;
-import com.ggiri.root.mybatis.picture.PictureTO;
-import com.ggiri.root.project.VO.LikeVO;
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.service.ProjectService;
 import com.ggiri.root.project.service.ProjectServiceImpl;

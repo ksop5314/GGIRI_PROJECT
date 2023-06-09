@@ -13,7 +13,7 @@ import com.ggiri.root.project.dto.PictureDTO;
 @Service
 public class LikeServiceImpl implements LikeService {
 
-	private final LikeMapper likeMapper;
+    private final LikeMapper likeMapper;
     private final ProjectMapper projectMapper;
 
     @Autowired
@@ -40,16 +40,14 @@ public class LikeServiceImpl implements LikeService {
         // +1된 하트 개수를 담아오기
         int heartCount = likeMapper.getLikeCount(projectNum);
 
-        // PictureDTO 객체 생성 및 반환
-        PictureDTO pictureDTO = projectMapper.getPicture(projectNum);
-        pictureDTO.setHeartCount(heartCount);
+        LikeDTO likeDTO = projectMapper.getPicture(projectNum);
+        LikeDTO.setHeart(heartCount);
 
-        return pictureDTO;
+        return LikeDTO;
     }
 
-
     @Override
-    public LikeDTO removeHeart(String projectNum, HttpSession session) {
+    public PictureDTO removeHeart(String projectNum, HttpSession session) {
         String userid = (String) session.getAttribute("likeId");
 
         // 좋아요를 이미 눌렀는지 확인
@@ -66,34 +64,10 @@ public class LikeServiceImpl implements LikeService {
         // -1된 하트 개수를 담아오기
         int heartCount = likeMapper.getLikeCount(projectNum);
 
-        // PictureTO 객체 생성 및 반환
+        // PictureDTO 객체 생성 및 반환
         PictureDTO pictureDTO = projectMapper.getPicture(projectNum);
         pictureDTO.setHeartCount(heartCount);
 
         return pictureDTO;
-	}
-	
-	
+    }
 }
-//    private final LikeDTO heartDao;
-//    public LikeServiceImpl(LikeDTO heartDao) {
-//        this.heartDao = heartDao;
-//    }
-//    @Override
-//    public PictureTO saveHeart(String no, HttpSession session) {
-//    	LikeDTO to = new LikeDTO();
-//        to.setBno(no);
-//        to.setUserid((String) session.getAttribute("nick"));
-//        PictureTO pto = heartDao.pictureSaveHeart(to);
-//        return pto;
-//    }
-//
-//    @Override
-//    public PictureTO removeHeart(String projectNum, HttpSession session) {
-//    	LikeDTO to = new LikeDTO();
-//        to.setBno(projectNum);
-//        to.setUserid((String) session.getAttribute("nick"));
-//        PictureTO pto = heartDao.pictureRemoveHeart(to);
-//        return pto;
-//    }
-//}
