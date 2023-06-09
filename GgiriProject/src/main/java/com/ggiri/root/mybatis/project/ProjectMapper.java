@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Param;
 
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.LikeDTO;
-import com.ggiri.root.project.dto.PictureDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
 
 public interface ProjectMapper {
@@ -67,7 +66,7 @@ public interface ProjectMapper {
 
 	int getLikeIdByUser(int projectNum, String id);
 
-	PictureDTO getPicture(String projectNum);
+	LikeDTO getPicture(String projectNum);
 	
 
 

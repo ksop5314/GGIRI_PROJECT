@@ -67,7 +67,6 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public int getProjectCount() {
         return pm.getProjectCount();
-<<<<<<< HEAD
     }
     
     @Autowired
@@ -88,9 +87,6 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
 
-=======
-    }	
-    
     // 댓글
 //    @Override
 //	public void addReply(ProjectRepDTO dto) {
@@ -118,8 +114,13 @@ public class ProjectServiceImpl implements ProjectService {
 	public List<ProjectRepDTO> re_getRepList(int bno) {
 		return pm.re_getRepList(bno);
 	}
-	
-    
->>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
+
+    //게시글 추천관련 메소드 구현
+    @Override
+    public void recommend(int member_bno) throws Exception {
+       return;
+        
+    }
+ 
 }
 

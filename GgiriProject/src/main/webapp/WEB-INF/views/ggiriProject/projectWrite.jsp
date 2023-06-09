@@ -84,6 +84,7 @@ h3 {
 	<div class="wrap write_form">
 <!-- 	<h1>프로젝트 등록</h1> -->		
 		<div class="write_save">
+<<<<<<< HEAD
 			<form action="../ggiriProject/projectSave" method="post"><br>
 				<h3> 제 목 </h3>
 				<input type="text" name="title" size="50"><br><br><hr><br>
@@ -176,6 +177,22 @@ h3 {
 						</li>
 					</ul>
 				<h3> 내 용 </h3><br>
+=======
+			<form action="../ggiriProject/projectSave" method="post">
+				<b> 작성자 </b><br>
+				<c:if test="${loginUser != null}">
+				<input type="text" name="id" id="id" value="${loginUser }" readonly>
+				</c:if>
+				<c:if test="${kakaoMember != null}">
+				<input type="text" name="id" id="id" value="${kakaoMember.id }" readonly>
+				</c:if>
+				<c:if test="${naverMember != null}">
+				<input type="text" name="id" id="id" value="${naverMember.id}" readonly>
+				</c:if><br>
+				<b> 제 목 </b><br>
+				<input type="text" name="title" size="50"><br>
+				<b> 내 용 </b><br>
+>>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
 				<textarea rows="20" cols="100" name="content"></textarea><br>
 				<br>
 				<div id="select">

@@ -7,8 +7,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import javax.servlet.http.HttpSession;
-
 import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,29 +24,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
 import com.ggiri.root.project.service.ProjectService;
-<<<<<<< HEAD
 import com.ggiri.root.project.service.ProjectServiceImpl;
-=======
 import com.ggiri.root.session.login.GgiriMemberSession;
->>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
 
 @Controller
 @RequestMapping("ggiriProject")
-<<<<<<< HEAD
-public class ProjectController {
-
-=======
 public class ProjectController implements GgiriMemberSession{
 	
->>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
 	@Autowired
 	private ProjectService ps;
-<<<<<<< HEAD
 	
 	@Autowired
 	private ProjectServiceImpl projectService;
-=======
->>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
 
 	
     @RequestMapping("projectWrite")
@@ -57,11 +44,7 @@ public class ProjectController implements GgiriMemberSession{
     }
 
     @GetMapping("projectView")
-<<<<<<< HEAD
     public String projectView(@RequestParam("projectNum") int projectNum, Model model, HttpSession session) {
-=======
-    public String projectView(@RequestParam("projectNum") int projectNum, Model model) throws Exception {
->>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
         ps.projectView(projectNum, model);
 
 //        // likeId 값 설정
@@ -132,43 +115,50 @@ public class ProjectController implements GgiriMemberSession{
         return "ggiriProject/projectList";
     }
     
+  //게시물 추천 관련 메소드
+    @RequestMapping("/board/recommend.do")
+    public String recommend (@RequestParam int member_bno) throws Exception {
+        
+        projectService.recommend(member_bno);
     
-<<<<<<< HEAD
-    @ResponseBody
-	@RequestMapping(value = "/saveHeart.do")
-	public PictureTO save_heart(@RequestParam String no, HttpSession session) {
+        return "forward:/board/list.do"; //페이지값을 그대로 넘겨받기위해서 포워딩을 사용해 컨트롤러로 리턴시킨다.
+    }
 
-	    PictureHeartTO to = new PictureHeartTO();
-
-	    // 게시물 번호 세팅
-	    to.setBno(no);
-
-	    // 좋아요 누른 사람 nick을 userid로 세팅
-	    to.setUserid((String) session.getAttribute("nick"));
-
-	    // +1된 하트 갯수를 담아오기위함
-	    PictureTO pto = heartDao.pictureSaveHeart(to);
-
-	    return pto;
-	}
-
-	// 꽉찬하트 클릭시 하트 해제
-	@ResponseBody
-	@RequestMapping(value = "/removeHeart.do")
-	public PictureTO remove_heart(@RequestParam String projectNum, HttpSession session) {
-	    PictureHeartTO to = new PictureHeartTO();
-
-	    // 게시물 번호 세팅
-	    to.setBno(projectNum);
-
-	    // 좋아요 누른 사람 nick을 userid로 세팅
-	    to.setUserid((String) session.getAttribute("nick"));
-
-	    // -1된 하트 갯수를 담아오기위함
-	    PictureTO pto = heartDao.pictureRemoveHeart(to);
-
-	    return pto;
-	}
+//    @ResponseBody
+//	@RequestMapping(value = "/saveHeart.do")
+//	public PictureTO save_heart(@RequestParam String no, HttpSession session) {
+//
+//	    PictureHeartTO to = new PictureHeartTO();
+//
+//	    // 게시물 번호 세팅
+//	    to.setBno(no);
+//
+//	    // 좋아요 누른 사람 nick을 userid로 세팅
+//	    to.setUserid((String) session.getAttribute("nick"));
+//
+//	    // +1된 하트 갯수를 담아오기위함
+//	    PictureTO pto = heartDao.pictureSaveHeart(to);
+//
+//	    return pto;
+//	}
+//
+//	// 꽉찬하트 클릭시 하트 해제
+//	@ResponseBody
+//	@RequestMapping(value = "/removeHeart.do")
+//	public PictureTO remove_heart(@RequestParam String projectNum, HttpSession session) {
+//	    PictureHeartTO to = new PictureHeartTO();
+//
+//	    // 게시물 번호 세팅
+//	    to.setBno(projectNum);
+//
+//	    // 좋아요 누른 사람 nick을 userid로 세팅
+//	    to.setUserid((String) session.getAttribute("nick"));
+//
+//	    // -1된 하트 갯수를 담아오기위함
+//	    PictureTO pto = heartDao.pictureRemoveHeart(to);
+//
+//	    return pto;
+//	}
 
 //    @PostMapping("/project/increase-like-count/{projectNum}")
 //    @ResponseBody
@@ -203,7 +193,6 @@ public class ProjectController implements GgiriMemberSession{
 //        return "success";
 //    }
 //    
-=======
     // 댓글
     @PostMapping("addReply")
     @ResponseBody
@@ -216,7 +205,6 @@ public class ProjectController implements GgiriMemberSession{
 		
 		dto.setId((String)session.getAttribute(LOGIN));
 		dto.setBno(Integer.parseInt((String)map.get("projectNum")));
-		//dto.setGrp(map.get());
 		dto.setContent((String)map.get("content"));
 		
 		int rep = ps.addReplyTest(dto);
@@ -225,24 +213,6 @@ public class ProjectController implements GgiriMemberSession{
 		return rep;
 	}
     
-    //value="addReply", produces="application/json; charset=UTF-8"
-    /*
-    @PostMapping("addReply")
-	public String addReply(@RequestBody Map<String, Object> map, HttpSession session) {
-		
-    	ProjectRepDTO dto = new ProjectRepDTO();
-		dto.setId((String)session.getAttribute(LOGIN));
-		dto.setWrite_num(Integer.parseInt((String)map.get("projectNum")));
-		dto.setContent((String)map.get("content"));
-		
-		ps.addReply(dto);
-		
-		return "redirect:projectView";
-	}
-    */
-    
-    //value="replyData", produces="application/json; charset=UTF-8"
-    //@PathVariable int write_num
 	@GetMapping(value="replyData", produces="application/json; charset=UTF-8")
 	@ResponseBody
 	public List<ProjectRepDTO> replyData(@RequestParam("projectNum") String bno) {
@@ -260,19 +230,10 @@ public class ProjectController implements GgiriMemberSession{
 		ProjectRepDTO dto = new ProjectRepDTO();
 		
 		String projectNum = (String) map.get("projectNum");
-		String grp = (String) map.get("grp");
-		String grps = (String) map.get("grps");
-		String grpl = (String) map.get("grpl");
 		System.out.println(projectNum);
-		System.out.println(grp);
-		System.out.println(grps);
-		System.out.println(grpl);
 		
 		dto.setId((String)session.getAttribute(LOGIN));
 		dto.setBno(Integer.parseInt((String) map.get("projectNum")));
-		dto.setGrp(Integer.parseInt((String) map.get(grp)));
-		dto.setGrps(Integer.parseInt((String) map.get("grps")));
-		dto.setGrpl(Integer.parseInt((String) map.get("grpl")));
 		dto.setContent((String)map.get("content"));
 		
 		int re_rep = ps.re_addReplyTest(dto);
@@ -305,8 +266,4 @@ public class ProjectController implements GgiriMemberSession{
 		return re_rep;
     */
 	
-	
-	
-    
->>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
 }

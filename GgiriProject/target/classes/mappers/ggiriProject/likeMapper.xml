@@ -4,29 +4,45 @@
   
 <mapper namespace="com.ggiri.root.mybatis.project.LikeMapper">
 
-    <insert id="insertLike" parameterType="com.ggiri.root.project.VO.LikeVO">
-        INSERT INTO project_like (board_no, user_no) VALUES (#{board_no}, #{user_no})
-    </insert>
-    
-    <delete id="deleteLike" parameterType="com.ggiri.root.project.VO.LikeVO">
-        DELETE FROM project_like WHERE board_no = #{board_no} AND user_no = #{user_no}
-    </delete>
-    
-    <select id="getLikeCount" parameterType="int" resultType="int">
-        SELECT COUNT(*) FROM project_like WHERE board_no = #{projectNum}
-    </select>
-    
-	<!-- 좋아요 눌럿는지 안눌럿는지 -->
-	<select id="findLike" resultType="int">
-		select count(*) from project_like where board_no = #{board_no} and user_no = #{user_no}
+<!-- 	<resultMap type="com.ggiri.root.project.dto.ProjectDTO" id="project">
+		<id property="projectNum" column="projectNum"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="prodate" column="prodate"/>
+		<result property="proHit" column="proHit"/>
+		<result property="id" column="id"/>
+	</resultMap> -->
+	
+	<resultMap type="com.ggiri.root.project.dto.LikeDTO" id="like">
+		<id property="likeId" column="likeId"/>
+		<result property="projectNo" column="projectNo"/>
+		<result property="userid" column="userid"/>
+	</resultMap>
+	 
+	 <!-- 좋아요 추가 -->
+	<insert id="picture_heart_save">
+	    insert into likeTable(likeId, projectNo, userid) VALUES(#{likeId}, #{projectNo}, #{userid})
+	</insert>
+	<update id="picture_heart_up" parameterType="com.ggiri.root.project.dto.ProjectDTO">
+	    update ggiriProject set heart=heart+1 
+	    where projectNum=#{projectNum}
+	</update>
+	
+	<!-- 좋아요 삭제 -->
+	<delete id="picture_heart_remove" parameterType="com.ggiri.root.project.dto.LikeDTO">
+	    delete from likeTable
+	    where projectNo=#{projectNo} and userid=#{userid}
+	</delete>
+	<update id="picture_heart_down" parameterType="com.ggiri.root.project.dto.ProjectDTO">
+	    update ggiriProject set heart=heart-1 
+	    where projectNum=#{projectNum}
+	</update>
+	
+	<!-- 좋아요 추가/삭제시 좋아요 갯수 가져오기 -->
+	<select id="picture_heart_count" parameterType="com.ggiri.root.project.dto.ProjectDTO" resultType="com.ggiri.root.project.dto.ProjectDTO">
+	    select heart 
+	    from ggiriProject
+	    where projectNum=#{projectNum}
 	</select>
 	
-	<insert id="likeUp">
-		insert into project_like (like_no ,board_no , user_no, freeboard_like)
-		values((select * from (select max(like_no)+1 from project_like) next), #{board_no},#{user_no},1)
-	</insert>
-	
-	<delete id="likeDown">
-	  	delete from project_like where board_no = #{board_no} and user_no = #{user_no} 
-	</delete>
 </mapper>

@@ -24,5 +24,11 @@ public class LikeDTO {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
+	public static void setHeart(int heartCount) {
+		
+	}
+	public void setHeartCount(int heartCount) {
+
+	}
 	
 }
