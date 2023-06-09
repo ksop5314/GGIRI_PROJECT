@@ -335,6 +335,7 @@ public class GgiriController implements GgiriMemberSession {
 	@GetMapping("Info")
 	public String MemberList(@RequestParam("id") String userid, Model model) {
 		gfs.Info(userid ,model);
+		gfs.projectInfo(userid, model);
 		return "ggiriMember/Info";
 	}
 //	@GetMapping(value="developer/{job}", produces="application/json; charset=utf-8")
@@ -391,6 +392,8 @@ public class GgiriController implements GgiriMemberSession {
 		gfs.writeFreeDelete(userid);
 		return "ggiriMember/writeFreeDelete";
 	}
+	
+	
 	
 	// 안태준 끝
 
