@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
+import com.ggiri.root.project.dto.ReprepDTO;
 
 public interface ProjectService {
 
@@ -36,8 +37,8 @@ public interface ProjectService {
 	public List<ProjectRepDTO> getRepList(int bno);
 	
 	// 대댓글
-	public int re_addReplyTest(ProjectRepDTO dto);
-    public List<ProjectRepDTO> re_getRepList(int bno);
+	public int re_addReplyTest(ReprepDTO dto);
+    public List<ReprepDTO> re_getRepList(int bno);
 	
 	
 }

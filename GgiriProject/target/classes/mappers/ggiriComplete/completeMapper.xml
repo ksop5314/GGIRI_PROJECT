@@ -34,7 +34,7 @@
 	</update>
 	
 	<update id="modify">
-		UPDATE ggiriComplete SET title=#{title}, content=#{content}, skill=#{skill}, tag=#{tag}
+		UPDATE ggiriComplete SET title=#{title}, content=#{content}, skill=#{skill}, members=#{members}, tag=#{tag}
 		WHERE completeNum=#{completeNum}
 	</update>
 	

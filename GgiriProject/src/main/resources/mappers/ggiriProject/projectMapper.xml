@@ -16,12 +16,18 @@
 	<resultMap type="com.ggiri.root.project.dto.ProjectRepDTO" id="reply">
 		<result property="no" column="no"/>
 		<result property="bno" column="bno"/>
-		<result property="grp" column="grp"/>
-		<result property="grps" column="grps"/>
-		<result property="grpl" column="grpl"/>
 		<result property="id" column="id"/>
 		<result property="content" column="content"/>
 		<result property="wdate" column="wdate"/>
+	</resultMap>
+	
+	<resultMap type="com.ggiri.root.project.dto.ReprepDTO" id="re_reply">
+		<result property="no" column="no"/>
+		<result property="r_no" column="r_no"/>
+		<result property="r_bno" column="r_bno"/>
+		<result property="id" column="id"/>
+		<result property="content" column="content"/>
+		<result property="rdate" column="rdate"/>
 	</resultMap>
 
 
@@ -114,35 +120,10 @@
 	    WHERE rnum &gt;= #{startRow}
 	</select>
 
-	<!-- <select id="searchByTitleAndContent" resultType="ProjectDTO">
-	    SELECT *
-	    FROM project
-	    WHERE title LIKE CONCAT('%', #{keyword}, '%')
-	        OR content LIKE CONCAT('%', #{keyword}, '%')
-	</select>
-	
-	<select id="searchByTitle" resultType="ProjectDTO">
-	    SELECT *
-	    FROM project
-	    WHERE title LIKE CONCAT('%', #{keyword}, '%')
-	</select>
-
-	
-	<select id="searchByAuthor" resultType="ProjectDTO">
-	    SELECT *
-	    FROM project
-	    WHERE id LIKE CONCAT('%', #{keyword}, '%')
-	</select> -->
-	
 	<!-- 댓글 -->
-	<insert id="addReply">
-		INSERT INTO reply(id, content, write_num)
-		VALUES(#{id}, #{content}, #{write_num})
-	</insert>
-	
 	<insert id="addReplyTest">
-		INSERT INTO reply(no, bno, grp, grps, grpl, id, content)
-		VALUES(reply_seq.nextval, #{bno}, #{grp}, 0, 0, #{id}, #{content})
+		INSERT INTO reply(no, bno, id, content)
+		VALUES(reply_seq.nextval, #{bno}, #{id}, #{content})
 	</insert>
 	
 	<select id="getRepList" resultMap="reply">
@@ -151,12 +132,12 @@
 	
 	<!-- 대댓글 -->
 	<insert id="re_addReplyTest">
-		INSERT INTO reply(bno, grp, grps, grpl, id, content)
-		VALUES(#{bno}, #{grp}, 0, #{grpl}, #{id}, #{content})
+		INSERT INTO  re_reply(no, r_no, r_bno, id, content)
+		VALUES(re_reply_seq.nextval, 0, #{r_bno}, #{id}, #{content})
 	</insert>
 	
-	<select id="re_getRepList" resultMap="reply">
-		SELECT * FROM reply WHERE bno=#{bno}
+	<select id="re_getRepList" resultMap="re_reply">
+		SELECT * FROM re_reply WHERE r_bno=#{r_bno}
 	</select>
 	
 </mapper>

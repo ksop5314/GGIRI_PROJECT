@@ -18,7 +18,15 @@
 			<form action="../ggiriProject/modify" method="post">
 				<input type="hidden" name="projectNum" value="${data.projectNum }">
 				<b> 작성자 </b><br>
-				<input type="text" name="id" value="${loginUser }"><br>
+				<c:if test="${loginUser != null}">
+				<input type="text" name="id" id="id" value="${loginUser }" readonly>
+				</c:if>
+				<c:if test="${kakaoMember != null}">
+				<input type="text" name="id" id="id" value="${kakaoMember.id }" readonly>
+				</c:if>
+				<c:if test="${naverMember != null}">
+				<input type="text" name="id" id="id" value="${naverMember.id}" readonly>
+				</c:if><br>
 				<b> 제 목 </b><br>
 				<input type="text" name="title" size="50" value="${data.title }"><br>
 				<b> 내 용 </b><br>

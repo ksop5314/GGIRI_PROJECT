@@ -13,7 +13,7 @@ public interface CompleteService {
 	
 	public void insertCom(CompleteDTO dto);
 	
-	public void modify(CompleteDTO dto);
+	public int modify(CompleteDTO dto);
 	
 	public void delete(int completeNum);
 	

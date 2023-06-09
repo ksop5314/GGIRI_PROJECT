@@ -2,10 +2,12 @@ package com.ggiri.root.mybatis.project;
 
 import java.util.List;
 import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
+import com.ggiri.root.project.dto.ReprepDTO;
 
 public interface ProjectMapper {
 
@@ -50,8 +52,8 @@ public interface ProjectMapper {
     public int addReplyTest(ProjectRepDTO dto);
 	public List<ProjectRepDTO> getRepList(int bno);
 	// 대댓글
-	public int re_addReplyTest(ProjectRepDTO dto);
-	public List<ProjectRepDTO> re_getRepList(int bno);
+	public int re_addReplyTest(ReprepDTO dto);
+	public List<ReprepDTO> re_getRepList(int bno);
     
     
     

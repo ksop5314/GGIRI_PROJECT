@@ -10,12 +10,14 @@ import org.springframework.ui.Model;
 import com.ggiri.root.mybatis.project.ProjectMapper;
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
+import com.ggiri.root.project.dto.ReprepDTO;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
 	@Autowired
 	private ProjectMapper pm;
+	
 	
 	@Override
 	public void projectList(Model model) {
@@ -89,12 +91,12 @@ public class ProjectServiceImpl implements ProjectService {
     
 	// 대댓글
 	@Override
-	public int re_addReplyTest(ProjectRepDTO dto) {
+	public int re_addReplyTest(ReprepDTO dto) {
 		return pm.re_addReplyTest(dto);
 	}
     
 	@Override
-	public List<ProjectRepDTO> re_getRepList(int bno) {
+	public List<ReprepDTO> re_getRepList(int bno) {
 		return pm.re_getRepList(bno);
 	}
 	

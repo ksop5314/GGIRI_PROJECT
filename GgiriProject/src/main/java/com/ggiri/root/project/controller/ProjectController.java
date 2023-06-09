@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
+import com.ggiri.root.project.dto.ReprepDTO;
 import com.ggiri.root.project.service.ProjectService;
 import com.ggiri.root.session.login.GgiriMemberSession;
 
@@ -115,7 +116,6 @@ public class ProjectController implements GgiriMemberSession{
 		
 		dto.setId((String)session.getAttribute(LOGIN));
 		dto.setBno(Integer.parseInt((String)map.get("projectNum")));
-		//dto.setGrp(map.get());
 		dto.setContent((String)map.get("content"));
 		
 		int rep = ps.addReplyTest(dto);
@@ -123,22 +123,7 @@ public class ProjectController implements GgiriMemberSession{
 
 		return rep;
 	}
-    
-    //value="addReply", produces="application/json; charset=UTF-8"
-    /*
-    @PostMapping("addReply")
-	public String addReply(@RequestBody Map<String, Object> map, HttpSession session) {
-		
-    	ProjectRepDTO dto = new ProjectRepDTO();
-		dto.setId((String)session.getAttribute(LOGIN));
-		dto.setWrite_num(Integer.parseInt((String)map.get("projectNum")));
-		dto.setContent((String)map.get("content"));
-		
-		ps.addReply(dto);
-		
-		return "redirect:projectView";
-	}
-    */
+
     
     //value="replyData", produces="application/json; charset=UTF-8"
     //@PathVariable int write_num
@@ -156,22 +141,13 @@ public class ProjectController implements GgiriMemberSession{
     @ResponseBody
 	public int re_addReply(@RequestBody Map<String, Object> map, HttpSession session) {
 		
-		ProjectRepDTO dto = new ProjectRepDTO();
+		ReprepDTO dto = new ReprepDTO();
 		
 		String projectNum = (String) map.get("projectNum");
-		String grp = (String) map.get("grp");
-		String grps = (String) map.get("grps");
-		String grpl = (String) map.get("grpl");
 		System.out.println(projectNum);
-		System.out.println(grp);
-		System.out.println(grps);
-		System.out.println(grpl);
 		
 		dto.setId((String)session.getAttribute(LOGIN));
-		dto.setBno(Integer.parseInt((String) map.get("projectNum")));
-		dto.setGrp(Integer.parseInt((String) map.get(grp)));
-		dto.setGrps(Integer.parseInt((String) map.get("grps")));
-		dto.setGrpl(Integer.parseInt((String) map.get("grpl")));
+		dto.setR_bno(Integer.parseInt((String) map.get("projectNum")));
 		dto.setContent((String)map.get("content"));
 		
 		int re_rep = ps.re_addReplyTest(dto);
@@ -182,28 +158,12 @@ public class ProjectController implements GgiriMemberSession{
  
 	@GetMapping(value="re_replyData", produces="application/json; charset=UTF-8")
 	@ResponseBody
-	public List<ProjectRepDTO> re_replyData(@RequestParam("projectNum") String bno) {
+	public List<ReprepDTO> re_replyData(@RequestParam("projectNum") String r_bno) {
 		
-		return ps.re_getRepList(Integer.parseInt(bno));
+		return ps.re_getRepList(Integer.parseInt(r_bno));
 		
 	}
-    
-    /*
-    String projectNum = (String) map.get("projectNum");
-		System.out.println(projectNum);
-		
-		dto.setId((String)session.getAttribute(LOGIN));
-		dto.setBno(Integer.parseInt((String)map.get("projectNum")));
-		dto.setGrp(Integer.parseInt((String)map.get("grp")));
-		dto.setGrp(Integer.parseInt((String)map.get("grps")));
-		dto.setGrp(Integer.parseInt((String)map.get("grpl")));
-		dto.setContent((String)map.get("content"));
-		
-		int re_rep = ps.re_addReplyTest(dto);
-		
-		return re_rep;
-    */
-	
+
 	
 	
     

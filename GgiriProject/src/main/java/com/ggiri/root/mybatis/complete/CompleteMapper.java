@@ -14,7 +14,7 @@ public interface CompleteMapper {
 	
 	public void comHit(int completeNum);
 	
-	public void modify(CompleteDTO dto);
+	public int modify(CompleteDTO dto);
 	
 	public void delete(int completeNum);
 	

@@ -52,14 +52,18 @@ public class CompleteController {
 	
 	@PostMapping("modify")
 	public String modify(CompleteDTO dto) {
-		cs.modify(dto);
-		return "redirect:/ggiriComplete/completeList";
+		int su = cs.modify(dto);
+		if(su == 1) {
+			return "redirect:completeList";
+		} 
+		return "ggiriComplete/comFail";
+		
 	}
 	
 	@GetMapping("delete")
 	public String delete(@RequestParam("completeNum") int completeNum) {
 		cs.delete(completeNum);
-		return "redirect:/ggiriComplete/completeList";
+		return "redirect:completeList";
 	}
 	
 	

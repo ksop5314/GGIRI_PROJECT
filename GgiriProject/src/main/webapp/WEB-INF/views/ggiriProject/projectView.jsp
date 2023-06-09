@@ -62,7 +62,7 @@
 				}
 			},
 			error: function() {
-				alert("댓글 등록 실패ㅠ")
+				//alert("댓글 등록 실패ㅠ")
 			}
 		})
 	}
@@ -119,16 +119,7 @@
 						html += "		</div>";
 						
 					} 
-			<%--	
-			} else {
-					html += "<div>";
-	              	html += "<h6><strong>등록된 댓글이 없습니다.</strong></h6>";
-		            html += "</div>";
-				} 
-			--%>
-				$("#rep").html(rep)
-				$("#reply").html(html)
-				
+					$("#reply").html(html)
 				
 			}, 
 			error: function() {
@@ -142,13 +133,10 @@
 		var contextPath = "${pageContext.request.contextPath}";
 		
 		var projectNum = $("#projectNum").val();
-		var grp = $("#grp").val();
-		var grps = $("#grps").val();
-		var grpl = $("#grpl").val();
 		var id = $("#id").val();
 		var content = $("#content").val();
 		
-		let form = { projectNum:projectNum, grp:grp, grps:grps, grpl:grpl, id:id, content:content }
+		let form = { projectNum:projectNum, id:id, content:content }
 		
 		$.ajax({
 			url: contextPath + "/ggiriProject/re_addReply", 
@@ -177,25 +165,26 @@
 		$.ajax({
 			url: contextPath + "/ggiriProject/re_replyData?projectNum=" + projectNum, type: "get",
 			success: function(re_rep) {
-				let rehtml = ""
-				$(re_rep).each(function(index, redata) {
-					let date = new Date(redata.wdate)
-					let wdate = date.getFullYear()+"년 "+(date.getMonth()+1)+"월 "
-					wdate += date.getDate()+"일 "+date.getHours()+"시 "
-					wdate += date.getMinutes()+"분 "+date.getSeconds()+"초"
-					rehtml += "		<div id='re_reply'>";
-					rehtml += "			<tr>";
-					rehtml += "				<th width='150px'>"+ redata.id +"님</th>";
-					rehtml += "			</tr>";
-					rehtml += "			<tr>";
-					rehtml += "				<td width='50px'>"+ redata.wdate +"</td>";
-					rehtml += "			</tr>";
-					rehtml += "			<tr>";
-					rehtml += "				<pre><td width='850px'>"+ redata.content +"</td></pre>";
-					rehtml += "			</tr>";
-					rehtml += "		</div>";
-				})
-				$("#re_reply").html(rehtml)
+				let html = ""
+				
+					for(i = 0; i < rep.length; i++){
+				
+						let date = new Date(re_rep[i].wdate)
+						let wdate = date.getFullYear()+"년 "+(date.getMonth()+1)+"월 "
+						wdate += date.getDate()+"일 "+date.getHours()+"시 "
+						wdate += date.getMinutes()+"분 "+date.getSeconds()+"초"
+						html += "		<div id='re_reply'>";
+						html += "			<table class='table'>";
+						html += "		 		<tr>";
+						html += " 					<th width='150px' height='40px'>"+ re_rep[i].id +"님</th>"+"<td width='150px'>"+ re_rep[i].wdate +"</td>";
+						html += "				</tr>";
+						html += "				<tr>";
+						html += "					<pre><td width='850px'>"+ re_rep[i].content +"</td></pre>";
+						html += "				</tr>";
+						html += "			</table>";
+						html += "		</div>";
+					}
+					$("#re_reply").html(html)
 			}, 
 			error: function() {
 				alert("댓글 가져오기 실패!")
@@ -244,7 +233,17 @@ table { border-collapse: collapse; }
 			<tr>
 				<td colspan="4" align="right">
 					<input type="button" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'"> &nbsp;
-					<c:if test="${data.id==loginUser }">
+					<c:if test="${data.id==loginUser}">
+						<input type="button" value="수정" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+						<input type="button" value="삭제" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+						<button type="submit" onclick="location='../ggiriComplete/completeWrite'">프로젝트 완성</button>
+					</c:if>
+					<c:if test="${data.id==kakaoMember.id}">
+						<input type="button" value="수정" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+						<input type="button" value="삭제" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+						<button type="submit" onclick="location='../ggiriComplete/completeWrite'">프로젝트 완성</button>
+					</c:if>
+					<c:if test="${data.id==naverMember.id}">
 						<input type="button" value="수정" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
 						<input type="button" value="삭제" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
 						<button type="submit" onclick="location='../ggiriComplete/completeWrite'">프로젝트 완성</button>
@@ -273,8 +272,8 @@ table { border-collapse: collapse; }
 					<br><br>
 					<div id="reply" class="reply"></div>
 					<br>
-					<div id="re_reply" class="re_reply"></div>
 				</div>
+				<div id="re_reply" class="re_reply"></div>
 			</div>
 		</div>
 		<!--

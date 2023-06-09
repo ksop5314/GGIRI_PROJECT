@@ -6,12 +6,10 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 /*
+-- 댓글 테이블
 CREATE TABLE reply (
 no NUMBER(10) not null,          -- 댓글 번호
-bno NUMBER(10) primary key,      -- 게시물 번호
-grp NUMBER(10) not null,         -- 대댓글 번호
-grps NUMBER(10) not null,        -- 대댓글 순서
-grpl NUMBER(10) not null,        -- 댓글의 깊이(모댓글이면 0, 답글이면 1)
+bno NUMBER(10) not null,         -- 게시물 번호
 id VARCHAR2(100) not null,       -- 회원ID
 content VARCHAR2(1000),          -- 내용
 wdate DATE DEFAULT SYSDATE,      -- 작성일
@@ -24,9 +22,6 @@ public class ProjectRepDTO {
 	
 	private int no; 		// 댓글 번호
 	private int bno; 		// 게시물 번호
-	private int grp; 		// 대댓글 번호
-	private int grps; 		// 대댓글 순서
-	private int grpl; 		// 댓글의 깊이(모댓글이면 0, 답글이면 1)
 	private String id; 		// 회원ID
 	private String content; // 내용
 	private String wdate; 	// 작성일
@@ -45,30 +40,6 @@ public class ProjectRepDTO {
 	
 	public void setBno(int bno) {
 		this.bno = bno;
-	}
-	
-	public int getGrp() {
-		return grp;
-	}
-	
-	public void setGrp(int grp) {
-		this.grp = grp;
-	}
-	
-	public int getGrps() {
-		return grps;
-	}
-	
-	public void setGrps(int grps) {
-		this.grps = grps;
-	}
-	
-	public int getGrpl() {
-		return grpl;
-	}
-	
-	public void setGrpl(int grpl) {
-		this.grpl = grpl;
 	}
 	
 	public String getId() {

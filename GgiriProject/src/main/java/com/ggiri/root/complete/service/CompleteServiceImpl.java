@@ -32,8 +32,8 @@ public class CompleteServiceImpl implements CompleteService {
 	}
 	
 	@Override
-	public void modify(CompleteDTO dto) {
-		cm.modify(dto);
+	public int modify(CompleteDTO dto) {
+		return cm.modify(dto);
 	}
 	
 	@Override
