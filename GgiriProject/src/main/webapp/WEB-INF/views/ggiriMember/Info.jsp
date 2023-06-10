@@ -12,6 +12,7 @@
 *{
 	margin: 0;
 }
+
 /* #modal_wrap{
 	position: fixed;
 	z-index: 9;
@@ -30,7 +31,10 @@
 	height: 350px;
 	background: rgba(210, 240, 250, 0.9);
 } */
-
+div{
+	margin-right: auto;
+	margin-left: auto;
+}
 #id{
 	margin-right: auto;
 	margin-left: auto;
@@ -46,7 +50,16 @@
 table {
 	margin-right: auto;
 	margin-left: auto;
+	
+	border-radious: 30px;
 }
+table tr{
+	border-style: hidden;
+}
+table td{
+	context-align: center;
+}
+	
 </style>
 </head>
 <body>
@@ -63,6 +76,9 @@ table {
 					<td><b>가능한 기술 : </b>"${info.skill }"</td>
 				</tr>
 				<tr>
+				<tr>
+					<td><b>${info.id}님의 깃주소 : </b><a href="${info.url_name }" target="_blank">${info.url_name }</a></td>
+				</tr>
 				<c:set var="id" value="${info.id }"/>
 				<c:if test="${info.id == loginUser }">
 				<tr>
@@ -71,7 +87,31 @@ table {
 				</c:if>
 			</table>
 			<br>
+	<h1 style="text-align: center;"> 완성한 프로젝트 내용 </h1>
+	<c:forEach var="list" items="${list }">
+		<hr>
+		<table border="1">
+			<tr>
+				<th><br> 프로젝트 제목 </th>
+			</tr>
+			<tr>
+				<td id="porTitle"><br><a href="${contextPath }/ggiriComplete/completeView?completeNum=${list.completeNum }">${list.title }</a></td>
+			</tr>
+			<tr>
+				<th><br> 이런 스킬을 사용했어요. </th>
+			</tr>
+			<tr>
+				<td><br><pre><c:out value="${list.skill }"/></pre></td>
+			</tr>
+			<tr>
+				<th><br> 함께 진행한 팀원들을 소개할게요. </th>
+			</tr>
+			<tr>
+				<td><br>${list.members }</td>
+			</tr>
 			
+		</table>
+		</c:forEach>
 	
 	<c:import url="../default/footer.jsp"/>
 </body>
