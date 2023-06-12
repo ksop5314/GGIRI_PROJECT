@@ -1,7 +1,6 @@
 
 package com.ggiri.root.project.dto;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
@@ -40,7 +39,6 @@ public class ProjectRepDTO {
 	public void setBno(int bno) {
 		this.bno = bno;
 	}
-
 	public String getId() {
 		return id;
 	}

@@ -49,6 +49,7 @@ nav ul a {
 	font-family: 'IBM Plex Sans KR', sans-serif;
 }
 nav ul li a {
+	display: flex;
 	text-decoration: none;
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	color: black;
@@ -56,6 +57,56 @@ nav ul li a {
 nav ul li a:hover {
 	color: #D8D8D8;
 }
+.img {
+    max-width: 100%;
+    width: 40px;
+}
+.img-hover {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 40px;
+    display: none;
+}
+.img:hover .img-hover {
+    display: block;
+}
+
+.dropdown-button {
+	border: none;
+	width: 40px;		
+	height: 40px;
+}
+/* .dropdown {
+    margin: 0px auto;
+ 	position: relative;
+	display: inline-block;
+} */
+.dropdown-content {
+	display: none;
+	position: absolute;
+	min-width: 75px;
+	padding: 5px;
+}
+.dropdown-content a {
+	color: black;
+	padding: 8px;
+	text-align: center;
+	text-decoration: none;
+	display: block;
+}
+.dropdown-content a:hover {
+	border-bottom: 2px solid black;
+	text-align: center;
+	background-color: #F6F6F6;
+	opacity:0.75;
+}
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+/* .dropdown:hover .dropdown-button {
+	background-color: #CD853F;
+} */
 </style>
 </head>
 <body>
@@ -69,15 +120,16 @@ nav ul li a:hover {
 			<nav>
 				<ul>
 					<li><a href="/root/ggiriMember/memberList"> 프리랜서 보기 </a></li>
-					<li> | </li>
+					<li><a>  |  </a></li>
 					<li><a href="/root/ggiriProject/projectList"> 프로젝트 보기 </a></li>
-					<li> | </li>
+					<li><a>  |  </a></li>
 					<li><a href="/root/ggiriComplete/completeList"> 진행한 프로젝트 </a></li>
+					<li><a>  |  </a></li>
 					<!-- <li> | </li>
 					<li><a href="/root/ggiriMessage/messageList">chat</a></li>
 					 -->
-					<li> | </li>
-					<c:if test="${kakaoMember != null}">
+					<!-- <li> | </li> -->
+					<%-- <c:if test="${kakaoMember != null}">
 						<li><a>${kakaoMember.name}</a></li>
 						<li style="font-size: 10px;"><a>${kakaoMember.email}</a></li>
 						<li style="font-size: 12px;"><p><b>Kakao</b> 계정으로 접속중</p></li>
@@ -85,8 +137,8 @@ nav ul li a:hover {
 						<li><a href="/root/ggiriMember/snsInfo">내 정보</a></li>
 						<li> | </li>
 						<li><a href="/root/ggiriMember/kakaoLogout">LOGOUT</a></li>
-					</c:if>
-					<c:if test="${naverMember != null}">
+					</c:if> --%>
+			<%-- 		<c:if test="${naverMember != null}">
 						<li><a>${naverMember.name}</a></li>
 						<li style="font-size: 10px;"><a>${naverMember.id}</a></li>
 						<li style="font-size: 12px;"><p><b>Naver</b> 계정으로 접속중</p></li>
@@ -97,14 +149,38 @@ nav ul li a:hover {
 					</c:if>
 					<c:if test="${kakaoMember == null && loginUser == null && naverMember == null}">
 						<li><a href="/root/ggiriMember/ggiriLogin"> LOGIN </a></li>
-					</c:if>
+					</c:if> --%>
 					
-					<c:if test="${loginUser != null}">
+					<%-- <c:if test="${loginUser != null}">
 						<li><a href="/root/ggiriMember/myInfo">내 정보</a></li>
 						<li> | </li>
 						<li><a href="/root/ggiriMember/ggiriLogout"> LOGOUT </a></li>
 						
-					</c:if>	
+					</c:if>	 --%>
+					<li>
+					<div class="dropdown"> 
+ 						<button class="dropdown-button">
+ 							<img class="img" src="/root/resources/image/menu.png">
+  							<!-- <img class="img-hover" src="/root/resources/image/menu2.png"> -->
+  						</button>
+ 						<div class="dropdown-content">
+							<c:if test="${loginUser != null}">
+								<a href="/root/ggiriMember/myInfo">내 정보</a>
+								<a href="/root/ggiriMember/ggiriLogout">LOGOUT</a>
+							</c:if>	
+							<c:if test="${kakaoMember != null}">
+								<a href="/root/ggiriMember/snsInfo">내 정보</a>
+								<a href="/root/ggiriMember/kakaoLogout">LOGOUT</a>
+							</c:if>	
+							<c:if test="${naverMember != null}">
+								<a href="/root/ggiriMember/snsInfo">내 정보</a>
+								<a href="/root/ggiriMember/naverLogout">LOGOUT</a>
+							</c:if>
+							<c:if test="${kakaoMember == null && loginUser == null && naverMember == null}">
+								<a href="/root/ggiriMember/ggiriLogin"> LOGIN </a>
+							</c:if>
+						</div>
+					</div>
 				</ul>
 			</nav>
 		</div>

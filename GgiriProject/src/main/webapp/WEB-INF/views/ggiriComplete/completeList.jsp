@@ -86,9 +86,6 @@ a{
 </style>
 </head>
 <body>
-<<<<<<< HEAD
-	<h1>test</h1>
-=======
 	<c:import url="../default/header.jsp"></c:import>
 	<br>
 	<div class="wrap">

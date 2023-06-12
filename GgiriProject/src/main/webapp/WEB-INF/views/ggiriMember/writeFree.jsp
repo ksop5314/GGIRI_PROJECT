@@ -22,10 +22,7 @@ function count_check(obj){
 		obj.checked = false;
 		return false;
 	}
-	
 }
-
-
 </script>
 <style type="text/css">
 *{
@@ -33,24 +30,80 @@ function count_check(obj){
 }
 h1{
 	text-align: center;
+	font-family: 'IBM Plex Sans KR', sans-serif;
 }
-table{
-	margin-left: auto;
-	margin-right: auto;
+table {
+	width: 1000px;
+	margin: auto;
+	text-align: left;
+	margin: 0 auto;
+	font-family: 'IBM Plex Sans KR', sans-serif;
 }
-table tr{
-	margin-right: 5px;
+table th {
+	font-weight: border;
+	text-align: center;
+	width: 200px;
+	
+}
+table th,td {
+	border-bottom: 2px solid gray;
+	padding: 20px 0 20px 0;
 }
 
+table td {
+	padding: 5px 0 7px 8px;
+	text-align: center;
+}
+div.button {
+	border-radius: 15px;
+	font-size: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+    min-height: 50px; 
+    min-width: 170px;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	cursor: pointer;
+	display: flex;
+    justify-content: center;
+}
+div.button:hover {
+	background-color: white;
+	transition: 0.5s;
+}
+input.insert {
+	border-radius: 15px;
+	font-size: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+    min-height: 50px; 
+    min-width: 170px;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	cursor: pointer;
+	display: flex;
+    justify-content: center;
+}
+input.insert:hover {
+	background-color: white;
+	transition: 0.5s;
+}
 </style>
 </head>
 <body>
 	<c:import url="../default/header.jsp"/>
+	<br>
 	<h1>프리랜서 등록하기</h1>
 	<form action="${contextPath }/ggiriMember/writeSave" method="post">
 		<table>
 			<tr>
-				<td><input type="hidden" id="name" name="name" value="${loginUser }" readonly></td>
+				<c:if test="${loginUser != null}">
+					<input type="hidden" name="name" id="name" value="${loginUser }">
+				</c:if>
+				<c:if test="${kakaoMember != null}">
+					<input type="hidden" name="name" id="name" value="${kakaoMember.name }">
+				</c:if>
+				<c:if test="${naverMember != null}">
+					<input type="hidden" name="name" id="name" value="${naverMember.name }">
+				</c:if>
 			</tr>
 			<tr> 
 				<c:if test="${loginUser != null}">
@@ -62,7 +115,6 @@ table tr{
 				<c:if test="${naverMember != null}">
 					<th>작성자 </th><td><input type="text" name="id" id="id" value="${naverMember.id}" readonly></td>
 				</c:if>
-				
 			</tr>
 			<tr>
 				<th>자기소개  </th><td><input type="text" name="introduce" id="introduce" placeholder="한줄로 자기소개 해주세요!" maxlength="20"></td>
@@ -160,14 +212,12 @@ table tr{
 			<tr>
 				<th>소개할 url  </th><td><br><input type="text" name="url_name" id="url_name" size="40" placeholder="예) github.com/프로젝트주소 "></td>
 			</tr>
-			<tr>
-				<td><input type="submit" value="등록하기" ></td>
-			</tr>
 		</table>
-			
+		<br>
+	<div class="button">
+		<input type="submit" class="insert" value="등록하기" >
+	</div>
 	</form >
-			
-	
 	<c:import url="../default/footer.jsp"/>
 </body>
 </html>

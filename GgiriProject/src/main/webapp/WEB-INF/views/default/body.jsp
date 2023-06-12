@@ -126,11 +126,11 @@ body{
 	    window.location.href = url;
 	}
    
-   function searchPro() {
+   /* function searchSkill() {
 	    var keyword = document.getElementById("key").value;
 	    var url = "/root/ggiriProject/projectList.do?condition=titleContent&keyword=" + encodeURIComponent(key);
 	    window.location.href = url;
-	}
+	} */
    
 </script>
 </head>
@@ -213,11 +213,15 @@ body{
 			</a>
         </div>
          -->
+          <option value="title" <c:if test="${condition eq 'title' }">selected</c:if>>제목</option>
+			 <input type="text" name="keyword" id="keyword" style="font-family: 'IBM Plex Sans KR', sans-serif"
+           placeholder="검색어" value="${keyword }"/>
+    <button id="button1" type="submit">검색</button>
+			
 			<button class="JAVA" id="key" onclick="searchPro()">JAVA</button>	
 			<button class="SERVER" id="key" onclick="searchPro()">SERVER</button>	
 			<button class="PHP" ID="key" onclick="/root/ggiriProject/projectList.do?condition=titleContent&keyword=">PHP</button>	
 			<button class="ios" ID="key" onclick="/root/ggiriProject/projectList.do?condition=titleContent&keyword=">ios, Android</button>			
-			
 			<br><br>
 			<button class="publishing" type="button" onclick="searchProject()">퍼블리싱</button>			
 			<button class="design" type="button" onclick="searchProject()">디자인</button>			

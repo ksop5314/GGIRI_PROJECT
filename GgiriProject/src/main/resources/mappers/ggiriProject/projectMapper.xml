@@ -31,8 +31,6 @@
 	
 	<insert id="insertPro">
 		INSERT INTO ggiriProject(projectNum, title, skill, content, id) VALUES(ggiriProject_seq.nextval, #{title}, #{skill}, #{content}, #{id})
-		INSERT INTO ggiriProject(projectNum, title, content, id) 
-		VALUES(ggiriProject_seq.nextval, #{title}, #{content}, #{id})
 	</insert>
 	
 	<update id="proHit">
@@ -79,7 +77,7 @@
 	            title LIKE '%' || #{keyword} || '%'
 	        </when>
 	        <when test="condition == 'id'">
-	            id LIKE '%' || #{keyword} || '%'
+	            id LIKE '%' || #{keyword} || '%' 
 	        </when>
 	    </choose>
 	</select>
@@ -101,7 +99,7 @@
 	                    title LIKE '%' || #{keyword} || '%'
 	                </when>
 	                <when test="condition == 'id'">
-	                    id LIKE '%' || #{keyword} || '%'
+	                    id LIKE '%' || #{keyword} || '%' OR '%' || #{keyword} || '%'
 	                </when>
 	            </choose>
 	            ORDER BY projectNum DESC
@@ -109,6 +107,16 @@
 	        WHERE ROWNUM &lt;= #{endRow}
 	    )
 	    WHERE rnum &gt;= #{startRow}
+	</select>
+	
+	<select id="skillCheck" resultType="int">
+	    SELECT COUNT(*) FROM ggiriProject
+	    WHERE
+	    <choose>
+	        <when test="condition == 'skill'">
+	            (title LIKE '%' || #{keyword} || '%' <!-- OR content LIKE '%' || #{keyword} || '%') -->
+	        </when>
+	    </choose>
 	</select>
 	
 	<!-- <update id="increaseLikeCount">
@@ -151,27 +159,29 @@
 	
 	<!-- 댓글 -->
 	<insert id="addReply">
-		INSERT INTO reply(id, content, write_num)
+		INSERT INTO ggiriReply(id, content, write_num)
 		VALUES(#{id}, #{content}, #{write_num})
 	</insert>
 	
 	<insert id="addReplyTest">
-		INSERT INTO reply(no, bno, id, content)
+		INSERT INTO ggiriReply(no, bno, id, content)
 		VALUES(reply_seq.nextval, #{bno}, #{id}, #{content})
 	</insert>
 	
 	<select id="getRepList" resultMap="reply">
-		SELECT * FROM reply WHERE bno=#{bno}
+		SELECT * FROM ggiriReply WHERE bno=#{bno}
 	</select>
 	
 	<!-- 대댓글 -->
 	<insert id="re_addReplyTest">
-		INSERT INTO reply(bno, grp, grps, grpl, id, content)
-		VALUES(#{bno}, #{grp}, 0, #{grpl}, #{id}, #{content})
+		INSERT INTO ggiriReply(bno, id, content)
+		VALUES(#{bno}, #{id}, #{content})
 	</insert>
 	
 	<select id="re_getRepList" resultMap="reply">
-		SELECT * FROM reply WHERE bno=#{bno}
+		SELECT * FROM ggiriReply WHERE bno=#{bno}
 	</select>
+	
+	
 	
 </mapper>
