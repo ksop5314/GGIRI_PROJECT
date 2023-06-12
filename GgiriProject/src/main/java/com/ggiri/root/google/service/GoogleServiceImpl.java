@@ -1,24 +1,18 @@
 package com.ggiri.root.google.service;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -36,15 +30,77 @@ public class GoogleServiceImpl implements GoogleService {
 		String googleRedirectURL = "http://localhost:8080/root/ggiriMember/google_callback";
 		String googleTokenURL = "https://oauth2.googleapis.com/token";
 		
-        
+		String access_token = "";
+		String refresh_token = "";
 		
-        return "구글 로그인 요청 처리 실패";
+		try {
+				
+			URL url = new URL(googleTokenURL);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			
+			conn.setRequestMethod("POST");
+			conn.setDoOutput(true);
+			
+			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+			StringBuilder sb = new StringBuilder();
+			sb.append("grant_type=authorization_code");
+			sb.append("&client_id=" + googleClientId);
+			sb.append("&client_secret=" + googleClientSecret);
+			sb.append("&redirect_uri=http://localhost:8080/root/ggiriMember/google_callback");
+			sb.append("&code=" + code);
+			bw.write(sb.toString());
+			bw.flush();
+			
+			int responseCode = conn.getResponseCode();
+			System.out.println("responseCode : " + responseCode);
+			
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			String br_line = "";
+			String result = "";
+			
+			while((br_line = br.readLine()) != null) {
+				result += br_line;
+			}
+			System.out.println("response : " + result);
+			
+			JsonParser parser = new JsonParser();
+			JsonElement element = parser.parse(result);
+			
+			access_token = element.getAsJsonObject().get("access_token").getAsString();
+			refresh_token = element.getAsJsonObject().get("refresh_token").getAsString();
+			
+			System.out.println("access_token : " + access_token);
+			System.out.println("refresh_token : " + refresh_token);
+			
+			br.close();
+			bw.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			
+		return access_token;
+		
+//		RestTemplate restTemplate = new RestTemplate();
+//        Map<String, Object> params = new HashMap<>();
+//        params.put("code", code);
+//        params.put("client_id", googleClientId);
+//        params.put("client_secret", googleClientSecret);
+//        params.put("redirect_uri", googleRedirectURL);
+//        params.put("grant_type", "authorization_code");
+        
+//        ResponseEntity<String> responseEntity = restTemplate.postForEntity(googleTokenURL, params, String.class);
+        
+//        if(responseEntity.getStatusCode() == HttpStatus.OK) {
+//        	return responseEntity;
+//        }
 	}
 
 	@Override
 	public Map<String, Object> getUserInfo(String access_token) {
+		System.out.println("googleAccessToken : " + access_token);
 		Map<String, Object> resultMap = new HashMap<>();
-		String reqURL = "https://www.googleapis.com/userinfo/v2/me";
+		String reqURL = "https://www.googleapis.com/oauth2/v2/userinfo";
 		
 		try {
 			URL url = new URL(reqURL);
@@ -86,16 +142,23 @@ public class GoogleServiceImpl implements GoogleService {
 //			Map<String, Object> kakao_account = (Map<String, Object>) jsonMap.get("kakao_account");
 //			String nickname = properties.get("nickname").toString();
 //			String email = properties.get("email").toString();
+//			JsonElement element = parser.parse(result);
+//			JsonObject profile = element.getAsJsonObject().get("--account").getAsJsonObject();
+//			System.out.println("googleProfile : " + profile);
 			
+
 			JsonParser parser = new JsonParser();
-			JsonElement element = parser.parse(result);
-			JsonObject profile = element.getAsJsonObject().get(access_token).getAsJsonObject();
+			JsonObject jsonObject = (JsonObject)parser.parse(result);
+
+			String email =jsonObject.get("email").toString();
+
+//			String email = profile.getAsJsonObject().get("email").getAsString();
+//			String name = profile.getAsJsonObject().get("name").getAsString();
 			
-			String email = profile.getAsJsonObject().get("email").getAsString();
-			String name = profile.getAsJsonObject().get("name").getAsString();
 			
+			System.out.println("googleEmail : " + email);
 			resultMap.put("email", email);
-			resultMap.put("name", name);
+			//resultMap.put("name", name);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

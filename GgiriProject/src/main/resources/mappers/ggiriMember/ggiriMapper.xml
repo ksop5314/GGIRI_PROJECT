@@ -53,6 +53,16 @@
 		SELECT * FROM ggirimember WHERE id!=#{id}
 	</select>
 	
+	<!-- Google -->
+	
+	<select id="findGoogle" resultType="integer">
+		SELECT COUNT(id) FROM ggirimember WHERE id=#{googleMember}
+	</select>
+	
+	<insert id="googleinsert">
+		insert into ggirimember(name, id, email) values(#{name}, #{id}, #{email})
+	</insert>
+	
 	<!-- Kakao -->
 	
 	<select id="findKakao" resultType="integer">

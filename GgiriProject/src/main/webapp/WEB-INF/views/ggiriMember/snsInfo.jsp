@@ -117,6 +117,62 @@
 						</td>
 					</tr>
 				</c:if>
+				<c:if test="${googleMember != null }">
+					<tr>
+						<th> 이름 </th>
+						<td>
+							${googleMember.name }
+						</td>
+					</tr>
+					<tr>
+						<th> 아이디 </th>
+						<td>
+							${googleMember.id }
+						</td>
+					</tr>
+					<tr>
+						<th> 생년월일 </th>
+						<td>
+							<c:if test="${googleMember.pwd == null }">
+								** sns 로그인 사용자 입니다 ** 수정이 필요하시면 내정보 수정을 해주세요.
+							</c:if>
+							${googleMember.pwd}
+						</td>
+					</tr>
+					<tr>
+						<th> 성별 </th>
+						<td>
+							<c:if test="${googleMember.pwd == null }">
+								** sns 로그인 사용자 입니다 ** 수정이 필요하시면 내정보 수정을 해주세요.
+							</c:if>
+							${googleMember.pwd}
+						</td>
+					</tr>
+					<tr>
+						<th> E-mail </th>
+						<td>
+							${googleMember.email }
+						</td>
+					</tr>
+					<tr>
+						<th> Tel </th>
+						<td>
+							<c:if test="${googleMember.pwd == null }">
+								** sns 로그인 사용자 입니다 ** 수정이 필요하시면 내정보 수정을 해주세요.
+							</c:if>
+							${googleMember.pwd}
+						</td>
+					</tr>
+					<tr>
+						<th> 주소 </th>
+						<td>
+							<c:if test="${googleMember.pwd == null }">
+								** sns 로그인 사용자 입니다 ** 수정이 필요하시면 내정보 수정을 해주세요.
+							</c:if>
+							${googleMember.pwd}
+						</td>
+					</tr>
+				</c:if>
 			</table><br>
 			<div style="border: 1px solid gray; border-radius: 20px; width: 130px; height: 30px; text-align: center; padding-top: 10px; background: orange;">
 				<a href="/root/ggiriMember/modifySnsInfo" style="text-decoration: none; font-weight: bold; color: white;">내 정보 수정</a>
