@@ -59,6 +59,9 @@ table tr{
 				<c:if test="${naverMember != null}">
 					<input type="hidden" name="name" id="name" value="${naverMember.name }">
 				</c:if>
+				<c:if test="${googleMember != null}">
+					<input type="hidden" name="name" id="name" value="${googleMember.name }">
+				</c:if>
 			</tr>
 			<tr> 
 				<c:if test="${loginUser != null}">
@@ -69,6 +72,9 @@ table tr{
 				</c:if>
 				<c:if test="${naverMember != null}">
 					<th>작성자 </th><td><input type="text" name="id" id="id" value="${naverMember.id}" readonly></td>
+				</c:if>
+				<c:if test="${googleMember != null}">
+					<th>작성자 </th><td><input type="text" name="id" id="id" value="${googleMember.id}" readonly></td>
 				</c:if>
 			</tr>
 			<tr>

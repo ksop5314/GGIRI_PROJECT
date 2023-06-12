@@ -229,8 +229,8 @@ public class GgiriController implements GgiriMemberSession {
 		naverMember.setTel(mobile);
 		naverMember.setBirth(birthday);
 		
-		int findKakao = gs.findNaver(id);
-		if(findKakao == 0) {
+		int findNaver = gs.findNaver(id);
+		if(findNaver == 0) {
 			gs.naverInsert(naverMember);
 		}
 		
@@ -263,13 +263,55 @@ public class GgiriController implements GgiriMemberSession {
 	@RequestMapping("google_callback")
 	public String googleLogin(@RequestParam("code") String code, HttpSession session) {
 		System.out.println(code);
-//    	String googleBaseURL = "https://accounts.google.com/o/oauth2/v2/auth";
-//		String googleClientId = "15714476982-d6tnk6tv8f7hptqjh6qrhqsm42aglq72.apps.googleusercontent.com";
-//		String googleClientSecret = "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";
-//		String googleRedirectURL = "http://localhost:8080/root/ggiriMember/api/v1/oauth2/google";
-//		String googleTokenURL = "https://oauth2.googleapis.com/token";
-
+		
+    	String googleBaseURL = "https://accounts.google.com/o/oauth2/v2/auth";
+		String googleClientId = "15714476982-d6tnk6tv8f7hptqjh6qrhqsm42aglq72.apps.googleusercontent.com";
+		String googleClientSecret = "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";
+		String googleRedirectURL = "http://localhost:8080/root/ggiriMember/google_callback";
+		String googleTokenURL = "https://oauth2.googleapis.com/token";
+		String resultTokenURL = "https://oauth2.googleapis.com/tokeninfo";
+		
+		String access_token = googleService.getReturnAccessToken(code);
+		
+		Map<String, Object> result = googleService.getUserInfo(access_token);
+		System.out.println("컨트롤러 출력 : " + result.get("email"));
+		
+		GgiriMemberDTO ggiriMember = new GgiriMemberDTO();
+		
+		String email = (String)result.get("email");
+		//String name = (String)result.get("nickname");
+		
+		int index = email.indexOf("@");
+		String id = email.substring(0, index);
+		
+		
+		ggiriMember.setName("Google 로그인 회원은 내정보에서 정보 수정 후 이용해주세요.");
+		ggiriMember.setId(id);
+		ggiriMember.setEmail(email);
+		
+		
+		int findGoogle = gs.findGoogle(id);
+		if(findGoogle == 0) {
+			gs.googleinsert(ggiriMember);
+		}
+		
+		session.setAttribute("googleMember", ggiriMember);
+		session.setAttribute("googleToken", access_token);
+		
 		return "redirect:/index";
+
+	}
+	
+	@RequestMapping("googleLogout")
+	public String googleLogout(HttpSession session) throws Exception {
+		if(SystemUtil.EmptyCheck((String)session.getAttribute("googleToken"))) {
+		} else {
+			session.setAttribute("googleToken", null);
+		}
+		
+		session.setAttribute("googleMember", null);
+		
+		return "ggiriMember/googleLogout";
 	}
 	
 	@RequestMapping("myInfo")

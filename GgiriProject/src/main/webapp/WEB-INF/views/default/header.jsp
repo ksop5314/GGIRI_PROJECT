@@ -95,7 +95,16 @@ nav ul li a:hover {
 						<li> | </li>
 						<li><a href="/root/ggiriMember/naverLogout">Logout</a></li>
 					</c:if>
-					<c:if test="${kakaoMember == null && loginUser == null && naverMember == null}">
+					<c:if test="${googleMember != null}">
+						<li style="font-size: 10px;"><a>${googleMember.name}</a></li>
+						<li style="font-size: 10px;"><a>${googleMember.id}</a></li>
+						<li style="font-size: 12px;"><p><b>Google</b> 계정으로 접속중</p></li>
+						<li> | </li>
+						<li><a href="/root/ggiriMember/snsInfo">내 정보</a></li>
+						<li> | </li>
+						<li><a href="/root/ggiriMember/googleLogout">Logout</a></li>
+					</c:if>
+					<c:if test="${kakaoMember == null && loginUser == null && naverMember == null && googleMember == null}">
 						<li><a href="/root/ggiriMember/ggiriLogin"> LOGIN </a></li>
 					</c:if>
 					
