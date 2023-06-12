@@ -16,8 +16,6 @@ public class GgiriServiceImpl implements GgiriService{
 	@Autowired
 	private GgiriMemberMapper gmm;
 	
-	@Autowired
-	private GgiriFreeInsertService gfi;
 	
 	// 강준호
 	@Override
@@ -41,6 +39,11 @@ public class GgiriServiceImpl implements GgiriService{
 	public int loginCheck(HttpServletRequest request) {
 		GgiriMemberDTO dto = gmm.loginCheck(request.getParameter("id"));
 		if(dto != null) {
+			if(dto.getId().equals("GGIRIADMIN")) {
+				if(request.getParameter("pwd").equals(dto.getPwd())) {
+					return 2;
+				}
+			}
 			if(request.getParameter("pwd").equals(dto.getPwd())) {
 				return 0;
 			}
@@ -121,6 +124,16 @@ public class GgiriServiceImpl implements GgiriService{
 		model.addAttribute("ggiriSnsInfo", dto);
 	}
 	
+	@Override
+	public int joinPhone(String userTel) {
+		return gmm.joinPhone(userTel);
+	}
+	
+	@Override
+	public void allMember(Model model, String id) {
+		model.addAttribute("allMember", gmm.allMember(id));
+	}
+	
 	// 강준호 끝
 	
 	
@@ -128,9 +141,6 @@ public class GgiriServiceImpl implements GgiriService{
 	
 	
 
-	@Override
-	public int joinPhone(String userTel) {
-		return gmm.joinPhone(userTel);
-	}
+	
 	
 }

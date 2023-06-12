@@ -43,4 +43,10 @@ public class HomeController {
 		return "index";
 	}
 	
+	@GetMapping("indexAdmin")
+	public String indexAdmin() {
+		System.out.println("- indexAdmin controller -");
+		return "indexAdmin";
+	}
+	
 }

@@ -24,5 +24,6 @@ public interface GgiriService {
 	public void ggiriMemberInfo(String id, Model model);
 	public void ggiriSnsInfo(String id, Model model);
 	
+	public void allMember(Model model, String id);
 	
 }

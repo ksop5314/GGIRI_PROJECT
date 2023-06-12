@@ -1,7 +1,6 @@
 
 package com.ggiri.root.project.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -113,15 +111,47 @@ public class ProjectController implements GgiriMemberSession{
 		
 		String projectNum = (String) map.get("projectNum");
 		System.out.println(projectNum);
+		String id = (String)map.get("id");
+		System.out.println(id);
 		
-		dto.setId((String)session.getAttribute(LOGIN));
+		dto.setId((String)map.get("id"));
 		dto.setBno(Integer.parseInt((String)map.get("projectNum")));
 		dto.setContent((String)map.get("content"));
-		
 		int rep = ps.addReplyTest(dto);
 		
-
+		
+//		String loginUser = (String)session.getAttribute("loginUser");
+//		System.out.println(loginUser);
+//		String kakaoid = (String)session.getAttribute("kakaoMember");
+//		System.out.println(kakaoid);
+//		String naverid = (String)session.getAttribute("naverMember");
+//		System.out.println(naverid);
+		
+//		if( id == kakaoid) {
+//			dto.setId(kakaoid);
+//			dto.setBno(Integer.parseInt((String)map.get("projectNum")));
+//			dto.setContent((String)map.get("content"));
+//			int rep = ps.addReplyTest(dto);
+//			return rep;
+//		} else if(id == naverid) {
+//			dto.setId(naverid);
+//			dto.setBno(Integer.parseInt((String)map.get("projectNum")));
+//			dto.setContent((String)map.get("content"));
+//			int rep = ps.addReplyTest(dto);
+//			return rep;
+//		} else if(id == loginUser){
+//			dto.setId(loginUser);
+//			dto.setBno(Integer.parseInt((String)map.get("projectNum")));
+//			dto.setContent((String)map.get("content"));
+//			int rep = ps.addReplyTest(dto);
+//			return rep;
+//		} else {
+//			System.out.println("댓글 등록 아이디값 가져오기 실패");
+//		}
+		
 		return rep;
+		//dto.setGrp(map.get());
+		
 	}
 
     
@@ -145,9 +175,14 @@ public class ProjectController implements GgiriMemberSession{
 		
 		String projectNum = (String) map.get("projectNum");
 		System.out.println(projectNum);
-		
+		String id = (String)map.get("id");
 		dto.setId((String)session.getAttribute(LOGIN));
 		dto.setR_bno(Integer.parseInt((String) map.get("projectNum")));
+		dto.setId((String)session.getAttribute("id"));
+		dto.setR_no(Integer.parseInt((String) map.get("projectNum")));
+		//dto.setGrp(Integer.parseInt((String) map.get(grp)));
+		//dto.setGrps(Integer.parseInt((String) map.get("grps")));
+		//dto.setGrpl(Integer.parseInt((String) map.get("grpl")));
 		dto.setContent((String)map.get("content"));
 		
 		int re_rep = ps.re_addReplyTest(dto);

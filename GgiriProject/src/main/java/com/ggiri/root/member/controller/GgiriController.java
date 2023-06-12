@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
+import com.ggiri.root.admin.service.AdminService;
 import com.ggiri.root.google.service.GoogleService;
 import com.ggiri.root.kakao.service.KakaoService;
 import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
@@ -46,6 +46,8 @@ public class GgiriController implements GgiriMemberSession {
 		this.naverLogin = naverLogin;
 	}
 	
+	@Autowired
+	private AdminService adminService;
 	@Autowired
 	private GgiriService gs;
 	@Autowired
@@ -83,6 +85,9 @@ public class GgiriController implements GgiriMemberSession {
 		if(result == 0) {
 			ra.addAttribute("id", request.getParameter("id"));
 			return "redirect:successLogin";
+		} else if(result == 2) {
+			ra.addAttribute("id", request.getParameter("id"));
+			return "redirect:successAdmin";
 		}
 		return "redirect:failLogin";
 	}
@@ -96,6 +101,12 @@ public class GgiriController implements GgiriMemberSession {
 	public String successLogin(@RequestParam("id") String id, HttpSession session) {
 		session.setAttribute(LOGIN, id);
 		return "ggiriMember/successLogin";
+	}
+	
+	@RequestMapping("successAdmin")
+	public String successAdmin(@RequestParam("id") String id, HttpSession session) {
+		session.setAttribute("ADMIN", id);
+		return "ggiriMember/successAdmin";
 	}
 	
 	@GetMapping("ggiriLogout")
@@ -312,7 +323,7 @@ public class GgiriController implements GgiriMemberSession {
 		System.out.println("이메일 인증 이메일 : " + userEmail);
 		return mss.joinEmail(userEmail);
 	}
-	
+
 
 	// 안태준 
 	@GetMapping("memberList")

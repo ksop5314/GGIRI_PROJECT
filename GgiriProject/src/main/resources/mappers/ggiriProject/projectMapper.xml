@@ -120,24 +120,35 @@
 	    WHERE rnum &gt;= #{startRow}
 	</select>
 
-	<!-- 댓글 -->
+	<insert id="addReply">
+		INSERT INTO ggiriReply(id, content, write_num)
+		VALUES(#{id}, #{content}, #{write_num})
+	</insert>
+	
 	<insert id="addReplyTest">
 		INSERT INTO reply(no, bno, id, content)
+		INSERT INTO ggiriReply(no, bno, id, content)
 		VALUES(reply_seq.nextval, #{bno}, #{id}, #{content})
 	</insert>
 	
 	<select id="getRepList" resultMap="reply">
-		SELECT * FROM reply WHERE bno=#{bno}
+		SELECT * FROM ggiriReply WHERE bno=#{bno}
 	</select>
 	
 	<!-- 대댓글 -->
 	<insert id="re_addReplyTest">
 		INSERT INTO  re_reply(no, r_no, r_bno, id, content)
 		VALUES(re_reply_seq.nextval, 0, #{r_bno}, #{id}, #{content})
+		INSERT INTO ggiriReply(bno, id, content)
+		VALUES(#{bno}, #{id}, #{content})
 	</insert>
 	
 	<select id="re_getRepList" resultMap="re_reply">
 		SELECT * FROM re_reply WHERE r_bno=#{r_bno}
+	</select>	
+		
+	<select id="re_getRepList" resultMap="reply">
+		SELECT * FROM ggiriReply WHERE bno=#{bno}
 	</select>
 	
 </mapper>

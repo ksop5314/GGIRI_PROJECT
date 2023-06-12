@@ -50,7 +50,15 @@ table tr{
 	<form action="${contextPath }/ggiriMember/writeSave" method="post">
 		<table>
 			<tr>
-				<td><input type="hidden" id="name" name="name" value="${loginUser }" readonly></td>
+				<c:if test="${loginUser != null}">
+					<input type="hidden" name="name" id="name" value="${loginUser }">
+				</c:if>
+				<c:if test="${kakaoMember != null}">
+					<input type="hidden" name="name" id="name" value="${kakaoMember.name }">
+				</c:if>
+				<c:if test="${naverMember != null}">
+					<input type="hidden" name="name" id="name" value="${naverMember.name }">
+				</c:if>
 			</tr>
 			<tr> 
 				<c:if test="${loginUser != null}">
@@ -62,7 +70,6 @@ table tr{
 				<c:if test="${naverMember != null}">
 					<th>작성자 </th><td><input type="text" name="id" id="id" value="${naverMember.id}" readonly></td>
 				</c:if>
-				
 			</tr>
 			<tr>
 				<th>자기소개  </th><td><input type="text" name="introduce" id="introduce" placeholder="한줄로 자기소개 해주세요!" maxlength="20"></td>
