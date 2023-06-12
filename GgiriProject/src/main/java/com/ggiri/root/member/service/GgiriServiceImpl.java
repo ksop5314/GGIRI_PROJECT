@@ -100,8 +100,8 @@ public class GgiriServiceImpl implements GgiriService{
 	
 	@Override
 	public int findGoogle(String googleMember) {
-		int findKakao = gmm.findGoogle(googleMember);
-		if(findKakao == 0) {
+		int findGoogle = gmm.findGoogle(googleMember);
+		if(findGoogle == 0) {
 			return 0;
 		}
 		return 1;

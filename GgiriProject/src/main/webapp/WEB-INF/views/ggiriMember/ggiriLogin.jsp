@@ -85,26 +85,12 @@
 	cursor: pointer;
 	margin-top: 20px;
 }
-
 </style>
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script src = "https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type='text/javascript'>
-<%--
-$(function(){
-	
-	$(document).ready(function(){
-        Kakao.init('9aaa4100e3fd9f2c467328f1d96c98cb');
-        Kakao.isInitialized();
-    });
 
-    function loginWithKakao() {
-        Kakao.Auth.authorize({
-        redirectUri: 'http://localhost:8080/root/ggiriMember/ggiriLogin' 
-        }); // 등록한 리다이렉트uri 입력
-    }
-	
-});
---%>
+
 
 </script>
 </head>
