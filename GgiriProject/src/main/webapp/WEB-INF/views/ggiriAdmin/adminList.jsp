@@ -113,12 +113,12 @@ a{
 					</c:forEach>
 				</table>
 			</div>
-		<form action="projectList.do" method="get">
+		<form action="adminList.do" method="get">
     <label for="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">검색조건</label><br>
     <select name="condition" id="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">
-      <option value="titleContent" <c:if test="${condition eq 'titleContent' }">selected</c:if>>제목 + 본문</option>
-      <option value="title" <c:if test="${condition eq 'title' }">selected</c:if>>제목</option>
-      <option value="id" <c:if test="${condition eq 'id' }">selected</c:if>>작성자</option>
+      <option value="title" <c:if test="${condition eq 'name' }">selected</c:if>>이름</option>
+      <option value="id" <c:if test="${condition eq 'id' }">selected</c:if>>작성자ID</option>
+      <option value="job" <c:if test="${condition eq 'job' }">selected</c:if>>직업</option>
     </select>
     <input type="text" name="keyword" id="keyword" style="font-family: 'IBM Plex Sans KR', sans-serif"
            placeholder="검색어" value="${keyword }"/>

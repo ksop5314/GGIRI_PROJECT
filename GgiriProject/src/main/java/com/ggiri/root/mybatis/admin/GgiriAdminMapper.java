@@ -15,9 +15,9 @@ public interface GgiriAdminMapper {
 
 	int getProjectCountBySearch(@Param("keyword") String keyword, @Param("condition") String condition);
 
-	List<ProjectDTO> getProjectListBySearch(@Param("keyword") String keyword, @Param("condition") String condition,
-	                                        @Param("startRow") int startRow, @Param("endRow") int endRow);
+	List<ProjectDTO> getProjectListBySearch(@Param("keyword") String keyword, @Param("condition") String condition);
+//	                                        @Param("startRow") int startRow, @Param("endRow") int endRow);
 
-	List<ProjectDTO> getProjectList(@Param("startRow") int startRow, @Param("endRow") int endRow);
+//	List<ProjectDTO> getProjectList(@Param("startRow") int startRow, @Param("endRow") int endRow);
 	
 }

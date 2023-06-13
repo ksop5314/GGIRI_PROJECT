@@ -14,7 +14,7 @@ public interface AdminService {
     
     public int getProjectCountBySearch(String keyword, String condition);
     
-    public List<ProjectDTO> getProjectListBySearch(String keyword, String condition, int startRow, int endRow);
+    public List<ProjectDTO> getProjectListBySearch(String keyword, String condition);
     
-    public List<ProjectDTO> getProjectList(int page, int perPage);
+//    public List<ProjectDTO> getProjectList(int page, int perPage);
 }

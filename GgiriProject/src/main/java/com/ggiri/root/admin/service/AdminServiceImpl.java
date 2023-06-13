@@ -32,15 +32,15 @@ public class AdminServiceImpl implements AdminService{
     }
 
     @Override
-    public List<ProjectDTO> getProjectListBySearch(String keyword, String searchType, int startRow, int endRow) {
-        return gam.getProjectListBySearch(keyword, searchType, startRow, endRow);
+    public List<ProjectDTO> getProjectListBySearch(String keyword, String searchType) {
+        return gam.getProjectListBySearch(keyword, searchType);
     }
 
-    @Override
-    public List<ProjectDTO> getProjectList(int page, int perPage) {
-        int startRow = (page - 1) * perPage + 1;
-        int endRow = startRow + perPage - 1;
-        return gam.getProjectList(startRow, endRow);
-    }
+//    @Override
+//    public List<ProjectDTO> getProjectList(int page, int perPage) {
+//        int startRow = (page - 1) * perPage + 1;
+//        int endRow = startRow + perPage - 1;
+//        return gam.getProjectList(startRow, endRow);
+//    }
 	
 }

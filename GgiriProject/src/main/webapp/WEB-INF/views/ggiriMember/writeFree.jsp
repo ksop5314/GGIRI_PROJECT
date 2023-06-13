@@ -210,7 +210,7 @@ input.insert:hover {
 				</td>
 			</tr>
 			<tr>
-				<th>근무 가능기간  </th><td><br><input type="text" name="project_period" id="project_period" placeholder="200101"></td>
+				<th>근무 가능기간  </th><td><br><input type="text" name="project_period" id="project_period" placeholder="20230101"></td>
 			</tr>
 			<tr>
 				<th>선호하는 근무장소  </th><td><br><input type="text" name="place_of_work" id="place_of_work" size="35" placeholder="도시입력 예)서울:인천:대전"></td>

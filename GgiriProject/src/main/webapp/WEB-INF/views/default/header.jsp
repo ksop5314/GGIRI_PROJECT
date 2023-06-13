@@ -71,17 +71,16 @@ nav ul li a:hover {
 .img:hover .img-hover {
     display: block;
 }
-
 .dropdown-button {
 	border: none;
 	width: 40px;		
 	height: 40px;
 }
-/* .dropdown {
+.dropdown {
     margin: 0px auto;
  	position: relative;
 	display: inline-block;
-} */
+}
 .dropdown-content {
 	display: none;
 	position: absolute;
@@ -185,7 +184,11 @@ nav ul li a:hover {
 								<a href="/root/ggiriMember/snsInfo">내 정보</a>
 								<a href="/root/ggiriMember/naverLogout">LOGOUT</a>
 							</c:if>
-							<c:if test="${kakaoMember == null && loginUser == null && naverMember == null}">
+							<c:if test="${googleMember != null}">
+								<a href="/root/ggiriMember/snsInfo">내 정보</a>
+								<a href="/root/ggiriMember/googleLogout">LOGOUT</a>
+							</c:if>
+							<c:if test="${kakaoMember == null && loginUser == null && naverMember == null && googleMember == null}">
 								<a href="/root/ggiriMember/ggiriLogin"> LOGIN </a>
 							</c:if>
 						</div>

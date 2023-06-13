@@ -2,10 +2,9 @@ package com.ggiri.root.member.service;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.ui.Model;
 
+import com.ggiri.root.admin.dto.GgiriAdminDTO;
 import com.ggiri.root.complete.dto.CompleteDTO;
 import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
 
@@ -32,4 +31,5 @@ public interface GgiriFreeInsertService {
 	public void writeFreeDelete(String userid);
 	
 	public List<CompleteDTO> projectInfo(String usertid, Model model);
+
 }

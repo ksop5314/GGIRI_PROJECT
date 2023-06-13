@@ -116,10 +116,6 @@ body{
 	})();
 	<!--End of Tawk.to Script-->
    
-/*    function chatActivate(){
-      window.open("/root/ggiriChat/chatAct", "_blank", "width=500px, height=1500px");
-   } */
-	
    function searchProject() {
 	    var keyword = document.getElementById("searchTxt").value;
 	    var url = "/root/ggiriProject/projectList.do?condition=titleContent&keyword=" + encodeURIComponent(keyword);

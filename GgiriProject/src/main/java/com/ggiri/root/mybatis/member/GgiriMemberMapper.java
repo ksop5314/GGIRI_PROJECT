@@ -20,5 +20,6 @@ public interface GgiriMemberMapper {
 	public GgiriMemberDTO ggiriMemberInfo(String id);
 	public GgiriMemberDTO ggiriSnsInfo(String id);
 	public List<GgiriMemberDTO> allMember(String id);
+	public int getProjectCount();
 	
 }

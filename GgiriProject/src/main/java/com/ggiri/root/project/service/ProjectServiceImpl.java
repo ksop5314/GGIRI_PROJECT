@@ -68,22 +68,19 @@ public class ProjectServiceImpl implements ProjectService {
     public int getProjectCount() {
         return pm.getProjectCount();
     }
-    
-    @Autowired
-    private ProjectMapper projectMapper;
 
     @Override
     public void increaseLikeCount(int projectNum) {
-        projectMapper.increaseLikeCount(projectNum);
+        pm.increaseLikeCount(projectNum);
     }
 
     @Override
     public void increaseLikeCountByUser(int projectNum, String id) {
-        projectMapper.increaseLikeCountByUser(projectNum, id);
+        pm.increaseLikeCountByUser(projectNum, id);
     }
 
     public int getLikeIdByUser(int projectNum, String id) {
-        return projectMapper.getLikeIdByUser(projectNum, id);
+        return pm.getLikeIdByUser(projectNum, id);
     }
 
 

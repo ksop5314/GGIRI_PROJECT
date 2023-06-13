@@ -7,6 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+<script type='text/javascript'>
+</script>
 
 <style type="text/css">
 *{
@@ -38,14 +41,19 @@ div{
 #id{
 	margin-right: auto;
 	margin-left: auto;
-	background-color: blue;
-	border: 1px solid black;
+    background-color: #000000;
+	border: none;
 	width: 800px;
 	height: 100px;
 	text-align: center;
 	padding: 50px 0 50px 0;
 	font-size: 50px;
 	color: white;
+}
+#id p {
+	color:white;
+  	font-size:25px;
+  	line-height:300px;
 }
 table {
 	margin-right: auto;
@@ -66,7 +74,7 @@ table td{
 	<c:import url="../default/header.jsp"/>
 			
 			<!-- <input type="hidden" id="writeNo" name="writeNo"> -->
-			
+			<br>
 			<p id="id">"${info.id }"</p>
 			<table>
 				<tr>
@@ -77,7 +85,7 @@ table td{
 				</tr>
 				<tr>
 				<tr>
-					<td><b>${info.id}님의 깃주소 : </b><a href="${info.url_name }" target="_blank">${info.url_name }</a></td>
+					<td><b>${info.id}님의 Git 주소 : </b><a href="${info.url_name }" target="_blank">${info.url_name }</a></td>
 				</tr>
 				<c:set var="id" value="${info.id }"/>
 				<c:if test="${info.id == loginUser }">

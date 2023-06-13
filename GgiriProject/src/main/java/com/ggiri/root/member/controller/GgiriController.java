@@ -285,7 +285,7 @@ public class GgiriController implements GgiriMemberSession {
 		String id = email.substring(0, index);
 		
 		
-		ggiriMember.setName("Google 로그인 회원은 내정보에서 정보 수정 후 이용해주세요.");
+		ggiriMember.setName("Google 로그인 회원");
 		ggiriMember.setId(id);
 		ggiriMember.setEmail(email);
 		

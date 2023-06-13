@@ -68,10 +68,6 @@ public interface ProjectMapper {
 
 	LikeDTO getPicture(String projectNum);
 	
-
-
-	
-
     // 댓글
 //    public void addReply(ProjectRepDTO dto);
     public int addReplyTest(ProjectRepDTO dto);
