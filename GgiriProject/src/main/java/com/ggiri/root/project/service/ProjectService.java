@@ -31,14 +31,7 @@ public interface ProjectService {
 
     public int getProjectCount();
     
-    // 댓글
-//    public void addReply(ProjectRepDTO dto);
-    public int addReplyTest(ProjectRepDTO dto);
-	public List<ProjectRepDTO> getRepList(int bno);
-	
-	// 대댓글
-	public int re_addReplyTest(ReprepDTO dto);
-    public List<ReprepDTO> re_getRepList(int bno);
+    
 	
 	
 }

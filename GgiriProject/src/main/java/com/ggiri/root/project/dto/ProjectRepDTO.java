@@ -6,8 +6,9 @@ import java.text.SimpleDateFormat;
 
 /*
 -- 댓글 테이블
-CREATE TABLE reply (
-no NUMBER(10) not null,          -- 댓글 번호
+CREATE TABLE ggiriReply (
+memberNum NUMBER(20),
+no NUMBER(10) primary key,          -- 댓글 번호
 bno NUMBER(10) not null,         -- 게시물 번호
 id VARCHAR2(100) not null,       -- 회원ID
 content VARCHAR2(1000),          -- 내용
@@ -19,12 +20,23 @@ CONSTRAINT fk_test2 FOREIGN KEY(id) REFERENCES ggiriMember(id) ON DELETE CASCADE
 
 public class ProjectRepDTO {
 	
+	private int memberNum;
 	private int no; 		// 댓글 번호
 	private int bno; 		// 게시물 번호
 	private String id; 		// 회원ID
 	private String content; // 내용
 	private String wdate; 	// 작성일
 	
+	
+	
+	public int getMemberNum() {
+		return memberNum;
+	}
+
+	public void setMemberNum(int memberNum) {
+		this.memberNum = memberNum;
+	}
+
 	public int getNo() {
 		return no;
 	}

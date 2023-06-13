@@ -11,23 +11,13 @@
 <title>ggiriProject/projectView.jsp</title>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script type="text/javascript">
-	<%--
-	function re_click() {
-		var writeNum = $("#writeNo").val();
-		var repNum = $("#repNo").val();
-		
-		if(writeNum == repNum){
-			$("#r_frm").show();	
-		}
-		
-	}
-	--%>
+
 	function re_click() {
 		$("#r_frm").show();	
 	}
 
 	function re_hide() {
-		$("#r_frm").hide();
+		$("#r_frm").remove();
 	}
 	
 	// 댓글
@@ -42,13 +32,7 @@
 		
 		
 		let form = { projectNum:projectNum, id:id, content:content}
-		
-		<%--
-		let arr = $("#frm").serializeArray();
-		for(i=0; i<arr.length; i++) {
-			form[arr[i].name] = arr[i].value
-		}
-		--%>
+
 		$.ajax({
 			//contextPath + "/ggiriProject/addReply"
 			url: contextPath + "/ggiriProject/addReply", 
@@ -102,21 +86,23 @@
 						html += "			</table>";
 						html += "		</div>";
 						html += "		<div style='text-align: right;'>";
-						html += "			<button type='button' style='margin-bottom: 10px;' onclick='re_click()'>대댓글 작성</button> &nbsp;";
-						html += "			<button type='button' style='margin-bottom: 10px;' onclick='re_hide()'>취소</button><hr>";
+						html += "			<button type='button' style='margin-bottom: 10px;' onclick='re_click()'>수정</button> &nbsp;";
+						html += "			<button type='button' style='margin-bottom: 10px;' onclick='re_hide()'>삭제</button><hr>";
 						html += "		</div>";
-						html += "		<div>";
+						html += "		<div class='re_modify_form'>";
 						html += "			<div id='r_frm'>";
-						html += "				<input type='hidden' name='projectNum' id='projectNum' value='${data.projectNum }'>";
-						html += "				<input type='hidden' name='id' id='id' value='${data.id }'>";
-						html += "				<b>대댓글</b>";
-						html += "				<hr>";
-						html += "				<b>작성자 : ${loginUser }</b><br>";
+						html += "				<form action='../ggiriProject/re_modify' method='post'>";
+						html += "					<input type='hidden' name='projectNum' id='projectNum' value='${data.projectNum }'>";
+						html += "					<input type='hidden' name='id' id='id' value='${data.id }'>";
+						html += "					<b>댓글 수정</b>";
+						html += "					<hr>";
+						html += "					<b>작성자 : ${loginUser }</b><br>";
 						html += "					<div>";
 						html += "						<textarea id='content' name='content' rows='3' cols='100'></textarea> &nbsp;";
-						html += "						<button type='button' onclick='re_rep()'>등 록</button> &nbsp;";
-						html += "						<button type='reset'>취 소</button>";
+						html += "						<input type='submit' value='수정'>&nbsp;";
+						html += "						<input type='reset' value='취소'>";
 						html += "					</div>";
+						html += "				</form>";
 						html += "			</div>";
 						html += "		</div>";
 						
@@ -130,69 +116,7 @@
 		});
 	}
 
-	// 대댓글
-	function re_rep() {
-		var contextPath = "${pageContext.request.contextPath}";
-		
-		var projectNum = $("#projectNum").val();
-		var id = $("#id").val();
-		var content = $("#content").val();
-		
-		let form = { projectNum:projectNum, id:id, content:content }
-		
-		$.ajax({
-			url: contextPath + "/ggiriProject/re_addReply", 
-			type: "post", //dataType: "json",
-			data: JSON.stringify(form),
-			contentType: "application/json; charset=UTF-8",
-			success: function(data) {
-				if(data == 1){
-					alert("댓글 등록 완료!")
-					re_replyData();
-				} else {
-					// alert("댓글 오류");
-				}
-			},
-			error: function() {
-				alert("댓글 등록 실패")
-			}
-		})
-	}
 	
-	function re_replyData() {
-		
-		var contextPath = "${pageContext.request.contextPath}";
-		var projectNum = $("#projectNum").val();
-		
-		$.ajax({
-			url: contextPath + "/ggiriProject/re_replyData?projectNum=" + projectNum + "&no=" + no, type: "get",
-			success: function(re_rep) {
-				let html = ""
-				
-					for(i = 0; i < rep.length; i++){
-				
-						let date = new Date(re_rep[i].wdate)
-						let wdate = date.getFullYear()+"년 "+(date.getMonth()+1)+"월 "
-						wdate += date.getDate()+"일 "+date.getHours()+"시 "
-						wdate += date.getMinutes()+"분 "+date.getSeconds()+"초"
-						html += "		<div id='re_reply'>";
-						html += "			<table class='table'>";
-						html += "		 		<tr>";
-						html += " 					<th width='150px' height='40px'>"+ re_rep[i].id +"님</th>"+"<td width='150px'>"+ re_rep[i].wdate +"</td>";
-						html += "				</tr>";
-						html += "				<tr>";
-						html += "					<pre><td width='850px'>"+ re_rep[i].content +"</td></pre>";
-						html += "				</tr>";
-						html += "			</table>";
-						html += "		</div>";
-					}
-					$("#re_reply").html(html)
-			}, 
-			error: function() {
-				alert("댓글 가져오기 실패!")
-			}
-		})
-	}
 		
 </script>
 <style type="text/css">
@@ -391,7 +315,73 @@ table { border-collapse: collapse; }
 				$("#reply").html(html)
 				--%>
 	
+	<%--
+	// 대댓글
+	function re_rep() {
+		var contextPath = "${pageContext.request.contextPath}";
+		
+		var projectNum = $("#projectNum").val();
+		var id = $("#id").val();
+		var content = $("#content").val();
+		
+		let form = { projectNum:projectNum, id:id, content:content }
+		
+		$.ajax({
+			url: contextPath + "/ggiriProject/re_addReply", 
+			type: "post", //dataType: "json",
+			data: JSON.stringify(form),
+			contentType: "application/json; charset=UTF-8",
+			success: function(data) {
+				if(data == 1){
+					alert("댓글 등록 완료!")
+					re_replyData();
+				} else {
+					// alert("댓글 오류");
+				}
+			},
+			error: function() {
+				alert("댓글 등록 실패")
+			}
+		})
+	}
 	
+	function re_replyData() {
+		
+		var contextPath = "${pageContext.request.contextPath}";
+		var projectNum = $("#projectNum").val();
+		
+		$.ajax({
+			url: contextPath + "/ggiriProject/re_replyData?projectNum=" + projectNum + "&no=" + no, type: "get",
+			success: function(re_rep) {
+				let html = ""
+				
+					for(i = 0; i < rep.length; i++){
+				
+						let date = new Date(re_rep[i].wdate)
+						let wdate = date.getFullYear()+"년 "+(date.getMonth()+1)+"월 "
+						wdate += date.getDate()+"일 "+date.getHours()+"시 "
+						wdate += date.getMinutes()+"분 "+date.getSeconds()+"초"
+						html += "		<div id='re_reply'>";
+						html += "			<table class='table'>";
+						html += "		 		<tr>";
+						html += " 					<th width='150px' height='40px'>"+ re_rep[i].id +"님</th>"+"<td width='150px'>"+ re_rep[i].wdate +"</td>";
+						html += "				</tr>";
+						html += "				<tr>";
+						html += "					<pre><td width='850px'>"+ re_rep[i].content +"</td></pre>";
+						html += "				</tr>";
+						html += "			</table>";
+						html += "		</div>";
+					}
+					$("#re_reply").html(html)
+			}, 
+			error: function() {
+				alert("댓글 가져오기 실패!")
+			}
+		})
+	}
+	
+	
+	--%>
 	
 	
 	<!-- 

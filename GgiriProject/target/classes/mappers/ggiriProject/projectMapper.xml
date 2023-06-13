@@ -13,23 +13,6 @@
 		<result property="id" column="id"/>
 	</resultMap>
 
-	<resultMap type="com.ggiri.root.project.dto.ProjectRepDTO" id="reply">
-		<result property="no" column="no"/>
-		<result property="bno" column="bno"/>
-		<result property="id" column="id"/>
-		<result property="content" column="content"/>
-		<result property="wdate" column="wdate"/>
-	</resultMap>
-	
-	<resultMap type="com.ggiri.root.project.dto.ReprepDTO" id="re_reply">
-		<result property="no" column="no"/>
-		<result property="r_no" column="r_no"/>
-		<result property="r_bno" column="r_bno"/>
-		<result property="id" column="id"/>
-		<result property="content" column="content"/>
-		<result property="rdate" column="rdate"/>
-	</resultMap>
-
 
 	<select id="projectList" resultMap="project">
 		SELECT * FROM ggiriProject
@@ -118,37 +101,6 @@
 	        WHERE ROWNUM &lt;= #{endRow}
 	    )
 	    WHERE rnum &gt;= #{startRow}
-	</select>
-
-	<insert id="addReply">
-		INSERT INTO ggiriReply(id, content, write_num)
-		VALUES(#{id}, #{content}, #{write_num})
-	</insert>
-	
-	<insert id="addReplyTest">
-		INSERT INTO reply(no, bno, id, content)
-		INSERT INTO ggiriReply(no, bno, id, content)
-		VALUES(reply_seq.nextval, #{bno}, #{id}, #{content})
-	</insert>
-	
-	<select id="getRepList" resultMap="reply">
-		SELECT * FROM ggiriReply WHERE bno=#{bno}
-	</select>
-	
-	<!-- 대댓글 -->
-	<insert id="re_addReplyTest">
-		INSERT INTO  re_reply(no, r_no, r_bno, id, content)
-		VALUES(re_reply_seq.nextval, 0, #{r_bno}, #{id}, #{content})
-		INSERT INTO ggiriReply(bno, id, content)
-		VALUES(#{bno}, #{id}, #{content})
-	</insert>
-	
-	<select id="re_getRepList" resultMap="re_reply">
-		SELECT * FROM re_reply WHERE r_bno=#{r_bno}
-	</select>	
-		
-	<select id="re_getRepList" resultMap="reply">
-		SELECT * FROM ggiriReply WHERE bno=#{bno}
 	</select>
 	
 </mapper>

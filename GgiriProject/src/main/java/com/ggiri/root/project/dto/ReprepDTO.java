@@ -6,41 +6,64 @@ import java.text.SimpleDateFormat;
 
 /*
 -- 대댓글 테이블
-CREATE TABLE re_reply (
-r_no NUMBER(10) not null,        -- 대댓글 번호
-r_bno NUMBER(10) not null,       -- 게시물 번호
+CREATE TABLE reGgiriReply (
+memberNum NUMBER(20),
+reno NUMBER(10) primary key,        -- 대댓글 번호
+no NUMBER(10) not null,          -- 댓글 번호
+bno NUMBER(10) not null,         -- 게시물 번호
 id VARCHAR2(100) not null,       -- 회원ID
 content VARCHAR2(1000),          -- 내용
-rdate DATE DEFAULT SYSDATE,      -- 작성일
-CONSTRAINT fk_test3 FOREIGN KEY(r_bno) REFERENCES ggiriProject(projectNum) ON DELETE CASCADE,
-CONSTRAINT fk_test4 FOREIGN KEY(id) REFERENCES ggiriMember(id) ON DELETE CASCADE
+wdate DATE DEFAULT SYSDATE,      -- 작성일
+CONSTRAINT fk_rep3 FOREIGN KEY(no) REFERENCES ggiriReply(no) ON DELETE CASCADE,
+CONSTRAINT fk_rep4 FOREIGN KEY(bno) REFERENCES ggiriProject(projectNum) ON DELETE CASCADE,
+CONSTRAINT fk_rep5 FOREIGN KEY(memberNum) REFERENCES ggiriMember(memberNum) ON DELETE CASCADE
 );
 */
 
 public class ReprepDTO {
 
-	private int r_no;
-	private int r_bno;
+	private int memberNum;
+	private int reno;
+	private int no;
+	private int bno;
 	private String id;
 	private String content;
-	private String rdate;
+	private String wdate;
 	
-	public int getR_no() {
-		return r_no;
+	
+	
+	public int getMemberNum() {
+		return memberNum;
 	}
-	
-	public void setR_no(int r_no) {
-		this.r_no = r_no;
+
+	public void setMemberNum(int memberNum) {
+		this.memberNum = memberNum;
 	}
-	
-	public int getR_bno() {
-		return r_bno;
+
+	public int getReno() {
+		return reno;
 	}
-	
-	public void setR_bno(int r_bno) {
-		this.r_bno = r_bno;
+
+	public void setReno(int reno) {
+		this.reno = reno;
 	}
-	
+
+	public int getNo() {
+		return no;
+	}
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+	public int getBno() {
+		return bno;
+	}
+
+	public void setBno(int bno) {
+		this.bno = bno;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -58,12 +81,12 @@ public class ReprepDTO {
 	}
 	
 	public String getRdate() {
-		return rdate;
+		return wdate;
 	}
 	
-	public void setRdate(Timestamp rdate) {
+	public void setRdate(Timestamp wdate) {
 		SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
-		this.rdate = format.format(rdate);
+		this.wdate = format.format(wdate);
 	}
 	
 	

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ggiri.root.mybatis.project.ReplyMapper">
+
+	<resultMap type="com.ggiri.root.project.dto.ProjectRepDTO" id="reply">
+		<result property="memberNum" column="memberNum"/>
+		<result property="no" column="no"/>
+		<result property="bno" column="bno"/>
+		<result property="id" column="id"/>
+		<result property="content" column="content"/>
+		<result property="wdate" column="wdate"/>
+	</resultMap>
+	
+	<resultMap type="com.ggiri.root.project.dto.ReprepDTO" id="re_reply">
+		<result property="memberNum" column="memberNum"/>
+		<result property="reno" column="reno"/>
+		<result property="no" column="no"/>
+		<result property="bno" column="bno"/>
+		<result property="id" column="id"/>
+		<result property="content" column="content"/>
+		<result property="wdate" column="wdate"/>
+	</resultMap>
+	
+	<insert id="addReplyTest">
+		INSERT INTO ggiriReply(memberNum, no, bno, id, content)
+		VALUES(reply_seq.nextval, #{bno}, #{id}, #{content})
+	</insert>
+	
+	<select id="getRepList" resultMap="reply">
+		SELECT * FROM ggiriReply WHERE bno=#{bno}
+	</select>
+	
+	<update id="re_modify">
+		UPDATE ggiriReply SET content=#{content} WHERE memberNum=#{memberNum}
+	</update>
+	
+	<delete id="re_delete">
+		DELETE FROM ggiriReply where memberNum=#{memberNum}
+	</delete>
+	
+	<!-- 대댓글 -->
+	<!-- <insert id="re_addReplyTest">
+		INSERT INTO  re_reply(no, r_no, r_bno, id, content)
+		VALUES(re_reply_seq.nextval, 0, #{r_bno}, #{id}, #{content})
+		INSERT INTO ggiriReply(bno, id, content)
+		VALUES(#{bno}, #{id}, #{content})
+	</insert>
+		
+	<select id="re_getRepList" resultMap="reply">
+		SELECT * FROM ggiriReply WHERE bno=#{bno}
+	</select> -->
+	
+</mapper>

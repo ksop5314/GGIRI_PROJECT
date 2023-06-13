@@ -72,33 +72,5 @@ public class ProjectServiceImpl implements ProjectService {
         return pm.getProjectCount();
     }	
     
-    // 댓글
-//    @Override
-//	public void addReply(ProjectRepDTO dto) {
-//		pm.addReply(dto);
-//	}
-
-    @Override
-    public int addReplyTest(ProjectRepDTO dto) {
-    	
-    	return pm.addReplyTest(dto);
-    }
-    
-	@Override
-	public List<ProjectRepDTO> getRepList(int bno) {
-		return pm.getRepList(bno);
-	}
-    
-	// 대댓글
-	@Override
-	public int re_addReplyTest(ReprepDTO dto) {
-		return pm.re_addReplyTest(dto);
-	}
-    
-	@Override
-	public List<ReprepDTO> re_getRepList(int bno) {
-		return pm.re_getRepList(bno);
-	}
-	
     
 }
