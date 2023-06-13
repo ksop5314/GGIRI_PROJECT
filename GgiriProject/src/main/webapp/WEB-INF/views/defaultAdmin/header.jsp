@@ -72,7 +72,7 @@ nav ul li a:hover {
 					<li> | </li>
 					<li><a href="/root/ggiriAdmin/projectList"> <span style="font-size: 10px;">(관리자 권한)</span> 진행중인 프로젝트 보기 </a></li>
 					<li> | </li>
-					<li><a href="/root/ggiriAdmin/completeList"> <span style="font-size: 10px;">(관리자 권한)</span> 완료된 프로젝트 </a></li>
+					<li><a href="/root/ggiriAdmin/adminCompleteList"> <span style="font-size: 10px;">(관리자 권한)</span> 완료된 프로젝트 </a></li>
 					<li> | </li>
 					<li>${ADMIN } 관리자 계정으로 접속중</li>
 					<li> | </li>

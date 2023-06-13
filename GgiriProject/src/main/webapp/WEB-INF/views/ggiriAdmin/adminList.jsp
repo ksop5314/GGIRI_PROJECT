@@ -12,6 +12,13 @@
 <title>default/main.jsp</title>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <style type="text/css">
+
+table tr th, td{
+	border-bottom: 1px solid gray;
+	border-radius: 10px;
+	line-height: 40px;
+}
+
 .wrap{
 	width: 1000px;
 	margin: auto;
@@ -95,8 +102,8 @@ a{
  		<div class="wrap">
 			<div class="freeTxt">
 				<p>끼리가 보증하는 IT파트너</p>
-				<p id="h">프로젝트 등록하면<br>
-				더 정확한 추천을 받을 수 있어요</p>
+				<p id="h">관리자 페이지 입니다.<br>
+				등록된 프리랜서를 확인하세요.</p>
 				<br>
 			</div>
 			<br><br><br><br><br>

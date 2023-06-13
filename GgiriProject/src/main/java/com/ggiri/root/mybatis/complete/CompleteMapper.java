@@ -18,5 +18,6 @@ public interface CompleteMapper {
 	
 	public void delete(int completeNum);
 	
+	public List<CompleteDTO> adminCompleteList();
 	
 }

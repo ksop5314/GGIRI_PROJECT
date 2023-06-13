@@ -29,8 +29,8 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 	
 	@Override
-	public void insertPro(ProjectDTO dto) {
-		pm.insertPro(dto);
+	public int insertPro(ProjectDTO dto) {
+		return pm.insertPro(dto);
 	}
 	
 	@Override
@@ -69,6 +69,11 @@ public class ProjectServiceImpl implements ProjectService {
     public int getProjectCount() {
         return pm.getProjectCount();
     }	
+    
+    @Override
+    public void adminProjectList(Model model) {
+    	model.addAttribute("adminProjectList", pm.adminProjectList());
+    }
     
     // 댓글
 //    @Override

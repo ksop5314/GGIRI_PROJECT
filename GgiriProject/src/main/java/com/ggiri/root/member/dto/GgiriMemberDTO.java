@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 
 /*
 //create table ggirimember(
+//memberNum number(20) primary key,
 //name varchar2(30) not null,
 //id varchar2(30) primary key,
 //pwd varchar2(30) not null,
@@ -20,6 +21,7 @@ import java.text.SimpleDateFormat;
 */
 public class GgiriMemberDTO {
 
+	private int memberNum;
 	private String name;
 	private String id;
 	private String pwd;
@@ -31,6 +33,12 @@ public class GgiriMemberDTO {
 	private String logdate;
 	
 	
+	public int getMemberNum() {
+		return memberNum;
+	}
+	public void setMemberNum(int memberNum) {
+		this.memberNum = memberNum;
+	}
 	public String getName() {
 		return name;
 	}

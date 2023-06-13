@@ -5,8 +5,9 @@
 <mapper namespace="com.ggiri.root.mybatis.member.GgiriFreeInsertMapper">
 	
 	<resultMap type="com.ggiri.root.member.dto.GgiriFreeInsertDTO" id="ggiri">
-		<id property="name" column="name"/>
-		<result property="id" column="id"/>
+		<id property="id" column="id"/>
+		<result property="memberNum" column="memberNum"/>
+		<result property="name" column="name"/>
 		<result property="introduce" column="introduce"/>
 		<result property="job" column="job"/>
 		<result property="skill" column="skill"/>
@@ -16,29 +17,17 @@
 		<result property="insertdate" column="insertdate"/>
 	</resultMap>
 	
-	<resultMap type="com.ggiri.root.complete.dto.CompleteDTO" id="complete">
-		<result property="completeNum" column="completeNum"/>
-		<result property="title" column="title"/>
-		<result property="content" column="content"/>
-		<result property="skill" column="skill"/>
-		<result property="members" column="members"/>
-		<result property="tag" column="tag"/>
-		<result property="comdate" column="comdate"/>
-		<result property="comHit" column="comHit"/>
-		<result property="id" column="id"/>
-	</resultMap>
-	
 	<!-- <select id="boardAllList" resultMap="board">
 		SELECT * FROM mvc_board
 	</select> -->
 	
 	<insert id="writeSave">
-		INSERT INTO ggiriFree_insert(name,id, introduce, job,  skill, project_period, place_of_work, url_name)
-		 VALUES(#{name}, #{id}, #{introduce}, #{job}, #{skill}, #{project_period}, #{place_of_work}, #{url_name})
+		INSERT INTO ggiriFree_insert(id, memberNum, name, introduce, job,  skill, project_period, place_of_work, url_name)
+		 VALUES(#{id}, #{memberNum}, #{name}, #{introduce}, #{job}, #{skill}, #{project_period}, #{place_of_work}, #{url_name})
     </insert>
     
     <select id="getBoard" resultMap="ggiri">
-		SELECT * FROM ggiriFree_insert WHERE id=#{userid} 
+		SELECT * FROM ggiriFree_insert WHERE id=#{userid}
 	</select>
     
     
@@ -52,7 +41,7 @@
 	
 	<update id="writeFreeModify">
 		UPDATE ggiriFree_insert
-		 SET  id=#{id}, introduce=#{introduce}, job=#{job}, skill=#{skill}, project_period=#{project_period}, place_of_work=#{place_of_work}, url_name=#{url_name}
+		 SET introduce=#{introduce}, job=#{job}, skill=#{skill}, project_period=#{project_period}, place_of_work=#{place_of_work}, url_name=#{url_name}
 		 WHERE id =#{id}
 	</update>
 	
@@ -60,10 +49,6 @@
 		DELETE ggiriFree_insert WHERE id =#{id}
 	</delete>
 	
-	
-	<select id="getProject" resultMap="complete">
-		SELECT * FROM ggiriComplete WHERE id=#{id}
-	</select>
 </mapper>
 
 

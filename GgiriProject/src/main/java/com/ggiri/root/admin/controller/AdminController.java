@@ -8,9 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ggiri.root.complete.service.CompleteService;
 import com.ggiri.root.member.service.GgiriFreeInsertService;
 import com.ggiri.root.member.service.GgiriService;
+import com.ggiri.root.project.service.ProjectService;
 
 @Controller
 @RequestMapping("ggiriAdmin")
@@ -20,6 +24,10 @@ public class AdminController {
 	private GgiriService gs;
 	@Autowired
 	private GgiriFreeInsertService gfs;
+	@Autowired
+	private ProjectService ps;
+	@Autowired
+	private CompleteService cs;
 	
 	
 	@GetMapping("adminList")
@@ -43,4 +51,25 @@ public class AdminController {
 		gs.allMember(model, id);
 		return "ggiriAdmin/allMember";
 	}
+	
+	@GetMapping("memberDelete")
+	@ResponseBody
+	public String memberDelete(@RequestParam("deleteId") String deleteId) {
+		gs.deleteId(deleteId);
+		return "OK";
+	}
+	
+	@GetMapping("projectList")
+	public String projectList(Model model) {
+		ps.adminProjectList(model);
+		return "ggiriAdmin/adminProjectList";
+	}
+	
+	@GetMapping("adminCompleteList")
+	public String adminCompleteList(Model model) {
+		cs.adminCompleteList(model);
+		return "";
+	}
+	
+	
 }

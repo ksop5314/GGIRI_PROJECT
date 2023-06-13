@@ -14,7 +14,7 @@ public interface ProjectService {
 	
 	public void projectView(int projectNum, Model model);
 	
-	public void insertPro(ProjectDTO dto);
+	public int insertPro(ProjectDTO dto);
 	
 	public void modify(ProjectDTO dto);
 	
@@ -29,6 +29,8 @@ public interface ProjectService {
     public List<ProjectDTO> getProjectList(int page, int perPage);
 
     public int getProjectCount();
+    
+    public void adminProjectList(Model model);
     
     // 댓글
 //    public void addReply(ProjectRepDTO dto);

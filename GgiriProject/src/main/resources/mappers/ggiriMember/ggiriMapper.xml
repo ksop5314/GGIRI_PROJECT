@@ -5,7 +5,8 @@
 <mapper namespace="com.ggiri.root.mybatis.member.GgiriMemberMapper">
 
 	<resultMap type="com.ggiri.root.member.dto.GgiriMemberDTO" id="ggiri">
-		<id property="id" column="id"/>
+		<id property="memberNum" column="memberNum"/>
+		<result property="id" column="id"/>
 		<result property="name" column="name"/>
 		<result property="pwd" column="pwd"/>
 		<result property="birth" column="birth"/>
@@ -18,7 +19,7 @@
 	
 	<!-- 강준호 -->
 	<insert id="register">
-		INSERT INTO ggirimember(id, name, pwd, birth, gender, email, tel, addr) VALUES(#{id}, #{name}, #{pwd}, #{birth}, #{gender}, #{email}, #{tel}, #{addr})
+		INSERT INTO ggirimember(memberNum, id, name, pwd, birth, gender, email, tel, addr) VALUES(ggiriMember_seq.nextval, #{id}, #{name}, #{pwd}, #{birth}, #{gender}, #{email}, #{tel}, #{addr})
 	</insert>
 	
 	<select id="idCheck" resultType="integer">
@@ -45,8 +46,8 @@
 		SELECT * FROM ggirimember WHERE id=#{id}
 	</select>
 	
-	<update id="modifyResult" >
-		UPDATE ggirimember SET name=#{name}, pwd=#{pwd}, birth=#{birth}, gender=#{gender}, email=#{email}, tel=#{tel}, addr=#{addr} WHERE id=#{id}
+	<update id="modifyResult">
+		UPDATE ggirimember SET name=#{name}, id=#{id}, pwd=#{pwd}, birth=#{birth}, gender=#{gender}, email=#{email}, tel=#{tel}, addr=#{addr} WHERE memberNum=#{memberNum}
 	</update>
 	
 	<select id="allMember" resultMap="ggiri">
@@ -60,7 +61,7 @@
 	</select>
 	
 	<insert id="googleinsert">
-		insert into ggirimember(name, id, email) values(#{name}, #{id}, #{email})
+		insert into ggirimember(memberNum, name, id, email) values(ggiriMember_seq.nextval, #{name}, #{id}, #{email})
 	</insert>
 	
 	<!-- Kakao -->
@@ -70,7 +71,7 @@
 	</select>
 	
 	<insert id="kakaoinsert">
-		insert into ggirimember(name, id, email) values(#{name}, #{id}, #{email})
+		insert into ggirimember(memberNum, name, id, email) values(ggiriMember_seq.nextval, #{name}, #{id}, #{email})
 	</insert>
 	
 	
@@ -80,10 +81,13 @@
 	</select>
 	
 	<insert id="naverInsert">
-		INSERT INTO ggirimember(id, name, birth, gender, email, tel) VALUES(#{id}, #{name}, #{birth}, #{gender}, #{email}, #{tel})
+		INSERT INTO ggirimember(memberNum, id, name, birth, gender, email, tel) VALUES(ggiriMember_seq.nextval, #{id}, #{name}, #{birth}, #{gender}, #{email}, #{tel})
 	</insert>
 	<!-- 강준호 끝 -->
 	
+	<delete id="deleteId">
+		DELETE FROM ggirimember WHERE id=#{id}
+	</delete>
 	
 	
 </mapper>

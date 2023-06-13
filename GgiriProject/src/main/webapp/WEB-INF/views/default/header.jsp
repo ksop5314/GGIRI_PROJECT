@@ -78,7 +78,7 @@ nav ul li a:hover {
 					 -->
 					<li> | </li>
 					<c:if test="${kakaoMember != null}">
-						<li><a>${kakaoMember.name}</a></li>
+						<li style="font-size: 12px;"><a>${kakaoMember.name}</a></li>
 						<li style="font-size: 10px;"><a>${kakaoMember.email}</a></li>
 						<li style="font-size: 12px;"><p><b>Kakao</b> 계정으로 접속중</p></li>
 						<li> | </li>
@@ -87,7 +87,7 @@ nav ul li a:hover {
 						<li><a href="/root/ggiriMember/kakaoLogout">LOGOUT</a></li>
 					</c:if>
 					<c:if test="${naverMember != null}">
-						<li><a>${naverMember.name}</a></li>
+						<li style="font-size: 12px;"><a>${naverMember.name}</a></li>
 						<li style="font-size: 10px;"><a>${naverMember.id}</a></li>
 						<li style="font-size: 12px;"><p><b>Naver</b> 계정으로 접속중</p></li>
 						<li> | </li>

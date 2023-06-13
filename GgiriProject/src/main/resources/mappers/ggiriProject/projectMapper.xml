@@ -6,19 +6,29 @@
 
 	<resultMap type="com.ggiri.root.project.dto.ProjectDTO" id="project">
 		<id property="projectNum" column="projectNum"/>
+		<result property="memberNum" column="memberNum"/>
 		<result property="title" column="title"/>
 		<result property="content" column="content"/>
 		<result property="prodate" column="prodate"/>
 		<result property="proHit" column="proHit"/>
 		<result property="id" column="id"/>
+		<result property="skill" column="skill"/>
 	</resultMap>
 
 	<resultMap type="com.ggiri.root.project.dto.ProjectRepDTO" id="reply">
+		<id property="no" column="no"/>
+		<result property="memberNum" column="memberNum"/>
+		<result property="bno" column="bno"/>
+		<result property="id" column="id"/>
+		<result property="content" column="content"/>
+		<result property="wdate" column="wdate"/>
+	</resultMap>
+
+	<resultMap type="com.ggiri.root.project.dto.ProjectReRepDTO" id="rereply">
+		<id property="reno" column="reno"/>
+		<result property="memberNum" column="memberNum"/>
 		<result property="no" column="no"/>
 		<result property="bno" column="bno"/>
-		<result property="grp" column="grp"/>
-		<result property="grps" column="grps"/>
-		<result property="grpl" column="grpl"/>
 		<result property="id" column="id"/>
 		<result property="content" column="content"/>
 		<result property="wdate" column="wdate"/>
@@ -34,8 +44,8 @@
 	</select>
 	
 	<insert id="insertPro">
-		INSERT INTO ggiriProject(projectNum, title, content, id) 
-		VALUES(ggiriProject_seq.nextval, #{title}, #{content}, #{id})
+		INSERT INTO ggiriProject(projectNum, memberNum, title, content, id, skill) 
+		VALUES(ggiriProject_seq.nextval, #{memberNum}, #{title}, #{content}, #{id}, #{skill})
 	</insert>
 	
 	<update id="proHit">
@@ -49,6 +59,10 @@
 	<delete id="delete">
 		DELETE FROM ggiriProject WHERE projectNum=#{projectNum}
 	</delete>
+	
+	<select id="adminProjectList" resultMap="project">
+		SELECT * FROM ggiriProject
+	</select>
 	
 	<!-- 전체 프로젝트 개수 조회 -->
 	<select id="getProjectCount" resultType="int">
@@ -136,13 +150,13 @@
 	
 	<!-- 댓글 -->
 	<insert id="addReply">
-		INSERT INTO ggiriReply(id, content, write_num)
-		VALUES(#{id}, #{content}, #{write_num})
+		INSERT INTO ggiriReply(no, memberNum, bno, id, content)
+		VALUES(reply_seq.nextval, #{memberNum}, #{bno}, #{id}, #{content})
 	</insert>
 	
 	<insert id="addReplyTest">
-		INSERT INTO ggiriReply(no, bno, id, content)
-		VALUES(reply_seq.nextval, #{bno}, #{id}, #{content})
+		INSERT INTO ggiriReply(no, memberNum, bno, id, content)
+		VALUES(reply_seq.nextval, #{memberNum}, #{bno}, #{id}, #{content})
 	</insert>
 	
 	<select id="getRepList" resultMap="reply">
@@ -151,12 +165,12 @@
 	
 	<!-- 대댓글 -->
 	<insert id="re_addReplyTest">
-		INSERT INTO ggiriReply(bno, id, content)
-		VALUES(#{bno}, #{id}, #{content})
+		INSERT INTO reGgiriReply(reno, memberNum, no, bno, id, content)
+		VALUES(Rereply_seq.nextval, #{memberNum}, #{no}, #{bno}, #{id}, #{content})
 	</insert>
 	
-	<select id="re_getRepList" resultMap="reply">
-		SELECT * FROM ggiriReply WHERE bno=#{bno}
+	<select id="re_getRepList" resultMap="rereply">
+		SELECT * FROM reGgiriReply WHERE bno=#{bno} and no=#{no}
 	</select>
 	
 </mapper>

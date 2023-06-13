@@ -17,6 +17,6 @@ public interface CompleteService {
 	
 	public void delete(int completeNum);
 	
-	
+	public void adminCompleteList(Model model);
 	
 }

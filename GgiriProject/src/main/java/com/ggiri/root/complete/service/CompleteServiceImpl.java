@@ -41,7 +41,10 @@ public class CompleteServiceImpl implements CompleteService {
 		cm.delete(completeNum);
 	}
 	
-	
+	@Override
+	public void adminCompleteList(Model model) {
+		model.addAttribute( "",cm.adminCompleteList());
+	}
 	
 	
 }
