@@ -4,8 +4,9 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 public class ProjectDTO {
-
+	
 	private int projectNum; // 프로젝트 번호
+	private int memberNum;
 	private String title; // 제목
 	private String content; // 내용
 	private String prodate; // 등록일
@@ -13,7 +14,6 @@ public class ProjectDTO {
 	private String id; // 작성자 아이디
 	private String skill;
     private int likeCount;
-	
 	// 페이징 필드
 	private int pageNo; // 페이지 번호
 	private int pageSize; // 페이지 크기
@@ -30,15 +30,13 @@ public class ProjectDTO {
 	public ProjectDTO() {
 		super();
 	}
+	
+	public int getMemberNum() {
+		return memberNum;
+	}
 
-	public ProjectDTO(int projectNum, String title, String content, String prodate, int proHit, String id) {
-		super();
-		this.projectNum = projectNum;
-		this.title = title;
-		this.content = content;
-		this.prodate = prodate;
-		this.proHit = proHit;
-		this.id = id;
+	public void setMemberNum(int memberNum) {
+		this.memberNum = memberNum;
 	}
 
 	public int getProjectNum() {
@@ -152,4 +150,19 @@ public class ProjectDTO {
 		this.userId = userId;
 	}
 	
+//	public int getPageNo() {
+//		return pageNo;
+//	}
+//	
+//	public void setPageNo(int pageNo) {
+//		this.pageNo = pageNo;
+//	}
+//	
+//	public int getPageSize() {
+//		return pageSize;
+//	}
+//	
+//	public void setPageSize(int pageSize) {
+//		this.pageSize = pageSize;
+//	}
 }

@@ -27,12 +27,8 @@ public interface GgiriService {
 	public void ggiriMemberInfo(String id, Model model);
 	public void ggiriSnsInfo(String id, Model model);
 	
+	
+	public void deleteId(String deleteId);
 	public void allMember(Model model, String id);
-//	public int getProjectCountBySearch(String keyword, String condition);
-//	public List<ProjectDTO> getProjectListBySearch(String keyword, String condition);
-//	public List<ProjectDTO> getProjectList(int page, int perPage);
-//	public int getProjectCount();
-	public int getProjectCountBySearch(String keyword, String condition);
-	public List<ProjectDTO> getProjectListBySearch(String keyword, String condition);
 	
 }

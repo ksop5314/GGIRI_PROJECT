@@ -1,6 +1,7 @@
 package com.ggiri.root.mybatis.member;
 
 import com.ggiri.root.member.dto.GgiriMemberDTO;
+import com.ggiri.root.project.dto.ProjectDTO;
 
 import java.util.List;
 public interface GgiriMemberMapper {
@@ -21,5 +22,9 @@ public interface GgiriMemberMapper {
 	public GgiriMemberDTO ggiriSnsInfo(String id);
 	public List<GgiriMemberDTO> allMember(String id);
 	public int getProjectCount();
+	public void deleteId(String id);
+	
+	public List<ProjectDTO> getProjectListBySearch(String keyword, String condition);
+
 	
 }

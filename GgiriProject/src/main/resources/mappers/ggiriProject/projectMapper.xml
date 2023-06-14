@@ -5,12 +5,15 @@
 <mapper namespace="com.ggiri.root.mybatis.project.ProjectMapper">
 
 	<resultMap type="com.ggiri.root.project.dto.ProjectDTO" id="project">
+		<id property="projectNum" column="projectNum"/>
 		<result property="projectNum" column="projectNum"/>
+		<result property="memberNum" column="memberNum"/>
 		<result property="title" column="title"/>
 		<result property="content" column="content"/>
 		<result property="prodate" column="prodate"/>
 		<result property="proHit" column="proHit"/>
 		<result property="id" column="id"/>
+		<result property="skill" column="skill"/>
 	</resultMap>
 	
 	<select id="projectList" resultMap="project">
@@ -22,7 +25,8 @@
 	</select>
 	
 	<insert id="insertPro">
-		INSERT INTO ggiriProject(projectNum, title, skill, content, id) VALUES(ggiriProject_seq.nextval, #{title}, #{skill}, #{content}, #{id})
+		INSERT INTO ggiriProject(projectNum, memberNum, title, content, id, skill) 
+		VALUES(ggiriProject_seq.nextval, #{memberNum}, #{title}, #{content}, #{id}, #{skill})
 	</insert>
 	
 	<update id="proHit">
@@ -36,6 +40,10 @@
 	<delete id="delete">
 		DELETE FROM ggiriProject WHERE projectNum=#{projectNum}
 	</delete>
+	
+	<select id="adminProjectList" resultMap="project">
+		SELECT * FROM ggiriProject
+	</select>
 	
 	<!-- 전체 프로젝트 개수 조회 -->
 	<select id="getProjectCount" resultType="int">
@@ -92,7 +100,5 @@
 	            </choose>
 	            ORDER BY projectNum DESC
 	</select>
-	
-	
 	
 </mapper>

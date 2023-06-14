@@ -65,7 +65,10 @@ $(document).ready(function(job){
 		<table>
 			
 			<tr> 
-				<th>작성자 </th><td><input type="text" name="id" id="id" value="${loginUser }" readonly></td>
+				<th>작성자 </th>
+				<td>
+					<input type="text" name="id" id="id" value="${loginUser }" readonly>
+				</td>
 			</tr>
 			<tr>
 				<th>소개 : </th><td><input type="text" name="introduce" value="${info.introduce }"><td>

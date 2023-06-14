@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ggiri.root.member.dto.GgiriMemberDTO;
+import com.ggiri.root.member.service.GgiriService;
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
 import com.ggiri.root.project.service.ProjectService;
@@ -35,9 +37,28 @@ public class ProjectController implements GgiriMemberSession{
 	@Autowired
 	private ProjectServiceImpl projectService;
 
+	@Autowired
+	private GgiriService gs;
 	
     @RequestMapping("projectWrite")
-    public String proWrite() {
+    public String proWrite(HttpSession session, Model model) {
+    	if(session.getAttribute(LOGIN) != null) {
+			String id = (String)session.getAttribute(LOGIN);
+			gs.ggiriMemberInfo(id, model);
+			return "ggiriProject/projectWrite";
+		} else if(session.getAttribute("kakaoMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("kakaoMember");
+			gs.ggiriSnsInfo(dto.getId(), model);
+			return "ggiriProject/projectWrite";
+		} else if(session.getAttribute("naverMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("naverMember");
+			gs.ggiriSnsInfo(dto.getId(), model);
+			return "ggiriProject/projectWrite";
+		} else if(session.getAttribute("googleMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("googleMember");
+			gs.ggiriSnsInfo(dto.getId(), model);
+			return "ggiriProject/projectWrite";
+		}
         return "ggiriProject/projectWrite";
     }
 
@@ -55,10 +76,23 @@ public class ProjectController implements GgiriMemberSession{
 
     @PostMapping("projectSave")
     public String projectSave(ProjectDTO dto) {
-        ps.insertPro(dto);
-        return "redirect:/ggiriProject/projectList";
+        int a = ps.insertPro(dto);
+        if(a == 1) {
+        	return "redirect:projectSuccess";
+        }
+        return "redirect:projectFail";
     }
-
+    
+    @GetMapping("projectSuccess")
+    public String projectSuccess() {
+    	return "ggiriProject/projectSuccess";
+    }
+    
+    @GetMapping("projectFail")
+    public String projectFail() {
+    	return "ggiriProject/projectFail";
+    }
+    
     @GetMapping("modifyForm")
     public String modifyForm(@RequestParam("projectNum") int projectNum, Model model) {
         ps.projectView(projectNum, model);
@@ -112,6 +146,31 @@ public class ProjectController implements GgiriMemberSession{
 
         return "ggiriProject/projectList";
     }
+    
+//    @GetMapping("projectList")
+//    public String projectList(
+//        @RequestParam(value = "keyword", required = false) String keyword,
+//        @RequestParam(value = "condition", defaultValue = "title") String condition,
+//        Model model
+//    ) {
+//        if (keyword != null && !keyword.isEmpty()) {
+//            // 검색어가 입력된 경우 검색 기능 적용
+//            List<ProjectDTO> projectList = ps.search(keyword, condition);
+//            
+//            model.addAttribute("keyword", keyword);
+//            model.addAttribute("condition", condition);
+//            model.addAttribute("projectList", projectList);
+//        } else {
+//            // 검색어가 없는 경우 전체 프로젝트 목록 조회
+//            List<ProjectDTO> projectList = ps.getProjectList();
+//            
+//            model.addAttribute("projectList", projectList);
+//        }
+//
+//        return "ggiriProject/projectList";
+//    }
+
+    
     
   //게시물 추천 관련 메소드
     @RequestMapping("/board/recommend.do")

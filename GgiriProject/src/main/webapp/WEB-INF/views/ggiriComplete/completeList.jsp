@@ -10,7 +10,24 @@
 <meta charset="UTF-8">
 <title>ggiriComplete/completeList.jsp</title>
 <style type="text/css">
-table { border-collapse: collapse; }
+table {
+	width: 1100px;
+	margin: 0 auto;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+table th {
+	text-align: center;
+}
+table th,td {
+	border-bottom: 2px solid gray;
+	padding: 20px 0 20px 0;
+}
+
+table td {
+	padding: 5px 0 7px 8px;
+	text-align: center;
+	width: 100px;
+}
 .wrap{
 	width: 1000px;
 	margin: auto;
@@ -83,6 +100,20 @@ a{
 	background-color: white;
 	transition: 0.5s;
 }
+#button1 {
+	width: 60px;
+	height: 28px;
+	border: none; 
+	border-radius: 9999px;
+	font-size: 14px;
+	background: #B2CCFF;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	cursor: pointer;
+}
+#button1:hover {
+	background-color:#EBF7FF;
+    transition: 0.5s;
+}
 </style>
 </head>
 <body>
@@ -110,18 +141,19 @@ a{
 				<button id="h3" type="submit" style=" border-radius: 30px;"> 2023 </button> 
 			</form>
 		</div>
+		<br><br><br><br><hr>
 	</div>
-	<br><br><br>
 	<div class="wrap board_table">
 	<h1></h1>
 	<br>
-		<table border="1">
-			<tr style="text-align: center">
-				<th style="display: none"> 글번호 </th>
-				<th style="display: none"> 작성자 </th>
+		<table style="border:1px solid white;">
+			<tr>
+				<th style="display: none" width="50px"> 글번호 </th>
+				<th style="display: none" width="100px"> 작성자 </th>
 				<th width="700px"> 제 목 </th>
-				<th> 날 짜 </th>
-				<th width="100px"> 조회수 </th>
+				<th width="150px"> 날 짜 </th>
+				<th width="75px"> 조회수 </th>
+				<th width="50px"> 좋아요 </th>
 			</tr>
 			<c:if test="${completeList.size()==0 }">
 				<tr>
@@ -135,11 +167,24 @@ a{
 					<td><a href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a></td>
 					<td>${dto.comdate }</td>
 					<td>${dto.comHit }</td>
+			        <td>${dto.likeCount }</td>
 				</tr>
 			</c:forEach>
 		</table>
+		<br>
+	  <form action="projectList.do" method="get">
+	    <label for="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">검색조건</label><br>
+	    <select name="condition" id="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">
+	      <option value="titleContent" <c:if test="${condition eq 'titleContent' }">selected</c:if>>제목 + 본문</option>
+	      <option value="title" <c:if test="${condition eq 'title' }">selected</c:if>>제목</option>
+	      <option value="id" <c:if test="${condition eq 'id' }">selected</c:if>>작성자</option>
+	    </select>
+	    <input type="text" name="keyword" id="keyword" style="font-family: 'IBM Plex Sans KR', sans-serif"
+	           placeholder="검색어" value="${keyword }"/>
+	    <button id="button1" type="submit">검색</button>
+	  </form>
 	</div>
+	<br>
 	<c:import url="../default/footer.jsp"></c:import>
->>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
 </body>
 </html>

@@ -10,12 +10,10 @@
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script type='text/javascript'>
 </script>
-
 <style type="text/css">
 *{
 	margin: 0;
 }
-
 /* #modal_wrap{
 	position: fixed;
 	z-index: 9;
@@ -24,8 +22,8 @@
 	width: 100%;
 	height: 100%;
 	background: rgba(0, 0, 0, 0.4);
-}
-#first{
+}*/
+/* #first{
 	position: fixed;
 	z-index: 10;
 	margin: 0 auto;
@@ -40,15 +38,15 @@ div{
 }
 #id{
 	margin-right: auto;
-	margin-left: auto;
-    background-color: #000000;
-	border: none;
-	width: 800px;
-	height: 100px;
-	text-align: center;
-	padding: 50px 0 50px 0;
-	font-size: 50px;
-	color: white;
+    margin-left: auto;
+    background-color: ;
+    border: none;
+    width: 800px;
+    height: 100px;
+    text-align: center;
+    padding: 50px 0 50px 0;
+    font-size: 50px;
+    color: white;
 }
 #id p {
 	color:white;
@@ -67,7 +65,6 @@ table tr{
 table td{
 	context-align: center;
 }
-	
 </style>
 </head>
 <body>
@@ -76,6 +73,7 @@ table td{
 			<!-- <input type="hidden" id="writeNo" name="writeNo"> -->
 			<br>
 			<p id="id">"${info.id }"</p>
+			<br>
 			<table>
 				<tr>
 					<td><b>소개 : </b>"${info.introduce }"</td>
@@ -86,17 +84,21 @@ table td{
 				<tr>
 				<tr>
 					<td><b>${info.id}님의 Git 주소 : </b><a href="${info.url_name }" target="_blank">${info.url_name }</a></td>
+					<td>
+						<input type="hidden" id="freeNum" name="freeNum" value="${info.memberNum }">
+						<b>${info.id}님의 깃주소 : </b><a href="${info.url_name }" target="_blank">${info.url_name }</a>
+					</td>
 				</tr>
 				<c:set var="id" value="${info.id }"/>
 				<c:if test="${info.id == loginUser }">
 				<tr>
-					<td><input type="submit"  value="수정" onclick="location.href='${contextPath}/ggiriMember/writeFreeModifyForm?id=${info.id }'"><input type="submit" value="삭제" onclick="location.href='${contextPath}/ggiriMember/writeFreeDelete?id=${info.id }'"></td>
+					<td><input type="submit" value="수정" onclick="location.href='${contextPath}/ggiriMember/writeFreeModifyForm?id=${info.id }'"><input type="submit" value="삭제" onclick="location.href='${contextPath}/ggiriMember/writeFreeDelete?id=${info.id }'"></td>
 				</tr>
 				</c:if>
 			</table>
 			<br>
 	<h1 style="text-align: center;"> 완성한 프로젝트 내용 </h1>
-	<c:forEach var="list" items="${list }">
+	<%-- <c:forEach var="list" items="${list }">
 		<hr>
 		<table border="1">
 			<tr>
@@ -119,7 +121,7 @@ table td{
 			</tr>
 			
 		</table>
-		</c:forEach>
+	</c:forEach> --%>
 	
 	<c:import url="../default/footer.jsp"/>
 </body>

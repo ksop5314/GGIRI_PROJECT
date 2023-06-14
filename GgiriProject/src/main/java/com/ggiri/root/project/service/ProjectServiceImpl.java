@@ -20,7 +20,7 @@ public class ProjectServiceImpl implements ProjectService {
     public void projectList(Model model) {
         model.addAttribute("projectList", pm.projectList());
     }
-
+    
     @Override
     public void projectView(int projectNum, Model model) {
         model.addAttribute("data", pm.projectView(projectNum));
@@ -28,8 +28,8 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public void insertPro(ProjectDTO dto) {
-        pm.insertPro(dto);
+    public int insertPro(ProjectDTO dto) {
+    	return pm.insertPro(dto);
     }
 
     @Override
@@ -57,32 +57,22 @@ public class ProjectServiceImpl implements ProjectService {
         return pm.getProjectListBySearch(keyword, searchType, startRow, endRow);
     }
 
+//    @Override
+//    public List<ProjectDTO> getProjectList(int page, int perPage) {
+//        return pm.getProjectList();
+//    }
+
     @Override
     public List<ProjectDTO> getProjectList(int page, int perPage) {
         int startRow = (page - 1) * perPage + 1;
         int endRow = startRow + perPage - 1;
         return pm.getProjectList(startRow, endRow);
     }
-
+    
     @Override
     public int getProjectCount() {
         return pm.getProjectCount();
     }
-
-    @Override
-    public void increaseLikeCount(int projectNum) {
-        pm.increaseLikeCount(projectNum);
-    }
-
-    @Override
-    public void increaseLikeCountByUser(int projectNum, String id) {
-        pm.increaseLikeCountByUser(projectNum, id);
-    }
-
-    public int getLikeIdByUser(int projectNum, String id) {
-        return pm.getLikeIdByUser(projectNum, id);
-    }
-
 
     // 댓글
 //    @Override

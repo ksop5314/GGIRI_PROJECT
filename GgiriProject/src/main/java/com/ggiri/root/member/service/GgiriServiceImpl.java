@@ -138,37 +138,9 @@ public class GgiriServiceImpl implements GgiriService{
 	}
 
 	@Override
-	public int getProjectCountBySearch(String keyword, String condition) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void deleteId(String deleteId) {
+		gmm.deleteId(deleteId);
 	}
-
-	@Override
-	public List<ProjectDTO> getProjectListBySearch(String keyword, String condition) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-//	@Override
-//	public int getProjectCountBySearch(String keyword, String condition) {
-//        return gmm.getProjectCountBySearch(keyword, searchType);
-//	}
-//
-//	@Override
-//	public List<ProjectDTO> getProjectListBySearch(String keyword, String condition) {
-//        return gmm.getProjectListBySearch(keyword, searchType);
-//	}
-//
-//	@Override
-//	public List<ProjectDTO> getProjectList(int page, int perPage) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	@Override
-//	public int getProjectCount() {
-//		return gmm.getProjectCount();
-//	}
 	
 	// 강준호 끝
 	

@@ -18,12 +18,23 @@ CONSTRAINT fk_test2 FOREIGN KEY(id) REFERENCES ggiriMember(id) ON DELETE CASCADE
 
 public class ProjectRepDTO {
 	
+	private int memberNum;  // 회원 번호
 	private int no; 		// 댓글 번호
 	private int bno; 		// 게시물 번호
 	private String id; 		// 회원ID
 	private String content; // 내용
 	private String wdate; 	// 작성일
 	
+	
+	
+	public int getMemberNum() {
+		return memberNum;
+	}
+
+	public void setMemberNum(int memberNum) {
+		this.memberNum = memberNum;
+	}
+
 	public int getNo() {
 		return no;
 	}

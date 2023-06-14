@@ -2,11 +2,6 @@ package com.ggiri.root.mybatis.member;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.maven.model.Model;
-
-import com.ggiri.root.admin.dto.GgiriAdminDTO;
 import com.ggiri.root.complete.dto.CompleteDTO;
 import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
 import com.ggiri.root.member.dto.GgiriMemberDTO;
@@ -18,7 +13,6 @@ public interface GgiriFreeInsertMapper {
 	
 	public List<GgiriFreeInsertDTO> selectJob(String job);
 	
-	
 	public GgiriFreeInsertDTO getBoard(String userid);
 	
 	public List<GgiriMemberDTO> boardAllList();
@@ -27,5 +21,8 @@ public interface GgiriFreeInsertMapper {
 	
 	public void writeFreeDelete(String userid);
 
+	public List<CompleteDTO> getProject(String userid);
+	
+	public List<GgiriFreeInsertDTO> search(String keyword, String condition);
 
 }

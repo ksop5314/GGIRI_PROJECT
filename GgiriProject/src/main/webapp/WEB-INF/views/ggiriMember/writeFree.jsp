@@ -96,30 +96,20 @@ input.insert:hover {
 		<table>
 			<tr>
 				<c:if test="${loginUser != null}">
-					<input type="hidden" name="name" id="name" value="${loginUser }">
+					<input type="hidden" name="name" id="name" value="${ggiriMemberInfo.name }">
+					<input type="hidden" name="memberNum" id="memberNum" value="${ggiriMemberInfo.memberNum }">
 				</c:if>
-				<c:if test="${kakaoMember != null}">
-					<input type="hidden" name="name" id="name" value="${kakaoMember.name }">
-				</c:if>
-				<c:if test="${naverMember != null}">
-					<input type="hidden" name="name" id="name" value="${naverMember.name }">
-				</c:if>
-				<c:if test="${googleMember != null}">
-					<input type="hidden" name="name" id="name" value="${googleMember.name }">
+				<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
+					<input type="hidden" name="name" id="name" value="${ggiriSnsInfo.name }">
+					<input type="hidden" name="memberNum" id="memberNum" value="${ggiriSnsInfo.memberNum }">
 				</c:if>
 			</tr>
 			<tr> 
 				<c:if test="${loginUser != null}">
 					<th>작성자 </th><td><input type="text" name="id" id="id" value="${loginUser }" readonly></td>
 				</c:if>
-				<c:if test="${kakaoMember != null}">
-					<th>작성자 </th><td><input type="text" name="id" id="id" value="${kakaoMember.id }" readonly></td>
-				</c:if>
-				<c:if test="${naverMember != null}">
-					<th>작성자 </th><td><input type="text" name="id" id="id" value="${naverMember.id}" readonly></td>
-				</c:if>
-				<c:if test="${googleMember != null}">
-					<th>작성자 </th><td><input type="text" name="id" id="id" value="${googleMember.id}" readonly></td>
+				<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
+					<th>작성자 </th><td><input type="text" name="id" id="id" value="${ggiriSnsInfo.id }" readonly></td>
 				</c:if>
 			</tr>
 			<tr>

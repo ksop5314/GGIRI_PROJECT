@@ -2,11 +2,13 @@ package com.ggiri.root.member.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.ui.Model;
 
-import com.ggiri.root.admin.dto.GgiriAdminDTO;
 import com.ggiri.root.complete.dto.CompleteDTO;
 import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
+import com.ggiri.root.project.dto.ProjectDTO;
 
 
 public interface GgiriFreeInsertService {
@@ -31,5 +33,15 @@ public interface GgiriFreeInsertService {
 	public void writeFreeDelete(String userid);
 	
 	public List<CompleteDTO> projectInfo(String usertid, Model model);
+
+//	public void adminProjectList(Model model);
+
+	public List<GgiriFreeInsertDTO> getAdminListBySearch(String keyword, String condition, int startRow, int endRow);
+
+	public List<GgiriFreeInsertDTO> getAdminList(int page, int perPage);
+
+	public int getAdminListCount();
+
+	void adminProjectList(Model model);
 
 }

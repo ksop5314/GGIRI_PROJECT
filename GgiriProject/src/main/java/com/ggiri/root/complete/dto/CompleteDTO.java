@@ -19,7 +19,8 @@ id VARCHAR2(20) NOT NULL
 
 
 public class CompleteDTO {
-
+	
+	private int memberNum;
 	private int completeNum;
 	private String title;
 	private String content;
@@ -48,6 +49,16 @@ public class CompleteDTO {
 		this.comdate = comdate;
 		this.comHit = comHit;
 		this.id = id;
+	}
+
+	
+	
+	public int getMemberNum() {
+		return memberNum;
+	}
+
+	public void setMemberNum(int memberNum) {
+		this.memberNum = memberNum;
 	}
 
 	public int getCompleteNum() {

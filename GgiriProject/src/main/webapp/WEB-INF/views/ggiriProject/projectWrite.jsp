@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,10 +101,28 @@ table td {
     justify-content: center;
 }
 </style>
+<script type="text/javascript">
+	
+function count_check(obj){
+	var chkBox = document.getElementsByName("skill");
+	var chkCnt = 0;
+	for(var i = 0; i < chkBox.length ; i++){
+		if(chkBox[i].checked){
+			chkCnt++;
+		}
+	}
+	if(chkCnt > 10){
+		alert("요구 스킬은 10개까지 선택할 수 있습니다.");
+		obj.checked = false;
+		return false;
+	}
+	
+}
+	
+</script>
 </head>
 <body>
 	<c:import url="../default/header.jsp"></c:import>
-	<br>
 	<h1>프로젝트 등록하기</h1>
 	<form action="../ggiriProject/projectSave" method="post">
 		<table>

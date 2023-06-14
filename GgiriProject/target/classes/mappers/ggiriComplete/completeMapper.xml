@@ -5,7 +5,8 @@
 <mapper namespace="com.ggiri.root.mybatis.complete.CompleteMapper">
 
 	<resultMap type="com.ggiri.root.complete.dto.CompleteDTO" id="complete">
-		<result property="completeNum" column="completeNum"/>
+		<id property="completeNum" column="completeNum"/>
+		<result property="memberNum" column="memberNum"/>		
 		<result property="title" column="title"/>
 		<result property="content" column="content"/>
 		<result property="skill" column="skill"/>
@@ -25,8 +26,8 @@
 	</select>
 	
 	<insert id="insertCom">
-		INSERT INTO ggiriComplete(completeNum, title, content, skill, members, tag, comdate, id)
-		VALUES(ggiriComplete_seq.nextval, #{title}, #{content}, #{skill}, #{members}, #{tag}, #{comdate}, #{id})
+		INSERT INTO ggiriComplete(completeNum, memberNum, title, content, skill, members, tag, comdate, id)
+		VALUES(ggiriComplete_seq.nextval, #{memberNum},#{title}, #{content}, #{skill}, #{members}, #{tag}, #{comdate}, #{id})
 	</insert>
 	
 	<update id="comHit">
@@ -42,7 +43,9 @@
 		DELETE FROM ggiriComplete WHERE completeNum=#{completeNum}
 	</delete>
 	
-	
+	<select id="adminCompleteList" resultMap="complete">
+		SELECT * FROM ggiriComplete
+	</select>
 	
 	
 </mapper>

@@ -12,6 +12,46 @@
 
 $(function(){
 
+	$("#id").blur(function(){
+		if($("#id").val() == "") { 
+			$(".successIdChk").text("아이디를 입력해주세요.");
+			$(".successIdChk").css("color", "red");
+			$("#idDoubleChk").val("false");
+			return;
+		}
+	});
+	
+	$("#id").keyup(function(){
+		var contextPath = "${pageContext.request.contextPath}";
+		var id = $("#id").val();
+		if(id == "" || id.length < 2) {
+			$(".successIdChk").text("아이디는 2자 이상 8자 이하로 설정해주세요");
+			$(".successIdChk").css("color", "red");
+			$("#idDoubleChk").val("false");
+		} else {
+			$.ajax({
+				url : contextPath + '/ggiriMember/IdCheck?id=' + id,
+				type : 'post',
+				cache : false,
+				success : function(data) {
+					if(data == 0){
+						$(".successIdChk").text("사용가능한 아이디 입니다.");
+						$(".successIdChk").css("color", "blue");
+						$("#idDoubleChk").val("true");
+					} else {
+						$(".successIdChk").text("사용중인 아이디 입니다.");
+						$(".successIdChk").css("color", "red");
+						$("#idDoubleChk").val("false");
+					}
+				},
+				error : function(){
+					console.log("실패");
+				}
+			});
+		}
+	
+	});
+	
 	$("#pwd").blur(function(){
 		if($("#pwd").val() == "") { 
 			$(".successPwd").text("비밀번호를 입력해주세요.");
@@ -111,7 +151,9 @@ function daumPost(){
 					<tr>
 						<th> 아이디 </th>
 						<td>
-							<input type="text" name="id" id="id" placeholder="아이디" maxlength="10" autocomplete="none" value="${ggiriMemberInfo.id}" readonly="readonly"><br>
+							<input type="text" name="id" id="id" placeholder="아이디" maxlength="10" autocomplete="none" value="${ggiriMemberInfo.id}"><br>
+							<span class="point successIdChk"></span>
+							<input type="hidden" id="idDoubleChk" value="false">
 						</td>
 					</tr>
 					<tr>
@@ -148,7 +190,7 @@ function daumPost(){
 					<tr>
 						<th> E-mail </th>
 						<td>
-							<input type="text" name="email" id="email1" placeholder="E-mail 입력" value="${ggiriMemberInfo.email}">
+							<input type="text" name="email" id="email1" placeholder="E-mail 입력" value="${ggiriMemberInfo.email}" readonly="readonly">
 						</td>
 					</tr>
 					<tr>

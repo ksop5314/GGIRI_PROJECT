@@ -385,9 +385,12 @@ table td {
 ul {
 	list-style: none;
 }
-
+.button1 {
+	display: flex;
+	align-items:center;
+	justify-content: center;
+}
 #button1 {
-	margin-left: 200px;
 	width: 600px;
 	height: 50px;
 	border: none; 
@@ -547,7 +550,9 @@ ul {
 					</td>
 				</tr>
 			</table><br>
-			<input type="submit" id="button1" value="회원가입">
+			<div class="button1">
+				<input type="submit" id="button1" value="회원가입">
+			</div>
 		</form>
 	</div>
 	<c:import url="../default/footer.jsp"/>

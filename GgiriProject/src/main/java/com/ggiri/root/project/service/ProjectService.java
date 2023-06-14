@@ -13,7 +13,7 @@ public interface ProjectService {
 
     public void projectView(int projectNum, Model model);
 	
-	public void insertPro(ProjectDTO dto);
+	public int insertPro(ProjectDTO dto);
 	
 	public void modify(ProjectDTO dto);
 	
@@ -29,12 +29,7 @@ public interface ProjectService {
 
     public int getProjectCount();
 
-    void increaseLikeCount(int projectNum);
-
-    public void increaseLikeCountByUser(int projectNum, String id);
-
-	int getLikeIdByUser(int projectNum, String id);
-
+    
     // 댓글
 //    public void addReply(ProjectRepDTO dto);
     public int addReplyTest(ProjectRepDTO dto);

@@ -12,6 +12,13 @@
 <title>default/main.jsp</title>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <style type="text/css">
+
+table tr th, td{
+	border-bottom: 1px solid gray;
+	border-radius: 10px;
+	line-height: 40px;
+}
+
 .wrap{
 	width: 1000px;
 	margin: auto;
@@ -86,7 +93,6 @@ a{
 	background-color: white;
 	transition: 0.5s;
 }
-
 </style>
 </head>
 <body>
@@ -95,8 +101,8 @@ a{
  		<div class="wrap">
 			<div class="freeTxt">
 				<p>끼리가 보증하는 IT파트너</p>
-				<p id="h">프로젝트 등록하면<br>
-				더 정확한 추천을 받을 수 있어요</p>
+				<p id="h">관리자 페이지 입니다.<br>
+				등록된 프리랜서를 확인하세요.</p>
 				<br>
 			</div>
 			<br><br><br><br><br>
@@ -108,22 +114,26 @@ a{
 					</tr>
 					<c:forEach var="list" items="${boardList }">
 						<tr>
-							<td>${list.name }</td><td>${list.id }</td><td>${list.introduce }</td><td>${list.job }</td><td>${list.skill }</td>
+							<td>${list.name }</td>
+							<td>${list.id }</td>
+							<td>${list.introduce }</td>
+							<td>${list.job }</td>
+							<td>${list.skill }</td>
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
 		<form action="adminList.do" method="get">
-    <label for="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">검색조건</label><br>
-    <select name="condition" id="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">
-      <option value="title" <c:if test="${condition eq 'name' }">selected</c:if>>이름</option>
-      <option value="id" <c:if test="${condition eq 'id' }">selected</c:if>>작성자ID</option>
-      <option value="job" <c:if test="${condition eq 'job' }">selected</c:if>>직업</option>
-    </select>
-    <input type="text" name="keyword" id="keyword" style="font-family: 'IBM Plex Sans KR', sans-serif"
-           placeholder="검색어" value="${keyword }"/>
-    <button id="button1" type="submit">검색</button>
-  </form>
+		    <label for="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">검색조건</label><br>
+			    <select name="condition" id="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">
+			      <option value="title" <c:if test="${condition eq 'name' }">selected</c:if>>이름</option>
+			      <option value="id" <c:if test="${condition eq 'id' }">selected</c:if>>작성자ID</option>
+			      <option value="job" <c:if test="${condition eq 'job' }">selected</c:if>>직업</option>
+			    </select>
+		    <input type="text" name="keyword" id="keyword" style="font-family: 'IBM Plex Sans KR', sans-serif"
+		           placeholder="검색어" value="${keyword }"/>
+		    <button id="button1" type="submit">검색</button>
+		</form>
 		</div>
 	<c:import url="../defaultAdmin/footer.jsp"/>
 </body>

@@ -15,7 +15,7 @@ public interface ProjectMapper {
     
     ProjectDTO projectView(int projectNum);
     
-    void insertPro(ProjectDTO dto);
+    int insertPro(ProjectDTO dto);
     
     void proHit(int projectNum);
     
@@ -30,7 +30,7 @@ public interface ProjectMapper {
     List<ProjectDTO> getProjectListBySearch(@Param("keyword") String keyword, @Param("condition") String condition,
                                            @Param("startRow") int startRow, @Param("endRow") int endRow);
 
-    List<ProjectDTO> getProjectList(@Param("startRow") int startRow, @Param("endRow") int endRow);
+    List<ProjectDTO> getProjectList(int startRow, int endRow);
 
     int getProjectCount();
 
@@ -68,6 +68,9 @@ public interface ProjectMapper {
 
 	LikeDTO getPicture(String projectNum);
 	
+    public List<ProjectDTO> adminProjectList();
+    
+    
     // 댓글
 //    public void addReply(ProjectRepDTO dto);
     public int addReplyTest(ProjectRepDTO dto);
