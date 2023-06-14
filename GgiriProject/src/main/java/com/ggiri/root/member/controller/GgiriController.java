@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.bag.SynchronizedSortedBag;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -145,6 +146,7 @@ public class GgiriController implements GgiriMemberSession {
 		System.out.println("controller access_token : " + kakaoToken);
 		
 		Map<String, Object> result = kakaoService.getUserInfo(kakaoToken);
+		System.out.println("컨트롤러 출력 : " + result.get("id"));
 		System.out.println("컨트롤러 출력 : " + result.get("email"));
 		System.out.println("컨트롤러 출력 : " + result.get("nickname"));
 //		System.out.println("컨트롤러 출력 : " + result.getKakaoEmail());
@@ -153,11 +155,12 @@ public class GgiriController implements GgiriMemberSession {
 		
 		GgiriMemberDTO ggiriMember = new GgiriMemberDTO();
 		
+		String id = (String)result.get("id");
 		String email = (String)result.get("email");
 		String name = (String)result.get("nickname");
 		
-		int index = email.indexOf("@");
-		String id = email.substring(0, index);
+//		int index = email.indexOf("@");
+//		String id = email.substring(0, index);
 		
 		
 		ggiriMember.setName(name);
@@ -212,14 +215,23 @@ public class GgiriController implements GgiriMemberSession {
 		jsonObject = (JSONObject)jsonParser.parse(naverApiResult);
 		JSONObject responseObj = (JSONObject)jsonObject.get("response");
 		
+		String id = (String) responseObj.get("id");
 		String email = (String) responseObj.get("email");
 		String name = (String) responseObj.get("name");
 		String gender = (String) responseObj.get("gender");
 		String mobile = (String) responseObj.get("mobile");
 		String birthday = (String) responseObj.get("birthday");
 		
-		int index = email.indexOf("@");
-		String id = email.substring(0, index);
+		System.out.println("id : " + id);
+		System.out.println("email : " + email);
+		System.out.println("name : " + name);
+		System.out.println("gender : " + gender);
+		System.out.println("mobile : " + mobile);
+		System.out.println("birthday : " + birthday);
+		System.out.println("naverApiResult : " + (String)naverApiResult);
+		
+//		int index = email.indexOf("@");
+//		String id = email.substring(0, index);
 		
 		GgiriMemberDTO naverMember = new GgiriMemberDTO();
 		naverMember.setName(name);
@@ -234,13 +246,6 @@ public class GgiriController implements GgiriMemberSession {
 			gs.naverInsert(naverMember);
 		}
 		
-		System.out.println("id : " + id);
-		System.out.println("email : " + email);
-		System.out.println("name : " + name);
-		System.out.println("gender : " + gender);
-		System.out.println("mobile : " + mobile);
-		System.out.println("birthday : " + birthday);
-		System.out.println("naverApiResult : " + (String)naverApiResult);
 		
 		session.setAttribute("signIn", naverApiResult);
 		session.setAttribute("naverMember", naverMember);
@@ -275,22 +280,29 @@ public class GgiriController implements GgiriMemberSession {
 		
 		Map<String, Object> result = googleService.getUserInfo(access_token);
 		System.out.println("컨트롤러 출력 : " + result.get("email"));
+		System.out.println("컨트롤러 출력 : " + result.get("name"));
+		System.out.println("컨트롤러 출력 : " + result.get("id"));
 		
 		GgiriMemberDTO ggiriMember = new GgiriMemberDTO();
 		
+		String name = (String)result.get("name");
+		String id = (String)result.get("id");
 		String email = (String)result.get("email");
 		//String name = (String)result.get("nickname");
 		
-		int index = email.indexOf("@");
-		String id = email.substring(0, index);
+		String idChk = id.substring(1, id.length()-1);
+		String nameChk = name.substring(1, name.length()-1);
+		String emailChk = email.substring(1, email.length()-1);
+		
+		System.out.println(idChk);
+		System.out.println(nameChk);
+		System.out.println(emailChk);
+		ggiriMember.setName(nameChk);
+		ggiriMember.setId(idChk);
+		ggiriMember.setEmail(emailChk);
 		
 		
-		ggiriMember.setName("Google 로그인 회원은 내정보에서 정보 수정 후 이용해주세요.");
-		ggiriMember.setId(id);
-		ggiriMember.setEmail(email);
-		
-		
-		int findGoogle = gs.findGoogle(id);
+		int findGoogle = gs.findGoogle(idChk);
 		if(findGoogle == 0) {
 			gs.googleinsert(ggiriMember);
 		}
@@ -377,7 +389,7 @@ public class GgiriController implements GgiriMemberSession {
 	@GetMapping("Info")
 	public String MemberList(@RequestParam("id") String userid, Model model) {
 		gfs.Info(userid ,model);
-		gfs.projectInfo(userid, model);
+		//gfs.projectInfo(userid, model);
 		return "ggiriMember/Info";
 	}
 //	@GetMapping(value="developer/{job}", produces="application/json; charset=utf-8")
@@ -390,7 +402,24 @@ public class GgiriController implements GgiriMemberSession {
 	}
 	
 	@GetMapping("writeFree")
-	public String writeFree() {
+	public String writeFree(HttpSession session, Model model) {
+		if(session.getAttribute(LOGIN) != null) {
+			String id = (String)session.getAttribute(LOGIN);
+			gs.ggiriMemberInfo(id, model);
+			return "ggiriMember/writeFree";
+		} else if(session.getAttribute("kakaoMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("kakaoMember");
+			gs.ggiriSnsInfo(dto.getId(), model);
+			return "ggiriMember/writeFree";
+		} else if(session.getAttribute("naverMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("naverMember");
+			gs.ggiriSnsInfo(dto.getId(), model);
+			return "ggiriMember/writeFree";
+		} else if(session.getAttribute("googleMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("googleMember");
+			gs.ggiriSnsInfo(dto.getId(), model);
+			return "ggiriMember/writeFree";
+		}
 		return "ggiriMember/writeFree";
 	}
 	
@@ -404,8 +433,9 @@ public class GgiriController implements GgiriMemberSession {
 	@PostMapping("writeSave")
 	public String writeSave(GgiriFreeInsertDTO dto){
 		int result = gfs.writeSave(dto);
-		if(result == 1)
+		if(result == 1) {
 			return "redirect:memberList";
+		}
 		return "redirect:writeFreeFail";
 	}
 	
@@ -434,7 +464,6 @@ public class GgiriController implements GgiriMemberSession {
 		gfs.writeFreeDelete(userid);
 		return "ggiriMember/writeFreeDelete";
 	}
-	
 	
 	
 	// 안태준 끝

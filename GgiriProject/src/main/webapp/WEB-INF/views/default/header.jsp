@@ -73,31 +73,25 @@ nav ul li a:hover {
 					<li><a href="/root/ggiriProject/projectList"> 프로젝트 보기 </a></li>
 					<li> | </li>
 					<li><a href="/root/ggiriComplete/completeList"> 진행한 프로젝트 </a></li>
-					<li> | </li>
-					<li><a href="/root/ggiriMessage/message">메세지</a></li>
 					<!-- <li> | </li>
 					<li><a href="/root/ggiriMessage/messageList">chat</a></li>
 					 -->
 					<li> | </li>
 					<c:if test="${kakaoMember != null}">
-						<li><a>${kakaoMember.name}</a></li>
+						<li style="font-size: 12px;"><a>${kakaoMember.name}</a></li>
 						<li style="font-size: 10px;"><a>${kakaoMember.email}</a></li>
 						<li style="font-size: 12px;"><p><b>Kakao</b> 계정으로 접속중</p></li>
 						<li> | </li>
 						<li><a href="/root/ggiriMember/snsInfo">내 정보</a></li>
 						<li> | </li>
-						<li><a href="/root/ggiriMessage/message">메세지</a></li>
-						<li> | </li>
 						<li><a href="/root/ggiriMember/kakaoLogout">LOGOUT</a></li>
 					</c:if>
 					<c:if test="${naverMember != null}">
-						<li><a>${naverMember.name}</a></li>
+						<li style="font-size: 12px;"><a>${naverMember.name}</a></li>
 						<li style="font-size: 10px;"><a>${naverMember.id}</a></li>
 						<li style="font-size: 12px;"><p><b>Naver</b> 계정으로 접속중</p></li>
 						<li> | </li>
 						<li><a href="/root/ggiriMember/snsInfo">내 정보</a></li>
-						<li> | </li>
-						<li><a href="/root/ggiriMessage/message">메세지</a></li>
 						<li> | </li>
 						<li><a href="/root/ggiriMember/naverLogout">Logout</a></li>
 					</c:if>
@@ -108,8 +102,6 @@ nav ul li a:hover {
 						<li> | </li>
 						<li><a href="/root/ggiriMember/snsInfo">내 정보</a></li>
 						<li> | </li>
-						<li><a href="/root/ggiriMessage/message">메세지</a></li>
-						<li> | </li>
 						<li><a href="/root/ggiriMember/googleLogout">Logout</a></li>
 					</c:if>
 					<c:if test="${kakaoMember == null && loginUser == null && naverMember == null && googleMember == null}">
@@ -118,8 +110,6 @@ nav ul li a:hover {
 					
 					<c:if test="${loginUser != null}">
 						<li><a href="/root/ggiriMember/myInfo">내 정보</a></li>
-						<li> | </li>
-						<li><a href="/root/ggiriMessage/message">메세지</a></li>
 						<li> | </li>
 						<li><a href="/root/ggiriMember/ggiriLogout"> LOGOUT </a></li>
 						

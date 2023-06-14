@@ -11,12 +11,13 @@ public interface CompleteService {
 	
 	public void comView(int completeNum, Model model);
 	
-	public void insertCom(CompleteDTO dto);
+//	public void insertCom(CompleteDTO dto);
+	public int insertCom(CompleteDTO dto);
 	
 	public int modify(CompleteDTO dto);
 	
 	public void delete(int completeNum);
 	
-	
+	public void adminCompleteList(Model model);
 	
 }

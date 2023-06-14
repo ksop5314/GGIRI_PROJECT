@@ -6,13 +6,15 @@
 
 	<resultMap type="com.ggiri.root.project.dto.ProjectDTO" id="project">
 		<id property="projectNum" column="projectNum"/>
+		<result property="memberNum" column="memberNum"/>
 		<result property="title" column="title"/>
+		<result property="project" column="project"/>
 		<result property="content" column="content"/>
 		<result property="prodate" column="prodate"/>
 		<result property="proHit" column="proHit"/>
 		<result property="id" column="id"/>
+		<result property="skill" column="skill"/>
 	</resultMap>
-
 
 	<select id="projectList" resultMap="project">
 		SELECT * FROM ggiriProject
@@ -23,8 +25,8 @@
 	</select>
 	
 	<insert id="insertPro">
-		INSERT INTO ggiriProject(projectNum, title, content, id) 
-		VALUES(ggiriProject_seq.nextval, #{title}, #{content}, #{id})
+		INSERT INTO ggiriProject(projectNum, memberNum, title, project, content, id, skill) 
+		VALUES(ggiriProject_seq.nextval, #{memberNum}, #{title}, #{project}, #{content}, #{id}, #{skill})
 	</insert>
 	
 	<update id="proHit">
@@ -32,12 +34,16 @@
 	</update>
 	
 	<update id="modify">
-		UPDATE ggiriProject SET title=#{title}, content=#{content} WHERE projectNum=#{projectNum}
+		UPDATE ggiriProject SET title=#{title}, content=#{content}, project=#{project} WHERE projectNum=#{projectNum}
 	</update>
 	
 	<delete id="delete">
 		DELETE FROM ggiriProject WHERE projectNum=#{projectNum}
 	</delete>
+	
+	<select id="adminProjectList" resultMap="project">
+		SELECT * FROM ggiriProject
+	</select>
 	
 	<!-- 전체 프로젝트 개수 조회 -->
 	<select id="getProjectCount" resultType="int">
@@ -102,5 +108,25 @@
 	    )
 	    WHERE rnum &gt;= #{startRow}
 	</select>
+
+	<!-- <select id="searchByTitleAndContent" resultType="ProjectDTO">
+	    SELECT *
+	    FROM project
+	    WHERE title LIKE CONCAT('%', #{keyword}, '%')
+	        OR content LIKE CONCAT('%', #{keyword}, '%')
+	</select>
+	
+	<select id="searchByTitle" resultType="ProjectDTO">
+	    SELECT *
+	    FROM project
+	    WHERE title LIKE CONCAT('%', #{keyword}, '%')
+	</select>
+
+	
+	<select id="searchByAuthor" resultType="ProjectDTO">
+	    SELECT *
+	    FROM project
+	    WHERE id LIKE CONCAT('%', #{keyword}, '%')
+	</select> -->
 	
 </mapper>

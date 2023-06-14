@@ -97,18 +97,10 @@ a{
 		</div> 
 		<br><br><br><br><br>
 		<div class="skill">
-			<form method="get" action="main">
-				<button id="h3" type="submit" style=" border-radius: 30px;"> 2020 </button>
-			</form>
-			<form action="#">
-				<button id="h3" type="submit" style=" border-radius: 30px;"> 2021  </button> 
-			</form>
-			<form action="#">
-			 	<button id="h3" type="submit" style=" border-radius: 30px;"> 2022 </button> 
-			</form>
-			<form action="#">
-				<button id="h3" type="submit" style=" border-radius: 30px;"> 2023 </button> 
-			</form>
+			<button id="h3" type="submit" style=" border-radius: 30px;"> 2020 </button> &nbsp;&nbsp;&nbsp;
+			<button id="h3" type="submit" style=" border-radius: 30px;"> 2021  </button> &nbsp;&nbsp;&nbsp;
+		 	<button id="h3" type="submit" style=" border-radius: 30px;"> 2022 </button> &nbsp;&nbsp;&nbsp;
+			<button id="h3" type="submit" style=" border-radius: 30px;"> 2023 </button> &nbsp;&nbsp;
 		</div>
 	</div>
 	<br><br><br>
@@ -119,8 +111,8 @@ a{
 			<tr style="text-align: center">
 				<th style="display: none"> 글번호 </th>
 				<th style="display: none"> 작성자 </th>
-				<th width="700px"> 제 목 </th>
-				<th> 날 짜 </th>
+				<th width="1000px"> 제 목 </th>
+				<th width="100px"> 날 짜 </th>
 				<th width="100px"> 조회수 </th>
 			</tr>
 			<c:if test="${completeList.size()==0 }">
@@ -132,7 +124,7 @@ a{
 				<tr style="text-align: right">
 					<td style="display: none" >${dto.completeNum }</td>
 					<td style="display: none">${dto.id }</td>
-					<td><a href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a></td>
+					<td height="100px"><a href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a></td>
 					<td>${dto.comdate }</td>
 					<td>${dto.comHit }</td>
 				</tr>

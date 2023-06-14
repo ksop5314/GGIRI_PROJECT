@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>completeSuccess</title>
 </head>
 <body>
 	<script type="text/javascript">
 		window.onload = function(){
-			alert("수정 실패");
-			location.href="/root/ggiriComplete/completeList";
+			alert("프로젝트가 등록되었습니다.");
+			location.href="../ggiriComplete/completeList";
 		}
 	</script>
 </body>

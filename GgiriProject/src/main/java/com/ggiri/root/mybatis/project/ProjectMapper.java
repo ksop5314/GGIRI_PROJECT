@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Param;
 
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
-import com.ggiri.root.project.dto.ReprepDTO;
 
 public interface ProjectMapper {
 
@@ -15,7 +14,7 @@ public interface ProjectMapper {
 	
 	public ProjectDTO projectView(int projectNum);
 	
-	public void insertPro(ProjectDTO dto);
+	public int insertPro(ProjectDTO dto);
 	
 	public void proHit(int projectNum);
 	
@@ -45,6 +44,8 @@ public interface ProjectMapper {
     public List<ProjectDTO> searchByTitle(@Param("keyword") String keyword);
 
     public List<ProjectDTO> searchByAuthor(@Param("keyword") String keyword);
+    
+    public List<ProjectDTO> adminProjectList();
     
     
 	

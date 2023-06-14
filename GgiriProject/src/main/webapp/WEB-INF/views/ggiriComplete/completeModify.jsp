@@ -17,6 +17,7 @@
 		<div class="modify">
 			<form action="../ggiriComplete/modify" method="post">
 				<input type="hidden" name="completeNum" value="${data.completeNum }">
+				<input type="hidden" name="memberNum" value="${data.completeNum }">
 				<b> 작성자 </b><br>
 				<input type="text" name="id" size="50" value="${loginUser }"><br>
 				<b> 제 목 </b><br>

@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
-import com.ggiri.root.project.dto.ReprepDTO;
 
 public interface ProjectService {
 
@@ -15,7 +14,7 @@ public interface ProjectService {
 	
 	public void projectView(int projectNum, Model model);
 	
-	public void insertPro(ProjectDTO dto);
+	public int insertPro(ProjectDTO dto);
 	
 	public void modify(ProjectDTO dto);
 	
@@ -31,7 +30,8 @@ public interface ProjectService {
 
     public int getProjectCount();
     
+    public void adminProjectList(Model model);
     
-	
+
 	
 }

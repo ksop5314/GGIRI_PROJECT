@@ -1,20 +1,28 @@
 package com.ggiri.root.member.dto;
 
+import java.sql.Date;
+
 public class GgiriFreeInsertDTO {
 	
-	private String name;
 	private String id; // GgiriMember (Primary key) id
+	private int memberNum;
+	private String name;
 	private String introduce; // 자기소개
 	private String job; // 직업 
 	private String skill; // 기술
 	private int project_period; // 프로젝트 기간
 	private String place_of_work; // 근무지
 	private String url_name;
-	private String insertdate; // 작성일자
+	private Date insertdate; // 작성일자
 	
 	
 	
-	
+	public int getMemberNum() {
+		return memberNum;
+	}
+	public void setMemberNum(int memberNum) {
+		this.memberNum = memberNum;
+	}
 	public String getName() {
 		return name;
 	}
@@ -66,13 +74,11 @@ public class GgiriFreeInsertDTO {
 	public void setUrl_name(String url_name) {
 		this.url_name = url_name;
 	}
-	public String getInsertdate() {
+	public Date getInsertdate() {
 		return insertdate;
 	}
-	public void setInsertdate(String insertdate) {
+	public void setInsertdate(Date insertdate) {
 		this.insertdate = insertdate;
 	}
-	
-	
 	
 }

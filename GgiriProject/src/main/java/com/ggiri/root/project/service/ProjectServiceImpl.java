@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import com.ggiri.root.mybatis.project.ProjectMapper;
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
-import com.ggiri.root.project.dto.ReprepDTO;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -31,8 +30,8 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 	
 	@Override
-	public void insertPro(ProjectDTO dto) {
-		pm.insertPro(dto);
+	public int insertPro(ProjectDTO dto) {
+		return pm.insertPro(dto);
 	}
 	
 	@Override
@@ -71,6 +70,11 @@ public class ProjectServiceImpl implements ProjectService {
     public int getProjectCount() {
         return pm.getProjectCount();
     }	
+    
+    @Override
+    public void adminProjectList(Model model) {
+    	model.addAttribute("adminProjectList", pm.adminProjectList());
+    }
     
     
 }

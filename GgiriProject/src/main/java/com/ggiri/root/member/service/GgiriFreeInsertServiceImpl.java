@@ -35,17 +35,15 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 			e.printStackTrace();
 			return 0;
 		}
-		
-
 	}
 	
 	@Override
 	public void Info(String userid, Model model) {
 		// TODO Auto-generated method stub
 		GgiriFreeInsertDTO dto = gfm.getBoard(userid);
-		List<CompleteDTO> Dto = gfm.getProject(userid);
+		//List<CompleteDTO> Dto = gfm.getProject(userid);
 		model.addAttribute("info", dto);
-		model.addAttribute("list",Dto);
+		//model.addAttribute("list",Dto);
 	}
 	
 	@Override

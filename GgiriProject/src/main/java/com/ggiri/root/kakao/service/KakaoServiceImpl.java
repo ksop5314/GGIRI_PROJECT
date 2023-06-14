@@ -121,18 +121,23 @@ public class KakaoServiceImpl implements KakaoService{
 //			String email = properties.get("email").toString();
 			
 			JsonParser parser = new JsonParser();
+			JsonObject jsonObject = (JsonObject)parser.parse(result);
 			JsonElement element = parser.parse(result);
 			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 			
+			
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();
 			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
+			String id = jsonObject.get("id").toString();
 			
 			System.out.println("email : " + email);
 			System.out.println("nickname : " + nickname);
+			System.out.println("id : " + id);
 			
 			resultMap.put("email", email);
 			resultMap.put("nickname", nickname);
+			resultMap.put("id", id);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

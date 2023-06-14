@@ -17,9 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ggiri.root.member.dto.GgiriMemberDTO;
+import com.ggiri.root.member.service.GgiriService;
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
-import com.ggiri.root.project.dto.ReprepDTO;
 import com.ggiri.root.project.service.ProjectService;
 import com.ggiri.root.session.login.GgiriMemberSession;
 
@@ -29,10 +30,28 @@ public class ProjectController implements GgiriMemberSession{
 	
 	@Autowired
 	private ProjectService ps;
-
+	@Autowired
+	private GgiriService gs;
 	
     @RequestMapping("projectWrite")
-    public String proWrite() {
+    public String proWrite(HttpSession session, Model model) {
+    	if(session.getAttribute(LOGIN) != null) {
+			String id = (String)session.getAttribute(LOGIN);
+			gs.ggiriMemberInfo(id, model);
+			return "ggiriProject/projectWrite";
+		} else if(session.getAttribute("kakaoMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("kakaoMember");
+			gs.ggiriSnsInfo(dto.getId(), model);
+			return "ggiriProject/projectWrite";
+		} else if(session.getAttribute("naverMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("naverMember");
+			gs.ggiriSnsInfo(dto.getId(), model);
+			return "ggiriProject/projectWrite";
+		} else if(session.getAttribute("googleMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("googleMember");
+			gs.ggiriSnsInfo(dto.getId(), model);
+			return "ggiriProject/projectWrite";
+		}
         return "ggiriProject/projectWrite";
     }
 
@@ -44,10 +63,23 @@ public class ProjectController implements GgiriMemberSession{
 
     @PostMapping("projectSave")
     public String projectSave(ProjectDTO dto) {
-        ps.insertPro(dto);
-        return "redirect:/ggiriProject/projectList";
+        int a = ps.insertPro(dto);
+        if(a == 1) {
+        	return "redirect:projectSuccess";
+        }
+        return "redirect:projectFail";
     }
-
+    
+    @GetMapping("projectSuccess")
+    public String projectSuccess() {
+    	return "ggiriProject/projectSuccess";
+    }
+    
+    @GetMapping("projectFail")
+    public String projectFail() {
+    	return "ggiriProject/projectFail";
+    }
+    
     @GetMapping("modifyForm")
     public String modifyForm(@RequestParam("projectNum") int projectNum, Model model) {
         ps.projectView(projectNum, model);
@@ -98,7 +130,7 @@ public class ProjectController implements GgiriMemberSession{
             model.addAttribute("currentPage", page);
             model.addAttribute("totalPages", totalPages);
         }
-
+        
         return "ggiriProject/projectList";
     }
     

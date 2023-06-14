@@ -19,35 +19,25 @@ id VARCHAR2(20) NOT NULL
 
 
 public class CompleteDTO {
-
+	
+	private int memberNum;
 	private int completeNum;
 	private String title;
 	private String content;
 	private String skill;
 	private String members;
 	private String tag;
-	
 	private Date comdate;
-	
 	private int comHit;
 	private String id;
+		
 	
-	public CompleteDTO() {
-		super();
+	public int getMemberNum() {
+		return memberNum;
 	}
 
-	public CompleteDTO(int completeNum, String title, String content, String skill, String members, String tag,
-			Date comdate, int comHit, String id) {
-		super();
-		this.completeNum = completeNum;
-		this.title = title;
-		this.content = content;
-		this.skill = skill;
-		this.members = members;
-		this.tag = tag;
-		this.comdate = comdate;
-		this.comHit = comHit;
-		this.id = id;
+	public void setMemberNum(int memberNum) {
+		this.memberNum = memberNum;
 	}
 
 	public int getCompleteNum() {

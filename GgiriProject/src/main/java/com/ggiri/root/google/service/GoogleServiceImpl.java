@@ -151,13 +151,21 @@ public class GoogleServiceImpl implements GoogleService {
 			JsonObject jsonObject = (JsonObject)parser.parse(result);
 
 			String email =jsonObject.get("email").toString();
+			String name =jsonObject.get("name").toString();
+			String id =jsonObject.get("id").toString();
 
 //			String email = profile.getAsJsonObject().get("email").getAsString();
 //			String name = profile.getAsJsonObject().get("name").getAsString();
 			
 			
 			System.out.println("googleEmail : " + email);
+			System.out.println("googleName : " + name);
+			System.out.println("googleID : " + id);
+			
+			
 			resultMap.put("email", email);
+			resultMap.put("name", name);
+			resultMap.put("id", id);
 			//resultMap.put("name", name);
 			
 		} catch (Exception e) {

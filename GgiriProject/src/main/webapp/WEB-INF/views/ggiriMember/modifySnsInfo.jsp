@@ -11,6 +11,46 @@
 <script>
 
 $(function(){
+	
+	$("#id").blur(function(){
+		if($("#id").val() == "") { 
+			$(".successIdChk").text("아이디를 입력해주세요.");
+			$(".successIdChk").css("color", "red");
+			$("#idDoubleChk").val("false");
+			return;
+		}
+	});
+	
+	$("#id").keyup(function(){
+		var contextPath = "${pageContext.request.contextPath}";
+		var id = $("#id").val();
+		if(id == "" || id.length < 2) {
+			$(".successIdChk").text("아이디는 2자 이상 8자 이하로 설정해주세요");
+			$(".successIdChk").css("color", "red");
+			$("#idDoubleChk").val("false");
+		} else {
+			$.ajax({
+				url : contextPath + '/ggiriMember/IdCheck?id=' + id,
+				type : 'post',
+				cache : false,
+				success : function(data) {
+					if(data == 0){
+						$(".successIdChk").text("사용가능한 아이디 입니다.");
+						$(".successIdChk").css("color", "blue");
+						$("#idDoubleChk").val("true");
+					} else {
+						$(".successIdChk").text("사용중인 아이디 입니다.");
+						$(".successIdChk").css("color", "red");
+						$("#idDoubleChk").val("false");
+					}
+				},
+				error : function(){
+					console.log("실패");
+				}
+			});
+		}
+	
+	});
 
 	$("#pwd").blur(function(){
 		if($("#pwd").val() == "") { 
@@ -64,11 +104,15 @@ $(function(){
 		
 		if($("#addrChk").val() != "true"){
 			alert("주소를 확인해주세요.");
+			$(".successAddrChk").text("주소는 필수 입력사항 입니다.");
+			$(".successAddrChk").css("color", "red");
+			$("#addr3").focus();
 			return rv = false;
 		}
 		
-		$("input[name=addr]").val(addr);
 		
+		$()
+		$("input[name=addr]").val(addr);
 		alert($("#id").val() + "님의 정보수정을 완료했습니다.");
 		return rv;
 	});
@@ -105,13 +149,16 @@ function daumPost(){
 					<tr>
 						<th> 이름 </th>
 						<td>
+							<input type="hidden" name="memberNum" id="memberNum" value="${naverMember.memberNum}">
 							<input type="text" name="name" id="name" placeholder="이름" maxlength="10" autocomplete="none" value="${naverMember.name}">
 						</td>
 					</tr>
 					<tr>
 						<th> 아이디 </th>
 						<td>
-							<input type="text" name="id" id="id" placeholder="아이디" maxlength="10" autocomplete="none" value="${naverMember.id}" readonly="readonly"><br>
+							<input type="text" name="id" id="id" placeholder="아이디" maxlength="10" autocomplete="none" value="${naverMember.id}"><br>
+							<span class="point successIdChk"></span>
+							<input type="hidden" id="idDoubleChk" value="false">
 						</td>
 					</tr>
 					<tr>
@@ -148,7 +195,7 @@ function daumPost(){
 					<tr>
 						<th> E-mail </th>
 						<td>
-							<input type="text" name="email" id="email1" placeholder="E-mail 입력" value="${naverMember.email}">
+							<input type="text" name="email" id="email1" placeholder="E-mail 입력" value="${naverMember.email}" readonly="readonly">
 						</td>
 					</tr>
 					<tr>
@@ -189,13 +236,16 @@ function daumPost(){
 					<tr>
 						<th> 이름 </th>
 						<td>
+							<input type="hidden" name="memberNum" id="memberNum" value="${kakaoMember.memberNum}">
 							<input type="text" name="name" id="name" placeholder="이름" maxlength="10" autocomplete="none" value="${kakaoMember.name}">
 						</td>
 					</tr>
 					<tr>
 						<th> 아이디 </th>
 						<td>
-							<input type="text" name="id" id="id" placeholder="아이디" maxlength="10" autocomplete="none" value="${kakaoMember.id}" readonly="readonly"><br>
+							<input type="text" name="id" id="id" placeholder="아이디" maxlength="10" autocomplete="none" value="${kakaoMember.id}"><br>
+							<span class="point successIdChk"></span>
+							<input type="hidden" id="idDoubleChk" value="false">
 						</td>
 					</tr>
 					<tr>
@@ -226,7 +276,7 @@ function daumPost(){
 					<tr>
 						<th> E-mail </th>
 						<td>
-							<input type="text" name="email" id="email1" placeholder="E-mail 입력" value="${kakaoMember.email}">
+							<input type="text" name="email" id="email1" placeholder="E-mail 입력" value="${kakaoMember.email}" readonly="readonly">
 						</td>
 					</tr>
 					<tr>
@@ -262,6 +312,93 @@ function daumPost(){
 				</form>
 			</c:if>
 		</div>
+		<c:if test="${googleMember != null }">
+			<form id="modify_my_info" action="modifyResult" method="post">
+				<table>
+					<tr>
+						<th> 이름 </th>
+						<td>
+							<input type="hidden" name="memberNum" id="memberNum" value="${googleMember.memberNum}">
+							<input type="text" name="name" id="name" placeholder="이름" maxlength="10" autocomplete="none" value="${googleMember.name}">
+						</td>
+					</tr>
+					<tr>
+						<th> 아이디 </th>
+						<td>
+							<input type="text" name="id" id="id" placeholder="아이디" maxlength="10" autocomplete="none" value="${googleMember.id}"><br>
+							<span class="point successIdChk"></span>
+							<input type="hidden" id="idDoubleChk" value="false">
+						</td>
+					</tr>
+					<tr>
+						<th> 비밀번호 </th>
+						<td>
+							<input type="password" name="pwd" id="pwd" placeholder="비밀번호" value="${googleMember.pwd}"><br>
+						</td>
+					</tr>
+					<tr>
+						<th> 생년월일 </th>
+						<td>
+							<input type="text" name="birth" id="birth" maxlength="8" placeholder="ex)19901231" value="${googleMember.birth}"><br>
+							<span class="point successBirthChk"></span><br>
+							<input type="hidden" id="birthChkResult" value="false">
+						</td>
+					</tr>
+					<tr>
+						<th> 성별 </th>
+						<td>
+							<c:if test="${googleMember.gender == 'M'}">
+								<label for="man"> 남자 </label>
+								<input type="radio" class="hidden" name="gender" id="man" value="M" checked>
+								<label for="woman"> 여자 </label>
+								<input type="radio" class="hidden" name="gender" id="woman" value="F">
+							</c:if>
+							<c:if test="${googleMember.gender == 'F'}">
+								<label for="man"> 남자 </label>
+								<input type="radio" class="hidden" name="gender" id="man" value="M">
+								<label for="woman"> 여자 </label>
+								<input type="radio" class="hidden" name="gender" id="woman" value="F" checked>
+							</c:if>
+						</td>
+					</tr>
+					<tr>
+						<th> E-mail </th>
+						<td>
+							<input type="text" name="email" id="email1" placeholder="E-mail 입력" value="${googleMember.email}" readonly="readonly">
+						</td>
+					</tr>
+					<tr>
+						<th> Tel </th>
+						<td>
+							<input type="text" name="tel" id="tel" size="10" maxlength="13" value="${googleMember.tel}">
+						</td>
+					</tr>
+					<!-- 
+					<tr>
+						<th> 핸드폰 인증확인 </th>
+						<td>
+							<input type="text" name="userTelChk" id="userTelChk"><br>
+							<span class="point successTelChk">※ 핸드폰 번호 입력 후 인증번호 클릭 </span>
+							<input type="hidden" id="telDoubleChk">
+						</td>
+					</tr>
+					 -->
+					<tr>
+						<th> 주소 </th>
+						<td>
+							<input type="text" id="addr1" name="addr" placeholder="우편번호" readonly>
+							<input type="button" id="daumAddr" class="btn btn-info" value="우편번호 찾기" onclick="daumPost()"><br>
+							<input type="text" id="addr2" placeholder="주소" readonly><br>
+							<input type="text" id="addr3" placeholder="상세주소" ><br>
+							<span class="point successAddrChk"></span><br>
+							<input type="hidden" id="addrChk" value="false">
+						</td>
+					</tr>
+				</table><br>
+				<span class="point">※ sns 사용자는 비어있는 칸들을 채워주세요.</span><br><br>
+				<input type="submit" id="button1" value="수정완료">
+			</form>
+			</c:if>
 	<c:import url="../default/footer.jsp"/>
 </body>
 </html>

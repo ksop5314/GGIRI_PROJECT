@@ -27,8 +27,8 @@ public class CompleteServiceImpl implements CompleteService {
 	}
 	
 	@Override
-	public void insertCom(CompleteDTO dto) {
-		cm.insertCom(dto);
+	public int insertCom(CompleteDTO dto) {
+		return cm.insertCom(dto);
 	}
 	
 	@Override
@@ -41,7 +41,10 @@ public class CompleteServiceImpl implements CompleteService {
 		cm.delete(completeNum);
 	}
 	
-	
+	@Override
+	public void adminCompleteList(Model model) {
+		model.addAttribute( "",cm.adminCompleteList());
+	}
 	
 	
 }

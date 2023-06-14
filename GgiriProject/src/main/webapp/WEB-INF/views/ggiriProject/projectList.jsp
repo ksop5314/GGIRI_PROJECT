@@ -96,20 +96,18 @@ a{
 		<div>
 			<button class="freeInput" id="freeInput" type="button" onclick="location.href='../ggiriProject/projectWrite'">프로젝트 등록하기</button>
 		</div>
-		<br><br><br><br><br><br><br>
+		<br><br><br><br><br>
 		<div class="skill">
-			<form method="get" action="main">
-				<button id="h3" type="submit" style=" border-radius: 30px;"> ⚙️  개발 </button>
-			</form>
-			<form action="#">
-				<button id="h3" type="submit" style=" border-radius: 30px;"> 🛠  퍼블리싱  </button> 
-			</form>
-			<form action="#">
-			 	<button id="h3" type="submit" style=" border-radius: 30px;"> 🎨  디자인 </button> 
-			</form>
-			<form action="#">
-				<button id="h3" type="submit" style=" border-radius: 30px;"> 📝  기획 </button> 
-			</form>
+			<input type="hidden" name="job" id="jobDev" value="developer">
+			<input type="hidden" name="job" id="jobPub" value="publisher">
+			<input type="hidden" name="job" id="jobDes" value="designer">
+			<input type="hidden" name="job" id="jobPla" value="planner">
+			<!--
+			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="developer()" id="dev"> ⚙️  개발자 </button>
+			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="publisher()" id="pub"> 🛠  퍼블리셔  </button> 
+		 	<button class="h3" type="submit" style=" border-radius: 30px;" onclick="designer()" id="des"> 🎨  디자이너 </button> 
+			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="planner()" id="pla"> 📝  기획자 </button>
+			-->
 		</div>
 	</div>
 	<br>
@@ -122,8 +120,9 @@ a{
 			<tr style="text-align: center">
 				<th style="display: none"  width="50px"> 번 호 </th>
 				<th style="display: none" width="100px"> ID </th>
-				<th width="700px"> 제 목 </th>
-				<th width="200px"> 날 짜 </th>
+				<th width="800px" height="40px"> 프로젝트 제목 </th>
+				<th width="200px"> 등록날짜 </th>
+				<th width="200ox"> 현재상황 </th>
 				<th width="100px"> 조회수 </th>
 			</tr>
 			<c:if test="${projectList.size()==0 }">
@@ -135,8 +134,9 @@ a{
 				<tr style="text-align: right">
 					<td style="display: none" >${dto.projectNum }</td>
 					<td style="display: none">${dto.id }</td>
-					<td><a href="../ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a></td>
+					<td height="100px"><a href="../ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a></td>
 					<td>${dto.prodate }</td>
+					<td>${dto.project }</td>
 					<td>${dto.proHit }</td>
 				</tr>
 			</c:forEach>

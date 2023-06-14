@@ -134,6 +134,11 @@ public class GgiriServiceImpl implements GgiriService{
 		model.addAttribute("allMember", gmm.allMember(id));
 	}
 	
+	@Override
+	public void deleteId(String deleteId) {
+		gmm.deleteId(deleteId);
+	}
+	
 	// 강준호 끝
 	
 	

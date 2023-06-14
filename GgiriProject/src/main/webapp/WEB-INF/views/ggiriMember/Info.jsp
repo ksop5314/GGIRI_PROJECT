@@ -77,7 +77,10 @@ table td{
 				</tr>
 				<tr>
 				<tr>
-					<td><b>${info.id}님의 깃주소 : </b><a href="${info.url_name }" target="_blank">${info.url_name }</a></td>
+					<td>
+						<input type="hidden" id="freeNum" name="freeNum" value="${info.memberNum }">
+						<b>${info.id}님의 깃주소 : </b><a href="${info.url_name }" target="_blank">${info.url_name }</a>
+					</td>
 				</tr>
 				<c:set var="id" value="${info.id }"/>
 				<c:if test="${info.id == loginUser }">
@@ -88,7 +91,7 @@ table td{
 			</table>
 			<br>
 	<h1 style="text-align: center;"> 완성한 프로젝트 내용 </h1>
-	<c:forEach var="list" items="${list }">
+	<%-- <c:forEach var="list" items="${list }">
 		<hr>
 		<table border="1">
 			<tr>
@@ -111,7 +114,7 @@ table td{
 			</tr>
 			
 		</table>
-		</c:forEach>
+	</c:forEach> --%>
 	
 	<c:import url="../default/footer.jsp"/>
 </body>
