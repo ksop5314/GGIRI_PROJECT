@@ -55,8 +55,28 @@ public class ProjectController implements GgiriMemberSession{
     }
 
     @GetMapping("projectView")
-    public String projectView(@RequestParam("projectNum") int projectNum, Model model) throws Exception {
-        ps.projectView(projectNum, model);
+    public String projectView(@RequestParam("projectNum") int projectNum, Model model, HttpSession session) throws Exception {
+    	if(session.getAttribute(LOGIN) != null) {
+			String id = (String)session.getAttribute(LOGIN);
+			gs.ggiriMemberInfo(id, model);			
+			ps.projectView(projectNum, model);
+	        return "ggiriProject/projectView";
+		} else if(session.getAttribute("kakaoMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("kakaoMember");
+			ps.projectView(projectNum, model);
+			gs.ggiriSnsInfo(dto.getId(), model);
+	        return "ggiriProject/projectView";
+		} else if(session.getAttribute("naverMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("naverMember");
+			ps.projectView(projectNum, model);
+			gs.ggiriSnsInfo(dto.getId(), model);
+	        return "ggiriProject/projectView";
+		} else if(session.getAttribute("googleMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("googleMember");
+			ps.projectView(projectNum, model);
+			gs.ggiriSnsInfo(dto.getId(), model);
+	        return "ggiriProject/projectView";
+		}
         return "ggiriProject/projectView";
     }
 
@@ -146,63 +166,14 @@ public class ProjectController implements GgiriMemberSession{
 		System.out.println(id);
 		
 		dto.setId((String)map.get("id"));
+		dto.setMemberNum(Integer.parseInt((String)map.get("memberNum")));
 		dto.setBno(Integer.parseInt((String)map.get("projectNum")));
 		dto.setContent((String)map.get("content"));
 		int rep = ps.addReplyTest(dto);
 		
-		
-//		String loginUser = (String)session.getAttribute("loginUser");
-//		System.out.println(loginUser);
-//		String kakaoid = (String)session.getAttribute("kakaoMember");
-//		System.out.println(kakaoid);
-//		String naverid = (String)session.getAttribute("naverMember");
-//		System.out.println(naverid);
-		
-//		if( id == kakaoid) {
-//			dto.setId(kakaoid);
-//			dto.setBno(Integer.parseInt((String)map.get("projectNum")));
-//			dto.setContent((String)map.get("content"));
-//			int rep = ps.addReplyTest(dto);
-//			return rep;
-//		} else if(id == naverid) {
-//			dto.setId(naverid);
-//			dto.setBno(Integer.parseInt((String)map.get("projectNum")));
-//			dto.setContent((String)map.get("content"));
-//			int rep = ps.addReplyTest(dto);
-//			return rep;
-//		} else if(id == loginUser){
-//			dto.setId(loginUser);
-//			dto.setBno(Integer.parseInt((String)map.get("projectNum")));
-//			dto.setContent((String)map.get("content"));
-//			int rep = ps.addReplyTest(dto);
-//			return rep;
-//		} else {
-//			System.out.println("댓글 등록 아이디값 가져오기 실패");
-//		}
-		
 		return rep;
-		//dto.setGrp(map.get());
-		
 	}
     
-    //value="addReply", produces="application/json; charset=UTF-8"
-    /*
-    @PostMapping("addReply")
-	public String addReply(@RequestBody Map<String, Object> map, HttpSession session) {
-		
-    	ProjectRepDTO dto = new ProjectRepDTO();
-		dto.setId((String)session.getAttribute(LOGIN));
-		dto.setWrite_num(Integer.parseInt((String)map.get("projectNum")));
-		dto.setContent((String)map.get("content"));
-		
-		ps.addReply(dto);
-		
-		return "redirect:projectView";
-	}
-    */
-    
-    //value="replyData", produces="application/json; charset=UTF-8"
-    //@PathVariable int write_num
 	@GetMapping(value="replyData", produces="application/json; charset=UTF-8")
 	@ResponseBody
 	public List<ProjectRepDTO> replyData(@RequestParam("projectNum") String bno) {
@@ -213,36 +184,36 @@ public class ProjectController implements GgiriMemberSession{
     
     // 대댓글
 	
-	@PostMapping("re_addReply")
-    @ResponseBody
-	public int re_addReply(@RequestBody Map<String, Object> map, HttpSession session) {
-		
-		ProjectRepDTO dto = new ProjectRepDTO();
-		
-		String projectNum = (String) map.get("projectNum");
-		System.out.println(projectNum);
-		String id = (String)map.get("id");
-		
-		dto.setId((String)session.getAttribute("id"));
-		dto.setBno(Integer.parseInt((String) map.get("projectNum")));
-		//dto.setGrp(Integer.parseInt((String) map.get(grp)));
-		//dto.setGrps(Integer.parseInt((String) map.get("grps")));
-		//dto.setGrpl(Integer.parseInt((String) map.get("grpl")));
-		dto.setContent((String)map.get("content"));
-		
-		int re_rep = ps.re_addReplyTest(dto);
-		
-
-		return re_rep;
-	}
- 
-	@GetMapping(value="re_replyData", produces="application/json; charset=UTF-8")
-	@ResponseBody
-	public List<ProjectRepDTO> re_replyData(@RequestParam("projectNum") String bno) {
-		
-		return ps.re_getRepList(Integer.parseInt(bno));
-		
-	}
+//	@PostMapping("re_addReply")
+//    @ResponseBody
+//	public int re_addReply(@RequestBody Map<String, Object> map, HttpSession session) {
+//		
+//		ProjectRepDTO dto = new ProjectRepDTO();
+//		
+//		String projectNum = (String) map.get("projectNum");
+//		System.out.println(projectNum);
+//		String id = (String)map.get("id");
+//		
+//		dto.setId((String)session.getAttribute("id"));
+//		dto.setBno(Integer.parseInt((String) map.get("projectNum")));
+//		//dto.setGrp(Integer.parseInt((String) map.get(grp)));
+//		//dto.setGrps(Integer.parseInt((String) map.get("grps")));
+//		//dto.setGrpl(Integer.parseInt((String) map.get("grpl")));
+//		dto.setContent((String)map.get("content"));
+//		
+//		int re_rep = ps.re_addReplyTest(dto);
+//		
+//
+//		return re_rep;
+//	}
+// 
+//	@GetMapping(value="re_replyData", produces="application/json; charset=UTF-8")
+//	@ResponseBody
+//	public List<ProjectRepDTO> re_replyData(@RequestParam("projectNum") String bno) {
+//		
+//		return ps.re_getRepList(Integer.parseInt(bno));
+//		
+//	}
     
     /*
     String projectNum = (String) map.get("projectNum");
@@ -259,8 +230,6 @@ public class ProjectController implements GgiriMemberSession{
 		
 		return re_rep;
     */
-	
-	
 	
     
 }

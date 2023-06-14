@@ -70,9 +70,16 @@ public class ProjectServiceImpl implements ProjectService {
         return pm.getProjectCount();
     }	
     
+    
+    // 관리자 페이지
     @Override
     public void adminProjectList(Model model) {
     	model.addAttribute("adminProjectList", pm.adminProjectList());
+    }
+    
+    @Override
+    public void proDelete(int projectNum) {
+    	pm.proDelete(projectNum);
     }
     
     // 댓글

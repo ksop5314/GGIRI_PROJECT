@@ -30,7 +30,11 @@ public interface ProjectService {
 
     public int getProjectCount();
     
+    // 관리자 페이지
     public void adminProjectList(Model model);
+    
+    public void proDelete(int projectNum);
+    
     
     // 댓글
 //    public void addReply(ProjectRepDTO dto);

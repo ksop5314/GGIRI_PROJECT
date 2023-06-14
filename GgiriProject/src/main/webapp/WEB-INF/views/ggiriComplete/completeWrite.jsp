@@ -1,6 +1,3 @@
-
-<!-- ggiriComplete/completeList.jsp -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -18,8 +15,6 @@
 			<form action="../ggiriComplete/comSave" method="post">
 				<b> 작성자 </b><br>
 				<input type="text" name="id" size="50" value="${loginUser }"><br>
-				<b> 작성일 </b><br>
-				<input type="date" name="comdate" size="50"><br>
 				<b> 제 목 </b><br>
 				<input type="text" name="title" size="50"><br>
 				<b> 내 용 </b><br>

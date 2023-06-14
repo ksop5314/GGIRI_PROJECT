@@ -5,8 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>adminCompleteList</title>
+<title>adminHelpList</title>
 <style type="text/css">
+
 	h1 {
 	border: 1px solid orange;
 	border-radius: 30px;
@@ -26,19 +27,24 @@
 			<div class="freeTxt">
 				<p>끼리가 보증하는 IT파트너</p>
 				<p id="h">관리자 페이지 입니다.<br>
-				등록된 프리랜서를 확인하세요.</p>
+				등록된 고객센터문의 목록을 확인하세요.</p>
 				<br>
 			</div>
 			<br><br><br><br><br>
 			<div style="text-align: center;">
-				<h1 style="margin-right: auto; padding-bottom: 30px;"> GGIRI <b style="color: red;">관리자</b> 완료된 프로젝트관리 페이지 </h1><br>
-				<table style="margin: auto; width: 80%;">
+				<h1 style="margin-right: auto; padding-bottom: 30px;"> GGIRI <b style="color: red;">관리자</b> 고객센터문의 페이지 </h1><br>
+				<table style="margin: auto; width: 100%;">
 					<tr>
-						<th>프로젝트 번호</th><th>회원ID</th><th>프로젝트 이름</th><th>프로젝트 등록날짜</th><th></th>
+						<th>회원이름</th><th>회원ID</th><th>회원소개</th><th>회원직업</th><th>보유기술</th><th>프리랜서 삭제</th>
 					</tr>
-					<c:forEach var="list" items="${adminCompleteList }">
+					<c:forEach var="list" items="${boardList }">
 						<tr>
-							<td>${list.projectNum }</td><td>${list.id }</td><td>${list.title }</td><td>${list.prodate }</td>
+							<td>${list.name }</td><td>${list.id }</td><td>${list.introduce }</td><td>${list.job }</td><td>${list.skill }</td>
+							<td>
+								<div class="delDiv" style="border: 1px solid red; border-radius: 12px; background: red;" onclick="freeDelete('${list.id}')">
+									<span id="freeDel"> 삭제 </span>
+								</div>
+							</td>
 						</tr>
 					</c:forEach>
 				</table>

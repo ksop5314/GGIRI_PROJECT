@@ -39,6 +39,24 @@
 		SELECT * FROM ggiriFree_insert 
 	</select>
 	
+	<select id="boardGetFirstList" resultMap="ggiri">
+		SELECT * FROM (
+						SELECT ROW_NUMBER() OVER (ORDER BY insertdate DESC) NUM, A.*
+						FROM ggiriFree_insert A
+						ORDER BY insertdate DESC
+						)
+		WHERE NUM BETWEEN 1 AND 4
+	</select>
+	
+	<select id="boardGetList" resultMap="ggiri">
+		SELECT * FROM (
+						SELECT ROW_NUMBER() OVER (ORDER BY insertdate DESC) NUM, A.*
+						FROM ggiriFree_insert A
+						ORDER BY insertdate DESC
+						)
+		WHERE NUM BETWEEN #{startRowNum} AND #{rowCount}
+	</select>
+	
 	<update id="writeFreeModify">
 		UPDATE ggiriFree_insert
 		 SET introduce=#{introduce}, job=#{job}, skill=#{skill}, project_period=#{project_period}, place_of_work=#{place_of_work}, url_name=#{url_name}
@@ -48,6 +66,18 @@
 	<delete id="writeFreeDelete">
 		DELETE ggiriFree_insert WHERE id =#{id}
 	</delete>
+	
+	<delete id="freeDelete">
+		DELETE FROM ggiriFree_insert WHERE id=#{id}
+	</delete>
+	
+	<select id="ajaxMemberList" resultMap="ggiri">
+		SELECT * FROM ggiriFree_insert
+	</select>
+	
+	<select id="boardCount"	resultType="Integer">
+		SELECT COUNT(*) FROM ggiriFree_insert
+	</select>
 	
 </mapper>
 

@@ -378,13 +378,77 @@ public class GgiriController implements GgiriMemberSession {
 		return mss.joinEmail(userEmail);
 	}
 
+	@GetMapping("ajaxMemberList")
+	@ResponseBody
+	public List<GgiriFreeInsertDTO> ajaxMemberList(){
+		return gfs.ajaxMemberList();
+	}
+	
 
 	// 안태준 
 	@GetMapping("memberList")
-	public String AllList(Model model) {
-		gfs.boardAllList(model);
+	public String AllList(Model model, HttpServletRequest request, HttpSession session) {
+//		final int PAGE_ROW_COUNT = 4;
+//		
+//		int pageNum = 1;
+//		
+//		String strPageNum = request.getParameter("pageNum");
+//		System.out.println(strPageNum);
+//		if(strPageNum != null) {
+//			pageNum = Integer.parseInt(strPageNum);
+//		}
+//		
+//		int startRowNum = 0 + (pageNum - 1) * PAGE_ROW_COUNT;
+//		int endRowNum = pageNum * PAGE_ROW_COUNT;
+//		int rowCount = PAGE_ROW_COUNT;
+//		
+//		GgiriFreeInsertDTO pageDto = new GgiriFreeInsertDTO();
+//		pageDto.setStartRowNum(startRowNum);
+//		pageDto.setEndRowNum(endRowNum);
+//		pageDto.setRowCount(rowCount);
+//		
+//		int totalRow = gfs.boardCount();
+//		
+//		int totalPageCount = (int)Math.ceil(totalRow / (double)PAGE_ROW_COUNT);
+//		System.out.println(totalPageCount);
+//		request.setAttribute("totalPageCount", totalPageCount);
+//		request.setAttribute("totalRow", totalRow);
+//		gfs.boardGetFirstList(model);
+//		//gfs.boardAllList(model);
 		return "ggiriMember/memberList";
 	}
+	
+//	@GetMapping("ajaxMemberList")
+//	@ResponseBody
+//	public List<GgiriFreeInsertDTO> ajaxMemberList(Model model, HttpServletRequest request, HttpSession session) {
+//		final int PAGE_ROW_COUNT = 4;
+//		
+//		int pageNum = 0;
+//		
+//		String strPageNum = request.getParameter("pageNum");
+//		System.out.println(strPageNum);
+//		if(strPageNum != null) {
+//			pageNum = Integer.parseInt(strPageNum);
+//		}
+//		
+//		int startRowNum = 0 + (pageNum - 1) * PAGE_ROW_COUNT;
+//		int endRowNum = pageNum * PAGE_ROW_COUNT;
+//		int rowCount = PAGE_ROW_COUNT;
+//		
+//		GgiriFreeInsertDTO pageDto = new GgiriFreeInsertDTO();
+//		pageDto.setStartRowNum(startRowNum);
+//		pageDto.setEndRowNum(endRowNum);
+//		pageDto.setRowCount(rowCount);
+//		
+//		int totalRow = gfs.boardCount();
+//		
+//		int totalPageCount = (int)Math.ceil(totalRow / (double)PAGE_ROW_COUNT);
+//		System.out.println(totalPageCount);
+//		request.setAttribute("totalPageCount", totalPageCount);
+//		request.setAttribute("pageNum", pageNum);
+//		request.setAttribute("totalRow", totalRow);
+//		return gfs.boardGetList(pageDto);
+//	}
 	
 	@GetMapping("Info")
 	public String MemberList(@RequestParam("id") String userid, Model model) {
@@ -476,10 +540,5 @@ public class GgiriController implements GgiriMemberSession {
 		}
 		return "ggiriMember/failEmail";
 	}
-	
-	
-	
-	
-	
 	
 }
