@@ -77,6 +77,7 @@ public interface ProjectMapper {
 //    public void addReply(ProjectRepDTO dto);
     public int addReplyTest(ProjectRepDTO dto);
 	public List<ProjectRepDTO> getRepList(int bno);
-    
+    public void repDelete(int no);
+//    public ProjectRepDTO modalContent(int bno);
     
 }

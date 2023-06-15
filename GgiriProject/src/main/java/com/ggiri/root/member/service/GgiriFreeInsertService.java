@@ -28,8 +28,8 @@ public interface GgiriFreeInsertService {
 	
 	
 	// 무한 스크롤
-	public void boardGetFirstList(Model model);
-	public List<GgiriFreeInsertDTO> boardGetList(GgiriFreeInsertDTO dto);
+//	public void boardGetFirstList(Model model);
+//	public List<GgiriFreeInsertDTO> boardGetList(GgiriFreeInsertDTO dto);
 	
 	// (관리자 페이지) 프리랜서 삭제
 	public void freeDelete(String deleteId);

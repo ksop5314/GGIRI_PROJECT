@@ -59,21 +59,22 @@ nav ul li a {
 nav ul li a:hover {
 	/* color: #D8D8D8; */
 }
-.img {
+.subImg {
     /* max-width: 100%; */
     width: 30px;
 }
-.img-hover {
+.subImg-hover {
     position: absolute;
     top: 0px;
     left: 0px;
     width: 40px;
     display: none;
 }
-.img:hover .img-hover {
+
+.subImg:hover .subImg-hover {
     display: block;
 }
-.button{
+.subButton{
 	padding: 6.5px 0 0 0;
 	background-color: white;
 	width: 30px;
@@ -82,6 +83,7 @@ nav ul li a:hover {
     margin: 0px auto;
  	position: relative;
 	display: inline-block;
+	cursor: pointer;
 }
 .dropdown {
 	width: 30px;
@@ -332,35 +334,36 @@ function showSlides() {
 						
 					</c:if>	 --%>
 					<li>
-					<div class="dropdown"> 
-					<button onclick="dp_menu()" class="button">
-						<img class="img" src="/root/resources/image/menu1.png">
-					</button>
-				        <div style="display: none;" id="drop-content">
-				        <c:if test="${loginUser != null}">
-				            <a href='/root/ggiriMember/myInfo'>내 정보</a>
-				            <a href="/root/ggiriMember/ggiriLogout">LOGOUT</a>
-				        </c:if>   
-				        <c:if test="${kakaoMember != null}">
-							<a href="/root/ggiriMember/snsInfo">내 정보</a>
-							<p>Kakao 계정 접속</p>
-							<a href="/root/ggiriMember/kakaoLogout">LOGOUT</a>
-						</c:if>	
-						<c:if test="${naverMember != null}">
-							<a href="/root/ggiriMember/snsInfo">내 정보</a>
-							<p>Naver 계정 접속</p>
-							<a href="/root/ggiriMember/naverLogout">LOGOUT</a>
-						</c:if>
-						<c:if test="${googleMember != null}">
-							<a href="/root/ggiriMember/snsInfo">내 정보</a>
-							<p>Google 계정 접속</p>
-							<a href="/root/ggiriMember/googleLogout">LOGOUT</a>
-						</c:if>
-						<c:if test="${kakaoMember == null && loginUser == null && naverMember == null && googleMember == null}">
-							<a href="/root/ggiriMember/ggiriLogin"> LOGIN </a>
-						</c:if>
-		       			</div>
-		       		</div>
+						<div class="dropdown"> 
+							<button onclick="dp_menu()" class="subButton">
+								<img class="subImg" src="/root/resources/image/menu1.png">
+							</button>
+						        <div style="display: none;" id="drop-content">
+							        <c:if test="${loginUser != null}">
+										<b>Ggiri 계정 접속</b><br>
+							            <a href='/root/ggiriMember/myInfo'>내 정보</a>
+							            <a href="/root/ggiriMember/ggiriLogout">LOGOUT</a>
+							        </c:if>   
+							        <c:if test="${kakaoMember != null}">
+										<b>Kakao 계정 접속</b><br>
+										<a href="/root/ggiriMember/snsInfo">내 정보</a>
+										<a href="/root/ggiriMember/kakaoLogout">LOGOUT</a>
+									</c:if>	
+									<c:if test="${naverMember != null}">
+										<b>Naver 계정 접속</b><br>
+										<a href="/root/ggiriMember/snsInfo">내 정보</a>
+										<a href="/root/ggiriMember/naverLogout">LOGOUT</a>
+									</c:if>
+									<c:if test="${googleMember != null}">
+										<b>Google 계정 접속</b><br>
+										<a href="/root/ggiriMember/snsInfo">내 정보</a>
+										<a href="/root/ggiriMember/googleLogout">LOGOUT</a>
+									</c:if>
+									<c:if test="${kakaoMember == null && loginUser == null && naverMember == null && googleMember == null}">
+										<a href="/root/ggiriMember/ggiriLogin"> LOGIN </a>
+									</c:if>
+				       			</div>
+			       		</div>
 		       		</li>
 	<%-- 				<div class="dropdown"> 
  						<button class="dropdown-button">

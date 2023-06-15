@@ -148,4 +148,13 @@
 	<select id="adminReplyList" resultMap="reply">
 		SELECT * FROM ggiriReply
 	</select>
+	
+	<delete id="repDelete">
+		DELETE FROM ggiriReply WHERE no=#{no}
+	</delete>
+	
+<!-- 	<select id="modalContent">
+		SELECT * FROM ggiriReply WHERE bno=#{bno}
+	</select> -->
+	
 </mapper>

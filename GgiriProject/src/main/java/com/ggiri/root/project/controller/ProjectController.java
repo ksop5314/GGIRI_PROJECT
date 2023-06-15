@@ -6,12 +6,10 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.http.HttpStatus;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -82,6 +80,7 @@ public class ProjectController implements GgiriMemberSession{
            return "ggiriProject/projectView";
       } else if(session.getAttribute("googleMember") != null){
          GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("googleMember");
+         //ps.modalContent(projectNum, model);
          ps.projectView(projectNum, model);
          gs.ggiriSnsInfo(dto.getId(), model);
            return "ggiriProject/projectView";
@@ -209,6 +208,13 @@ public class ProjectController implements GgiriMemberSession{
 		
 		return rep;
 	}
+    
+    @GetMapping("repDelete")
+    @ResponseBody
+    public String repDelete(@RequestParam("no") int no) {
+    	ps.repDelete(no);
+    	return "OK";
+    }
     
 	@GetMapping("replyData")
 	@ResponseBody

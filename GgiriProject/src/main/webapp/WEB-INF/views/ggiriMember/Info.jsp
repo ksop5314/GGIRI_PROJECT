@@ -83,7 +83,6 @@ table td{
 				</tr>
 				<tr>
 				<tr>
-					<td><b>${info.id}님의 Git 주소 : </b><a href="${info.url_name }" target="_blank">${info.url_name }</a></td>
 					<td>
 						<input type="hidden" id="freeNum" name="freeNum" value="${info.memberNum }">
 						<b>${info.id}님의 깃주소 : </b><a href="${info.url_name }" target="_blank">${info.url_name }</a>

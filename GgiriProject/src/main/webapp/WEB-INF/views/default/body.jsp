@@ -19,12 +19,12 @@ body{
 .search-box{
     padding: 10px;
     position: absolute;
-    top: 85%;
+    margin: 0 auto;
     left: 50%;
     transform: translate(-50%,-50%);
     height: 30px;
     background-color: #fff;
-    border: 2.5px solid navy;
+    border: 4px solid navy;
     border-radius: 30px;
     transition: 0.4s;
     width: 30px;

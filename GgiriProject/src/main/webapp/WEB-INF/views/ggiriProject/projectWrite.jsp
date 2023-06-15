@@ -131,25 +131,6 @@ table td {
     transform: scale(1) translate(-50%, -50%)
 }
 </style>
-<script type="text/javascript">
-	
-function count_check(obj){
-	var chkBox = document.getElementsByName("skill");
-	var chkCnt = 0;
-	for(var i = 0; i < chkBox.length ; i++){
-		if(chkBox[i].checked){
-			chkCnt++;
-		}
-	}
-	if(chkCnt > 10){
-		alert("요구 스킬은 10개까지 선택할 수 있습니다.");
-		obj.checked = false;
-		return false;
-	}
-	
-}
-	
-</script>
 </head>
 <body>
 	<c:import url="../default/header.jsp"></c:import>

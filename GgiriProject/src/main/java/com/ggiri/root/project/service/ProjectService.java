@@ -40,5 +40,7 @@ public interface ProjectService {
 //    public void addReply(ProjectRepDTO dto);
     public int addReplyTest(ProjectRepDTO dto);
 	public List<ProjectRepDTO> getRepList(int bno);
+	public void repDelete(int no);
+//	public void modalContent(int projectNum, Model model);
 	
 }

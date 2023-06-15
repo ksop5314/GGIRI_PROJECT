@@ -1,6 +1,3 @@
-
-<!-- default/main.jsp -->
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>     
@@ -93,8 +90,7 @@ a{
 	background-color: white;
 	transition: 0.5s;
 }
-<<<<<<< HEAD
-=======
+
 
 #freeDel {
 		color: white;
@@ -115,7 +111,6 @@ h1 {
 	background: orange;
 }
 
->>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
 </style>
 <script type="text/javascript">
 	var contextPath = "${pageContext.request.contextPath}";
@@ -169,20 +164,12 @@ h1 {
 					</tr>
 					<c:forEach var="list" items="${boardList }">
 						<tr>
-<<<<<<< HEAD
-							<td>${list.name }</td>
-							<td>${list.id }</td>
-							<td>${list.introduce }</td>
-							<td>${list.job }</td>
-							<td>${list.skill }</td>
-=======
 							<td>${list.name }</td><td>${list.id }</td><td>${list.introduce }</td><td>${list.job }</td><td>${list.skill }</td>
 							<td>
 								<div class="delDiv" style="border: 1px solid red; border-radius: 12px; background: red;" onclick="freeDelete('${list.id}')">
 									<span id="freeDel"> 삭제 </span>
 								</div>
 							</td>
->>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
 						</tr>
 					</c:forEach>
 				</table>
