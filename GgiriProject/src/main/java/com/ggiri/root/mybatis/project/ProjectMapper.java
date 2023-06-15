@@ -68,8 +68,9 @@ public interface ProjectMapper {
 
 	LikeDTO getPicture(String projectNum);
 	
+    // 관리자 페이지
     public List<ProjectDTO> adminProjectList();
-    
+    public void proDelete(int projectNum);
     
     // 댓글
 //    public void addReply(ProjectRepDTO dto);

@@ -43,6 +43,7 @@
 		DELETE FROM ggiriComplete WHERE completeNum=#{completeNum}
 	</delete>
 	
+	<!-- 관리자 페이지 -->
 	<select id="adminCompleteList" resultMap="complete">
 		SELECT * FROM ggiriComplete
 	</select>

@@ -18,6 +18,7 @@ public interface CompleteMapper {
 	
 	public void delete(int completeNum);
 	
+	//관리자 페이지
 	public List<CompleteDTO> adminCompleteList();
 	
 }

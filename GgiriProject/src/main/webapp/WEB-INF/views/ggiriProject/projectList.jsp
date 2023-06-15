@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>projectList.jsp</title>
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <style type="text/css">
 table {
 	width: 1100px;
@@ -72,6 +73,9 @@ form{
 	font-weight: bold;
 	float:left;
 }
+div {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
 div #h{
 	font-size: 24px;
 	font-weight: bolder;
@@ -109,6 +113,26 @@ a{
 	background-color:#EBF7FF;
     transition: 0.5s;
 }
+a {
+	font-weight: bold;
+}
+#title {
+	font-size: 32px;
+}
+#mem {
+	padding: 30px;
+	border: 2px solid navy;
+	border-radius: 40px;
+}
+#skill {
+    padding: 10px;
+    font-size: 20px;
+    width: fit-content;
+    margin: auto;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    border-radius: 40px;
+    background-color: #EBF7FF;
+}
 </style>
 </head>
 <body>
@@ -122,7 +146,7 @@ a{
 			<br>
 		</div> 
 		<div>
-			<button class="freeInput" id="freeInput" type="button" onclick="location.href='../ggiriProject/projectWrite'">프로젝트 등록하기</button>
+			<button id="freeInput" type="button" onclick="location.href='../ggiriProject/projectWrite'">프로젝트 등록하기</button>
 		</div>
 		<br><br><br><br><br><br><br>
 		<div class="skill">
@@ -136,11 +160,33 @@ a{
 			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="plan()" id="pla"> 📝  기획 </button> 
 		</div>
 			<br><br><hr>
-		</div>
 	<div class="wrap board_table">
 	<h1></h1>
 	<br>
-		<table style="border:1px solid white;">
+		<div id="devList">
+    <c:if test="${projectList.size()==0 }">	
+        <h3>등록된 글이 없습니다</h3>
+    </c:if>
+    <c:forEach var="dto" items="${projectList }">
+        <div id="mem">
+            <h3>${dto.prodate }</h3>
+				
+
+            <a id="title" href="/root/ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a>
+            <br>
+            <div class="skill">
+            <br>
+                <c:forEach var="selectedSkill" items="${dto.skill}">
+                    <div style="display:inline" id="skill">${selectedSkill}</div>
+                </c:forEach>
+            </div>
+        </div>
+        <br>
+    </c:forEach>
+</div>
+
+	</div>
+		<%-- <table style="border:1px solid white;">
     		<tr>
 		      <th style="display: none" width="50px"> 번 호 </th>
 		      <th style="display: none" width="100px"> ID </th>
@@ -164,7 +210,7 @@ a{
 	        <td>${dto.likeCount }</td>
 	      </tr>
 	    </c:forEach>
-  	</table>	
+  	</table>	 --%>
   	<br>	
   <form action="projectList.do" method="get">
     <label for="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">검색조건</label><br>

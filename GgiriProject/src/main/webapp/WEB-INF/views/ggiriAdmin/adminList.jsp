@@ -93,7 +93,62 @@ a{
 	background-color: white;
 	transition: 0.5s;
 }
+<<<<<<< HEAD
+=======
+
+#freeDel {
+		color: white;
+		font-weight: bold;
+}
+
+.delDiv {
+		cursor: pointer;
+}
+
+h1 {
+	border: 1px solid orange;
+	border-radius: 30px;
+	width: 80%;
+	height: 80px;
+	padding-top: 50px;
+	margin: 0 auto;
+	background: orange;
+}
+
+>>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
 </style>
+<script type="text/javascript">
+	var contextPath = "${pageContext.request.contextPath}";
+	
+	function freeDelete(id) {
+		
+		var result = confirm("선택한 프리랜서를 삭제 하시겠습니까?");
+		
+		if(result == true){
+			
+			$.ajax({
+				
+				url : contextPath + "/ggiriAdmin/freeDelete?deleteId=" + id,
+				type : "GET",
+				success : function(data){
+					if(data == 'OK'){
+						location.href="/root/ggiriAdmin/adminList";
+					} else {
+						alert("회원삭제 실패");
+						location.href="/root/ggiriAdmin/adminList";
+					}
+				},
+				error : function(){
+					console.log("회원 삭제 오류");
+				}
+			});
+		} else {
+			result = false;
+		}
+				
+	}
+		
+</script>
 </head>
 <body>
 	<c:import url="../defaultAdmin/header.jsp"/>
@@ -107,18 +162,27 @@ a{
 			</div>
 			<br><br><br><br><br>
 			<div style="text-align: center;">
-				<h2 style="margin-right: 250px; padding-bottom: 30px;">프리랜서 등록 정보</h2>
-				<table style="margin: auto; width: 80%;">
+				<h1 style="margin-right: auto; padding-bottom: 30px;"> GGIRI <b style="color: red;">관리자</b> 프리랜서관리 페이지 </h1><br>
+				<table style="margin: auto; width: 100%;">
 					<tr>
-						<th>회원이름</th><th>회원ID</th><th>회원소개</th><th>회원직업</th><th>보유기술</th>
+						<th>회원이름</th><th>회원ID</th><th>회원소개</th><th>회원직업</th><th>보유기술</th><th>프리랜서 삭제</th>
 					</tr>
 					<c:forEach var="list" items="${boardList }">
 						<tr>
+<<<<<<< HEAD
 							<td>${list.name }</td>
 							<td>${list.id }</td>
 							<td>${list.introduce }</td>
 							<td>${list.job }</td>
 							<td>${list.skill }</td>
+=======
+							<td>${list.name }</td><td>${list.id }</td><td>${list.introduce }</td><td>${list.job }</td><td>${list.skill }</td>
+							<td>
+								<div class="delDiv" style="border: 1px solid red; border-radius: 12px; background: red;" onclick="freeDelete('${list.id}')">
+									<span id="freeDel"> 삭제 </span>
+								</div>
+							</td>
+>>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
 						</tr>
 					</c:forEach>
 				</table>

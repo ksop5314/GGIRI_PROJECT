@@ -58,6 +58,17 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 	}
 
 	@Override
+	public void boardGetFirstList(Model model) {
+		model.addAttribute("boardGetFirstList", gfm.boardGetFirstList());
+	}
+	
+	@Override
+	public List<GgiriFreeInsertDTO> boardGetList(GgiriFreeInsertDTO dto) {
+		return gfm.boardGetList(dto);
+		
+	}
+	
+	@Override
 	public void modifyForm(String userid, Model model) {
 		GgiriFreeInsertDTO dto = gfm.getBoard(userid);
 
@@ -89,6 +100,10 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 	public List<GgiriFreeInsertDTO> getAdminListBySearch(String keyword, String condition, int startRow, int endRow) {
         return gfs.getAdminListBySearch(keyword, condition, startRow, endRow);
 	}
+        
+	public void freeDelete(String deleteId) {
+		gfm.freeDelete(deleteId);
+	}
 
 	@Override
 	public List<GgiriFreeInsertDTO> getAdminList(int page, int perPage) {
@@ -107,13 +122,18 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 		
 	}
 
+	public List<GgiriFreeInsertDTO> ajaxMemberList() {
+		return gfm.ajaxMemberList();
+	}
+	
+	@Override
+	public int boardCount() {
+		return gfm.boardCount();
+	}
+	
 	
 //	GgiriFreeInsertDTO dto = gfm.getBoard(userid);
 //	model.addAttribute("info", dto);
-		
-		
-		
-	
 		
 	
 	

@@ -72,8 +72,21 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public int getProjectCount() {
         return pm.getProjectCount();
+    }	
+    
+    
+    // 관리자 페이지
+    @Override
+    public void adminProjectList(Model model) {
+    	model.addAttribute("adminProjectList", pm.adminProjectList());
     }
 
+    
+    @Override
+    public void proDelete(int projectNum) {
+    	pm.proDelete(projectNum);
+    }
+    
     // 댓글
 //    @Override
 //	public void addReply(ProjectRepDTO dto) {

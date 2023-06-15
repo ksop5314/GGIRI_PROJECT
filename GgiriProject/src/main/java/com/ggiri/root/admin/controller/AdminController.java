@@ -55,6 +55,13 @@ public class AdminController {
 		return "ggiriAdmin/allMember";
 	}
 	
+	@GetMapping("freeDelete")
+	@ResponseBody
+	public String freeDelete(@RequestParam("deleteId") String deleteId) {
+		gfs.freeDelete(deleteId);
+		return "OK";
+	}
+	
 	@GetMapping("memberDelete")
 	@ResponseBody
 	public String memberDelete(@RequestParam("deleteId") String deleteId) {
@@ -104,4 +111,37 @@ public class AdminController {
 			return "ggiriAdmin/adminList";
 	    }
 
+	@GetMapping("proDelete")
+	@ResponseBody
+	public String proDelete(@RequestParam("projectNum") int projectNum) {
+		//int proNum = Integer.parseInt(projectNum);
+		ps.proDelete(projectNum);
+		return "OK";
+	}
+	
+	@GetMapping("adminProjectList")
+	public String adminProjectList(Model model) {
+		ps.adminProjectList(model);
+		return "ggiriAdmin/adminProjectList";
+	}
+	
+	@GetMapping("adminCompleteList")
+	public String adminCompleteList(Model model) {
+		cs.adminCompleteList(model);
+		return "ggiriAdmin/adminCompleteList";
+	}
+	
+	@GetMapping("adminReplyList")
+	public String adminReplyList() {
+		
+		return "ggiriAdmin/adminReplyList";
+	}
+	
+	@GetMapping("adminHelpList")
+	public String adminHelpList() {
+		
+		return "ggiriAdmin/adminHelpList";
+	}
+	
+	
 }

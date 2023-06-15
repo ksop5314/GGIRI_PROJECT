@@ -144,11 +144,4 @@ public class GgiriServiceImpl implements GgiriService{
 	
 	// 강준호 끝
 	
-	
-	
-	
-	
-
-	
-	
 }

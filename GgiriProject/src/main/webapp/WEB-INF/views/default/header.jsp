@@ -12,6 +12,7 @@
 <style type="text/css">
 * {
 	margin: 0;
+	font-family: 'IBM Plex Sans KR', sans-serif;
 }
 .wrap{
 	width: 1200px;
@@ -39,7 +40,6 @@ nav ul {
 }
 nav ul li {
 	padding: 10px;	
-	font-family: 'IBM Plex Sans KR', sans-serif;
 }
 nav ul li:last-child{
 	padding-right: 30px;
@@ -49,12 +49,10 @@ nav ul a {
 	padding: 10px;
 	text-decoration: none;
 	color: black;
-	font-family: 'IBM Plex Sans KR', sans-serif;
 }
 nav ul li a {
 	display: flex;
 	text-decoration: none;
-	font-family: 'IBM Plex Sans KR', sans-serif;
 	color: black;
 }
 nav ul li a:hover {
@@ -102,6 +100,15 @@ nav ul li a:hover {
     padding: 10px 36px;
     margin: 2px 0px 0px 0px;
 }
+#drop-content p {
+	display:block;
+    font-size: 14px;
+    background-color: #F6F6F6;
+    color: black;
+    text-decoration: none;
+    padding: 10px 36px;
+    margin: 2px 0px 0px 0px;
+}
 /* .dropdown-button {
 	border: none;
 	width: 40px;		
@@ -132,11 +139,16 @@ nav ul li a:hover {
 /* .dropdown:hover .dropdown-button {
 	background-color: #CD853F;
 } */
+
+body {
+ 	background: white;
+}
+
 </style>
 </head>
 <body>
 	<div class="wrap">
-	<div class="header"></div>	
+		<div class="header"></div>	
 	</div>
 	<!-- // wrap -->
 	<div class="navdiv">
@@ -206,17 +218,17 @@ nav ul li a:hover {
 				        </c:if>   
 				        <c:if test="${kakaoMember != null}">
 							<a href="/root/ggiriMember/snsInfo">내 정보</a>
-							<li style="font-size: 12px;"><p><b>Kakao</b> 계정으로 접속중</p></li>
+							<p>Kakao 계정 접속</p>
 							<a href="/root/ggiriMember/kakaoLogout">LOGOUT</a>
 						</c:if>	
 						<c:if test="${naverMember != null}">
 							<a href="/root/ggiriMember/snsInfo">내 정보</a>
-							<li style="font-size: 12px;"><p><b>Naver</b> 계정으로 접속중</p></li>
+							<p>Naver 계정 접속</p>
 							<a href="/root/ggiriMember/naverLogout">LOGOUT</a>
 						</c:if>
 						<c:if test="${googleMember != null}">
 							<a href="/root/ggiriMember/snsInfo">내 정보</a>
-							<li style="font-size: 12px;"><p><b>Google</b> 계정으로 접속중</p></li>
+							<p>Google 계정 접속</p>
 							<a href="/root/ggiriMember/googleLogout">LOGOUT</a>
 						</c:if>
 						<c:if test="${kakaoMember == null && loginUser == null && naverMember == null && googleMember == null}">

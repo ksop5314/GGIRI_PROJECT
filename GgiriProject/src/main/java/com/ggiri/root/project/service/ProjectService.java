@@ -28,7 +28,12 @@ public interface ProjectService {
     public List<ProjectDTO> getProjectList(int page, int perPage);
 
     public int getProjectCount();
-
+    
+    // 관리자 페이지
+    public void adminProjectList(Model model);
+    
+    public void proDelete(int projectNum);
+    
     
     // 댓글
 //    public void addReply(ProjectRepDTO dto);

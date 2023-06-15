@@ -16,7 +16,11 @@ public interface GgiriFreeInsertMapper {
 	public GgiriFreeInsertDTO getBoard(String userid);
 	
 	public List<GgiriMemberDTO> boardAllList();
-		
+	
+	public List<GgiriFreeInsertDTO> boardGetFirstList();
+	
+	public List<GgiriFreeInsertDTO> boardGetList(GgiriFreeInsertDTO dto);
+	
 	public int writeFreeModify(GgiriFreeInsertDTO dto);	
 	
 	public void writeFreeDelete(String userid);
@@ -25,4 +29,9 @@ public interface GgiriFreeInsertMapper {
 	
 	public List<GgiriFreeInsertDTO> search(String keyword, String condition);
 
+	public void freeDelete(String id);
+	
+	public List<GgiriFreeInsertDTO> ajaxMemberList();
+	
+	public int boardCount();
 }

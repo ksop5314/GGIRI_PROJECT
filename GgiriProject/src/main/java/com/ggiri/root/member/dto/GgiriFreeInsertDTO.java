@@ -15,8 +15,29 @@ public class GgiriFreeInsertDTO {
 	private String url_name;
 	private Date insertdate; // 작성일자
 	
+	private int startRowNum;
+	private int endRowNum;
+	private int rowCount;
 	
 	
+	public int getStartRowNum() {
+		return startRowNum;
+	}
+	public void setStartRowNum(int startRowNum) {
+		this.startRowNum = startRowNum;
+	}
+	public int getEndRowNum() {
+		return endRowNum;
+	}
+	public void setEndRowNum(int endRowNum) {
+		this.endRowNum = endRowNum;
+	}
+	public int getRowCount() {
+		return rowCount;
+	}
+	public void setRowCount(int rowCount) {
+		this.rowCount = rowCount;
+	}
 	public int getMemberNum() {
 		return memberNum;
 	}

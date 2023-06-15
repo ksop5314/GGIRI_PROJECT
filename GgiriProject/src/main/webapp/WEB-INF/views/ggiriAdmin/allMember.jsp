@@ -34,6 +34,16 @@
 		font-weight: bold;
 	}
 	
+	h1 {
+		border: 1px solid orange;
+		border-radius: 30px;
+		width: 80%;
+		height: 80px;
+		padding-top: 50px;
+		margin: 0 auto;
+		background: orange;
+	}
+	
 </style>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -81,8 +91,8 @@
 			</div>
 			<br><br><br><br><br><br><br><br>
 			<div style="text-align: center;">
-				<h2 style="margin-right: auto; padding-bottom: 30px;">회원 정보</h2>
-				<table style="margin: auto; width: 90%;">
+				<h1 style="margin-right: auto; padding-bottom: 30px;"> GGIRI <b style="color: red;">관리자</b> 회원관리 페이지 </h1><br>
+				<table style="margin: auto; width: 100%;">
 					<tr>
 						<th>회원이름</th><th>회원ID</th><th>비밀번호</th><th>생년월일</th><th>성별</th><th>이메일</th><th>전화번호</th><th>주소</th><th>회원삭제</th>
 					</tr>
