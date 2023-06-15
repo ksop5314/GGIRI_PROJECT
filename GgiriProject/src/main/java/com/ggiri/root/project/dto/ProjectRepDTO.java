@@ -8,9 +8,6 @@ import java.text.SimpleDateFormat;
 CREATE TABLE reply (
 no NUMBER(10) not null,          -- 댓글 번호
 bno NUMBER(10) primary key,      -- 게시물 번호
-grp NUMBER(10) not null,         -- 대댓글 번호
-grps NUMBER(10) not null,        -- 대댓글 순서
-grpl NUMBER(10) not null,        -- 댓글의 깊이(모댓글이면 0, 답글이면 1)
 id VARCHAR2(100) not null,       -- 회원ID
 content VARCHAR2(1000),          -- 내용
 wdate DATE DEFAULT SYSDATE,      -- 작성일
@@ -53,7 +50,6 @@ public class ProjectRepDTO {
 	public void setBno(int bno) {
 		this.bno = bno;
 	}
-	
 	public String getId() {
 		return id;
 	}

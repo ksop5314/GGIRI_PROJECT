@@ -9,7 +9,7 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script>
-function count_check(obj){
+/* function count_check(obj){
 	var chkBox = document.getElementsByName("skill");
 	var chkCnt = 0;
 	for(var i = 0; i < chkBox.length ; i++){
@@ -23,7 +23,7 @@ function count_check(obj){
 		return false;
 	}
 }
-
+ */
 $(function(){
 	
 	$("#id").blur(function(){
@@ -385,9 +385,12 @@ table td {
 ul {
 	list-style: none;
 }
-
+.button1 {
+	display: flex;
+	align-items:center;
+	justify-content: center;
+}
 #button1 {
-	margin-left: 200px;
 	width: 600px;
 	height: 50px;
 	border: none; 
@@ -547,7 +550,9 @@ ul {
 					</td>
 				</tr>
 			</table><br>
-			<input type="submit" id="button1" value="회원가입">
+			<div class="button1">
+				<input type="submit" id="button1" value="회원가입">
+			</div>
 		</form>
 	</div>
 	<c:import url="../default/footer.jsp"/>

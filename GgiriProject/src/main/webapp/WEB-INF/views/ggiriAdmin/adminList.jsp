@@ -93,6 +93,8 @@ a{
 	background-color: white;
 	transition: 0.5s;
 }
+<<<<<<< HEAD
+=======
 
 #freeDel {
 		color: white;
@@ -113,6 +115,7 @@ h1 {
 	background: orange;
 }
 
+>>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
 </style>
 <script type="text/javascript">
 	var contextPath = "${pageContext.request.contextPath}";
@@ -166,16 +169,35 @@ h1 {
 					</tr>
 					<c:forEach var="list" items="${boardList }">
 						<tr>
+<<<<<<< HEAD
+							<td>${list.name }</td>
+							<td>${list.id }</td>
+							<td>${list.introduce }</td>
+							<td>${list.job }</td>
+							<td>${list.skill }</td>
+=======
 							<td>${list.name }</td><td>${list.id }</td><td>${list.introduce }</td><td>${list.job }</td><td>${list.skill }</td>
 							<td>
 								<div class="delDiv" style="border: 1px solid red; border-radius: 12px; background: red;" onclick="freeDelete('${list.id}')">
 									<span id="freeDel"> 삭제 </span>
 								</div>
 							</td>
+>>>>>>> branch 'main' of https://github.com/Lab0nG/junho.git
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
+		<form action="adminList.do" method="get">
+		    <label for="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">검색조건</label><br>
+			    <select name="condition" id="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">
+			      <option value="title" <c:if test="${condition eq 'name' }">selected</c:if>>이름</option>
+			      <option value="id" <c:if test="${condition eq 'id' }">selected</c:if>>작성자ID</option>
+			      <option value="job" <c:if test="${condition eq 'job' }">selected</c:if>>직업</option>
+			    </select>
+		    <input type="text" name="keyword" id="keyword" style="font-family: 'IBM Plex Sans KR', sans-serif"
+		           placeholder="검색어" value="${keyword }"/>
+		    <button id="button1" type="submit">검색</button>
+		</form>
 		</div>
 	<c:import url="../defaultAdmin/footer.jsp"/>
 </body>

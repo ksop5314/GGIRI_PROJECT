@@ -19,7 +19,7 @@ body{
 .search-box{
     padding: 10px;
     position: absolute;
-    top: 60%;
+    top: 85%;
     left: 50%;
     transform: translate(-50%,-50%);
     height: 30px;
@@ -27,7 +27,7 @@ body{
     border: 2.5px solid navy;
     border-radius: 30px;
     transition: 0.4s;
-    width:30px;
+    width: 30px;
 }
 .search-box:hover{
     box-shadow: 0px 0px .5px 1px navy;
@@ -116,15 +116,17 @@ body{
 	})();
 	<!--End of Tawk.to Script-->
    
-/*    function chatActivate(){
-      window.open("/root/ggiriChat/chatAct", "_blank", "width=500px, height=1500px");
-   } */
-	
    function searchProject() {
 	    var keyword = document.getElementById("searchTxt").value;
 	    var url = "/root/ggiriProject/projectList.do?condition=titleContent&keyword=" + encodeURIComponent(keyword);
 	    window.location.href = url;
 	}
+   
+   /* function searchSkill() {
+	    var keyword = document.getElementById("key").value;
+	    var url = "/root/ggiriProject/projectList.do?condition=titleContent&keyword=" + encodeURIComponent(key);
+	    window.location.href = url;
+	} */
    
 </script>
 </head>
@@ -153,8 +155,71 @@ body{
 			<c:if test="${loginUser == null && naverMember == null && kakaoMember == null }">
 			<button class="signup" type="button" onclick="location.href='/root/ggiriMember/signup_free'">프리랜서 회원가입</button>
 			</c:if>
+			<br><br><br><br><br>
+			<a href="${path}/board/best_list.do">베스트 게시물 게시판</a>
+			<br>
+			
+			<!-- <div class="eblock-project">
+			<a href="/root/ggiriProject/projectList.do?condition=titleContent&keyword=JAVA">
+            <div class="emain-project bg-gradation-10">
+                <p class="emain-project-img"><img class="w-10" src="./public/images/icon-main-java.png"></p>
+                <p class="emain-project-name">JAVA</p>
+            </div>
+			</a>
+			<a href="/root/ggiriProject/projectList.do?condition=titleContent&keyword=ASP%2C.NET">
+            <div class="emain-project bg-gradation-30">
+                <p class="emain-project-img"><img class="w-10" src="./public/images/icon-main-asp.png"></p>
+                <p class="emain-project-name">ASP.NET</p>
+            </div>
+			</a>
+            <div class="emain-project bg-gradation-50">
+                <p class="emain-project-img"><img class="w-10" src="./public/images/icon-main-php.png"></p>
+                <p class="emain-project-name">PHP</p>             
+            </div>
+			</a>
+			<a href="/root/ggiriProject/projectList.do?condition=titleContent&keyword=android,ios">
+            <div class="emain-project bg-gradation-60">
+                <p class="emain-project-img"><img class="w-10" src="./public/images/icon-main-mobile.png"></p>
+                <p class="emain-project-name">iOS・Android</p>             
+            </div>
+			</a>
+			<a href="./list-partner?oc=1">
+            <div class="emain-project bg-gradation-10">
+                <p class="emain-project-img"><img class="w-10" src="./public/images/icon-main-pub.png"></p>
+                <p class="emain-project-name">퍼블리싱</p>             
+            </div>
+			</a>
+			<a href="./list-partner?oc=2">
+            <div class="emain-project bg-gradation-30">
+                <p class="emain-project-img"><img class="w-10" src="./public/images/icon-main-design.png"></p>
+                <p class="emain-project-name">디자인</p>             
+            </div>
+			</a>
+			<a href="./list-partner?oc=3">
+            <div class="emain-project bg-gradation-50">
+                <p class="emain-project-img"><img class="w-10" src="./public/images/icon-main-plan.png"></p>
+                <p class="emain-project-name">기획</p>             
+            </div>
+			</a>
+			<a href="./list-partner?oc=4">
+            <div class="emain-project bg-gradation-60">
+                <p class="emain-project-img"><img class="w-10" src="./public/images/icon-main-etc.png"></p>
+                <p class="emain-project-name">기타</p>             
+            </div>
+			</a>
+        </div>
+         -->
+         <!-- 
+			<button class="JAVA" id="key" onclick="searchPro()">JAVA</button>	
+			<button class="SERVER" id="key" onclick="searchPro()">SERVER</button>	
+			<button class="PHP" ID="key" onclick="/root/ggiriProject/projectList.do?condition=titleContent&keyword=">PHP</button>	
+			<button class="ios" ID="key" onclick="/root/ggiriProject/projectList.do?condition=titleContent&keyword=">ios, Android</button>			
 			<br><br>
-			<br><br>
+			<button class="publishing" type="button" onclick="searchProject()">퍼블리싱</button>			
+			<button class="design" type="button" onclick="searchProject()">디자인</button>			
+			<button class="planning" type="button" onclick="searchProject()">기획</button>			
+			<button class="sundry" type="button" onclick="searchProject()">기타</button>			
+			  -->
 		</div>
     </div>
 </body>

@@ -1,6 +1,8 @@
 package com.ggiri.root.member.service;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 
 import com.ggiri.root.member.dto.GgiriMemberDTO;
 import com.ggiri.root.mybatis.member.GgiriMemberMapper;
+import com.ggiri.root.project.dto.ProjectDTO;
 
 @Service
 public class GgiriServiceImpl implements GgiriService{
@@ -133,7 +136,7 @@ public class GgiriServiceImpl implements GgiriService{
 	public void allMember(Model model, String id) {
 		model.addAttribute("allMember", gmm.allMember(id));
 	}
-	
+
 	@Override
 	public void deleteId(String deleteId) {
 		gmm.deleteId(deleteId);

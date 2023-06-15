@@ -6,6 +6,7 @@
 
 	<resultMap type="com.ggiri.root.project.dto.ProjectDTO" id="project">
 		<id property="projectNum" column="projectNum"/>
+		<result property="projectNum" column="projectNum"/>
 		<result property="memberNum" column="memberNum"/>
 		<result property="title" column="title"/>
 		<result property="content" column="content"/>
@@ -14,27 +15,16 @@
 		<result property="id" column="id"/>
 		<result property="skill" column="skill"/>
 	</resultMap>
-
+	
 	<resultMap type="com.ggiri.root.project.dto.ProjectRepDTO" id="reply">
-		<id property="no" column="no"/>
-		<result property="memberNum" column="memberNum"/>
-		<result property="bno" column="bno"/>
-		<result property="id" column="id"/>
-		<result property="content" column="content"/>
-		<result property="wdate" column="wdate"/>
-	</resultMap>
-
-	<resultMap type="com.ggiri.root.project.dto.ProjectReRepDTO" id="rereply">
-		<id property="reno" column="reno"/>
-		<result property="memberNum" column="memberNum"/>
-		<result property="no" column="no"/>
-		<result property="bno" column="bno"/>
-		<result property="id" column="id"/>
-		<result property="content" column="content"/>
-		<result property="wdate" column="wdate"/>
-	</resultMap>
-
-
+      <id property="no" column="no"/>
+      <result property="memberNum" column="memberNum"/>
+      <result property="bno" column="bno"/>
+      <result property="id" column="id"/>
+      <result property="content" column="content"/>
+      <result property="wdate" column="wdate"/>
+   </resultMap>
+	
 	<select id="projectList" resultMap="project">
 		SELECT * FROM ggiriProject
 	</select>
@@ -76,17 +66,17 @@
 	
 	<!-- 페이지 단위로 프로젝트 목록 조회 -->
 	<select id="getProjectList" parameterType="map" resultMap="project">
-	    SELECT *
+<!-- 	    SELECT *
 	    FROM (
 	        SELECT ROWNUM AS rnum, p.*
-	        FROM (
+	        FROM ( -->
 	            SELECT *
 	            FROM ggiriProject
 	            ORDER BY projectNum DESC
-	        ) p
+<!-- 	        ) p
 	        WHERE ROWNUM &lt;= #{endRow}
 	    )
-	    WHERE rnum &gt;= #{startRow}
+	    WHERE rnum &gt;= #{startRow} -->
 	</select>
 	
 	<!-- 검색 조건에 따른 프로젝트 개수 조회 -->
@@ -108,10 +98,6 @@
 	
 	<!-- 검색 조건에 따른 프로젝트 목록 조회 -->
 	<select id="getProjectListBySearch" parameterType="map" resultMap="project">
-	    SELECT *
-	    FROM (
-	        SELECT ROWNUM AS rnum, p.*
-	        FROM (
 	            SELECT *
 	            FROM ggiriProject
 	            WHERE
@@ -127,10 +113,6 @@
 	                </when>
 	            </choose>
 	            ORDER BY projectNum DESC
-	        ) p
-	        WHERE ROWNUM &lt;= #{endRow}
-	    )
-	    WHERE rnum &gt;= #{startRow}
 	</select>
 
 	<!-- <select id="searchByTitleAndContent" resultType="ProjectDTO">
@@ -154,11 +136,6 @@
 	</select> -->
 	
 	<!-- 댓글 -->
-	<insert id="addReply">
-		INSERT INTO ggiriReply(no, memberNum, bno, id, content)
-		VALUES(reply_seq.nextval, #{memberNum}, #{bno}, #{id}, #{content})
-	</insert>
-	
 	<insert id="addReplyTest">
 		INSERT INTO ggiriReply(no, memberNum, bno, id, content)
 		VALUES(reply_seq.nextval, #{memberNum}, #{bno}, #{id}, #{content})
@@ -171,15 +148,4 @@
 	<select id="adminReplyList" resultMap="reply">
 		SELECT * FROM ggiriReply
 	</select>
-	
-	<!-- 대댓글 -->
-	<!--  <insert id="re_addReplyTest">
-		INSERT INTO reGgiriReply(reno, memberNum, no, bno, id, content)
-		VALUES(Rereply_seq.nextval, #{memberNum}, #{no}, #{bno}, #{id}, #{content})
-	</insert>
-	
-	<select id="re_getRepList" resultMap="rereply">
-		SELECT * FROM reGgiriReply WHERE bno=#{bno} and no=#{no}
-	</select> -->
-	
 </mapper>

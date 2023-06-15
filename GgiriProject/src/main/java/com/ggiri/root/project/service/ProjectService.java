@@ -1,4 +1,3 @@
-
 package com.ggiri.root.project.service;
 
 import java.util.List;
@@ -10,9 +9,9 @@ import com.ggiri.root.project.dto.ProjectRepDTO;
 
 public interface ProjectService {
 
-	public void projectList(Model model);
-	
-	public void projectView(int projectNum, Model model);
+    public void projectList(Model model);
+
+    public void projectView(int projectNum, Model model);
 	
 	public int insertPro(ProjectDTO dto);
 	
@@ -41,10 +40,5 @@ public interface ProjectService {
 //    public void addReply(ProjectRepDTO dto);
     public int addReplyTest(ProjectRepDTO dto);
 	public List<ProjectRepDTO> getRepList(int bno);
-	
-	// 대댓글
-//	public int re_addReplyTest(ProjectRepDTO dto);
-//    public List<ProjectRepDTO> re_getRepList(int bno);
-	
 	
 }

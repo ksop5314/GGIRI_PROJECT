@@ -1,4 +1,3 @@
-
 package com.ggiri.root.project.service;
 
 import java.util.List;
@@ -14,50 +13,55 @@ import com.ggiri.root.project.dto.ProjectRepDTO;
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
-	@Autowired
-	private ProjectMapper pm;
-	
-	@Override
-	public void projectList(Model model) {
-		model.addAttribute("projectList", pm.projectList());
-	}
-	
-	@Override
-	public void projectView(int projectNum, Model model) {
-		model.addAttribute("data", pm.projectView(projectNum));
-		pm.proHit(projectNum);
-	}
-	
-	@Override
-	public int insertPro(ProjectDTO dto) {
-		return pm.insertPro(dto);
-	}
-	
-	@Override
-	public void modify(ProjectDTO dto) {
-		pm.modify(dto);
-	}
-	
-	@Override
-	public void delete(int projectNum) {
-		pm.delete(projectNum);
-	}
+    @Autowired
+    private ProjectMapper pm;
 
-	@Override
+    @Override
+    public void projectList(Model model) {
+        model.addAttribute("projectList", pm.projectList());
+    }
+    
+    @Override
+    public void projectView(int projectNum, Model model) {
+        model.addAttribute("data", pm.projectView(projectNum));
+        pm.proHit(projectNum);
+    }
+
+    @Override
+    public int insertPro(ProjectDTO dto) {
+    	return pm.insertPro(dto);
+    }
+
+    @Override
+    public void modify(ProjectDTO dto) {
+        pm.modify(dto);
+    }
+
+    @Override
+    public void delete(int projectNum) {
+        pm.delete(projectNum);
+    }
+
+    @Override
     public List<ProjectDTO> search(String keyword, String searchType) {
         return pm.search(keyword, searchType);
     }
-    
+
     @Override
     public int getProjectCountBySearch(String keyword, String searchType) {
         return pm.getProjectCountBySearch(keyword, searchType);
     }
-    
+
     @Override
     public List<ProjectDTO> getProjectListBySearch(String keyword, String searchType, int startRow, int endRow) {
         return pm.getProjectListBySearch(keyword, searchType, startRow, endRow);
     }
-    
+
+//    @Override
+//    public List<ProjectDTO> getProjectList(int page, int perPage) {
+//        return pm.getProjectList();
+//    }
+
     @Override
     public List<ProjectDTO> getProjectList(int page, int perPage) {
         int startRow = (page - 1) * perPage + 1;
@@ -76,6 +80,7 @@ public class ProjectServiceImpl implements ProjectService {
     public void adminProjectList(Model model) {
     	model.addAttribute("adminProjectList", pm.adminProjectList());
     }
+
     
     @Override
     public void proDelete(int projectNum) {
@@ -104,16 +109,5 @@ public class ProjectServiceImpl implements ProjectService {
 		return pm.getRepList(bno);
 	}
     
-//	// 대댓글
-//	@Override
-//	public int re_addReplyTest(ProjectRepDTO dto) {
-//		return pm.re_addReplyTest(dto);
-//	}
-//    
-//	@Override
-//	public List<ProjectRepDTO> re_getRepList(int bno) {
-//		return pm.re_getRepList(bno);
-//	}
-	
-    
 }
+
