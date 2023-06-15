@@ -14,7 +14,7 @@
 	margin: 0;
 }
 .wrap{
-	width: 1200px;
+	width: 90%;
 	margin: auto;
 	text-align: left;
 }
@@ -68,15 +68,19 @@ nav ul li a:hover {
 			<a href="/root/indexAdmin"><img width="300px" height="95px" src="/root/resources/image/logo6.png"></a>
 			<nav>
 				<ul>
-					<li><a href="/root/ggiriAdmin/adminList"> <span style="font-size: 10px;">(관리자 권한)</span> 등록된 프리랜서 보기 </a></li>
+					<li><a href="/root/ggiriAdmin/adminList"> <span style="font-size: 10px;">(관리자 권한)</span> 등록된 프리랜서 목록 </a></li>
 					<li> | </li>
-					<li><a href="/root/ggiriAdmin/projectList"> <span style="font-size: 10px;">(관리자 권한)</span> 진행중인 프로젝트 보기 </a></li>
+					<li><a href="/root/ggiriAdmin/adminProjectList"> <span style="font-size: 10px;">(관리자 권한)</span> 진행중인 프로젝트 목록 </a></li>
 					<li> | </li>
-					<li><a href="/root/ggiriAdmin/adminCompleteList"> <span style="font-size: 10px;">(관리자 권한)</span> 완료된 프로젝트 </a></li>
+					<li><a href="/root/ggiriAdmin/adminCompleteList"> <span style="font-size: 10px;">(관리자 권한)</span> 완료된 프로젝트 목록 </a></li>
 					<li> | </li>
-					<li>${ADMIN } 관리자 계정으로 접속중</li>
+					<li><a href="/root/ggiriAdmin/adminReplyList"><span style="font-size: 10px;">(관리자 권한)</span> 등록된 댓글 목록 </a></li>					
 					<li> | </li>
-					<li><a href="/root/ggiriAdmin/adminLogout"> LOGOUT </a></li>
+					<li><a href="/root/ggiriAdmin/adminHelpList"><span style="font-size: 10px;">(관리자 권한)</span> <b style="color: blue;">고객센터</b> 문의 목록 </a></li>					
+					<li> | </li>
+					<li><span style="font-size: 12px; color: black;"> ${ADMIN } </span><b style="color: red;"> 관리자 계정 </b>으로 접속중</li>
+					<li> | </li>
+					<li><a href="/root/ggiriAdmin/adminLogout"><span style="font-size: 12px; color: black;"> LOGOUT </span></a></li>
 				</ul>
 			</nav>
 		</div>

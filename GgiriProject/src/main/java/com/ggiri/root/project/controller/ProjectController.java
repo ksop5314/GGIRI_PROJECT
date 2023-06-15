@@ -56,8 +56,28 @@ public class ProjectController implements GgiriMemberSession{
     }
 
     @GetMapping("projectView")
-    public String projectView(@RequestParam("projectNum") int projectNum, Model model) throws Exception {
-        ps.projectView(projectNum, model);
+    public String projectView(@RequestParam("projectNum") int projectNum, Model model, HttpSession session) throws Exception {
+    	if(session.getAttribute(LOGIN) != null) {
+			String id = (String)session.getAttribute(LOGIN);
+			gs.ggiriMemberInfo(id, model);			
+			ps.projectView(projectNum, model);
+	        return "ggiriProject/projectView";
+		} else if(session.getAttribute("kakaoMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("kakaoMember");
+			ps.projectView(projectNum, model);
+			gs.ggiriSnsInfo(dto.getId(), model);
+	        return "ggiriProject/projectView";
+		} else if(session.getAttribute("naverMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("naverMember");
+			ps.projectView(projectNum, model);
+			gs.ggiriSnsInfo(dto.getId(), model);
+	        return "ggiriProject/projectView";
+		} else if(session.getAttribute("googleMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("googleMember");
+			ps.projectView(projectNum, model);
+			gs.ggiriSnsInfo(dto.getId(), model);
+	        return "ggiriProject/projectView";
+		}
         return "ggiriProject/projectView";
     }
 
@@ -133,8 +153,6 @@ public class ProjectController implements GgiriMemberSession{
         
         return "ggiriProject/projectList";
     }
-    
-	
 	
     
 }

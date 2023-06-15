@@ -3,6 +3,7 @@ package com.ggiri.root.project.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -16,7 +17,6 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Autowired
 	private ProjectMapper pm;
-	
 	
 	@Override
 	public void projectList(Model model) {
@@ -71,10 +71,24 @@ public class ProjectServiceImpl implements ProjectService {
         return pm.getProjectCount();
     }	
     
+    
+    @Override
+    public List<ProjectDTO> getProjectInfo(int projectNum, Model model) {
+    	return pm.getProjectInfo(projectNum, model);
+    }
+    
+    
+    // 관리자 페이지
     @Override
     public void adminProjectList(Model model) {
     	model.addAttribute("adminProjectList", pm.adminProjectList());
     }
     
+    @Override
+    public void proDelete(int projectNum) {
+    	pm.proDelete(projectNum);
+    }
+
+	
     
 }

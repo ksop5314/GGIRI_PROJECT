@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.ui.Model;
 
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
@@ -45,8 +46,12 @@ public interface ProjectMapper {
 
     public List<ProjectDTO> searchByAuthor(@Param("keyword") String keyword);
     
-    public List<ProjectDTO> adminProjectList();
+    public List<ProjectDTO> getProjectInfo(@Param("projectNum") int projectNum, Model model);
     
+    
+    // 관리자 페이지
+    public List<ProjectDTO> adminProjectList();
+    public void proDelete(int projectNum);
     
 	
     

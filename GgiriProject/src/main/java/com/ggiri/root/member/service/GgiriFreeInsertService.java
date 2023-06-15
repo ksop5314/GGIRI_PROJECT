@@ -23,7 +23,17 @@ public interface GgiriFreeInsertService {
 	
 	// 모든 프리랜서
 	public void boardAllList(Model model);
+	
+	
+	
+	// 무한 스크롤
+	public void boardGetFirstList(Model model);
+	public List<GgiriFreeInsertDTO> boardGetList(GgiriFreeInsertDTO dto);
+	
+	// (관리자 페이지) 프리랜서 삭제
+	public void freeDelete(String deleteId);
 		
+	public int boardCount();
 	
 	public void modifyForm(String userid, Model model);	
 	
@@ -32,4 +42,7 @@ public interface GgiriFreeInsertService {
 	public void writeFreeDelete(String userid);
 	
 	public List<CompleteDTO> projectInfo(String usertid, Model model);
+	
+	public List<GgiriFreeInsertDTO> ajaxMemberList();
+	
 }

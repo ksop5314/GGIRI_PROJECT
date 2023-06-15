@@ -56,11 +56,16 @@ nav ul li a {
 nav ul li a:hover {
 	color: #D8D8D8;
 }
+
+body {
+ 	background: white;
+}
+
 </style>
 </head>
 <body>
 	<div class="wrap">
-	<div class="header"></div>	
+		<div class="header"></div>	
 	</div>
 	<!-- // wrap -->
 	<div class="navdiv">

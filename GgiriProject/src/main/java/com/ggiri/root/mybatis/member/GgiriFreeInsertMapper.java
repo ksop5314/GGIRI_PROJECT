@@ -17,14 +17,23 @@ public interface GgiriFreeInsertMapper {
 	
 	public List<GgiriFreeInsertDTO> selectJob(String job);
 	
-	
 	public GgiriFreeInsertDTO getBoard(String userid);
 	
 	public List<GgiriMemberDTO> boardAllList();
-		
+	
+	public List<GgiriFreeInsertDTO> boardGetFirstList();
+	
+	public List<GgiriFreeInsertDTO> boardGetList(GgiriFreeInsertDTO dto);
+	
 	public int writeFreeModify(GgiriFreeInsertDTO dto);	
 	
 	public void writeFreeDelete(String userid);
 	
 	public List<CompleteDTO> getProject(String userid);
+	
+	public void freeDelete(String id);
+	
+	public List<GgiriFreeInsertDTO> ajaxMemberList();
+	
+	public int boardCount();
 }

@@ -10,7 +10,7 @@ public interface CompleteMapper {
 	
 	public CompleteDTO comView(int completeNum);
 	
-	public int insertCom(CompleteDTO dto);
+	public int comSave(CompleteDTO dto);
 	
 	public void comHit(int completeNum);
 	
@@ -18,6 +18,7 @@ public interface CompleteMapper {
 	
 	public void delete(int completeNum);
 	
+	//관리자 페이지
 	public List<CompleteDTO> adminCompleteList();
 	
 }

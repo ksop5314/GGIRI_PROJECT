@@ -25,7 +25,7 @@
 		SELECT * FROM ggiriComplete WHERE completeNum=#{completeNum}
 	</select>
 	
-	<insert id="insertCom">
+	<insert id="comSave">
 		INSERT INTO ggiriComplete(completeNum, memberNum, title, content, skill, members, tag, id)
 		VALUES(ggiriComplete_seq.nextval, #{memberNum}, #{title}, #{content}, #{skill}, #{members}, #{tag}, #{id})
 	</insert>
@@ -43,6 +43,7 @@
 		DELETE FROM ggiriComplete WHERE completeNum=#{completeNum}
 	</delete>
 	
+	<!-- 관리자 페이지 -->
 	<select id="adminCompleteList" resultMap="complete">
 		SELECT * FROM ggiriComplete
 	</select>

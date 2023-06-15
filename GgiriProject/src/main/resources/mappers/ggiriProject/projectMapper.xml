@@ -41,6 +41,17 @@
 		DELETE FROM ggiriProject WHERE projectNum=#{projectNum}
 	</delete>
 	
+	<select id="getProjectInfo" resultMap="project">
+		SELECT * FROM ggiriProject WHERE projectNum=#{projectNum}
+	</select>
+	
+	
+	
+	<!-- 관리자 페이지 프로젝트 삭제 -->
+	<delete id="proDelete">
+		DELETE FROM ggiriProject WHERE projectNum=#{projectNum}
+	</delete>
+	
 	<select id="adminProjectList" resultMap="project">
 		SELECT * FROM ggiriProject
 	</select>

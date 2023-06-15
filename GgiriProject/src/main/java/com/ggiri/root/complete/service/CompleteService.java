@@ -11,13 +11,13 @@ public interface CompleteService {
 	
 	public void comView(int completeNum, Model model);
 	
-//	public void insertCom(CompleteDTO dto);
-	public int insertCom(CompleteDTO dto);
+	public int comSave(CompleteDTO dto);
 	
 	public int modify(CompleteDTO dto);
 	
 	public void delete(int completeNum);
 	
+	// 관리자 페이지
 	public void adminCompleteList(Model model);
 	
 }

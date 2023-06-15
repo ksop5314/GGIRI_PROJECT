@@ -152,7 +152,7 @@ a{
 			</select>
 			<input type="text" name="keyword" id="keyword"
 				placeholder="검색어" value="${keyword }"/>
-			<button type="submit">검색</button>
+			<button type="submit">검색 </button>
 			</form>
 	</div>
 	<c:import url="../default/footer.jsp"></c:import>
