@@ -47,11 +47,16 @@ public interface ProjectMapper {
     public List<ProjectDTO> searchByAuthor(@Param("keyword") String keyword);
     
     public List<ProjectDTO> getProjectInfo(@Param("projectNum") int projectNum, Model model);
-    
+
+    // 댓글
+//  public void addReply(ProjectRepDTO dto);
+  public int addReplyTest(ProjectRepDTO dto);
+	public List<ProjectRepDTO> getRepList(int bno);
     
     // 관리자 페이지
     public List<ProjectDTO> adminProjectList();
     public void proDelete(int projectNum);
+    public List<ProjectRepDTO> adminReplyList();
     
 	
     

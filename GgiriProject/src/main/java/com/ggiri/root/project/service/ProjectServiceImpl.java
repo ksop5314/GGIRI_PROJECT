@@ -88,7 +88,23 @@ public class ProjectServiceImpl implements ProjectService {
     public void proDelete(int projectNum) {
     	pm.proDelete(projectNum);
     }
-
+    
+    @Override
+    public void adminReplyList(Model model) {
+    	model.addAttribute("adminReplyList", pm.adminReplyList());
+    }
+    
+    @Override
+    public int addReplyTest(ProjectRepDTO dto) {
+    	
+    	return pm.addReplyTest(dto);
+    }
+    
+	@Override
+	public List<ProjectRepDTO> getRepList(int bno) {
+		return pm.getRepList(bno);
+	}
+    
 	
     
 }

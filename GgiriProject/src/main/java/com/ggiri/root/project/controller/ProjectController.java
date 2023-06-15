@@ -153,6 +153,37 @@ public class ProjectController implements GgiriMemberSession{
         
         return "ggiriProject/projectList";
     }
+    
+    // 댓글
+    @PostMapping("addReply")
+    @ResponseBody
+	public int addReply(@RequestBody Map<String, Object> map, HttpSession session) {
+		
+		ProjectRepDTO dto = new ProjectRepDTO();
+		
+		String projectNum = (String) map.get("projectNum");
+		System.out.println(projectNum);
+		String id = (String)map.get("id");
+		System.out.println(id);
+		
+		dto.setId((String)map.get("id"));
+		dto.setMemberNum(Integer.parseInt((String)map.get("memberNum")));
+		dto.setBno(Integer.parseInt((String)map.get("projectNum")));
+		dto.setContent((String)map.get("content"));
+		int rep = ps.addReplyTest(dto);
+		
+		return rep;
+	}
+    
+	@GetMapping(value="replyData", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public List<ProjectRepDTO> replyData(@RequestParam("projectNum") String bno) {
+		
+		return ps.getRepList(Integer.parseInt(bno));
+		
+	}
+	
+ 
 	
     
 }

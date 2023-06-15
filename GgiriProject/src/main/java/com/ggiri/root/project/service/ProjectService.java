@@ -38,6 +38,13 @@ public interface ProjectService {
     
     public void proDelete(int projectNum);
 
+    
+    public void adminReplyList(Model model);
+    
+    // 댓글
+//    public void addReply(ProjectRepDTO dto);
+    public int addReplyTest(ProjectRepDTO dto);
+	public List<ProjectRepDTO> getRepList(int bno);
 	
 	
 }

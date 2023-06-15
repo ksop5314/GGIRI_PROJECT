@@ -15,6 +15,15 @@
 		<result property="id" column="id"/>
 		<result property="skill" column="skill"/>
 	</resultMap>
+	
+	<resultMap type="com.ggiri.root.project.dto.ProjectRepDTO" id="reply">
+      <id property="no" column="no"/>
+      <result property="memberNum" column="memberNum"/>
+      <result property="bno" column="bno"/>
+      <result property="id" column="id"/>
+      <result property="content" column="content"/>
+      <result property="wdate" column="wdate"/>
+   </resultMap>
 
 	<select id="projectList" resultMap="project">
 		SELECT * FROM ggiriProject
@@ -119,25 +128,20 @@
 	    )
 	    WHERE rnum &gt;= #{startRow}
 	</select>
-
-	<!-- <select id="searchByTitleAndContent" resultType="ProjectDTO">
-	    SELECT *
-	    FROM project
-	    WHERE title LIKE CONCAT('%', #{keyword}, '%')
-	        OR content LIKE CONCAT('%', #{keyword}, '%')
+	
+	<!-- 댓글 -->
+	
+	<insert id="addReplyTest">
+		INSERT INTO ggiriReply(no, memberNum, bno, id, content)
+		VALUES(reply_seq.nextval, #{memberNum}, #{bno}, #{id}, #{content})
+	</insert>
+	
+	<select id="getRepList" resultMap="reply">
+		SELECT * FROM ggiriReply WHERE bno=#{bno}
 	</select>
 	
-	<select id="searchByTitle" resultType="ProjectDTO">
-	    SELECT *
-	    FROM project
-	    WHERE title LIKE CONCAT('%', #{keyword}, '%')
+	<select id="adminReplyList" resultMap="reply">
+		SELECT * FROM ggiriReply
 	</select>
-
-	
-	<select id="searchByAuthor" resultType="ProjectDTO">
-	    SELECT *
-	    FROM project
-	    WHERE id LIKE CONCAT('%', #{keyword}, '%')
-	</select> -->
 	
 </mapper>

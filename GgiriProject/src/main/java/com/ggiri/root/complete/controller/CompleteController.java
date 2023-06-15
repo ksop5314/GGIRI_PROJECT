@@ -79,7 +79,7 @@ public class CompleteController implements GgiriMemberSession {
 	
 	@PostMapping("comSave")
 	@ResponseBody
-	public int comSave(@RequestBody Map<String, Object> map, HttpSession session, HttpServletRequest request) {
+	public int comSave(@RequestBody Map<String, Object> map, HttpSession session) {
 		
 		CompleteDTO dto = new CompleteDTO();
 		
@@ -87,8 +87,9 @@ public class CompleteController implements GgiriMemberSession {
 		System.out.println(memberNum);
 		String id = (String)map.get("id");
 		System.out.println(id);
-		int projectNum = Integer.parseInt((String)(request.getParameter("projectNum")));
+		String projectNum = (String) map.get("projectNum");
 		System.out.println(projectNum);
+		
 		
 		dto.setMemberNum(Integer.parseInt((String)map.get("memberNum")));
 		dto.setTitle((String)map.get("title"));
