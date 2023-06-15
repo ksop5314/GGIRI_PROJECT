@@ -34,15 +34,11 @@ public interface ProjectService {
     
     public void proDelete(int projectNum);
     
+    public void adminReplyList(Model model);
     
     // 댓글
 //    public void addReply(ProjectRepDTO dto);
     public int addReplyTest(ProjectRepDTO dto);
 	public List<ProjectRepDTO> getRepList(int bno);
 	
-	// 대댓글
-	public int re_addReplyTest(ProjectRepDTO dto);
-    public List<ProjectRepDTO> re_getRepList(int bno);
-    
-    public void recommend(int member_bno) throws Exception;
 }

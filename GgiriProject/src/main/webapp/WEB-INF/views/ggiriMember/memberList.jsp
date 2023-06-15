@@ -14,7 +14,6 @@
 
 var contextPath = "${pageContext.request.contextPath}";
 var job;
-
 	
 	/* GetList(1); */
 	
@@ -403,9 +402,9 @@ a{
 </style>
 </head>
 <body>
-	<c:import url="../default/header.jsp"/>
- 		<br>
- 		<div class="wrap">
+<c:import url="../default/header.jsp"/>
+	<br>
+	<div class="wrap">
 		<div class="freeTxt">
 			<p>끼리가 보증하는 IT파트너</p>
 			<p id="h">프로젝트 등록하면<br>

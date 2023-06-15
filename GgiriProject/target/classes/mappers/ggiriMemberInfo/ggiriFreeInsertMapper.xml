@@ -39,7 +39,8 @@
 		SELECT * FROM ggiriFree_insert 
 	</select>
 	
-	<select id="boardGetFirstList" resultMap="ggiri">
+	<!-- 무한 스크롤 sql -->
+<!-- 	<select id="boardGetFirstList" resultMap="ggiri">
 		SELECT * FROM (
 						SELECT ROW_NUMBER() OVER (ORDER BY insertdate DESC) NUM, A.*
 						FROM ggiriFree_insert A
@@ -55,7 +56,7 @@
 						ORDER BY insertdate DESC
 						)
 		WHERE NUM BETWEEN #{startRowNum} AND #{rowCount}
-	</select>
+	</select> -->
 	
 	<update id="writeFreeModify">
 		UPDATE ggiriFree_insert

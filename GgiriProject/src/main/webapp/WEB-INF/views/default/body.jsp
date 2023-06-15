@@ -19,7 +19,7 @@ body{
 .search-box{
     padding: 10px;
     position: absolute;
-    top: 30%;
+    top: 85%;
     left: 50%;
     transform: translate(-50%,-50%);
     height: 30px;
@@ -27,7 +27,7 @@ body{
     border: 2.5px solid navy;
     border-radius: 30px;
     transition: 0.4s;
-    width:30px;
+    width: 30px;
 }
 .search-box:hover{
     box-shadow: 0px 0px .5px 1px navy;
@@ -132,7 +132,7 @@ body{
 </head>
 <body>
 	<div class="search-box">
-    <input type="text" id="searchTxt" name="s" placeholder="어떤 프로젝트를 찾으세요?" class="search-txt" />
+    	<input type="text" id="searchTxt" name="s" placeholder="어떤 프로젝트를 찾으세요?" class="search-txt" />
 	    <a class="search-btn" href="#" onclick="searchProject()">
 	        <i class="fas fa-search"></i>
 	    </a>
@@ -209,11 +209,7 @@ body{
 			</a>
         </div>
          -->
-          <option value="title" <c:if test="${condition eq 'title' }">selected</c:if>>제목</option>
-			 <input type="text" name="keyword" id="keyword" style="font-family: 'IBM Plex Sans KR', sans-serif"
-           placeholder="검색어" value="${keyword }"/>
-    <button id="button1" type="submit">검색</button>
-			
+         <!-- 
 			<button class="JAVA" id="key" onclick="searchPro()">JAVA</button>	
 			<button class="SERVER" id="key" onclick="searchPro()">SERVER</button>	
 			<button class="PHP" ID="key" onclick="/root/ggiriProject/projectList.do?condition=titleContent&keyword=">PHP</button>	
@@ -223,7 +219,7 @@ body{
 			<button class="design" type="button" onclick="searchProject()">디자인</button>			
 			<button class="planning" type="button" onclick="searchProject()">기획</button>			
 			<button class="sundry" type="button" onclick="searchProject()">기타</button>			
-			 
+			  -->
 		</div>
     </div>
 </body>

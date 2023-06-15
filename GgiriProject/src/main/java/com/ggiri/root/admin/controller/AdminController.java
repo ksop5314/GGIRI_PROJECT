@@ -132,8 +132,8 @@ public class AdminController {
 	}
 	
 	@GetMapping("adminReplyList")
-	public String adminReplyList() {
-		
+	public String adminReplyList(Model model) {
+		ps.adminReplyList(model);
 		return "ggiriAdmin/adminReplyList";
 	}
 	

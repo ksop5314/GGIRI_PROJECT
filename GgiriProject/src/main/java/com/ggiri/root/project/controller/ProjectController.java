@@ -187,15 +187,6 @@ public class ProjectController implements GgiriMemberSession{
 
     
     
-  //게시물 추천 관련 메소드
-    @RequestMapping("/board/recommend.do")
-    public String recommend (@RequestParam int member_bno) throws Exception {
-        
-        projectService.recommend(member_bno);
-    
-        return "forward:/board/list.do"; //페이지값을 그대로 넘겨받기위해서 포워딩을 사용해 컨트롤러로 리턴시킨다.
-    }
-
     // 댓글
     @PostMapping("addReply")
     @ResponseBody
@@ -207,71 +198,24 @@ public class ProjectController implements GgiriMemberSession{
 		System.out.println(projectNum);
 		String id = (String)map.get("id");
 		System.out.println(id);
+		String content = (String)map.get("content");
+		System.out.println(content);
 		
 		dto.setId((String)map.get("id"));
 		dto.setMemberNum(Integer.parseInt((String)map.get("memberNum")));
 		dto.setBno(Integer.parseInt((String)map.get("projectNum")));
-		dto.setContent((String)map.get("content"));
+		dto.setContent(content);
 		int rep = ps.addReplyTest(dto);
 		
 		return rep;
 	}
     
-	@GetMapping(value="replyData", produces="application/json; charset=UTF-8")
+	@GetMapping("replyData")
 	@ResponseBody
-	public List<ProjectRepDTO> replyData(@RequestParam("projectNum") String bno) {
+	public List<ProjectRepDTO> replyData(@RequestParam("projectNum") int bno) {
 		
-		return ps.getRepList(Integer.parseInt(bno));
+		return ps.getRepList(bno);
 		
 	}
-    
-    // 대댓글
-	
-//	@PostMapping("re_addReply")
-//    @ResponseBody
-//	public int re_addReply(@RequestBody Map<String, Object> map, HttpSession session) {
-//		
-//		ProjectRepDTO dto = new ProjectRepDTO();
-//		
-//		String projectNum = (String) map.get("projectNum");
-//		System.out.println(projectNum);
-//		String id = (String)map.get("id");
-//		
-//		dto.setId((String)session.getAttribute("id"));
-//		dto.setBno(Integer.parseInt((String) map.get("projectNum")));
-//		//dto.setGrp(Integer.parseInt((String) map.get(grp)));
-//		//dto.setGrps(Integer.parseInt((String) map.get("grps")));
-//		//dto.setGrpl(Integer.parseInt((String) map.get("grpl")));
-//		dto.setContent((String)map.get("content"));
-//		
-//		int re_rep = ps.re_addReplyTest(dto);
-//		
-//
-//		return re_rep;
-//	}
-// 
-//	@GetMapping(value="re_replyData", produces="application/json; charset=UTF-8")
-//	@ResponseBody
-//	public List<ProjectRepDTO> re_replyData(@RequestParam("projectNum") String bno) {
-//		
-//		return ps.re_getRepList(Integer.parseInt(bno));
-//		
-//	}
-    
-    /*
-    String projectNum = (String) map.get("projectNum");
-		System.out.println(projectNum);
-		
-		dto.setId((String)session.getAttribute(LOGIN));
-		dto.setBno(Integer.parseInt((String)map.get("projectNum")));
-		dto.setGrp(Integer.parseInt((String)map.get("grp")));
-		dto.setGrp(Integer.parseInt((String)map.get("grps")));
-		dto.setGrp(Integer.parseInt((String)map.get("grpl")));
-		dto.setContent((String)map.get("content"));
-		
-		int re_rep = ps.re_addReplyTest(dto);
-		
-		return re_rep;
-    */
 	
 }
