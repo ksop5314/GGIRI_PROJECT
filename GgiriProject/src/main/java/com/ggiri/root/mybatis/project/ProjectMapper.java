@@ -48,6 +48,7 @@ public interface ProjectMapper {
     // 관리자 페이지
     public List<ProjectDTO> adminProjectList();
     public void proDelete(int projectNum);
+    public List<ProjectRepDTO> adminReplyList();
     
     // 댓글
 //    public void addReply(ProjectRepDTO dto);

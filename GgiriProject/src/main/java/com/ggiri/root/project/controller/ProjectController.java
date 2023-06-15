@@ -181,6 +181,7 @@ public class ProjectController implements GgiriMemberSession{
 		return ps.getRepList(Integer.parseInt(bno));
 		
 	}
+	
     
     // 대댓글
 	

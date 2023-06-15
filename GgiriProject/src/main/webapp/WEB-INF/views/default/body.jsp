@@ -19,7 +19,7 @@ body{
 .search-box{
     padding: 10px;
     position: absolute;
-    top: 30%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%,-50%);
     height: 30px;
@@ -130,7 +130,7 @@ body{
 </head>
 <body>
 	<div class="search-box">
-    <input type="text" id="searchTxt" name="s" placeholder="어떤 프로젝트를 찾으세요?" class="search-txt" />
+    	<input type="text" id="searchTxt" name="s" placeholder="어떤 프로젝트를 찾으세요?" class="search-txt" />
 	    <a class="search-btn" href="#" onclick="searchProject()">
 	        <i class="fas fa-search"></i>
 	    </a>

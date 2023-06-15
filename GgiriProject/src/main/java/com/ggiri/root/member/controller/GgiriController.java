@@ -414,7 +414,7 @@ public class GgiriController implements GgiriMemberSession {
 //		request.setAttribute("totalPageCount", totalPageCount);
 //		request.setAttribute("totalRow", totalRow);
 //		gfs.boardGetFirstList(model);
-//		//gfs.boardAllList(model);
+		gfs.boardAllList(model);
 		return "ggiriMember/memberList";
 	}
 	

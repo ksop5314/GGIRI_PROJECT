@@ -15,13 +15,9 @@
 
 var contextPath = "${pageContext.request.contextPath}";
 var job;
-
-
-$(document).ready(function(){
-	
 	/* GetList(1); */
 	
-	$.ajax({
+	/* $.ajax({
 		url : contextPath + '/ggiriMember/ajaxMemberList',
 		type : 'get',
 		success : function(list){
@@ -38,8 +34,8 @@ $(document).ready(function(){
 			alert(status);
 			alert(errorThrown);
 		}
-	});
-});
+	}); */
+
 
 /* let page = 1;
 let isLoading = false;
@@ -196,6 +192,56 @@ function planner(){
 	});
 }
 
+$(document).ready(function(){
+	
+	$(document).ready(function() {
+		  $("#devList p#id").each(function() {
+		    var randomColor;
+		    var iterations = 0;
+
+		    do {
+		      randomColor = getRandomColor(); // 랜덤 색상 생성
+
+		      iterations++;
+		      if (iterations > 100) {
+		        // 100번 시도해도 유효한 색상을 찾지 못한 경우
+		        randomColor = null;
+		        break;
+		      }
+		    } while (!randomColor || randomColor === "#ffffff" || isColorUsed(randomColor));
+
+		    if (randomColor) {
+		      $(this).css("background-color", randomColor); // 배경 색상 적용
+		      $(this).attr("data-color", randomColor); // 배경 색상 속성 설정
+		    }
+		  });
+
+		  function getRandomColor() {
+		    var letters = "0123456789ABCDEF";
+		    var color = "#";
+
+		    for (var i = 0; i < 6; i++) {
+		      color += letters[Math.floor(Math.random() * 16)];
+		    }
+
+		    return color;
+		  }
+
+		  function isColorUsed(color) {
+		    var used = false;
+		    $("#devList p#id").each(function() {
+		      if ($(this).attr("data-color") === color) {
+		        used = true;
+		        return false; // 반복문 종료
+		      }
+		    });
+		    return used;
+		  }
+	});
+
+});	
+
+
 </script>
 <style type="text/css">
 .wrap{
@@ -272,60 +318,53 @@ a{
 	transition: 0.5s;
 }
 
-.mainHeader {
-
-}
-
-
 </style>
 </head>
 <body>
-	<div class="mainHeader">
-		<c:import url="../default/header.jsp"/>
-		<br>
-	</div>
-		<div class="wrap">
-			<div class="freeTxt">
-				<p>끼리가 보증하는 IT파트너</p>
-				<p id="h">프로젝트 등록하면<br>
-				더 정확한 추천을 받을 수 있어요</p>
-				<br>
-			</div>
-			<div>
-				<button class="freeInput" id="freeInput" type="button" onclick="location.href='${contextPath}/ggiriMember/writeFree'">프리랜서 등록하기</button>
-			</div>
-			<br><br><br><br><br><br><br>
-			<div class="skill">
-				<input type="hidden" name="job" id="jobDev" value="developer">
-				<input type="hidden" name="job" id="jobPub" value="publisher">
-				<input type="hidden" name="job" id="jobDes" value="designer">
-				<input type="hidden" name="job" id="jobPla" value="planner">
-				<button class="h3" type="submit" style=" border-radius: 30px;" onclick="developer()" id="dev"> ⚙️  개발자 </button>
-				<button class="h3" type="submit" style=" border-radius: 30px;" onclick="publisher()" id="pub"> 🛠  퍼블리셔  </button> 
-			 	<button class="h3" type="submit" style=" border-radius: 30px;" onclick="designer()" id="des"> 🎨  디자이너 </button> 
-				<button class="h3" type="submit" style=" border-radius: 30px;" onclick="planner()" id="pla"> 📝  기획자 </button> 
-			</div>
+<c:import url="../default/header.jsp"/>
+	<br>
+	<div class="wrap">
+		<div class="freeTxt">
+			<p>끼리가 보증하는 IT파트너</p>
+			<p id="h">프로젝트 등록하면<br>
+			더 정확한 추천을 받을 수 있어요</p>
+			<br>
 		</div>
-		<br><br>
-		<hr>
-		<table style="border:1px solid white;">
-			<tr>
-				<th width="50px"></th>
-				<th width="300px"></th>
-				<th width="300px"></th>
-			</tr>
-			<tr>
-				<td>
-					<div id="devList">
-							<%-- <c:forEach var="list" items="${boardGetFirstList }">
-								<a href="Info?id=${list.id}"><div id="id">${list.id }</div></a>
-								<div>${list.introduce }</div>
-								<div>${list.skill }</div>
-							</c:forEach> --%>
-					</div>
-				</td>
-			</tr>
-		</table>
-	<c:import url="../default/footer.jsp"/>
+		<div>
+			<button class="freeInput" id="freeInput" type="button" onclick="location.href='${contextPath}/ggiriMember/writeFree'">프리랜서 등록하기</button>
+		</div>
+		<br><br><br><br><br><br><br>
+		<div class="skill">
+			<input type="hidden" name="job" id="jobDev" value="developer">
+			<input type="hidden" name="job" id="jobPub" value="publisher">
+			<input type="hidden" name="job" id="jobDes" value="designer">
+			<input type="hidden" name="job" id="jobPla" value="planner">
+			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="developer()" id="dev"> ⚙️  개발자 </button>
+			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="publisher()" id="pub"> 🛠  퍼블리셔  </button> 
+		 	<button class="h3" type="submit" style=" border-radius: 30px;" onclick="designer()" id="des"> 🎨  디자이너 </button> 
+			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="planner()" id="pla"> 📝  기획자 </button> 
+		</div>
+	</div>
+	<br><br>
+	<hr>
+	<table style="border:1px solid white;">
+		<tr>
+			<th width="50px"></th>
+			<th width="300px"></th>
+			<th width="300px"></th>
+		</tr>
+		<tr>
+			<td>
+				<div id="devList">
+					<c:forEach var="list" items="${boardList }">
+						<a href="Info?id=${list.id}"><p id="id">${list.id }</p></a>
+						<div>${list.introduce }</div>
+						<div>${list.skill }</div>
+					</c:forEach>
+				</div>
+			</td>
+		</tr>
+	</table>
+<c:import url="../default/footer.jsp"/>
 </body>
 </html>

@@ -82,6 +82,11 @@ public class ProjectServiceImpl implements ProjectService {
     	pm.proDelete(projectNum);
     }
     
+    @Override
+    public void adminReplyList(Model model) {
+    	model.addAttribute("adminReplyList", pm.adminReplyList());
+    }
+    
     // 댓글
 //    @Override
 //	public void addReply(ProjectRepDTO dto) {
@@ -99,16 +104,16 @@ public class ProjectServiceImpl implements ProjectService {
 		return pm.getRepList(bno);
 	}
     
-	// 대댓글
-	@Override
-	public int re_addReplyTest(ProjectRepDTO dto) {
-		return pm.re_addReplyTest(dto);
-	}
-    
-	@Override
-	public List<ProjectRepDTO> re_getRepList(int bno) {
-		return pm.re_getRepList(bno);
-	}
+//	// 대댓글
+//	@Override
+//	public int re_addReplyTest(ProjectRepDTO dto) {
+//		return pm.re_addReplyTest(dto);
+//	}
+//    
+//	@Override
+//	public List<ProjectRepDTO> re_getRepList(int bno) {
+//		return pm.re_getRepList(bno);
+//	}
 	
     
 }

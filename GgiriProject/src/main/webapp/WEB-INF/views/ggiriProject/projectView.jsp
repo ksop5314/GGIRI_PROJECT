@@ -56,6 +56,7 @@
 			contentType: "application/json; charset=UTF-8",
 			success: function(data) {
 				if(data == 1){
+					$("#content").val("");
 					// alert("댓글 등록 완료!")
 					replyData();
 				} else {
@@ -82,9 +83,7 @@
 			url: contextPath + "/ggiriProject/replyData?projectNum=" + projectNum, type: "get",
 			success: function(rep) {
 				console.log(rep.length);
-				
 				let html = ""
-				
 					for(i = 0; i < rep.length; i++){
 						
 						let date = new Date(rep[i].wdate);

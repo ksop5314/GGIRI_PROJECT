@@ -168,14 +168,18 @@
 		SELECT * FROM ggiriReply WHERE bno=#{bno}
 	</select>
 	
+	<select id="adminReplyList" resultMap="reply">
+		SELECT * FROM ggiriReply
+	</select>
+	
 	<!-- 대댓글 -->
-	<insert id="re_addReplyTest">
+	<!--  <insert id="re_addReplyTest">
 		INSERT INTO reGgiriReply(reno, memberNum, no, bno, id, content)
 		VALUES(Rereply_seq.nextval, #{memberNum}, #{no}, #{bno}, #{id}, #{content})
 	</insert>
 	
 	<select id="re_getRepList" resultMap="rereply">
 		SELECT * FROM reGgiriReply WHERE bno=#{bno} and no=#{no}
-	</select>
+	</select> -->
 	
 </mapper>
