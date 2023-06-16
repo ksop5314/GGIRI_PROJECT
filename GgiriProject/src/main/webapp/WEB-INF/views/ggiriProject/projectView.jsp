@@ -149,6 +149,7 @@ function deleteRep() {
 function modifyRep() {
 	var contextPath = "${pageContext.request.contextPath}";
 	var no = $("#repNo").val();
+	var id = $("#repId").val();
 	var repContent = $("#repContent").val();
 	
 	var modal = document.getElementById("modal");
@@ -157,31 +158,56 @@ function modifyRep() {
 	
 	
 	modifyRep.addEventListener("click", e => {
-	    modal.style.display = "flex"
-	});
-	
-	var closeBtn = modal.querySelector(".close-area");
-	closeBtn.addEventListener("click", e => {
-	    modal.style.display = "none"
-	});
-	
-	modal.addEventListener("click", e => {
-	    var evTarget = e.target;
-	    if(evTarget.classList.contains("modal-overlay")) {
-	        modal.style.display = "none"
-	    }
+	    modal.style.display = "flex";
+	    let html;
+	    html += "<div class='modal-window'>";
+	    html += "<div class='title'><h2>댓글 수정</h2></div>";
+	    html += "<div class='close-area'>X</div>";
+	    html += "<b>작성자 : " + id + " </b><br>";
+	    html += " <input type='hidden' id='modifyNo' name='modifyNo' value='" + no + "'>";
+	    html += " <div class='modalContent' id='modalContent' name='modalContent'>";
+	    html += "<textarea id='modalTextArea' rows='10' cols='50'></textarea>";
+	    html += "<input type='button' id='modalButton' name='modalButton' onclick='modifyModalRep()' value='수정'>";
+	    html += "</div>";
+	    html += "</div>";
+	    
+	    $("#modal").html(html);
+	    
+		var closeBtn = modal.querySelector(".close-area");
+		closeBtn.addEventListener("click", e => {
+		    modal.style.display = "none"
+		});
+		
+		modal.addEventListener("click", e => {
+		    var evTarget = e.target;
+		    if(evTarget.classList.contains("modal-overlay")) {
+		        modal.style.display = "none"
+		    }
+		});
 	});
 }	
 
 function modifyModalRep(){
 	var contextPath = "${pageContext.request.contextPath}";
-	var no = $("#repNo").val();
+	var no = $("#modifyNo").val();
 	var repContent = $("#modalTextArea").val();
+	let enContent = encodeURI(repContent);
+	let content = decodeURI(enContent);
+	console.log(content);
+	
+	let url = contextPath + "/ggiriProject/modifyModalRep?no=" + no + "&content=" + content;
+	let encode = encodeURI(url);
+	let deUrl = decodeURI(encode);
+	console.log(deUrl);
+	
+	let form = { no:no, content:content};
 	
 	$.ajax({
 		
-		url : contextPath + "/ggiriProject/modifyModalRep?no=" + no + "&content=" + content,
-		type : "GET",
+		url : contextPath + "/ggiriProject/modifyModalRep",
+		type : "put",
+		dataType : "json",
+		data : JSON.stringify(form),
 		success : function(data){
 			if(data == 'OK'){
 				replyData();
@@ -382,7 +408,7 @@ input[type=button]:hover {
         </div>
      </div>
      <div id="modal" class="modal-overlay">
-       <div class="modal-window">
+       <%-- <div class="modal-window">
            <div class="title">
                <h2>댓글 수정</h2>
            </div>
@@ -401,7 +427,7 @@ input[type=button]:hover {
 				 <textarea id="modalTextArea" rows="10" cols="50"></textarea>
 				 <input type="button" id="modalButton" name="modalButton" onclick="modifyModalRep()" value="수정">
            </div>
-       </div>
+       </div> --%>
     </div>
 <c:import url="../default/footer.jsp"></c:import>
 </body>

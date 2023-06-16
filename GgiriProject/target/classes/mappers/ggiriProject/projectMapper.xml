@@ -153,6 +153,10 @@
 		DELETE FROM ggiriReply WHERE no=#{no}
 	</delete>
 	
+	<update id="modifyModalRep">
+		UPDATE ggiriReply SET content=#{content} WHERE no=#{no}
+	</update>
+	
 <!-- 	<select id="modalContent">
 		SELECT * FROM ggiriReply WHERE bno=#{bno}
 	</select> -->

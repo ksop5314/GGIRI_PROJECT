@@ -114,6 +114,11 @@ public class ProjectServiceImpl implements ProjectService {
 		pm.repDelete(no);
 	}
 	
+	@Override
+	public int modifyModalRep(ProjectRepDTO dto) {
+		return pm.modifyModalRep(dto);
+	}
+	
 //	@Override
 //	public void modalContent(int projectNum, Model model) {
 //		model.addAttribute("modalContent", pm.modalContent(projectNum));

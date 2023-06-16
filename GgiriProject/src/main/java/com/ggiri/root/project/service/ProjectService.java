@@ -41,6 +41,7 @@ public interface ProjectService {
     public int addReplyTest(ProjectRepDTO dto);
 	public List<ProjectRepDTO> getRepList(int bno);
 	public void repDelete(int no);
+	public int modifyModalRep(ProjectRepDTO dto);
 //	public void modalContent(int projectNum, Model model);
 	
 }
