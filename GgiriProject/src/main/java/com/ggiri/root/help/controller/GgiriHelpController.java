@@ -145,4 +145,5 @@ public class GgiriHelpController implements GgiriMemberSession{
 		ghs.helpDelete(helpNo);
 		return "/ggiriHelp/helpDelete";
 	}
+	
 }

@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -268,18 +269,17 @@ public class ProjectController implements GgiriMemberSession{
 	// 좋아요
 	@PostMapping(value="like_check/{projectNum}", produces="application/json; charset=utf-8")
 	@ResponseBody
-	public int like(@PathVariable("projectNum") String projectNum,@RequestBody Map<String, Object> map, HttpSession session){
+	public int like(@PathVariable("projectNum") String projectNum,@RequestParam("memberNum") int memberNum){
 
 		System.err.println("글번호 : " + projectNum);
 		
 		GgiriBoardLikeDTO dto = new GgiriBoardLikeDTO();
+		dto.setMemberNum(memberNum); 
 		
 		System.out.println(projectNum);
-		String memberNum = (String) map.get("memberNum");
 		System.out.println(memberNum);
 		
-		dto.setProjectNum(Integer.parseInt((String)map.get(projectNum)));
-		dto.setMemberNum(Integer.parseInt((String)map.get(memberNum)));
+//		dto.setProjectNum(Integer.parseInt((String)map.get(projectNum)));
 		dto.setLike_check(1);
 //		System.out.println("번호 : " + projectNum);
 //		System.out.println("맴버번호 : "+ (GgiriMemberDTO)gmm.ggiriMemberInfo());
@@ -289,6 +289,12 @@ public class ProjectController implements GgiriMemberSession{
 //		dto.setLike_check(1);
 //		dto.setProjectNum(Integer.parseInt(projectNum));
 		return ps.select_heart(dto);
+	}
+	@PostMapping("modifyModalRep")
+	@ResponseBody
+	public String modifyModalRep(@RequestBody ProjectRepDTO dto) {
+		ps.modifyModalRep(dto);
+		return "OK";
 	}
 	
 }

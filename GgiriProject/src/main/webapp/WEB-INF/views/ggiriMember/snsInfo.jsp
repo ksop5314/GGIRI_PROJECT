@@ -17,159 +17,47 @@
 	<br>
 		<h1 id="title">내정보</h1>
 		<table>
-				<c:if test="${naverMember != null }">
+				<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
 					<tr>
 						<th> 이름 </th>
 						<td>
-							${naverMember.name }
+							${ggiriSnsInfo.name }
 						</td>
 					</tr>
 					<tr>
 						<th> 아이디 </th>
 						<td>
-							${naverMember.id }
+							${ggiriSnsInfo.id }
 						</td>
 					</tr>
 					<tr>
 						<th> 생년월일 </th>
 						<td>
-							${naverMember.birth }
+							${ggiriSnsInfo.birth }
 						</td>
 					</tr>
 					<tr>
 						<th> 성별 </th>
 						<td>
-							${naverMember.gender }
+							${ggiriSnsInfo.gender }
 						</td>
 					</tr>
 					<tr>
 						<th> E-mail </th>
 						<td>
-							${naverMember.email }
+							${ggiriSnsInfo.email }
 						</td>
 					</tr>
 					<tr>
 						<th> Tel </th>
 						<td>
-							${naverMember.tel }
+							${ggiriSnsInfo.tel }
 						</td>
 					</tr>
 					<tr>
 						<th> 주소 </th>
 						<td>
-							${naverMember.addr }
-						</td>
-					</tr>
-				</c:if>
-				<c:if test="${kakaoMember != null }">
-					<tr>
-						<th> 이름 </th>
-						<td>
-							${kakaoMember.name }
-						</td>
-					</tr>
-					<tr>
-						<th> 아이디 </th>
-						<td>
-							${kakaoMember.id }
-						</td>
-					</tr>
-					<tr>
-						<th> 생년월일 </th>
-						<td>
-							<c:if test="${kakaoMember.pwd == null }">
-								** sns 로그인 사용자 입니다 ** 수정이 필요하시면 내정보 수정을 해주세요.
-							</c:if>
-							${kakaoMember.pwd}
-						</td>
-					</tr>
-					<tr>
-						<th> 성별 </th>
-						<td>
-							<c:if test="${kakaoMember.pwd == null }">
-								** sns 로그인 사용자 입니다 ** 수정이 필요하시면 내정보 수정을 해주세요.
-							</c:if>
-							${kakaoMember.pwd}
-						</td>
-					</tr>
-					<tr>
-						<th> E-mail </th>
-						<td>
-							${kakaoMember.email }
-						</td>
-					</tr>
-					<tr>
-						<th> Tel </th>
-						<td>
-							<c:if test="${kakaoMember.pwd == null }">
-								** sns 로그인 사용자 입니다 ** 수정이 필요하시면 내정보 수정을 해주세요.
-							</c:if>
-							${kakaoMember.pwd}
-						</td>
-					</tr>
-					<tr>
-						<th> 주소 </th>
-						<td>
-							<c:if test="${kakaoMember.pwd == null }">
-								** sns 로그인 사용자 입니다 ** 수정이 필요하시면 내정보 수정을 해주세요.
-							</c:if>
-							${kakaoMember.pwd}
-						</td>
-					</tr>
-				</c:if>
-				<c:if test="${googleMember != null }">
-					<tr>
-						<th> 이름 </th>
-						<td>
-							${googleMember.name }
-						</td>
-					</tr>
-					<tr>
-						<th> 아이디 </th>
-						<td>
-							${googleMember.id }
-						</td>
-					</tr>
-					<tr>
-						<th> 생년월일 </th>
-						<td>
-							<c:if test="${googleMember.pwd == null }">
-								** sns 로그인 사용자 입니다 ** 수정이 필요하시면 내정보 수정을 해주세요.
-							</c:if>
-							${googleMember.pwd}
-						</td>
-					</tr>
-					<tr>
-						<th> 성별 </th>
-						<td>
-							<c:if test="${googleMember.pwd == null }">
-								** sns 로그인 사용자 입니다 ** 수정이 필요하시면 내정보 수정을 해주세요.
-							</c:if>
-							${googleMember.pwd}
-						</td>
-					</tr>
-					<tr>
-						<th> E-mail </th>
-						<td>
-							${googleMember.email }
-						</td>
-					</tr>
-					<tr>
-						<th> Tel </th>
-						<td>
-							<c:if test="${googleMember.pwd == null }">
-								** sns 로그인 사용자 입니다 ** 수정이 필요하시면 내정보 수정을 해주세요.
-							</c:if>
-							${googleMember.pwd}
-						</td>
-					</tr>
-					<tr>
-						<th> 주소 </th>
-						<td>
-							<c:if test="${googleMember.pwd == null }">
-								** sns 로그인 사용자 입니다 ** 수정이 필요하시면 내정보 수정을 해주세요.
-							</c:if>
-							${googleMember.pwd}
+							${ggiriSnsInfo.addr }
 						</td>
 					</tr>
 				</c:if>

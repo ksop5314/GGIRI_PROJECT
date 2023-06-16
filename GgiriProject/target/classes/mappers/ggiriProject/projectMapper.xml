@@ -44,19 +44,19 @@
    <!-- 좋아요 -->
     <resultMap type="com.ggiri.root.project.dto.GgiriBoardLikeDTO" id="like">
    		<result property="projectNum" column="projectNum"/>
-   		<result property="memberNo" column="memberNo"/>
+   		<result property="memberNum" column="memberNum"/>
    		<result property="like_check" column="like_check"/>
     </resultMap>
    
 	<!-- 좋아요 -->
 	
 	<insert id="insert_heart">
-		INSERT INTO heart(projectNum, memberNo, like_check)
-		VALUES(#{projectNum}, #{memberNo}, 1)
+		INSERT INTO heart(projectNum, memberNum, like_check)
+		VALUES(#{projectNum}, #{memberNum}, 1)
 	</insert>
 	
 	<delete id="deleteHeart">
-		DELETE FROM heart WHERE memberNo=#{memberNo} AND projectNum=#{projectNum}
+		DELETE FROM heart WHERE memberNum=#{memberNum} AND projectNum=#{projectNum}
 	</delete>
 	
 	<!-- 좋아요 총 수 -->
@@ -212,6 +212,10 @@
 	<delete id="repDelete">
 		DELETE FROM ggiriReply WHERE no=#{no}
 	</delete>
+	
+	<update id="modifyModalRep">
+		UPDATE ggiriReply SET content=#{content} WHERE no=#{no}
+	</update>
 	
 <!-- 	<select id="modalContent">
 		SELECT * FROM ggiriReply WHERE bno=#{bno}
