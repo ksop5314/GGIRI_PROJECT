@@ -6,13 +6,13 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.ui.Model;
 
+import com.ggiri.root.project.dto.GgiriBoardLikeDTO;
 import com.ggiri.root.project.dto.ProjectDTO;
-import com.ggiri.root.project.dto.LikeDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
 
 public interface ProjectMapper {
 
-    public List<ProjectDTO> projectList();
+	public List<Map<String, Object>> projectList();
     
     public ProjectDTO projectView(int projectNum);
     
@@ -60,26 +60,43 @@ public interface ProjectMapper {
     public void deleteLike(@Param("projectNum") int projectNum, @Param("user_no") int user_no);
     
     public List<ProjectDTO> getProjectInfo(@Param("projectNum") int projectNum, Model model);
-
-    // 댓글
-    public int addReplyTest(ProjectRepDTO dto);
-	public List<ProjectRepDTO> getRepList(int bno);
-	public void repDelete(int no);
     
     public int getLikeCount(int projectNum);
-
+    
+    // 댓글
+    public int addReplyTest(ProjectRepDTO dto);
+    
+	public List<ProjectRepDTO> getRepList(int bno);
+	
+	public void repDelete(int no);
+	
     public void increaseLikeCount(int projectNum);
-
+    
     public void increaseLikeCountByUser(@Param("projectNum") int projectNum, @Param("id") String id);
-
+    
 	public int getLikeIdByUser(int projectNum, String id);
 
-	public LikeDTO getPicture(String projectNum);
 	
     // 관리자 페이지
     public List<ProjectDTO> adminProjectList();
+    
     public void proDelete(int projectNum);
+    
     public List<ProjectRepDTO> adminReplyList();
     
+    
+    // 프로젝트 리스트
+    public List<Map<String, Object>> selectJob();
+	
+	public List<Map<String, Object>> selectSnsJob();
+	
+	// 좋아요
+	public void insert_heart(GgiriBoardLikeDTO dto);
+	
+	public int select_heart(GgiriBoardLikeDTO dto);
+    
+    public int select_heart_Id(GgiriBoardLikeDTO dto);
+    
+    public void deleteHeart(GgiriBoardLikeDTO dto);
     
 }

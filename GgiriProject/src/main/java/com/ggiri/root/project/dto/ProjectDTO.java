@@ -19,19 +19,37 @@ public class ProjectDTO {
 	private int pageNo; // 페이지 번호
 	private int pageSize; // 페이지 크기
 	
-	// 좋아요
-	// 현재사용자가 좋아요 누른건지 아닌지
-	private String likeId;
-	// 현재사용자가 즐겨찾기 누른건지 아닌지
-	private String checkLike;
-	// 현재 사용자 id
-	private String userId;
+	
+	
+	private String job;
+	
+	
 	
 	
 	public ProjectDTO() {
 		super();
 	}
 	
+	
+	
+	
+	
+	public String getJob() {
+		return job;
+	}
+
+
+
+
+
+	public void setJob(String job) {
+		this.job = job;
+	}
+
+
+
+
+
 	public int getMemberNum() {
 		return memberNum;
 	}
@@ -134,44 +152,5 @@ public class ProjectDTO {
 		this.pageSize = pageSize;
 	}
 	
-	// 좋아요
-	public String getLikeId() {
-		return likeId;
-	}
-
-	public void setLikeId(String likeId) {
-		this.likeId = likeId;
-	}
-
-	public String getCheckLike() {
-		return checkLike;
-	}
-
-	public void setCheckLike(String checkLike) {
-		this.checkLike = checkLike;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 	
-//	public int getPageNo() {
-//		return pageNo;
-//	}
-//	
-//	public void setPageNo(int pageNo) {
-//		this.pageNo = pageNo;
-//	}
-//	
-//	public int getPageSize() {
-//		return pageSize;
-//	}
-//	
-//	public void setPageSize(int pageSize) {
-//		this.pageSize = pageSize;
-//	}
 }

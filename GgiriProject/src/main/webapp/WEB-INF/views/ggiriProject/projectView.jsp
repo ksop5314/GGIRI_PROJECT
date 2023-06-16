@@ -197,7 +197,7 @@ function modifyModalRep(){
 	
 }
 	
-
+/*  */
 
 </script>
 <style type="text/css">
@@ -322,156 +322,107 @@ input[type=button]:hover {
 </head>
 <body>
     
-<c:import url="../default/header.jsp"></c:import>
-    <div class="wrap">
-        <br>
-        <h1>${data.title }</h1>
-        <b>작성자: </b><b>${data.id }</b><b id="date">${data.prodate }</b><br><hr><br>
-        <c:forEach var="selectedSkill" items="${data.skill}">
-            <div style="display:inline" id="skill">${selectedSkill}</div>
-        </c:forEach>
-        <br><br>
-        <br><br>
-        <div id="content">
-            <pre><c:out value="${data.content }"/></pre>
-        </div>
-        <br><br><hr><br>
-        <div id="select">
-<<<<<<< HEAD
-		<input type="button" style=" border-radius: 40px;" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'"> &nbsp;
-		<c:if test="${data.id == loginUser && data.project == '완료' }">
-			<button type="submit" style=" border-radius: 40px;" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
-		</c:if>
-		<c:if test="${data.id == loginUser && data.project == '진행중' }">
-			<input type="button" value="수정" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-			<input type="button" value="삭제" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
-		</c:if>
-		<c:if test="${data.id == kakaoMember.id && data.project == '완료'}">
-			<button type="submit" style=" border-radius: 40px;" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
-		</c:if>
-		<c:if test="${data.id == kakaoMember.id && data.project == '진행중'}">
-			<input type="button" value="수정" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-			<input type="button" value="삭제" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
-		</c:if>
-		<c:if test="${data.id == naverMember.id && data.project == '완료'}">
-			<button type="submit" style=" border-radius: 40px;" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
-		</c:if>
-		<c:if test="${data.id == naverMember.id && data.project == '진행중'}">
-			<input type="button" value="수정" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-			<input type="button" value="삭제" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
-		</c:if>
-      </div>
-    </div>
-    <br>
-    <br>
-    <div id="container_1" style="margin: auto;">
-        <div id="first">
-           <div style="width: 80%; margin: 0 auto; padding-top: 20px;">
-              <form id="frm">
-                 <input type="hidden" name="projectNum" id="projectNum" value="${data.projectNum }">
-                 <b>댓글을 작성해보세요.</b>
-                 <hr>
-                 <c:if test="${loginUser != null}">
-                    <b>작성자 : ${loginUser }</b><br>
-                    <input type="hidden" name="id" id="id" value="${loginUser }">
-                    <input type="hidden" name="memberNum" id="memberNum"  value="${ggiriMemberInfo.memberNum }">
-                 </c:if>
-                 <c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
-                    <b>작성자 : ${ggiriSnsInfo.id }</b><br>
-                    <input type="hidden" name="id" id="id" value="${ggiriSnsInfo.id }">
-                    <input type="hidden" name="memberNum" id="memberNum"  value="${ggiriSnsInfo.memberNum }">
-                 </c:if>
-                 <br><br>
-                 <div>
-                    <textarea id="repContent" name="repContent" rows="3" cols="100"></textarea> &nbsp;
-                    <button type="button" style=" border-radius: 40px;" onclick="rep()">등 록</button> &nbsp;
-                    <button type="reset" style=" border-radius: 40px;">취 소</button>
-                 </div>
-              </form>
-              <br><br>
-              <div id="reply" class="reply">
-                 <c:if test="${loginUser != null}">
-                    <input type="hidden" name="id" id="id" value="${loginUser }">
-                 </c:if>
-                 <c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
-                    <input type="hidden" name="id" id="id" value="${ggiriSnsInfo.id }">
-                 </c:if>
-              </div>
-              <br>
-           </div>
-        </div>
-     </div>
-=======
-			<input type="button" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'"> &nbsp;
-				<c:if test="${data.id==loginUser }">
-					<input type="button" value="수정" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-					<input type="button" value="삭제" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
-					<button type="submit" onclick="location='../ggiriComplete/completeWrite'">프로젝트 완성</button>
+	<c:import url="../default/header.jsp"></c:import>
+	    <div class="wrap">
+	        <br>
+	        <h1>${data.title }</h1>
+	        <b>작성자: </b><b>${data.id }</b><b id="date">${data.prodate }</b><br><hr><br>
+	        <c:forEach var="selectedSkill" items="${data.skill}">
+	            <div style="display:inline" id="skill">${selectedSkill}</div>
+	        </c:forEach>
+	        <br><br>
+	        <br><br>
+	        <div id="content">
+	            <pre><c:out value="${data.content }"/></pre>
+	        </div>
+	        <br><br><hr><br>
+	        <div id="select">
+			<input type="button" style=" border-radius: 40px;" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'"> &nbsp;
+			<c:if test="${data.id == loginUser && data.project == '완료' }">
+				<button type="submit" style=" border-radius: 40px;" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
+			</c:if>
+			<c:if test="${data.id == loginUser && data.project == '진행중' }">
+				<input type="button" value="수정" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="삭제" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+			</c:if>
+			<c:if test="${data.id == kakaoMember.id && data.project == '완료'}">
+				<button type="submit" style=" border-radius: 40px;" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
+			</c:if>
+			<c:if test="${data.id == kakaoMember.id && data.project == '진행중'}">
+				<input type="button" value="수정" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="삭제" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+			</c:if>
+			<c:if test="${data.id == naverMember.id && data.project == '완료'}">
+				<button type="submit" style=" border-radius: 40px;" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
+			</c:if>
+			<c:if test="${data.id == naverMember.id && data.project == '진행중'}">
+				<input type="button" value="수정" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="삭제" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+			</c:if>
+	      </div>
+	    </div>
+	    <br>
+	    <br>
+	    <div id="container_1" style="margin: auto;">
+	        <div id="first">
+	           <div style="width: 80%; margin: 0 auto; padding-top: 20px;">
+	              <form id="frm">
+	                 <input type="hidden" name="projectNum" id="projectNum" value="${data.projectNum }">
+	                 <b>댓글을 작성해보세요.</b>
+	                 <hr>
+	                 <c:if test="${loginUser != null}">
+	                    <b>작성자 : ${loginUser }</b><br>
+	                    <input type="hidden" name="id" id="id" value="${loginUser }">
+	                    <input type="hidden" name="memberNum" id="memberNum"  value="${ggiriMemberInfo.memberNum }">
+	                 </c:if>
+	                 <c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
+	                    <b>작성자 : ${ggiriSnsInfo.id }</b><br>
+	                    <input type="hidden" name="id" id="id" value="${ggiriSnsInfo.id }">
+	                    <input type="hidden" name="memberNum" id="memberNum"  value="${ggiriSnsInfo.memberNum }">
+	                 </c:if>
+	                 <br><br>
+	                 <div>
+	                    <textarea id="repContent" name="repContent" rows="3" cols="100"></textarea> &nbsp;
+	                    <button type="button" style=" border-radius: 40px;" onclick="rep()">등 록</button> &nbsp;
+	                    <button type="reset" style=" border-radius: 40px;">취 소</button>
+	                 </div>
+	              </form>
+	              <br><br>
+	              <div id="reply" class="reply">
+	                 <c:if test="${loginUser != null}">
+	                    <input type="hidden" name="id" id="id" value="${loginUser }">
+	                 </c:if>
+	                 <c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
+	                    <input type="hidden" name="id" id="id" value="${ggiriSnsInfo.id }">
+	                 </c:if>
+	              </div>
+	              <br>
+	           </div>
+	        </div>
+	     </div>
+		<br>
+		<div id="modal" class="modal-overlay">
+			<div class="modal-window">
+			    <div class="title">
+			        <h2>댓글 수정</h2>
+			    </div>
+			    <div class="close-area">X</div>
+			    <c:if test="${loginUser != null}">
+					<b>작성자 : ${loginUser }</b><br>
+					<input type="hidden" name="id" id="id" value="${loginUser }">
+					<input type="hidden" name="memberNum" id="memberNum"  value="${ggiriMemberInfo.memberNum }">
 				</c:if>
-				<c:if test="${data.id == kakaoMember.id || data.id == googleMember.id || data.id == naverMember.id }">
-					<input type="button" value="수정" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-					<input type="button" value="삭제" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
-					<button type="submit" onclick="location='../ggiriComplete/completeWrite'">프로젝트 완성</button>
+				<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
+					<b>작성자 : ${ggiriSnsInfo.id }</b><br>
+					<input type="hidden" name="id" id="id" value="${ggiriSnsInfo.id }">
+					<input type="hidden" name="memberNum" id="memberNum"  value="${ggiriSnsInfo.memberNum }">
 				</c:if>
+				<div class="modalContent" id="modalContent" name="modalContent">
+					<textarea id="modalTextArea" rows="10" cols="50"></textarea>
+					<input type="button" id="modalButton" name="modalButton" onclick="modifyModalRep()" value="수정">
+		       </div>
+			</div>
 		</div>
-    </div>
-    <br>
-    <br>
-    <div id="container_1" style="margin: auto;">
-        <div id="first">
-           <div style="width: 80%; margin: 0 auto; padding-top: 20px;">
-              <form id="frm">
-                 <input type="hidden" name="projectNum" id="projectNum" value="${data.projectNum }">
-                 <b>댓글을 작성해보세요.</b>
-                 <hr>
-                 <c:if test="${loginUser != null}">
-                    <b>작성자 : ${loginUser }</b><br>
-                    <input type="hidden" name="id" id="id" value="${loginUser }">
-                    <input type="hidden" name="memberNum" id="memberNum"  value="${ggiriMemberInfo.memberNum }">
-                 </c:if>
-                 <c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
-                    <b>작성자 : ${ggiriSnsInfo.id }</b><br>
-                    <input type="hidden" name="id" id="id" value="${ggiriSnsInfo.id }">
-                    <input type="hidden" name="memberNum" id="memberNum"  value="${ggiriSnsInfo.memberNum }">
-                 </c:if>
-                 <br><br>
-                 <div>
-                    <textarea id="repContent" name="repContent" rows="3" cols="100"></textarea> &nbsp;
-                    <button type="button" style=" border-radius: 40px;" onclick="rep()">등 록</button> &nbsp;
-                    <button type="reset" style=" border-radius: 40px;">취 소</button>
-                 </div>
-              </form>
-              <br><br>
-              <div id="reply" class="reply">
-                 
-              </div>
-              <br>
-           </div>
-        </div>
-     </div>
-     <div id="modal" class="modal-overlay">
-       <div class="modal-window">
-           <div class="title">
-               <h2>댓글 수정</h2>
-           </div>
-           <div class="close-area">X</div>
-	           <c:if test="${loginUser != null}">
-                 <b>작성자 : ${loginUser }</b><br>
-                 <input type="hidden" name="id" id="id" value="${loginUser }">
-                 <input type="hidden" name="memberNum" id="memberNum"  value="${ggiriMemberInfo.memberNum }">
-                 </c:if>
-                 <c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
-                    <b>작성자 : ${ggiriSnsInfo.id }</b><br>
-                    <input type="hidden" name="id" id="id" value="${ggiriSnsInfo.id }">
-                    <input type="hidden" name="memberNum" id="memberNum"  value="${ggiriSnsInfo.memberNum }">
-                 </c:if>
-           <div class="modalContent" id="modalContent" name="modalContent">
-				 <textarea id="modalTextArea" rows="10" cols="50"></textarea>
-				 <input type="button" id="modalButton" name="modalButton" onclick="modifyModalRep()" value="수정">
-           </div>
-       </div>
-    </div>
->>>>>>> branch 'main' of https://github.com/Jh1227/junho.git
-<c:import url="../default/footer.jsp"></c:import>
+	<c:import url="../default/footer.jsp"></c:import>
 </body>
 </html>

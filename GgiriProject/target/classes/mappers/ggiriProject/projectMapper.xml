@@ -17,6 +17,21 @@
 		<result property="skill" column="skill"/>
 	</resultMap>
 	
+	<!-- 프로젝트 리스트 페이지를 위한 작업 -->
+	
+	<resultMap type="com.ggiri.root.project.dto.ProjectDTO" id="projectjop">
+		<id property="projectNum" column="projectNum"/>
+		<result property="memberNum" column="memberNum"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="prodate" column="prodate"/>
+		<result property="proHit" column="proHit"/>
+		<result property="id" column="id"/>
+		<result property="like_check" column="like_check"/>
+		<result property="skill" column="skill"/>
+		<result property="job" column="job"/>
+	</resultMap>
+	
 	<resultMap type="com.ggiri.root.project.dto.ProjectRepDTO" id="reply">
       <id property="no" column="no"/>
       <result property="memberNum" column="memberNum"/>
@@ -25,6 +40,23 @@
       <result property="content" column="content"/>
       <result property="wdate" column="wdate"/>
    </resultMap>
+	
+	<!-- 프로젝트 리스트  -->
+	<select id="selectJob" resultMap="projectjop">
+		SELECT P.*, f.job
+		FROM ggiriProject P
+		LEFT outer JOIN ggiriFree_insert F 
+		on F.id = P.id
+	</select>
+	
+	<select id="selectSnsJob" resultMap="projectjop">
+		SELECT P.*, f.job
+		FROM ggiriProject P
+		LEFT outer JOIN ggiriFree_insert F 
+		on F.id = P.id
+	</select>
+	<!-- 프로젝트 리스트 끝 -->
+	
 	
 	<select id="projectList" resultMap="project">
 		SELECT * FROM ggiriProject

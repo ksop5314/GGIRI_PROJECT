@@ -87,8 +87,6 @@ public class CompleteController implements GgiriMemberSession {
 		System.out.println(memberNum);
 		String id = (String)map.get("id");
 		System.out.println(id);
-		String projectNum = (String) map.get("projectNum");
-		System.out.println(projectNum);
 		
 		
 		dto.setMemberNum(Integer.parseInt((String)map.get("memberNum")));

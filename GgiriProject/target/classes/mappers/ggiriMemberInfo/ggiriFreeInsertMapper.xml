@@ -106,6 +106,15 @@
 		SELECT COUNT(*) FROM ggiriFree_insert
 	</select>
 	
+	
+	<select id="ggiriMemberJob" resultMap="ggiri">
+		SELECT * FROM ggiriFree_insert
+	</select>
+	
+	
+	<select id="ggiriSnsJob" resultMap="ggiri">
+		SELECT * FROM ggiriFree_insert
+	</select>
 </mapper>
 
 
