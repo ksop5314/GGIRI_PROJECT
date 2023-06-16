@@ -7,7 +7,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.collections.bag.SynchronizedSortedBag;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ggiri.root.admin.service.AdminService;
 import com.ggiri.root.google.service.GoogleService;
 import com.ggiri.root.kakao.service.KakaoService;
 import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
@@ -47,8 +45,6 @@ public class GgiriController implements GgiriMemberSession {
 		this.naverLogin = naverLogin;
 	}
 	
-	@Autowired
-	private AdminService adminService;
 	@Autowired
 	private GgiriService gs;
 	@Autowired
@@ -302,6 +298,11 @@ public class GgiriController implements GgiriMemberSession {
 		ggiriMember.setEmail(emailChk);
 		
 		
+		ggiriMember.setName("Google 로그인 회원");
+		ggiriMember.setId(id);
+		ggiriMember.setEmail(email);
+		
+		
 		int findGoogle = gs.findGoogle(idChk);
 		if(findGoogle == 0) {
 			gs.googleinsert(ggiriMember);
@@ -540,5 +541,6 @@ public class GgiriController implements GgiriMemberSession {
 		}
 		return "ggiriMember/failEmail";
 	}
+	
 	
 }

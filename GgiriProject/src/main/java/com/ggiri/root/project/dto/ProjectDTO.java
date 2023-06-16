@@ -14,6 +14,23 @@ public class ProjectDTO {
 	private int proHit; // 조회수
 	private String id; // 작성자 아이디
 	private String skill;
+    private int likeCount;
+	// 페이징 필드
+	private int pageNo; // 페이지 번호
+	private int pageSize; // 페이지 크기
+	
+	// 좋아요
+	// 현재사용자가 좋아요 누른건지 아닌지
+	private String likeId;
+	// 현재사용자가 즐겨찾기 누른건지 아닌지
+	private String checkLike;
+	// 현재 사용자 id
+	private String userId;
+	
+	
+	public ProjectDTO() {
+		super();
+	}
 	
 	public int getMemberNum() {
 		return memberNum;
@@ -88,7 +105,60 @@ public class ProjectDTO {
 		this.skill = skill;
 	}
 
+    public int getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(int likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    public void incrementLikeCount() {
+        this.likeCount++;
+    }
+	
 	// 페이징 필드 getter/setter
+	public int getPageNo() {
+		return pageNo;
+	}
+	
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
+	}
+	
+	public int getPageSize() {
+		return pageSize;
+	}
+	
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+	
+	// 좋아요
+	public String getLikeId() {
+		return likeId;
+	}
+
+	public void setLikeId(String likeId) {
+		this.likeId = likeId;
+	}
+
+	public String getCheckLike() {
+		return checkLike;
+	}
+
+	public void setCheckLike(String checkLike) {
+		this.checkLike = checkLike;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	
 //	public int getPageNo() {
 //		return pageNo;
 //	}

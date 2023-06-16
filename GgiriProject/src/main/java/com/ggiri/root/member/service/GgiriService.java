@@ -1,11 +1,14 @@
 package com.ggiri.root.member.service;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
 
 import com.ggiri.root.member.dto.GgiriMemberDTO;
+import com.ggiri.root.project.dto.ProjectDTO;
 
 public interface GgiriService {
 	

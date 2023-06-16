@@ -1,4 +1,3 @@
-
 <!-- default/main.jsp -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -15,6 +14,7 @@
 
 var contextPath = "${pageContext.request.contextPath}";
 var job;
+	
 	/* GetList(1); */
 	
 	/* $.ajax({
@@ -35,7 +35,6 @@ var job;
 			alert(errorThrown);
 		}
 	}); */
-
 
 /* let page = 1;
 let isLoading = false;
@@ -192,67 +191,129 @@ function planner(){
 	});
 }
 
-$(document).ready(function(){
-	
-	$(document).ready(function() {
-		  $("#devList p#id").each(function() {
-		    var randomColor;
-		    var iterations = 0;
+$(document).ready(function() {
+	$("#devList p#id").each(function() {
+		var randomColor;
+		var iterations = 0;
 
-		    do {
-		      randomColor = getRandomColor(); // 랜덤 색상 생성
+	    do {
+	      randomColor = getRandomColor(); // 랜덤 색상 생성
 
-		      iterations++;
-		      if (iterations > 100) {
-		        // 100번 시도해도 유효한 색상을 찾지 못한 경우
-		        randomColor = null;
-		        break;
-		      }
-		    } while (!randomColor || randomColor === "#ffffff" || isColorUsed(randomColor));
+	      iterations++;
+	      if (iterations > 100) {
+	        // 100번 시도해도 유효한 색상을 찾지 못한 경우
+	        randomColor = null;
+	        break;
+	      }
+	    } while (!randomColor || randomColor === "#ffffff" || isColorUsed(randomColor));
 
-		    if (randomColor) {
-		      $(this).css("background-color", randomColor); // 배경 색상 적용
-		      $(this).attr("data-color", randomColor); // 배경 색상 속성 설정
-		    }
-		  });
+	    if (randomColor) {
+	      $(this).css("background-color", randomColor); // 배경 색상 적용
+	      $(this).attr("data-color", randomColor); // 배경 색상 속성 설정
+	      var textColor = getTextColorByBackgroundColor(randomColor);
+	      $(this).css("color", textColor); // 글자 색상 설정
+	    }
+	  });
 
-		  function getRandomColor() {
-		    var letters = "0123456789ABCDEF";
-		    var color = "#";
+  function getRandomColor() {
+    var letters = "0123456789ABCDEF";
+    var color = "#";
 
-		    for (var i = 0; i < 6; i++) {
-		      color += letters[Math.floor(Math.random() * 16)];
-		    }
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
 
-		    return color;
-		  }
+    return color;
+  }
 
-		  function isColorUsed(color) {
-		    var used = false;
-		    $("#devList p#id").each(function() {
-		      if ($(this).attr("data-color") === color) {
-		        used = true;
-		        return false; // 반복문 종료
-		      }
-		    });
-		    return used;
-		  }
-	});
+  function isColorUsed(color) {
+    var used = false;
+    $("#devList p#id").each(function() {
+      if ($(this).attr("data-color") === color) {
+        used = true;
+        return false; // 반복문 종료
+      }
+    });
+    return used;
+  }
+});
+function getTextColorByBackgroundColor(hexColor) {
+	  const c = hexColor.substring(1); // 색상 앞의 # 제거
+	  const rgb = parseInt(c, 16); // rrggbb를 10진수로 변환
+	  const r = (rgb >> 16) & 0xff; // red 추출
+	  const g = (rgb >> 8) & 0xff; // green 추출
+	  const b = (rgb >> 0) & 0xff; // blue 추출
+	  const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+	  // 색상 선택
+	  return luma < 135 ? "white" : "black"; 
+	}
+/* $(document).ready(function() {
+  $("#devList p#id").each(function() {
+    var randomColor;
+    var iterations = 0;
 
-});	
+    do {
+      randomColor = getRandomColor(); // 랜덤 색상 생성
 
+      iterations++;
+      if (iterations > 100) {
+        // 100번 시도해도 유효한 색상을 찾지 못한 경우
+        randomColor = null;
+        break;
+      }
+    } while (!randomColor || randomColor === "#ffffff" || isColorUsed(randomColor));
+
+    if (randomColor) {
+      $(this).css("background-color", randomColor); // 배경 색상 적용
+      $(this).attr("data-color", randomColor); // 배경 색상 속성 설정
+    }
+  });
+
+  function getRandomColor() {
+    var letters = "0123456789ABCDEF";
+    var color = "#";
+
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+
+    return color;
+  }
+
+  function isColorUsed(color) {
+    var used = false;
+    $("#devList p#id").each(function() {
+      if ($(this).attr("data-color") === color) {
+        used = true;
+        return false; // 반복문 종료
+      }
+    });
+    return used;
+  }
+}); */
 
 </script>
 <style type="text/css">
 .wrap{
 	width: 1000px;
+	margin: auto;
 	text-align: left;
 }
 .skill{
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	display: inline-block;
 }
+#skillCheck {
+	 padding: 10px;
+     font-size: 20px;
+     width: fit-content;
+     margin: auto;
+     font-family: 'IBM Plex Sans KR', sans-serif;
+     border-radius: 40px;
+     background-color: #EBF7FF;
+}
 div{
+	font-family: 'IBM Plex Sans KR', sans-serif;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -279,16 +340,32 @@ form{
 	border-color: black;
 	cursor: pointer;
 }
-#id{
+p#id {	
+    line-height: 300px;
+    border-radius: 40px;
+    text-align: center;
+    vertical-align: middle;
+    text-weight: bold;
+    width: 300px;
+    height: 300px;
+    color: white;
+    font-size: 30px;
+    display: inline-block;
+  }
+/* #id{
+    line-height: 300px;
+	border-radius: 40px 80px / 80px 40px;
 	border: 1px solid white;
-	background-color: blue;
+	background-color: ;
+	text-align:center;
+	vertical-align: middle;
 	text-weight: bold;
 	width: 300px; 
 	height: 300px;
-	text-align: center;
-	color: white;
+	color: black;
 	font-size: 30px;
-}
+	display: inline-block;
+} */
 .freeTxt {
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	font-weight: bold;
@@ -300,7 +377,7 @@ div #h{
 }
 a{
 	text-decoration: none;
-	color: white;
+	color: black;
 }
 #freeInput {
  	border-radius: 15px;
@@ -317,7 +394,11 @@ a{
 	background-color: white;
 	transition: 0.5s;
 }
-
+#hi {
+  	vertical-align: middle;
+    display: inline-block;
+    margin: 20px;
+}
 </style>
 </head>
 <body>
@@ -344,27 +425,28 @@ a{
 		 	<button class="h3" type="submit" style=" border-radius: 30px;" onclick="designer()" id="des"> 🎨  디자이너 </button> 
 			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="planner()" id="pla"> 📝  기획자 </button> 
 		</div>
-	</div>
-	<br><br>
-	<hr>
-	<table style="border:1px solid white;">
-		<tr>
-			<th width="50px"></th>
-			<th width="300px"></th>
-			<th width="300px"></th>
-		</tr>
-		<tr>
-			<td>
+			<br><br>
+			<hr>
 				<div id="devList">
-					<c:forEach var="list" items="${boardList }">
-						<a href="Info?id=${list.id}"><p id="id">${list.id }</p></a>
-						<div>${list.introduce }</div>
-						<div>${list.skill }</div>
-					</c:forEach>
+				<%-- <c:forEach var="list" items="${boardList }">
+                  <a href="Info?id=${list.id}"><p id="id">${list.id }</p></a>
+                  <div>${list.introduce }</div>
+                  <div>${list.skill }</div>
+               </c:forEach> --%>
+				 <c:forEach var="list" items="${boardList}">
+				    <div id="mem">
+				      <a href="Info?id=${list.id}"><p id="id" >${list.id}</p></a>
+				      <div id="hi">
+				        <div><h2>${list.introduce}</h2></div>
+				         <div>${list.job}</div> <br><br>
+				         <c:forEach var="selectedSkill" items="${list.skill}">
+				          <div style="display:inline" id="skillCheck">${selectedSkill}</div>
+				        </c:forEach>
+				      </div><hr>
+				    </div>
+				  </c:forEach> 
 				</div>
-			</td>
-		</tr>
-	</table>
-<c:import url="../default/footer.jsp"/>
+			</div>
+	<c:import url="../default/footer.jsp"/>
 </body>
 </html>
