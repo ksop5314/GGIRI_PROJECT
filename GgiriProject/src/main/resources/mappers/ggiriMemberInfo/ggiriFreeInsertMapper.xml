@@ -17,13 +17,26 @@
 		<result property="insertdate" column="insertdate"/>
 	</resultMap>
 	
+	
+	<resultMap type="com.ggiri.root.complete.dto.CompleteDTO" id="complete">
+		<result property="completeNum" column="completeNum"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="skill" column="skill"/>
+		<result property="members" column="members"/>
+		<result property="tag" column="tag"/>
+		<result property="comdate" column="comdate"/>
+		<result property="comHit" column="comHit"/>
+		<result property="id" column="id"/>
+	</resultMap>
+	
 	<!-- <select id="boardAllList" resultMap="board">
 		SELECT * FROM mvc_board
 	</select> -->
 	
 	<insert id="writeSave">
-		INSERT INTO ggiriFree_insert(id, memberNum, name, introduce, job,  skill, project_period, place_of_work, url_name)
-		 VALUES(#{id}, #{memberNum}, #{name}, #{introduce}, #{job}, #{skill}, #{project_period}, #{place_of_work}, #{url_name})
+		INSERT INTO ggiriFree_insert(name, memberNum, id, introduce, job,  skill, project_period, place_of_work, url_name)
+		 VALUES(#{name}, #{memberNum},#{id} , #{introduce}, #{job}, #{skill}, #{project_period}, #{place_of_work}, #{url_name})
     </insert>
     
     <select id="getBoard" resultMap="ggiri">
@@ -67,6 +80,10 @@
 	<delete id="writeFreeDelete">
 		DELETE ggiriFree_insert WHERE id =#{id}
 	</delete>
+	
+	<select id="getProject" resultMap="complete">
+		SELECT * FROM ggiriComplete WHERE id=#{id}
+	</select>
 	
 	<!-- 페이지 단위로 프로젝트 목록 조회 -->
 	<select id="getGgiriList" parameterType="map" resultMap="ggiri">

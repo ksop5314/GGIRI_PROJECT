@@ -52,7 +52,6 @@ public interface GgiriFreeInsertService {
 
 	public int getAdminListCount();
 
-	void adminProjectList(Model model);
 
 	public List<GgiriFreeInsertDTO> ajaxMemberList();
 	

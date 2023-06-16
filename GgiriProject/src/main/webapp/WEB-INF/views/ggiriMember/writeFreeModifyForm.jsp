@@ -63,13 +63,22 @@ $(document).ready(function(job){
 	<c:import url="../default/header.jsp"/>
 		<form action="${contextPath }/ggiriMember/modify" method="post">
 		<table>
-			
+			<c:if test="${loginUser != null}">
 			<tr> 
 				<th>작성자 </th>
 				<td>
 					<input type="text" name="id" id="id" value="${loginUser }" readonly>
 				</td>
 			</tr>
+			</c:if>
+			<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
+			<tr> 
+				<th>작성자 </th>
+				<td>
+					<input type="text" name="id" id="id" value="${info.id }" readonly>
+				</td>
+			</tr>
+			</c:if>
 			<tr>
 				<th>소개 : </th><td><input type="text" name="introduce" value="${info.introduce }"><td>
 			</tr>

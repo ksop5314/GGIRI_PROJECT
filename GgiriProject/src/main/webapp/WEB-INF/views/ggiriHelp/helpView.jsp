@@ -27,22 +27,19 @@
 			<th> 프로젝트 설명 </th><td><pre><c:out value="${data.content }"/></pre></td>
 		</tr>
 		<tr>
-			<td colspan="4" align="right">
-				<c:choose>
-					<c:when test="${loginUser }"></c:when>
-				</c:choose>
-				<c:if test="${loginUser == null}">
-					
-				</c:if>
-				<c:if test="${data.id==loginUser }">
-					<input type="button" value="수정" onclick="location.href='../ggiriHelp/helpModifyForm?helpNo=${data.helpNo }'"> &nbsp;
-					<input type="button" value="삭제" onclick="location.href='../ggiriHelp/helpDelete?helpNo=${data.helpNo }'"> &nbsp;
-				</c:if>
-				<c:if test="${data.id == kakaoMember.id || data.id == googleMember.id || data.id == naverMember.id }">
-					<input type="button" value="수정" onclick="location.href='../ggiriHelp/helpModifyForm?helpNo=${data.helpNo }'"> &nbsp;
-					<input type="button" value="삭제" onclick="location.href='../ggiriHelp/helpDelete?helpNo=${data.helpNo }'"> &nbsp;
-				</c:if>
-			</td>
+			<c:if test="${data.id==loginUser }">
+			
+				<td colspan="4" align="right">
+				<input type="button" value="수정" onclick="location.href='../ggiriHelp/helpModifyForm?helpNo=${data.helpNo }'"> &nbsp;
+				<input type="button" value="삭제" onclick="location.href='../ggiriHelp/helpDelete?helpNo=${data.helpNo }'"> &nbsp;
+				</td>
+			</c:if>
+			<c:if test="${data.id == kakaoMember.id || data.id == googleMember.id || data.id == naverMember.id }">
+				<td colspan="4" align="right">	
+				<input type="button" value="수정" onclick="location.href='../ggiriHelp/helpModifyForm?helpNo=${data.helpNo }'"> &nbsp;
+				<input type="button" value="삭제" onclick="location.href='../ggiriHelp/helpDelete?helpNo=${data.helpNo }'"> &nbsp;
+				</td>
+			</c:if>
 		</tr>
 	</table>
 	<c:import url="../default/footer.jsp"></c:import>
