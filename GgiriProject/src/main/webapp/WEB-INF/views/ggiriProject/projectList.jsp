@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>projectList.jsp</title>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
 <style type="text/css">
 table {
 	width: 1100px;
@@ -164,16 +165,17 @@ a {
 	<h1></h1>
 	<br>
 		<div id="devList">
-    <c:if test="${projectList.size()==0 }">	
+    <c:if test="${list.size()==0 }">	
         <h3>등록된 글이 없습니다</h3>
     </c:if>
-    <c:forEach var="dto" items="${projectList }">
+   <c:if test="${loginUser == null}">
+    <c:forEach var="dto" items="${list }">
         <div id="mem">
             <h3>${dto.prodate }</h3>
-				
-
             <a id="title" href="/root/ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a>
             <br>
+            <p>${dto.id }</p>
+            <p>${dto.job }</p>
             <div class="skill">
             <br>
                 <c:forEach var="selectedSkill" items="${dto.skill}">
@@ -183,6 +185,43 @@ a {
         </div>
         <br>
     </c:forEach>
+    </c:if>
+   	<c:if test="${loginUser != null}">
+    <c:forEach var="dto" items="${list }">
+        <div id="mem">
+            <h3>${dto.prodate }</h3>
+            <a id="title" href="/root/ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a>
+            <br>
+            <p>${dto.id }</p>
+            <p>${dto.job }</p>
+            <div class="skill">
+            <br>
+                <c:forEach var="selectedSkill" items="${dto.skill}">
+                    <div style="display:inline" id="skill">${selectedSkill}</div>
+                </c:forEach>
+            </div>
+        </div>
+        <br>
+    </c:forEach>
+    </c:if>
+    <c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
+    <c:forEach var="dto" items="${snsList }">
+        <div id="mem">
+            <h3>${dto.prodate }</h3>
+            <a id="title" href="/root/ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a>
+            <br>
+            <p>${dto.id }</p>
+            <p>${dto.job }</p>
+            <div class="skill">
+            <br>
+                <c:forEach var="selectedSkill" items="${dto.skill}">
+                    <div style="display:inline" id="skill">${selectedSkill}</div>
+                </c:forEach>
+            </div>
+        </div>
+        <br>
+    </c:forEach>
+    </c:if>
 </div>
 
 	</div>

@@ -286,6 +286,7 @@ function showSlides() {
 					<li><a href="/root/ggiriMember/memberList"> 프리랜서 보기 </a></li>
 					<li><a href="/root/ggiriProject/projectList"> 프로젝트 보기 </a></li>
 					<li><a href="/root/ggiriComplete/completeList"> 진행한 프로젝트 </a></li>
+					<li><a href="/root/ggiriHelp/helpList"> 고객센터 </a></li>
 					<!-- <li> | </li>
 					<li><a href="/root/ggiriMessage/messageList">chat</a></li>
 					 -->
