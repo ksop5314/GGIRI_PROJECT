@@ -52,9 +52,9 @@ public interface ProjectService {
 
 
     // 좋아요 
-//    public void like_check(int projectNum, int memberNum);
-//    
-//    public int select_heart(GgiriBoardLikeDTO dto);
+    public void like_check(int projectNum, int memberNum);
+    
+    public int select_heart(GgiriBoardLikeDTO dto);
 
 
 

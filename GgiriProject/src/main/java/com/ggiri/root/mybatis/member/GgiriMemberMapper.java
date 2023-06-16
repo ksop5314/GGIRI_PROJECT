@@ -25,6 +25,6 @@ public interface GgiriMemberMapper {
 	public void deleteId(String id);
 	
 	public List<ProjectDTO> getProjectListBySearch(String keyword, String condition);
-
+	
 	
 }

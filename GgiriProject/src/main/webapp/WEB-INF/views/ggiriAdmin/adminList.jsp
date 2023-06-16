@@ -174,7 +174,7 @@ h1 {
 					</c:forEach>
 				</table>
 			</div>
-		<form action="adminList.do" method="get">
+		<%-- <form action="adminList.do" method="get">
 		    <label for="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">검색조건</label><br>
 			    <select name="condition" id="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">
 			      <option value="title" <c:if test="${condition eq 'name' }">selected</c:if>>이름</option>
@@ -184,7 +184,7 @@ h1 {
 		    <input type="text" name="keyword" id="keyword" style="font-family: 'IBM Plex Sans KR', sans-serif"
 		           placeholder="검색어" value="${keyword }"/>
 		    <button id="button1" type="submit">검색</button>
-		</form>
+		</form> --%>
 		</div>
 	<c:import url="../defaultAdmin/footer.jsp"/>
 </body>
