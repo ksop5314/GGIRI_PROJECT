@@ -56,17 +56,6 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 	public void boardAllList(Model model) {
 		model.addAttribute("boardList", gfm.boardAllList());
 	}
-
-	@Override
-	public void boardGetFirstList(Model model) {
-		model.addAttribute("boardGetFirstList", gfm.boardGetFirstList());
-	}
-	
-	@Override
-	public List<GgiriFreeInsertDTO> boardGetList(GgiriFreeInsertDTO dto) {
-		return gfm.boardGetList(dto);
-		
-	}
 	
 	@Override
 	public void modifyForm(String userid, Model model) {
@@ -109,7 +98,8 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 	public List<GgiriFreeInsertDTO> getAdminList(int page, int perPage) {
 		int startRow = (page - 1) * perPage + 1;
         int endRow = startRow + perPage - 1;
-        return gfs.getAdminList(startRow, endRow);	}
+        return gfs.getAdminList(startRow, endRow);	
+    }
 
 	@Override
 	public int getAdminListCount() {

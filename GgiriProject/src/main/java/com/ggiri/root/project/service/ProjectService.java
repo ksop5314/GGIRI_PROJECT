@@ -43,6 +43,8 @@ public interface ProjectService {
     // 댓글
     public int addReplyTest(ProjectRepDTO dto);
 	public List<ProjectRepDTO> getRepList(int bno);
+	public void repDelete(int no);
+//	public void modalContent(int projectNum, Model model);
 	
 	
 }

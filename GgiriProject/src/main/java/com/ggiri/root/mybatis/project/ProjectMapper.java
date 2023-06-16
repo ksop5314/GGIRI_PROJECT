@@ -12,68 +12,69 @@ import com.ggiri.root.project.dto.ProjectRepDTO;
 
 public interface ProjectMapper {
 
-    List<ProjectDTO> projectList();
+    public List<ProjectDTO> projectList();
     
-    ProjectDTO projectView(int projectNum);
+    public ProjectDTO projectView(int projectNum);
     
-    int insertPro(ProjectDTO dto);
+    public int insertPro(ProjectDTO dto);
     
-    void proHit(int projectNum);
+    public void proHit(int projectNum);
     
-    void modify(ProjectDTO dto);
+    public void modify(ProjectDTO dto);
     
-    void delete(int projectNum);
+    public void delete(int projectNum);
 
     public List<ProjectDTO> search(@Param("keyword") String keyword, @Param("condition") String condition);
 
-    int getProjectCountBySearch(@Param("keyword") String keyword, @Param("condition") String condition);
+    public int getProjectCountBySearch(@Param("keyword") String keyword, @Param("condition") String condition);
 
     public List<ProjectDTO> getProjectListBySearch(@Param("keyword") String keyword, @Param("condition") String condition,
                                            @Param("startRow") int startRow, @Param("endRow") int endRow);
 
     public List<ProjectDTO> getProjectList(@Param("startRow") int startRow, @Param("endRow") int endRow);
 
-    int getProjectCount();
+    public int getProjectCount();
 
-    List<ProjectDTO> getProjectList(Map<String, Object> params);
+    public List<ProjectDTO> getProjectList(Map<String, Object> params);
 
-    int getProjectCountBySearch(Map<String, Object> searchParams);
+    public int getProjectCountBySearch(Map<String, Object> searchParams);
 
-    List<ProjectDTO> getProjectListBySearch(Map<String, Object> searchParams);
+    public List<ProjectDTO> getProjectListBySearch(Map<String, Object> searchParams);
     
-    List<ProjectDTO> searchByTitleAndContent(@Param("keyword") String keyword);
+    public List<ProjectDTO> searchByTitleAndContent(@Param("keyword") String keyword);
 
-    List<ProjectDTO> searchByTitle(@Param("keyword") String keyword);
+    public List<ProjectDTO> searchByTitle(@Param("keyword") String keyword);
 
-    List<ProjectDTO> searchByAuthor(@Param("keyword") String keyword);
+    public List<ProjectDTO> searchByAuthor(@Param("keyword") String keyword);
 
-    void setLikeCount(@Param("projectNum") int projectNum, @Param("likeCount") int likeCount);
+    public void setLikeCount(@Param("projectNum") int projectNum, @Param("likeCount") int likeCount);
 
-    void likeUp(@Param("board_no") int board_no, @Param("user_no") int user_no);
+    public void likeUp(@Param("board_no") int board_no, @Param("user_no") int user_no);
 
-    void likeDown(@Param("board_no") int board_no, @Param("user_no") int user_no);
+    public void likeDown(@Param("board_no") int board_no, @Param("user_no") int user_no);
 
-    int isProjectLikedByUser(@Param("projectNum") int projectNum, @Param("user_no") int user_no);
+    public int isProjectLikedByUser(@Param("projectNum") int projectNum, @Param("user_no") int user_no);
 
-    void insertLike(@Param("projectNum") int projectNum, @Param("user_no") int user_no);
+    public void insertLike(@Param("projectNum") int projectNum, @Param("user_no") int user_no);
 
-    void deleteLike(@Param("projectNum") int projectNum, @Param("user_no") int user_no);
+    public void deleteLike(@Param("projectNum") int projectNum, @Param("user_no") int user_no);
     
     public List<ProjectDTO> getProjectInfo(@Param("projectNum") int projectNum, Model model);
 
     // 댓글
     public int addReplyTest(ProjectRepDTO dto);
 	public List<ProjectRepDTO> getRepList(int bno);
+	public void repDelete(int no);
     
-    int getLikeCount(int projectNum);
+    public int getLikeCount(int projectNum);
 
-    void increaseLikeCount(int projectNum);
+    public void increaseLikeCount(int projectNum);
 
-    void increaseLikeCountByUser(@Param("projectNum") int projectNum, @Param("id") String id);
+    public void increaseLikeCountByUser(@Param("projectNum") int projectNum, @Param("id") String id);
 
-	int getLikeIdByUser(int projectNum, String id);
+	public int getLikeIdByUser(int projectNum, String id);
 
-	LikeDTO getPicture(String projectNum);
+	public LikeDTO getPicture(String projectNum);
 	
     // 관리자 페이지
     public List<ProjectDTO> adminProjectList();

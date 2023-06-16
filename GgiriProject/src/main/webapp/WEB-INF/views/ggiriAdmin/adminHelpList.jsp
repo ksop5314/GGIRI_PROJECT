@@ -35,13 +35,13 @@
 				<h1 style="margin-right: auto; padding-bottom: 30px;"> GGIRI <b style="color: red;">관리자</b> 고객센터문의 페이지 </h1><br>
 				<table style="margin: auto; width: 100%;">
 					<tr>
-						<th>회원이름</th><th>회원ID</th><th>회원소개</th><th>회원직업</th><th>보유기술</th><th>프리랜서 삭제</th>
+						<th> 회원이름 </th><th> 회원ID </th><th> 제목 </th><th> 등록날짜 </th><th> 문의 글 삭제</th>
 					</tr>
 					<c:forEach var="list" items="${boardList }">
 						<tr>
-							<td>${list.name }</td><td>${list.id }</td><td>${list.introduce }</td><td>${list.job }</td><td>${list.skill }</td>
+							<td>${list.name }</td><td>${list.id }</td><td>${list. }</td><td>${list. }</td><td>${list. }</td>
 							<td>
-								<div class="delDiv" style="border: 1px solid red; border-radius: 12px; background: red;" onclick="freeDelete('${list.id}')">
+								<div class="delDiv" style="border: 1px solid red; border-radius: 12px; background: red;" onclick="helpDelete('${list.}')">
 									<span id="freeDel"> 삭제 </span>
 								</div>
 							</td>

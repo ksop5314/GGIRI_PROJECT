@@ -297,12 +297,6 @@ public class GgiriController implements GgiriMemberSession {
 		ggiriMember.setId(idChk);
 		ggiriMember.setEmail(emailChk);
 		
-		
-		ggiriMember.setName("Google 로그인 회원");
-		ggiriMember.setId(id);
-		ggiriMember.setEmail(email);
-		
-		
 		int findGoogle = gs.findGoogle(idChk);
 		if(findGoogle == 0) {
 			gs.googleinsert(ggiriMember);
