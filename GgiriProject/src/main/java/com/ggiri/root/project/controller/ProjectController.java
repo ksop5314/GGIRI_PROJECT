@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ggiri.root.member.dto.GgiriMemberDTO;
 import com.ggiri.root.member.service.GgiriFreeInsertService;
 import com.ggiri.root.member.service.GgiriService;
+import com.ggiri.root.mybatis.member.GgiriMemberMapper;
+import com.ggiri.root.project.dto.GgiriBoardLikeDTO;
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
 import com.ggiri.root.project.service.ProjectService;
@@ -40,6 +43,10 @@ public class ProjectController implements GgiriMemberSession{
 
 	@Autowired
 	private GgiriService gs;
+	
+	@Autowired
+	private GgiriMemberMapper gmm;
+	
 	
     @RequestMapping("projectWrite")
     public String proWrite(HttpSession session, Model model) {
@@ -66,7 +73,14 @@ public class ProjectController implements GgiriMemberSession{
 
     @GetMapping("projectView")
     public String projectView(@RequestParam("projectNum") int projectNum, Model model, HttpSession session) throws Exception {
-       if(session.getAttribute(LOGIN) != null) {
+       GgiriBoardLikeDTO Dto = new GgiriBoardLikeDTO();
+       Dto.setProjectNum(projectNum);
+       Dto.setLike_check(0);
+       int a = ps.select_heart(Dto);
+       model.addAttribute("likeCount",a);
+    	
+    	
+    	if(session.getAttribute(LOGIN) != null) {
          String id = (String)session.getAttribute(LOGIN);
          gs.ggiriMemberInfo(id, model);         
          ps.projectView(projectNum, model);
@@ -230,6 +244,30 @@ public class ProjectController implements GgiriMemberSession{
 		
 	}
 	
+	// 좋아요
+	@PostMapping(value="like_check/{projectNum}", produces="application/json; charset=utf-8")
+	@ResponseBody
+	public int like(@PathVariable("projectNum") String projectNum,@RequestParam("memberNum") int memberNum){
+
+		System.err.println("글번호 : " + projectNum);
+		
+		GgiriBoardLikeDTO dto = new GgiriBoardLikeDTO();
+		dto.setMemberNum(memberNum); 
+		
+		System.out.println(projectNum);
+		System.out.println(memberNum);
+		
+//		dto.setProjectNum(Integer.parseInt((String)map.get(projectNum)));
+		dto.setLike_check(1);
+//		System.out.println("번호 : " + projectNum);
+//		System.out.println("맴버번호 : "+ (GgiriMemberDTO)gmm.ggiriMemberInfo());
+//		ps.like_check(Integer.parseInt(projectNum), (String)session.getAttribute(LOGIN));
+//		GgiriBoardLikeDTO dto = new GgiriBoardLikeDTO();
+//		dto.setMemberNum((String)session.getAttribute(LOGIN));
+//		dto.setLike_check(1);
+//		dto.setProjectNum(Integer.parseInt(projectNum));
+		return ps.select_heart(dto);
+	}
 	@PostMapping("modifyModalRep")
 	@ResponseBody
 	public String modifyModalRep(@RequestBody ProjectRepDTO dto) {

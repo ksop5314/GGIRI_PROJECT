@@ -40,6 +40,34 @@
       <result property="content" column="content"/>
       <result property="wdate" column="wdate"/>
    </resultMap>
+   
+   
+   <!-- 좋아요 -->
+    <resultMap type="com.ggiri.root.project.dto.GgiriBoardLikeDTO" id="like">
+   		<result property="projectNum" column="projectNum"/>
+   		<result property="memberNum" column="memberNum"/>
+   		<result property="like_check" column="like_check"/>
+    </resultMap>
+   
+	<!-- 좋아요 -->
+	
+	<insert id="insert_heart">
+		INSERT INTO heart(projectNum, memberNum, like_check)
+		VALUES(#{projectNum}, #{memberNum}, 1)
+	</insert>
+	
+	<delete id="deleteHeart">
+		DELETE FROM heart WHERE memberNum=#{memberNum} AND projectNum=#{projectNum}
+	</delete>
+	
+	<!-- 좋아요 총 수 -->
+	<select id="select_heart" resultType="integer">
+		SELECT COUNT(*) FROM heart WHERE projectNum=#{projectNum}
+	</select>
+	
+	<!-- <select id="select_heart" resultType="integer">
+		SELECT COUNT(*) FROM heart WHERE projectNum=#{projectNum} AND like_check=#{like_check}
+	</select> -->
 	
 	<!-- 프로젝트 리스트  -->
 	<select id="selectJob" resultMap="projectjop">

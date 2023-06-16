@@ -45,7 +45,6 @@ span{
 </head>
 <body>
 	<c:import url="../default/header.jsp"></c:import>
-	
 	<div>
 		<button class="freeInput" id="freeInput" type="button"onclick="location.href='${contextPath}/ggiriHelp/helpWrite'"> 요청사항 등록하기 </button>
 	</div>

@@ -13,7 +13,7 @@ CONSTRAINT heart_id FOREIGN KEY(memberNum) REFERENCES ggiriMember(memberNum) ON 
 public class GgiriBoardLikeDTO {
 	
 	private int projectNum;
-	private int memberNo;
+	private int memberNum;
 	private int like_check;
 	
 	
@@ -24,11 +24,12 @@ public class GgiriBoardLikeDTO {
 	public void setProjectNum(int projectNum) {
 		this.projectNum = projectNum;
 	}
-	public int getMemberNo() {
-		return memberNo;
+	
+	public int getMemberNum() {
+		return memberNum;
 	}
-	public void setMemberNo(int memberNo) {
-		this.memberNo = memberNo;
+	public void setMemberNum(int memberNum) {
+		this.memberNum = memberNum;
 	}
 	public int getLike_check() {
 		return like_check;

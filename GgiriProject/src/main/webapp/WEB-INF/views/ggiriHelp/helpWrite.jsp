@@ -45,9 +45,14 @@ input{
 		<h1>답변은 아래에 적힌 개인정보로 연락드리겠습니다</h1>
 		<hr>
 		<br>
+		<c:if test="${loginUser !=null }">
 		<b>이메일</b> &nbsp; &nbsp; <p>${ggiriMemberInfo.email }</p>
 		<b>전화번호</b> &nbsp; &nbsp; <p>${ggiriMemberInfo.tel }</p>
-		
+		</c:if>
+		<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
+		<b>이메일</b> &nbsp; &nbsp; <p>${ggiriSnsInfo.email }</p>
+		<b>전화번호</b> &nbsp; &nbsp; <p>${ggiriSnsInfo.tel }</p>
+		</c:if>
 		<button type="submit">완료</button>
 		</div>
 		</form>

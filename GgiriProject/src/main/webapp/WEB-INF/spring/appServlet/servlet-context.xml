@@ -82,6 +82,15 @@
 		</interceptor>
 	</interceptors>
 	
+	<!-- 고객센터 글쓰기 check -->
+	<beans:bean id="helptInterceptor" class="com.ggiri.root.help.Interceptor.helptInterceptor"/>
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/ggiriHelp/helpWrite"/>
+			<mapping path="/ggiriHelp/helpView"/>
+			<beans:ref bean="helptInterceptor"/>
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

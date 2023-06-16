@@ -228,7 +228,41 @@ function modifyModalRep(){
 
    
 /*  */
+	
+/* 좋아요 */
+function like(){
+	var contextPath = "${pageContext.request.contextPath}";
+	let memberNum = $("#myHeart").val();
+	let projectNum = $("#projectNum").val();
+	var clickLikeUrl = contextPath + "/resources/image/heart.png"
+	var emptyLikeUrl = contextPath + "/resources/image/empty_heart.png"
+	console.log(memberNum);
+    console.log(projectNum);
+	$.ajax({
+		url: contextPath + "/ggiriProject/like_check/"+$('#projectNum').val(),
+		type:"post",
+		dataType:"json",
+		contentType: "application/json; charset=utf-8",
+		success: function(data){
+			alert('좋아요 기능 성공..!!' + data + " 입니단");
+			if($('#like_check').val() > data) {
+				$("#myHeart").attr("src", emptyLikeUrl);
+			} else {
+				$("#myHeart").attr("src", clickLikeUrl);
+			}
+			$('#like_check').val(data);
+			
+			},
+			error: function() {
+				alert('좋아요 기능이 안 돼요..');
+			}
+		})
+		
 
+	
+		
+		
+	}
 </script>
 <style type="text/css">
 * {
@@ -349,7 +383,7 @@ input[type=button]:hover {
 </head>
 <body>
     
-<c:import url="../default/header.jsp"></c:import>
+	<c:import url="../default/header.jsp"></c:import>
     <div class="wrap">
         <br>
         <h1>${data.title }</h1>
@@ -425,6 +459,6 @@ input[type=button]:hover {
      <div id="modal" class="modal-overlay">
       
     </div>
-<c:import url="../default/footer.jsp"></c:import>
+	<c:import url="../default/footer.jsp"></c:import>
 </body>
 </html>
