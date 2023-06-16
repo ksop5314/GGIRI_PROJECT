@@ -239,6 +239,7 @@ function like(){
 	$.ajax({
 		url: contextPath + "/ggiriProject/like_check/"+$('#projectNum').val(),
 		type:"post",
+		data: JSON.stringify(),
 		dataType:"json",
 		contentType: "application/json; charset=utf-8",
 		success: function(data){
