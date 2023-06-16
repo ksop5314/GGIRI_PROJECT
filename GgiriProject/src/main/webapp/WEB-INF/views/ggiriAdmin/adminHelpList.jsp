@@ -37,16 +37,7 @@
 					<tr>
 						<th> 회원이름 </th><th> 회원ID </th><th> 제목 </th><th> 등록날짜 </th><th> 문의 글 삭제</th>
 					</tr>
-					<c:forEach var="list" items="${boardList }">
-						<tr>
-							<td>${list.name }</td><td>${list.id }</td><td>${list. }</td><td>${list. }</td><td>${list. }</td>
-							<td>
-								<div class="delDiv" style="border: 1px solid red; border-radius: 12px; background: red;" onclick="helpDelete('${list.}')">
-									<span id="freeDel"> 삭제 </span>
-								</div>
-							</td>
-						</tr>
-					</c:forEach>
+					
 				</table>
 			</div>
 		</div>

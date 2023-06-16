@@ -139,9 +139,7 @@ public class AdminController {
 	
 	@GetMapping("adminHelpList")
 	public String adminHelpList() {
-		
-		return "ggiriAdmin/adminHelpList";
+		return "/ggiriAdmin/adminHelpList";
 	}
-	
 	
 }

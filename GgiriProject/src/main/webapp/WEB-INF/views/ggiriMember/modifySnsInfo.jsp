@@ -63,6 +63,22 @@ $(function(){
 		}
 	});
 	
+	$("#pwdchk").keyup(function(){
+		if($("#pwdchk").val() == "" && $("#pwd").val() == ""){
+			$(".successPwdChk").text("");
+			$("#pwdChkResult").val("false");
+		}
+		else if($("#pwdchk").val() == $("#pwd").val()){
+			$(".successPwdChk").text("비밀번호가 일치합니다.");
+			$(".successPwdChk").css("color", "blue");
+			$("#pwdChkResult").val("true");
+		} else {
+			$(".successPwdChk").text("비밀번호가 일치하지 않습니다.");
+			$(".successPwdChk").css("color", "red");
+			$("#pwdChkResult").val("false");
+		}
+	});
+	
 	$("#birth").blur(function(){
 		var birth = $("#birth").val();
 		if(birth.length < 8) { 
@@ -75,6 +91,30 @@ $(function(){
 			$("#birthChkResult").val("true");
 			return;
 		}
+	});
+	
+	$("#tel").blur(function(){
+		var contextPath = "${pageContext.request.contextPath}";
+		var tel = $("#tel").val();
+			
+		$.ajax({
+			url : contextPath + "/ggiriMember/telCheck?tel=" + tel,
+			type : "GET",
+			cache : false,
+			success : function(data) {
+				if(data == 0){
+					$(".successTelChk").text("");
+					$("#telDoubleChk").val("true");
+				} else {
+					$(".successTelChk").text("이미 가입 되어있는 휴대폰번호 입니다.");
+					$(".successTelChk").css("color", "red");
+					$("#telDoubleChk").val("false");
+				}
+			},
+			error : function(){
+				console.log("실패");
+			}
+		});
 	});
 	
 	$("#addr3").blur(function(){
@@ -102,6 +142,18 @@ $(function(){
 		var addr = $("#addr1").val() + $("#addr2").val() + $("#addr3").val();
 		
 		
+		if($("#pwdChkResult").val() != "true"){
+			alert("비밀번호를 확인해주세요.");
+			$("#pwd").focus();
+			return rv = false;
+		}
+		
+		if($("#tel").val() == "" || $("#telDoubleChk").val() != "true"){
+			alert("휴대폰 번호를 확인해주세요.");
+			$("#tel").focus();
+			return rv = false;
+		}
+		
 		if($("#addrChk").val() != "true"){
 			alert("주소를 확인해주세요.");
 			$(".successAddrChk").text("주소는 필수 입력사항 입니다.");
@@ -110,8 +162,6 @@ $(function(){
 			return rv = false;
 		}
 		
-		
-		$()
 		$("input[name=addr]").val(addr);
 		alert($("#id").val() + "님의 정보수정을 완료했습니다.");
 		return rv;
@@ -143,20 +193,20 @@ function daumPost(){
 	<div class="wrap">
 		<br>
 		<h1 id="title">내정보 수정</h1>
-		<c:if test="${naverMember != null }">
+		<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
 			<form id="modify_my_info" action="modifyResult" method="post">
 				<table>
 					<tr>
 						<th> 이름 </th>
 						<td>
-							<input type="hidden" name="memberNum" id="memberNum" value="${naverMember.memberNum}">
-							<input type="text" name="name" id="name" placeholder="이름" maxlength="10" autocomplete="none" value="${naverMember.name}">
+							<input type="hidden" name="memberNum" id="memberNum" value="${ggiriSnsInfo.memberNum}">
+							<input type="text" name="name" id="name" placeholder="이름" maxlength="10" autocomplete="none" value="${ggiriSnsInfo.name}">
 						</td>
 					</tr>
 					<tr>
 						<th> 아이디 </th>
 						<td>
-							<input type="text" name="id" id="id" placeholder="아이디" maxlength="10" autocomplete="none" value="${naverMember.id}"><br>
+							<input type="text" name="id" id="id" placeholder="아이디" maxlength="10" autocomplete="none" value="${ggiriSnsInfo.id}"><br>
 							<span class="point successIdChk"></span>
 							<input type="hidden" id="idDoubleChk" value="false">
 						</td>
@@ -164,13 +214,21 @@ function daumPost(){
 					<tr>
 						<th> 비밀번호 </th>
 						<td>
-							<input type="password" name="pwd" id="pwd" placeholder="비밀번호" value="${naverMember.pwd}"><br>
+							<input type="password" name="pwd" id="pwd" placeholder="비밀번호" value="${ggiriSnsInfo.pwd}"><br>
+						</td>
+					</tr>
+					<tr>
+						<th> 비밀번호<br>확인 </th>
+						<td>
+							<input type="password" id="pwdchk" placeholder="비밀번호 확인"><br>
+							<span class="point successPwdChk"></span><br>
+							<input type="hidden" id="pwdChkResult" value="false">
 						</td>
 					</tr>
 					<tr>
 						<th> 생년월일 </th>
 						<td>
-							<input type="text" name="birth" id="birth" maxlength="8" placeholder="ex)19901231" value="${naverMember.birth}"><br>
+							<input type="text" name="birth" id="birth" maxlength="8" placeholder="ex)19901231" value="${ggiriSnsInfo.birth}"><br>
 							<span class="point successBirthChk"></span><br>
 							<input type="hidden" id="birthChkResult" value="false">
 						</td>
@@ -178,30 +236,38 @@ function daumPost(){
 					<tr>
 						<th> 성별 </th>
 						<td>
-							<c:if test="${naverMember.gender == 'M'}">
+							<c:if test="${ggiriSnsInfo.gender == 'M'}">
 								<label for="man"> 남자 </label>
 								<input type="radio" class="hidden" name="gender" id="man" value="M" checked>
 								<label for="woman"> 여자 </label>
 								<input type="radio" class="hidden" name="gender" id="woman" value="F">
 							</c:if>
-							<c:if test="${naverMember.gender == 'F'}">
+							<c:if test="${ggiriSnsInfo.gender == 'F'}">
 								<label for="man"> 남자 </label>
 								<input type="radio" class="hidden" name="gender" id="man" value="M">
 								<label for="woman"> 여자 </label>
 								<input type="radio" class="hidden" name="gender" id="woman" value="F" checked>
+							</c:if>
+							<c:if test="${ggiriSnsInfo.gender == null }">
+								<label for="man"> 남자 </label>
+								<input type="radio" class="hidden" name="gender" id="man" value="M" checked>
+								<label for="woman"> 여자 </label>
+								<input type="radio" class="hidden" name="gender" id="woman" value="F">
 							</c:if>
 						</td>
 					</tr>
 					<tr>
 						<th> E-mail </th>
 						<td>
-							<input type="text" name="email" id="email1" placeholder="E-mail 입력" value="${naverMember.email}" readonly="readonly">
+							<input type="text" name="email" id="email1" placeholder="E-mail 입력" value="${ggiriSnsInfo.email}" readonly="readonly">
 						</td>
 					</tr>
 					<tr>
 						<th> Tel </th>
 						<td>
-							<input type="text" name="tel" id="tel" size="10" maxlength="13" value="${naverMember.tel}">
+							<input type="text" name="tel" id="tel" size="10" maxlength="13" value="${ggiriSnsInfo.tel}">
+							<span class="point successTelChk"></span>
+							<input type="hidden" id="telDoubleChk" value="false">
 						</td>
 					</tr>
 					<!-- 
@@ -229,176 +295,8 @@ function daumPost(){
 				<span class="point">※ sns 사용자는 비어있는 칸들을 채워주세요.</span><br><br>
 				<input type="submit" id="button1" value="수정완료">
 			</form>
-			</c:if>
-			<c:if test="${kakaoMember != null }">
-			<form id="modify_my_info" action="modifyResult" method="post">
-				<table>
-					<tr>
-						<th> 이름 </th>
-						<td>
-							<input type="hidden" name="memberNum" id="memberNum" value="${kakaoMember.memberNum}">
-							<input type="text" name="name" id="name" placeholder="이름" maxlength="10" autocomplete="none" value="${kakaoMember.name}">
-						</td>
-					</tr>
-					<tr>
-						<th> 아이디 </th>
-						<td>
-							<input type="text" name="id" id="id" placeholder="아이디" maxlength="10" autocomplete="none" value="${kakaoMember.id}"><br>
-							<span class="point successIdChk"></span>
-							<input type="hidden" id="idDoubleChk" value="false">
-						</td>
-					</tr>
-					<tr>
-						<th> 비밀번호 </th>
-						<td>
-							<input type="password" name="pwd" id="pwd" placeholder="비밀번호" value="${kakaoMember.pwd}"><br>
-						</td>
-					</tr>
-					<tr>
-						<th> 생년월일 </th>
-						<td>
-							<input type="text" name="birth" id="birth" maxlength="8" placeholder="ex)19901231" value="${kakaoMember.birth}"><br>
-							<span class="point successBirthChk"></span><br>
-							<input type="hidden" id="birthChkResult" value="false">
-						</td>
-					</tr>
-					<tr>
-						<th> 성별 </th>
-						<td>
-							<c:if test="${kakaoMember.gender == null}">
-								<label for="man"> 남자 </label>
-								<input type="radio" class="hidden" name="gender" id="man" value="M" checked>
-								<label for="woman"> 여자 </label>
-								<input type="radio" class="hidden" name="gender" id="woman" value="F">
-							</c:if>
-						</td>
-					</tr>
-					<tr>
-						<th> E-mail </th>
-						<td>
-							<input type="text" name="email" id="email1" placeholder="E-mail 입력" value="${kakaoMember.email}" readonly="readonly">
-						</td>
-					</tr>
-					<tr>
-						<th> Tel </th>
-						<td>
-							<input type="text" name="tel" id="tel" size="10" maxlength="13" value="${kakaoMember.tel}">
-						</td>
-					</tr>
-					<!-- 
-					<tr>
-						<th> 핸드폰 인증확인 </th>
-						<td>
-							<input type="text" name="userTelChk" id="userTelChk"><br>
-							<span class="point successTelChk">※ 핸드폰 번호 입력 후 인증번호 클릭 </span>
-							<input type="hidden" id="telDoubleChk">
-						</td>
-					</tr>
-					 -->
-					<tr>
-						<th> 주소 </th>
-						<td>
-							<input type="text" id="addr1" name="addr" placeholder="우편번호" readonly>
-							<input type="button" id="daumAddr" class="btn btn-info" value="우편번호 찾기" onclick="daumPost()"><br>
-							<input type="text" id="addr2" placeholder="주소" readonly><br>
-							<input type="text" id="addr3" placeholder="상세주소" ><br>
-							<span class="point successAddrChk"></span><br>
-							<input type="hidden" id="addrChk" value="false">
-						</td>
-					</tr>
-				</table>
-				<span class="point">※ sns 사용자는 비어있는 칸들을 채워주세요.</span><br><br>
-				<input type="submit" id="button1" value="수정완료">
-				</form>
-			</c:if>
-		</div>
-		<c:if test="${googleMember != null }">
-			<form id="modify_my_info" action="modifyResult" method="post">
-				<table>
-					<tr>
-						<th> 이름 </th>
-						<td>
-							<input type="hidden" name="memberNum" id="memberNum" value="${googleMember.memberNum}">
-							<input type="text" name="name" id="name" placeholder="이름" maxlength="10" autocomplete="none" value="${googleMember.name}">
-						</td>
-					</tr>
-					<tr>
-						<th> 아이디 </th>
-						<td>
-							<input type="text" name="id" id="id" placeholder="아이디" maxlength="10" autocomplete="none" value="${googleMember.id}"><br>
-							<span class="point successIdChk"></span>
-							<input type="hidden" id="idDoubleChk" value="false">
-						</td>
-					</tr>
-					<tr>
-						<th> 비밀번호 </th>
-						<td>
-							<input type="password" name="pwd" id="pwd" placeholder="비밀번호" value="${googleMember.pwd}"><br>
-						</td>
-					</tr>
-					<tr>
-						<th> 생년월일 </th>
-						<td>
-							<input type="text" name="birth" id="birth" maxlength="8" placeholder="ex)19901231" value="${googleMember.birth}"><br>
-							<span class="point successBirthChk"></span><br>
-							<input type="hidden" id="birthChkResult" value="false">
-						</td>
-					</tr>
-					<tr>
-						<th> 성별 </th>
-						<td>
-							<c:if test="${googleMember.gender == 'M'}">
-								<label for="man"> 남자 </label>
-								<input type="radio" class="hidden" name="gender" id="man" value="M" checked>
-								<label for="woman"> 여자 </label>
-								<input type="radio" class="hidden" name="gender" id="woman" value="F">
-							</c:if>
-							<c:if test="${googleMember.gender == 'F'}">
-								<label for="man"> 남자 </label>
-								<input type="radio" class="hidden" name="gender" id="man" value="M">
-								<label for="woman"> 여자 </label>
-								<input type="radio" class="hidden" name="gender" id="woman" value="F" checked>
-							</c:if>
-						</td>
-					</tr>
-					<tr>
-						<th> E-mail </th>
-						<td>
-							<input type="text" name="email" id="email1" placeholder="E-mail 입력" value="${googleMember.email}" readonly="readonly">
-						</td>
-					</tr>
-					<tr>
-						<th> Tel </th>
-						<td>
-							<input type="text" name="tel" id="tel" size="10" maxlength="13" value="${googleMember.tel}">
-						</td>
-					</tr>
-					<!-- 
-					<tr>
-						<th> 핸드폰 인증확인 </th>
-						<td>
-							<input type="text" name="userTelChk" id="userTelChk"><br>
-							<span class="point successTelChk">※ 핸드폰 번호 입력 후 인증번호 클릭 </span>
-							<input type="hidden" id="telDoubleChk">
-						</td>
-					</tr>
-					 -->
-					<tr>
-						<th> 주소 </th>
-						<td>
-							<input type="text" id="addr1" name="addr" placeholder="우편번호" readonly>
-							<input type="button" id="daumAddr" class="btn btn-info" value="우편번호 찾기" onclick="daumPost()"><br>
-							<input type="text" id="addr2" placeholder="주소" readonly><br>
-							<input type="text" id="addr3" placeholder="상세주소" ><br>
-							<span class="point successAddrChk"></span><br>
-							<input type="hidden" id="addrChk" value="false">
-						</td>
-					</tr>
-				</table><br>
-				<span class="point">※ sns 사용자는 비어있는 칸들을 채워주세요.</span><br><br>
-				<input type="submit" id="button1" value="수정완료">
-			</form>
-			</c:if>
+		</c:if>
+	</div>
 	<c:import url="../default/footer.jsp"/>
 </body>
 </html>

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.ggiri.root.mybatis.project.ProjectMapper;
-import com.ggiri.root.project.dto.GgiriBoardLikeDTO;
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
 
@@ -110,6 +109,11 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public void repDelete(int no) {
 		pm.repDelete(no);
+	}
+	
+	@Override
+	public int modifyModalRep(ProjectRepDTO dto) {
+		return pm.modifyModalRep(dto);
 	}
 	
 //	@Override

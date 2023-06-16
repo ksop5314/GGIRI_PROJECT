@@ -59,7 +59,7 @@
 	
 	
 	<select id="projectList" resultMap="project">
-		SELECT * FROM ggiriProject
+		SELECT * FROM ggiriProject ORDER BY projectNum DESC
 	</select>
 	
 	<select id="projectView" resultMap="project">
@@ -179,6 +179,10 @@
 	<delete id="repDelete">
 		DELETE FROM ggiriReply WHERE no=#{no}
 	</delete>
+	
+	<update id="modifyModalRep">
+		UPDATE ggiriReply SET content=#{content} WHERE no=#{no}
+	</update>
 	
 <!-- 	<select id="modalContent">
 		SELECT * FROM ggiriReply WHERE bno=#{bno}

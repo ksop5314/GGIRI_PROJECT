@@ -143,7 +143,17 @@ table td {
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td><input type="text" name="id" value="${loginUser }"></td>
+				<td>
+					<input type="text" id="id" name="id" value="${loginUser }">
+					<c:if test="${loginUser != null}">
+						<input type="hidden" name="id" id="id" value="${loginUser }" readonly>
+						<input type="hidden" name="memberNum" id="memberNum" value="${ggiriMemberInfo.memberNum }">
+					</c:if>
+					<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
+						<input type="hidden" name="id" id="id" value="${ggiriSnsInfo.id }" readonly>
+						<input type="hidden" name="memberNum" id="memberNum" value="${ggiriSnsInfo.memberNum }">
+					</c:if>
+				</td>
 			</tr>
 			<tr>
 				<th>프로젝트 상태</th>

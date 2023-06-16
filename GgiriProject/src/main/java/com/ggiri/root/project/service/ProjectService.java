@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.springframework.ui.Model;
 
-import com.ggiri.root.project.dto.GgiriBoardLikeDTO;
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
 
@@ -46,6 +45,8 @@ public interface ProjectService {
     public int addReplyTest(ProjectRepDTO dto);
 	public List<ProjectRepDTO> getRepList(int bno);
 	public void repDelete(int no);
+	public int modifyModalRep(ProjectRepDTO dto);
+//	public void modalContent(int projectNum, Model model);
 	
 	// 프로젝트 리스트 
     public List<Map<String, Object>> selectJob(Model model);

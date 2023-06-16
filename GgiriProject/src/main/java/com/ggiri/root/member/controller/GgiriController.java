@@ -121,18 +121,6 @@ public class GgiriController implements GgiriMemberSession {
 			return "redirect:ggiriLogin";
 		return "redirect:signup_free";
 	}
-//	@RequestMapping("kakaoLogin")
-//	public String kakaoLogin() {
-//		StringBuffer loginUrl = new StringBuffer();
-//		loginUrl.append("https://kauth.kakao.com/oauth/authorize?client_id=");
-//		loginUrl.append("0bc794d215c15ba457b2eb709fecd070");
-//		loginUrl.append("&redirect_uri=");
-//		loginUrl.append("http://localhost:8080/root/ggiriMember/kakao_callback");
-//		loginUrl.append("&response_type=code");
-//		System.out.println(loginUrl.toString());
-//		
-//		return "redirect:"+loginUrl.toString();
-//	}
 	
 	@RequestMapping("kakao_callback")
 	public String redirectkakao(@RequestParam("code") String code, HttpSession session) throws IOException{
@@ -329,7 +317,22 @@ public class GgiriController implements GgiriMemberSession {
 	}
 	
 	@RequestMapping("snsInfo")
-	public String ggiriSnsInfo() {
+	public String ggiriSnsInfo(HttpSession session, Model model) {
+		if(session.getAttribute("kakaoMember") != null) {
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("kakaoMember");
+			gs.ggiriSnsInfo(dto.getId(), model);
+			return "ggiriMember/snsInfo";
+		} else if(session.getAttribute("naverMember") != null) {
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("naverMember");
+			gs.ggiriSnsInfo(dto.getId(), model);
+			return "ggiriMember/snsInfo";
+		} else if(session.getAttribute("googleMember") != null) {
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("googleMember");
+			String id = dto.getId();
+			System.out.println(id);
+			gs.ggiriSnsInfo(dto.getId(), model);
+			return "ggiriMember/snsInfo";
+		}
 		return "ggiriMember/snsInfo";
 	}
 	
@@ -341,7 +344,22 @@ public class GgiriController implements GgiriMemberSession {
 	}
 	
 	@RequestMapping("modifySnsInfo")
-	public String modifySnsInfo() {
+	public String modifySnsInfo(HttpSession session, Model model) {
+		if(session.getAttribute("kakaoMember") != null) {
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("kakaoMember");
+			gs.ggiriSnsInfo(dto.getId(), model);
+			return "ggiriMember/modifySnsInfo";
+		} else if(session.getAttribute("naverMember") != null) {
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("naverMember");
+			String id = dto.getId();
+			System.out.println(id);
+			gs.ggiriSnsInfo(dto.getId(), model);
+			return "ggiriMember/modifySnsInfo";
+		} else if(session.getAttribute("googleMember") != null) {
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("googleMember");
+			gs.ggiriSnsInfo(dto.getId(), model);
+			return "ggiriMember/modifySnsInfo";
+		}
 		return "ggiriMember/modifySnsInfo";
 	}
 	

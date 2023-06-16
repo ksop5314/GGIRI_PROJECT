@@ -70,6 +70,8 @@ public interface ProjectMapper {
 	
 	public void repDelete(int no);
 	
+	public int modifyModalRep(ProjectRepDTO dto);
+	
     public void increaseLikeCount(int projectNum);
     
     public void increaseLikeCountByUser(@Param("projectNum") int projectNum, @Param("id") String id);
