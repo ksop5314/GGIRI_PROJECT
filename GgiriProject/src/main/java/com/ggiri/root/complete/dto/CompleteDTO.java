@@ -27,31 +27,10 @@ public class CompleteDTO {
 	private String skill;
 	private String members;
 	private String tag;
-	
 	private Date comdate;
-	
 	private int comHit;
 	private String id;
-	
-	public CompleteDTO() {
-		super();
-	}
-
-	public CompleteDTO(int completeNum, String title, String content, String skill, String members, String tag,
-			Date comdate, int comHit, String id) {
-		super();
-		this.completeNum = completeNum;
-		this.title = title;
-		this.content = content;
-		this.skill = skill;
-		this.members = members;
-		this.tag = tag;
-		this.comdate = comdate;
-		this.comHit = comHit;
-		this.id = id;
-	}
-
-	
+		
 	
 	public int getMemberNum() {
 		return memberNum;

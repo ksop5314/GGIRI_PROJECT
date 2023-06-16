@@ -27,5 +27,4 @@
 	<!-- 마이바티스 xml 파일과 dao 빈 연결 -->
 	<mybatis-spring:scan base-package="com.ggiri.root.mybatis"/>	
 	
-	
 </beans>

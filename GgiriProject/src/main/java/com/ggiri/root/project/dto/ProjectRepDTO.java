@@ -5,9 +5,17 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 /*
+<<<<<<< HEAD
+-- 댓글 테이블
+CREATE TABLE ggiriReply (
+memberNum NUMBER(20),
+no NUMBER(10) primary key,          -- 댓글 번호
+bno NUMBER(10) not null,         -- 게시물 번호
+=======
 CREATE TABLE reply (
 no NUMBER(10) not null,          -- 댓글 번호
 bno NUMBER(10) primary key,      -- 게시물 번호
+>>>>>>> branch 'main' of https://github.com/Jh1227/junho.git
 id VARCHAR2(100) not null,       -- 회원ID
 content VARCHAR2(1000),          -- 내용
 wdate DATE DEFAULT SYSDATE,      -- 작성일

@@ -25,9 +25,9 @@
 		SELECT * FROM ggiriComplete WHERE completeNum=#{completeNum}
 	</select>
 	
-	<insert id="insertCom">
-		INSERT INTO ggiriComplete(completeNum, memberNum, title, content, skill, members, tag, comdate, id)
-		VALUES(ggiriComplete_seq.nextval, #{memberNum},#{title}, #{content}, #{skill}, #{members}, #{tag}, #{comdate}, #{id})
+	<insert id="comSave">
+		INSERT INTO ggiriComplete(completeNum, memberNum, title, content, skill, members, tag, id)
+		VALUES(ggiriComplete_seq.nextval, #{memberNum}, #{title}, #{content}, #{skill}, #{members}, #{tag}, #{id})
 	</insert>
 	
 	<update id="comHit">
@@ -35,7 +35,7 @@
 	</update>
 	
 	<update id="modify">
-		UPDATE ggiriComplete SET title=#{title}, content=#{content}, skill=#{skill}, tag=#{tag}
+		UPDATE ggiriComplete SET title=#{title}, content=#{content}, skill=#{skill}, members=#{members}, tag=#{tag}
 		WHERE completeNum=#{completeNum}
 	</update>
 	

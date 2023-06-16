@@ -18,8 +18,23 @@
 			<form action="../ggiriProject/modify" method="post">
 				<input type="hidden" name="projectNum" value="${data.projectNum }">
 				<b> 작성자 </b><br>
-				<input type="text" name="id" value="${loginUser }"><br>
+				<c:if test="${loginUser != null}">
+				<input type="text" name="id" id="id" value="${loginUser }" readonly>
+				</c:if>
+				<c:if test="${kakaoMember != null}">
+				<input type="text" name="id" id="id" value="${kakaoMember.id }" readonly>
+				</c:if>
+				<c:if test="${naverMember != null}">
+				<input type="text" name="id" id="id" value="${naverMember.id}" readonly>
+				</c:if><br>
 				<b> 제 목 </b><br>
+				<input type="text" name="title" size="50" value="${data.title }"><br><br>
+				<b>프로젝트 상태</b><br>
+				<label for="proceeding"> 진행중 </label>
+				<input type="radio" class="hidden" name="project" id="proceeding" value="진행중" checked>
+				<label for="complete"> 완료 </label>
+				<input type="radio" class="hidden" name="project" id="complete" value="완료">
+				<br><br>
 				<input type="text" name="title" size="50" value="${data.title }"><br>
 <!-- 			<b> 스 킬 </b><br>
 				<ul>
