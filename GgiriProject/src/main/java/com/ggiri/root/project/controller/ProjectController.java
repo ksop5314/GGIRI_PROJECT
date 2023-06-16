@@ -73,12 +73,14 @@ public class ProjectController implements GgiriMemberSession{
 
     @GetMapping("projectView")
     public String projectView(@RequestParam("projectNum") int projectNum, Model model, HttpSession session) throws Exception {
-       GgiriBoardLikeDTO Dto = new GgiriBoardLikeDTO();
+       if(session.getAttribute(LOGIN) != null) {
+    	GgiriBoardLikeDTO Dto = new GgiriBoardLikeDTO();
        Dto.setProjectNum(projectNum);
+//       Dto.setMemberNum(memberNum) = (String)session.getAttribute(LOGIN);
        Dto.setLike_check(0);
        int a = ps.select_heart(Dto);
        model.addAttribute("likeCount",a);
-    	
+       }
     	
     	if(session.getAttribute(LOGIN) != null) {
          String id = (String)session.getAttribute(LOGIN);

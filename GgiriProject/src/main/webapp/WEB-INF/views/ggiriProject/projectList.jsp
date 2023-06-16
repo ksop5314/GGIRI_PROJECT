@@ -186,6 +186,24 @@ a {
 			    <h3>등록된 글이 없습니다</h3>
 			</c:if>
 			<br>
+			<c:if test="${loginUser == null}">
+		    <c:forEach var="dto" items="${list }">
+		        <div id="mem">
+		            <h3>${dto.prodate }</h3>
+		            <a id="title" href="/root/ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a>
+		            <br>
+		            <p>${dto.id }</p>
+		            <p>${dto.job }</p>
+		            <div class="skill">
+		            <br>
+		                <c:forEach var="selectedSkill" items="${dto.skill}">
+		                    <div style="display:inline" id="skill">${selectedSkill}</div>
+		                </c:forEach>
+		            </div>
+		        </div>
+		        <br>
+		    </c:forEach>
+		    </c:if>
    			<c:if test="${loginUser != null}">
 				<c:forEach var="dto" items="${list }">
 					<div id="mem">

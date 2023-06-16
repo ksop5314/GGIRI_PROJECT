@@ -94,6 +94,11 @@ table td{
 					<td><input type="submit" value="수정" onclick="location.href='${contextPath}/ggiriMember/writeFreeModifyForm?id=${info.id }'"><input type="submit" value="삭제" onclick="location.href='${contextPath}/ggiriMember/writeFreeDelete?id=${info.id }'"></td>
 				</tr>
 				</c:if>
+				<c:if test="${info.id == kakaoMember.id || info.id == googleMember.id || info.id == naverMember.id }">
+				<tr>
+					<td><input type="submit" value="수정" onclick="location.href='${contextPath}/ggiriMember/writeFreeModifyForm?id=${info.id }'"><input type="submit" value="삭제" onclick="location.href='${contextPath}/ggiriMember/writeFreeDelete?id=${info.id }'"></td>
+				</tr>
+				</c:if>
 			</table>
 			<br>
 	<h1 style="text-align: center;"> 완성한 프로젝트 내용 </h1>

@@ -23,6 +23,7 @@ function count_check(obj){
 		return false;
 	}
 }
+
 </script>
 <style type="text/css">
 *{

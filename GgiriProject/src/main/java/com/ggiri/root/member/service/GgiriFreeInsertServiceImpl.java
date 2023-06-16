@@ -106,12 +106,6 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 		return gfs.getAdminListCount();
 	}
 
-	@Override
-	public void adminProjectList(Model model) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public List<GgiriFreeInsertDTO> ajaxMemberList() {
 		return gfm.ajaxMemberList();
 	}

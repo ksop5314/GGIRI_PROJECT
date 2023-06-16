@@ -14,8 +14,15 @@
 		<div class="modify">
 			<form action="../ggiriHelp/modify" method="post">
 				<input type="hidden" name="helpNo" value="${data.helpNo }">
+				<c:if test="${loginUser != null}">
 				<b> 작성자 </b><br>
 				<input type="text" name="id" value="${loginUser }" readonly><br>
+				</c:if>
+				<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
+				<b> 작성자 </b><br>
+				<input type="text" name="id" id="id" value="${data.id }" readonly>
+				</c:if>
+				<br>
 				<b> 제 목 </b><br>
 				<input type="text" name="title" size="50" value="${data.title }"><br>
 				<b> 내 용 </b><br>
