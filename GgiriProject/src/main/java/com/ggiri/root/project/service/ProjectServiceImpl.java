@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.ggiri.root.member.dto.GgiriMemberDTO;
+import com.ggiri.root.mybatis.member.GgiriMemberMapper;
 import com.ggiri.root.mybatis.project.ProjectMapper;
+import com.ggiri.root.project.dto.GgiriBoardLikeDTO;
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
 
@@ -16,7 +19,8 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     private ProjectMapper pm;
-
+    @Autowired
+	private GgiriMemberMapper gmm;
     
     
     @Override
@@ -139,33 +143,37 @@ public class ProjectServiceImpl implements ProjectService {
 		return pm.projectList();
 		
 	}
+
+	
 	
 	//좋아요
 	
+	@Override
+	public void like_check(int projectNum, int memberNum) {
+		try {
+			GgiriBoardLikeDTO dto = new GgiriBoardLikeDTO();
+			dto.setMemberNum(memberNum);
+			dto.setProjectNum(projectNum);
+			System.out.println("맴버 넘버 : " + memberNum);
+			System.out.println("플젝 넘버 : " + projectNum);
+			int a = pm.select_heart(dto);
+			
+			if(a == 0) {
+				pm.insert_heart(dto);
+			}else
+				pm.deleteHeart(dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 
+	}
+
+	@Override
+	public int select_heart(GgiriBoardLikeDTO dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
-//	@Override
-//	public void like_check(int projectNum, int memberNum) {
-//		try {
-//			GgiriBoardLikeDTO dto = new GgiriBoardLikeDTO();
-//			dto.setMemberNo(memberNum);
-//			dto.setProjectNum(projectNum);
-//			int a = pm.select_heart_Id(dto);
-//			
-//			if(a == 0) {
-//				pm.insert_heart(dto);
-//			}else
-//				pm.deleteHeart(dto);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		 
-//	}
-//
-//	@Override
-//	public int select_heart(GgiriBoardLikeDTO dto) {
-//		
-//		return pm.select_heart(dto);
-//	}
 	
 	
 	

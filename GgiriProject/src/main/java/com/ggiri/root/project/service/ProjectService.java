@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.ui.Model;
 
+import com.ggiri.root.project.dto.GgiriBoardLikeDTO;
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
 
@@ -52,9 +53,9 @@ public interface ProjectService {
 
 
     // 좋아요 
-//    public void like_check(int projectNum, int memberNum);
-//    
-//    public int select_heart(GgiriBoardLikeDTO dto);
+    public void like_check(int projectNum, int memberNum);
+    
+    public int select_heart(GgiriBoardLikeDTO dto);
 
 
 

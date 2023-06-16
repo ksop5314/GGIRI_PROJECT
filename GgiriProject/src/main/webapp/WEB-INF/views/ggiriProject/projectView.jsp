@@ -227,8 +227,40 @@ function modifyModalRep(){
  	
 
 	
-/*  */
+/* 좋아요 */
+function like(){
+	var contextPath = "${pageContext.request.contextPath}";
+	let memberNum = $("#myHeart").val();
+	let projectNum = $("#projectNum").val();
+	var clickLikeUrl = contextPath + "/resources/image/heart.png"
+	var emptyLikeUrl = contextPath + "/resources/image/empty_heart.png"
+	console.log(memberNum);
+    console.log(projectNum);
+	$.ajax({
+		url: contextPath + "/ggiriProject/like_check/"+$('#projectNum').val(),
+		type:"post",
+		dataType:"json",
+		contentType: "application/json; charset=utf-8",
+		success: function(data){
+			alert('좋아요 기능 성공..!!' + data + " 입니단");
+			if($('#like_check').val() > data) {
+				$("#myHeart").attr("src", emptyLikeUrl);
+			} else {
+				$("#myHeart").attr("src", clickLikeUrl);
+			}
+			$('#like_check').val(data);
+			
+			},
+			error: function() {
+				alert('좋아요 기능이 안 돼요..');
+			}
+		})
+		
 
+	
+		
+		
+	}
 </script>
 <style type="text/css">
 * {
@@ -369,11 +401,14 @@ input[type=button]:hover {
 					<input type="button" value="수정" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
 					<input type="button" value="삭제" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
 					<button type="submit" onclick="location='../ggiriComplete/completeWrite'">프로젝트 완성</button>
+					<button id="myHeart" onclick="like()" value="${ggiriMemberInfo.memberNum }"><img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트"><b id=like_check>${likeCount }</b></button>
+					
 				</c:if>
 				<c:if test="${data.id == kakaoMember.id || data.id == googleMember.id || data.id == naverMember.id }">
 					<input type="button" value="수정" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
 					<input type="button" value="삭제" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
 					<button type="submit" onclick="location='../ggiriComplete/completeWrite'">프로젝트 완성</button>
+					<button id="like_check" onclick="like()"><img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트"></button>
 				</c:if>
 		</div>
     </div>
