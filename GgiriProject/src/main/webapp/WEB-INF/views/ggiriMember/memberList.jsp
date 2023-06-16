@@ -399,12 +399,16 @@ a{
     display: inline-block;
     margin: 20px;
 }
+
+.body {
+	padding: 0 20%;	
+}
 </style>
 </head>
 <body>
 <c:import url="../default/header.jsp"/>
 	<br>
-	<div class="wrap">
+	<div class="body">
 		<div class="freeTxt">
 			<p>끼리가 보증하는 IT파트너</p>
 			<p id="h">프로젝트 등록하면<br>

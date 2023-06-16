@@ -1,6 +1,7 @@
 package com.ggiri.root.project.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.ui.Model;
 
@@ -9,7 +10,7 @@ import com.ggiri.root.project.dto.ProjectRepDTO;
 
 public interface ProjectService {
 
-    public void projectList(Model model);
+	public List<Map<String, Object>> projectList(Model model);
 
     public void projectView(int projectNum, Model model);
 	
@@ -44,4 +45,20 @@ public interface ProjectService {
 	public int modifyModalRep(ProjectRepDTO dto);
 //	public void modalContent(int projectNum, Model model);
 	
+	// 프로젝트 리스트 
+    public List<Map<String, Object>> selectJob(Model model);
+    
+    public List<Map<String, Object>> selectSnsJob(String id,Model model);
+
+
+    // 좋아요 
+//    public void like_check(int projectNum, int memberNum);
+//    
+//    public int select_heart(GgiriBoardLikeDTO dto);
+
+
+
+
+
+
 }

@@ -67,10 +67,8 @@ public class GoogleServiceImpl implements GoogleService {
 			JsonElement element = parser.parse(result);
 			
 			access_token = element.getAsJsonObject().get("access_token").getAsString();
-			refresh_token = element.getAsJsonObject().get("refresh_token").getAsString();
 			
 			System.out.println("access_token : " + access_token);
-			System.out.println("refresh_token : " + refresh_token);
 			
 			br.close();
 			bw.close();

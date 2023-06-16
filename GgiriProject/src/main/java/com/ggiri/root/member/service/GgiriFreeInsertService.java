@@ -56,4 +56,8 @@ public interface GgiriFreeInsertService {
 
 	public List<GgiriFreeInsertDTO> ajaxMemberList();
 	
+	public List<GgiriFreeInsertDTO> ggiriMemberJob(Model model);
+	
+	public List<GgiriFreeInsertDTO> ggiriSnsJob(Model model);	
+	
 }

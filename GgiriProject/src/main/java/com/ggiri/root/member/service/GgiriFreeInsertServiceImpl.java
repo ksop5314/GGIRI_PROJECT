@@ -125,6 +125,18 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 //	GgiriFreeInsertDTO dto = gfm.getBoard(userid);
 //	model.addAttribute("info", dto);
 		
-	
+	@Override
+	public List<GgiriFreeInsertDTO> ggiriMemberJob(Model model) {
+		List<GgiriFreeInsertDTO> dto = gfm.ggiriMemberJob();
+		model.addAttribute("ggiriMemberJob", dto);
+		return dto;
+	}
+
+	@Override
+	public List<GgiriFreeInsertDTO> ggiriSnsJob(Model model) {
+		List<GgiriFreeInsertDTO> dto = gfm.ggiriSnsJob();
+		model.addAttribute("ggiriSnsJob", dto);
+		return dto;
+	}	
 	
 }

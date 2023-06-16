@@ -30,7 +30,7 @@ public class GgiriMemberDTO {
 	private String email;
 	private String tel;
 	private String addr;
-	private String logdate;
+	private String logtime;
 	
 	
 	public int getMemberNum() {
@@ -88,13 +88,12 @@ public class GgiriMemberDTO {
 		this.addr = addr;
 	}
 	
-	
-	public String getLogdate() {
-		return logdate;
+	public String getLogtime() {
+		return logtime;
 	}
-	public void setLogdate(Timestamp logdate) {
+	public void setLogtime(Timestamp logtime) {
 		SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
-		this.logdate = format.format(logdate);
+		this.logtime = format.format(logtime);
 	}
 	
 	
