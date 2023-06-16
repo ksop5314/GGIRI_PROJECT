@@ -1,12 +1,14 @@
 package com.ggiri.root.project.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.ggiri.root.mybatis.project.ProjectMapper;
+import com.ggiri.root.project.dto.GgiriBoardLikeDTO;
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
 
@@ -16,10 +18,7 @@ public class ProjectServiceImpl implements ProjectService {
     @Autowired
     private ProjectMapper pm;
 
-    @Override
-    public void projectList(Model model) {
-        model.addAttribute("projectList", pm.projectList());
-    }
+    
     
     @Override
     public void projectView(int projectNum, Model model) {
@@ -118,6 +117,54 @@ public class ProjectServiceImpl implements ProjectService {
 //	public void modalContent(int projectNum, Model model) {
 //		model.addAttribute("modalContent", pm.modalContent(projectNum));
 //	}
+	// 프리랜서 리스트
+	@Override
+	public List<Map<String, Object>> selectJob(Model model) {
+		model.addAttribute("list",pm.selectJob());
+		return pm.selectJob();
+	}
+
+	@Override
+	public List<Map<String, Object>> selectSnsJob(String id,Model model) {
+		model.addAttribute("snsList", pm.selectSnsJob());
+		return pm.selectSnsJob();
+	}
+	@Override
+	public List<Map<String, Object>> projectList(Model model) {
+		model.addAttribute("projectList", pm.projectList());
+		return pm.projectList();
+		
+	}
+	
+	//좋아요
+	
+	
+//	@Override
+//	public void like_check(int projectNum, int memberNum) {
+//		try {
+//			GgiriBoardLikeDTO dto = new GgiriBoardLikeDTO();
+//			dto.setMemberNo(memberNum);
+//			dto.setProjectNum(projectNum);
+//			int a = pm.select_heart_Id(dto);
+//			
+//			if(a == 0) {
+//				pm.insert_heart(dto);
+//			}else
+//				pm.deleteHeart(dto);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		 
+//	}
+//
+//	@Override
+//	public int select_heart(GgiriBoardLikeDTO dto) {
+//		
+//		return pm.select_heart(dto);
+//	}
+	
+	
+	
 	
 }
 

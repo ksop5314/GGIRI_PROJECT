@@ -34,4 +34,9 @@ public interface GgiriFreeInsertMapper {
 	public List<GgiriFreeInsertDTO> ajaxMemberList();
 	
 	public int boardCount();
+	
+	public List<GgiriFreeInsertDTO> ggiriMemberJob();
+	
+	public List<GgiriFreeInsertDTO> ggiriSnsJob();	
+	
 }

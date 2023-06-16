@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ggiri.root.member.dto.GgiriMemberDTO;
+import com.ggiri.root.member.service.GgiriFreeInsertService;
 import com.ggiri.root.member.service.GgiriService;
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
@@ -33,7 +34,7 @@ public class ProjectController implements GgiriMemberSession{
 	private ProjectService ps;
 	
 	@Autowired
-	private ProjectServiceImpl projectService;
+	private GgiriFreeInsertService gfs;
 
 	@Autowired
 	private GgiriService gs;
@@ -130,10 +131,10 @@ public class ProjectController implements GgiriMemberSession{
         @RequestParam(value = "page", defaultValue = "1") int page,
         @RequestParam(value = "keyword", required = false) String keyword,
         @RequestParam(value = "condition", defaultValue = "title") String condition,
-        Model model
-    ) {
+        Model model, HttpSession session
+    )throws Exception  {
         int perPage = 10; // 한 페이지에 보여줄 프로젝트 개수
-
+        
         if (keyword != null && !keyword.isEmpty()) {
             // 검색어가 입력된 경우 검색 기능 적용
             int totalCount = ps.getProjectCountBySearch(keyword, condition);
@@ -157,7 +158,33 @@ public class ProjectController implements GgiriMemberSession{
             model.addAttribute("currentPage", page);
             model.addAttribute("totalPages", totalPages);
         }
-
+        if(session.getAttribute(LOGIN) == null) {
+        	String id = (String)session.getAttribute(LOGIN);
+        	List<Map<String, Object>> list = ps.selectJob(model);
+        	gfs.ggiriMemberJob(model);			
+	        return "ggiriProject/projectList";
+        }
+        if(session.getAttribute(LOGIN) != null) {
+			String id = (String)session.getAttribute(LOGIN);
+			List<Map<String, Object>> list = ps.selectJob(model);
+			gfs.ggiriMemberJob(model);			
+	        return "ggiriProject/projectList";
+		} else if(session.getAttribute("kakaoMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("kakaoMember");
+			List<Map<String, Object>> list = ps.selectSnsJob(dto.getId(),model);
+			gfs.ggiriSnsJob(model);
+	        return "ggiriProject/projectList";
+		} else if(session.getAttribute("naverMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("naverMember");
+			List<Map<String, Object>> list = ps.selectSnsJob(dto.getId(),model);
+			gfs.ggiriSnsJob(model);
+	        return "ggiriProject/projectList";
+		} else if(session.getAttribute("googleMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("googleMember");
+			List<Map<String, Object>> list = ps.selectSnsJob(dto.getId(),model);
+			gfs.ggiriSnsJob(model);
+	        return "ggiriProject/projectList";
+		}
         return "ggiriProject/projectList";
     }
     
@@ -223,5 +250,7 @@ public class ProjectController implements GgiriMemberSession{
 		return ps.getRepList(bno);
 		
 	}
+	
+	// 좋아요
 	
 }
