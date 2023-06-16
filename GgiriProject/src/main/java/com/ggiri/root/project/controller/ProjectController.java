@@ -4,6 +4,7 @@ package com.ggiri.root.project.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
@@ -202,29 +203,6 @@ public class ProjectController implements GgiriMemberSession{
 		}
         return "ggiriProject/projectList";
     }
-    
-//    @GetMapping("projectList")
-//    public String projectList(
-//        @RequestParam(value = "keyword", required = false) String keyword,
-//        @RequestParam(value = "condition", defaultValue = "title") String condition,
-//        Model model
-//    ) {
-//        if (keyword != null && !keyword.isEmpty()) {
-//            // 검색어가 입력된 경우 검색 기능 적용
-//            List<ProjectDTO> projectList = ps.search(keyword, condition);
-//            
-//            model.addAttribute("keyword", keyword);
-//            model.addAttribute("condition", condition);
-//            model.addAttribute("projectList", projectList);
-//        } else {
-//            // 검색어가 없는 경우 전체 프로젝트 목록 조회
-//            List<ProjectDTO> projectList = ps.getProjectList();
-//            
-//            model.addAttribute("projectList", projectList);
-//        }
-//
-//        return "ggiriProject/projectList";
-//    }
 
     
     

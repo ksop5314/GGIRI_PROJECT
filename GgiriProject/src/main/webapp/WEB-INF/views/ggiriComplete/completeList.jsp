@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ggiriComplete/completeList.jsp</title>
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <style type="text/css">
 table {
 	width: 1100px;
@@ -33,11 +34,16 @@ table td {
 	margin: auto;
 	text-align: left;
 }
-.skill{
+#h3{
 	font-family: 'IBM Plex Sans KR', sans-serif;
+	border: hidden;
+	color: white;
+	background-color: #9cded5;
+	margin: 10px;
+	padding: 3px 7px;
 	display: inline-block;
+	font-size: 20px;
 	float: right;
-	
 }
 form{
 	float:left; 
@@ -48,19 +54,18 @@ form{
 	width: 1000px;
 	height: 200px;
 }
-
-#h3{
-	padding: 10px 15px;
-	font-size: 15px;
-	text-align: center;
+h3{
+	margin-bottom: 20px;
+	font-size: 20px;
+	text-align: left;
 	background-color: white;
 	border-color: gray;
 	font-family: 'IBM Plex Sans KR', sans-serif;
 }
-#h3:hover{
-	background-color: #EAEAEA;
-	border-color: black;
-	cursor: pointer;
+#mem {
+   padding: 30px;
+   border: 2px solid navy;
+   border-radius: 40px;
 }
 #id{
 	border: 1px solid white;
@@ -72,33 +77,17 @@ form{
 	color: black;
 	font-size: 30px;
 }
-.freeTxt {
-	font-family: 'IBM Plex Sans KR', sans-serif;
-	font-weight: bold;
-	float:left;
-}
 div #h{
 	font-size: 24px;
 	font-weight: bolder;
 }
 a{
 	text-decoration: none;
-	/* color: white; */
 }
-#freeInput {
- 	border-radius: 15px;
-	font-size: 15px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	float: right;
-    min-height: 50px; 
-    min-width: 170px;
-	font-family: 'IBM Plex Sans KR', sans-serif;
-	cursor: pointer;
-}
-#freeInput:hover {
-	background-color: white;
-	transition: 0.5s;
+.freeTxt {
+   font-family: 'IBM Plex Sans KR', sans-serif;
+   font-weight: bold;
+   float:left;
 }
 #button1 {
 	width: 60px;
@@ -114,6 +103,33 @@ a{
 	background-color:#EBF7FF;
     transition: 0.5s;
 }
+#skill {
+    padding: 10px;
+    font-size: 20px;
+    width: fit-content;
+    margin: auto;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    border-radius: 40px;
+    background-color: #EBF7FF;
+}
+.search{
+	text-align: center;
+}
+#hit{
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	padding: 5px 20px;
+	margin: auto;
+	border-radius: 40px;
+	color: gray;
+	width: fit-content;
+	background-color: beige;
+	font-weight: bold;
+	float: right; 
+}
+#title {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-size: 34px;
+}
 </style>
 </head>
 <body>
@@ -122,69 +138,79 @@ a{
 	<div class="wrap">
 		<div class="freeTxt">
 			<p>끼리가 보증하는 IT파트너</p>
-			<p id="h">프로젝트 등록하면<br>
-			더 정확한 추천을 받을 수 있어요</p>
-			<br>
-		</div> 
-		<br><br><br><br><br>
-		<div class="skill">
-			<form method="get" action="main">
-				<button id="h3" type="submit" style=" border-radius: 30px;"> 2020 </button>
-			</form>
-			<form action="#">
-				<button id="h3" type="submit" style=" border-radius: 30px;"> 2021  </button> 
-			</form>
-			<form action="#">
-			 	<button id="h3" type="submit" style=" border-radius: 30px;"> 2022 </button> 
-			</form>
-			<form action="#">
-				<button id="h3" type="submit" style=" border-radius: 30px;"> 2023 </button> 
-			</form>
+			<p id="h">파트너들이 진행한<br>
+			프로젝트를 참고해 보세요</p>
 		</div>
-		<br><br><br><br><hr>
+		<br><br>
+		<div class="cal">
+			<button id="h3" type="submit" style=" border-radius: 30px;"> 2023 </button> &nbsp;&nbsp;&nbsp;
+			<button id="h3" type="submit" style=" border-radius: 30px;"> 2022  </button> &nbsp;&nbsp;&nbsp;
+		 	<button id="h3" type="submit" style=" border-radius: 30px;"> 2021 </button> &nbsp;&nbsp;&nbsp;
+			<button id="h3" type="submit" style=" border-radius: 30px;"> 2020 </button> &nbsp;&nbsp;
+		</div>
+		<br><br><hr>
 	</div>
 	<div class="wrap board_table">
-	<h1></h1>
-	<br>
-		<table style="border:1px solid white;">
+		<h1></h1>
+		<br>
+		<div id="devList">
+			<c:if test="${completeList.size()==0 }">	
+			    <h3>등록된 글이 없습니다</h3>
+			</c:if>
+			<c:if test="${loginUser != null}">
+				<c:forEach var="dto" items="${completeList }">
+					<div id="mem">
+						<input type="hidden" id="id" value="${dto.id }">
+						<input type="hidden" id="completeNum" value="${dto.completeNum }">
+						<h3>${dto.comdate }</h3>
+						<a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a>
+						<div class="skill">
+						<br>
+			                <c:forEach var="selectedSkill" items="${dto.skill}">
+			                    <div style="display:inline" id="skill">${selectedSkill}</div>
+			                    <p id="hit">조회수 ${dto.comHit }</p>
+			                </c:forEach>
+						</div>
+					</div>
+					<br><br>
+				</c:forEach>
+			</c:if>
+		<%-- <table style="border:1px solid white;">
 			<tr>
 				<th style="display: none" width="50px"> 글번호 </th>
 				<th style="display: none" width="100px"> 작성자 </th>
 				<th width="700px"> 제 목 </th>
 				<th width="150px"> 날 짜 </th>
 				<th width="75px"> 조회수 </th>
-				<th width="50px"> 좋아요 </th>
+				<!-- <th width="50px"> 좋아요 </th> -->
 			</tr>
-			<c:if test="${completeList.size()==0 }">
-				<tr>
-					<th colspan="6"> 등록된 글이 없습니다 </th>
-				</tr>
-			</c:if>
 			<c:forEach var="dto" items="${completeList }">
 				<tr style="text-align: right">
 					<td style="display: none" >${dto.completeNum }</td>
 					<td style="display: none">${dto.id }</td>
-					<td><a href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a></td>
+					<td height="100px"><a href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a></td>
 					<td>${dto.comdate }</td>
 					<td>${dto.comHit }</td>
 			        <td>${dto.likeCount }</td>
 				</tr>
 			</c:forEach>
-		</table>
+		</table> --%>
 		<br>
-	  <form action="projectList.do" method="get">
-	    <label for="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">검색조건</label><br>
-	    <select name="condition" id="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">
-	      <option value="titleContent" <c:if test="${condition eq 'titleContent' }">selected</c:if>>제목 + 본문</option>
-	      <option value="title" <c:if test="${condition eq 'title' }">selected</c:if>>제목</option>
-	      <option value="id" <c:if test="${condition eq 'id' }">selected</c:if>>작성자</option>
-	    </select>
-	    <input type="text" name="keyword" id="keyword" style="font-family: 'IBM Plex Sans KR', sans-serif"
-	           placeholder="검색어" value="${keyword }"/>
-	    <button id="button1" type="submit">검색</button>
-	  </form>
+		<form action="projectList.do" method="get">
+			<div class="search">
+				<select name="condition" id="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">
+					<option value="titleContent" <c:if test="${condition eq 'titleContent' }">selected</c:if>>제목 + 본문</option>
+					<option value="title" <c:if test="${condition eq 'title' }">selected</c:if>>제목</option>
+					<option value="id" <c:if test="${condition eq 'id' }">selected</c:if>>작성자</option>
+				</select>
+				<input type="text" name="keyword" id="keyword" style="font-family: 'IBM Plex Sans KR', sans-serif"
+						placeholder="검색어" value="${keyword }"/>
+				<button id="button1" type="submit">검색</button>
+			</div>
+		</form>
 	</div>
 	<br>
+	</div>
 	<c:import url="../default/footer.jsp"></c:import>
 </body>
 </html>

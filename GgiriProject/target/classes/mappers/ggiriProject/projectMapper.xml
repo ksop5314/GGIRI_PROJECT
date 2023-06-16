@@ -9,6 +9,7 @@
 		<result property="projectNum" column="projectNum"/>
 		<result property="memberNum" column="memberNum"/>
 		<result property="title" column="title"/>
+		<result property="project" column="project"/>
 		<result property="content" column="content"/>
 		<result property="prodate" column="prodate"/>
 		<result property="proHit" column="proHit"/>
@@ -86,7 +87,7 @@
 	
 	
 	<select id="projectList" resultMap="project">
-		SELECT * FROM ggiriProject
+		SELECT * FROM ggiriProject ORDER BY projectNum DESC
 	</select>
 	
 	<select id="projectView" resultMap="project">
@@ -94,8 +95,8 @@
 	</select>
 	
 	<insert id="insertPro">
-		INSERT INTO ggiriProject(projectNum, memberNum, title, content, id, skill) 
-		VALUES(ggiriProject_seq.nextval, #{memberNum}, #{title}, #{content}, #{id}, #{skill})
+		INSERT INTO ggiriProject(projectNum, memberNum, title, project, content, id, skill) 
+		VALUES(ggiriProject_seq.nextval, #{memberNum}, #{title}, #{project}, #{content}, #{id}, #{skill})
 	</insert>
 	
 	<update id="proHit">
@@ -103,12 +104,18 @@
 	</update>
 	
 	<update id="modify">
-		UPDATE ggiriProject SET title=#{title}, content=#{content} WHERE projectNum=#{projectNum}
+		UPDATE ggiriProject SET title=#{title}, content=#{content}, project=#{project} WHERE projectNum=#{projectNum}
 	</update>
 	
 	<delete id="delete">
 		DELETE FROM ggiriProject WHERE projectNum=#{projectNum}
 	</delete>
+	
+	<select id="getProjectInfo" resultMap="project">
+		SELECT * FROM ggiriProject WHERE projectNum=#{projectNum}
+	</select>
+	
+	
 	
 	<!-- 관리자 페이지 프로젝트 삭제 -->
 	<delete id="proDelete">
@@ -126,17 +133,17 @@
 	
 	<!-- 페이지 단위로 프로젝트 목록 조회 -->
 	<select id="getProjectList" parameterType="map" resultMap="project">
-<!-- 	    SELECT *
+	    SELECT *
 	    FROM (
 	        SELECT ROWNUM AS rnum, p.*
-	        FROM ( -->
+	        FROM ( 
 	            SELECT *
 	            FROM ggiriProject
 	            ORDER BY projectNum DESC
-<!-- 	        ) p
+	        ) p
 	        WHERE ROWNUM &lt;= #{endRow}
 	    )
-	    WHERE rnum &gt;= #{startRow} -->
+	    WHERE rnum &gt;= #{startRow} 
 	</select>
 	
 	<!-- 검색 조건에 따른 프로젝트 개수 조회 -->
@@ -158,6 +165,10 @@
 	
 	<!-- 검색 조건에 따른 프로젝트 목록 조회 -->
 	<select id="getProjectListBySearch" parameterType="map" resultMap="project">
+		SELECT *
+	    FROM (
+	        SELECT ROWNUM AS rnum, p.*
+	        FROM (
 	            SELECT *
 	            FROM ggiriProject
 	            WHERE
@@ -173,27 +184,11 @@
 	                </when>
 	            </choose>
 	            ORDER BY projectNum DESC
+	        ) p
+	        WHERE ROWNUM &lt;= #{endRow}
+	    )
+	    WHERE rnum &gt;= #{startRow}
 	</select>
-
-	<!-- <select id="searchByTitleAndContent" resultType="ProjectDTO">
-	    SELECT *
-	    FROM project
-	    WHERE title LIKE CONCAT('%', #{keyword}, '%')
-	        OR content LIKE CONCAT('%', #{keyword}, '%')
-	</select>
-	
-	<select id="searchByTitle" resultType="ProjectDTO">
-	    SELECT *
-	    FROM project
-	    WHERE title LIKE CONCAT('%', #{keyword}, '%')
-	</select>
-
-	
-	<select id="searchByAuthor" resultType="ProjectDTO">
-	    SELECT *
-	    FROM project
-	    WHERE id LIKE CONCAT('%', #{keyword}, '%')
-	</select> -->
 	
 	<!-- 댓글 -->
 	<insert id="addReplyTest">

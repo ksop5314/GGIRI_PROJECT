@@ -8,6 +8,7 @@ public class ProjectDTO {
 	private int projectNum; // 프로젝트 번호
 	private int memberNum;
 	private String title; // 제목
+	private String project; // 프로젝트 상황
 	private String content; // 내용
 	private String prodate; // 등록일
 	private int proHit; // 조회수
@@ -73,6 +74,14 @@ public class ProjectDTO {
 		this.title = title;
 	}
 	
+	public String getProject() {
+		return project;
+	}
+
+	public void setProject(String project) {
+		this.project = project;
+	}
+
 	public String getContent() {
 		return content;
 	}

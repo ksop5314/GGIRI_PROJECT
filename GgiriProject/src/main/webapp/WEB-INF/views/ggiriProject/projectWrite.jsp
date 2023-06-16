@@ -138,15 +138,34 @@ table td {
 	<form action="../ggiriProject/projectSave" method="post">
 		<table>
 			<tr>
-			<th>제 목</th>
-			<td><input type="text" name="title" size="50"></td>
+				<th>제 목</th>
+				<td><input type="text" name="title" size="50"></td>
 			</tr>
 			<tr>
-			<th>작성자</th>
-			<td><input type="text" name="id" value="${loginUser }"></td>
+				<th>작성자</th>
+				<td>
+					<input type="text" id="id" name="id" value="${loginUser }">
+					<c:if test="${loginUser != null}">
+						<input type="hidden" name="id" id="id" value="${loginUser }" readonly>
+						<input type="hidden" name="memberNum" id="memberNum" value="${ggiriMemberInfo.memberNum }">
+					</c:if>
+					<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
+						<input type="hidden" name="id" id="id" value="${ggiriSnsInfo.id }" readonly>
+						<input type="hidden" name="memberNum" id="memberNum" value="${ggiriSnsInfo.memberNum }">
+					</c:if>
+				</td>
 			</tr>
 			<tr>
-			<th>스 킬</th>
+				<th>프로젝트 상태</th>
+				<td>
+		            <label for="proceeding"> 진행중 </label>
+		            <input type="radio" name="project" id="proceeding" value="진행중" checked>
+		            <label for="complete"> 완료 </label>
+		            <input type="radio" name="project" id="complete" value="완료">
+	            </td>
+			</tr>
+			<tr>
+				<th>스 킬</th>
 			<td><br>
 			<div class="check">
 					<input type="checkbox" class="hidden" name="skill" id="available_0" value="frontEnd" onclick="count_check(this)">

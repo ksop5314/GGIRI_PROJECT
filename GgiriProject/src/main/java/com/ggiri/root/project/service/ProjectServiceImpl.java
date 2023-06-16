@@ -3,6 +3,7 @@ package com.ggiri.root.project.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -59,10 +60,6 @@ public class ProjectServiceImpl implements ProjectService {
         return pm.getProjectListBySearch(keyword, searchType, startRow, endRow);
     }
 
-//    @Override
-//    public List<ProjectDTO> getProjectList(int page, int perPage) {
-//        return pm.getProjectList();
-//    }
 
     @Override
     public List<ProjectDTO> getProjectList(int page, int perPage) {
@@ -75,6 +72,12 @@ public class ProjectServiceImpl implements ProjectService {
     public int getProjectCount() {
         return pm.getProjectCount();
     }	
+    
+    
+    @Override
+    public List<ProjectDTO> getProjectInfo(int projectNum, Model model) {
+    	return pm.getProjectInfo(projectNum, model);
+    }
     
     
     // 관리자 페이지
@@ -94,12 +97,8 @@ public class ProjectServiceImpl implements ProjectService {
     	model.addAttribute("adminReplyList", pm.adminReplyList());
     }
     
+    
     // 댓글
-//    @Override
-//	public void addReply(ProjectRepDTO dto) {
-//		pm.addReply(dto);
-//	}
-
     @Override
     public int addReplyTest(ProjectRepDTO dto) {
     	

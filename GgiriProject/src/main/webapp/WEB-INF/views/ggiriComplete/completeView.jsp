@@ -28,34 +28,34 @@ table { border-collapse: collapse; }
 				<th style="display: none"> 작성일 </th><td style="display: none">${data.comdate }</td>
 			</tr>
 			<tr>
-				<th> 프로젝트 제목 </th>
+				<th style="border-bottom: hidden; width: 1000px"> 프로젝트 제목 </th>
 			</tr>
 			<tr>
-				<td>${data.title }</td>
+				<td height="50px">${data.title }</td>
 			</tr>
 			<tr>
-				<th> 프로젝트 설명 </th>
+				<th style="border-bottom: hidden;"> 프로젝트 설명 </th>
 			</tr>
 			<tr>
-				<td><pre><c:out value="${data.content }"/></pre></td>
+				<td height="300px"><pre><c:out value="${data.content }"/></pre></td>
 			</tr>
 			<tr>
-				<th> 이런 스킬을 사용했어요. </th>
+				<th style="border-bottom: hidden;"> 이런 스킬을 사용했어요. </th>
 			</tr>
 			<tr>
-				<td><pre><c:out value="${data.skill }"/></pre></td>
+				<td height="100px"><pre><c:out value="${data.skill }"/></pre></td>
 			</tr>
 			<tr>
-				<th> 함께 진행한 팀원들을 소개할게요. </th>
+				<th style="border-bottom: hidden;"> 함께 진행한 팀원들을 소개할게요. </th>
 			</tr>
 			<tr>
-				<td>${data.members }</td>
+				<td height="50px">${data.members }</td>
 			</tr>
 			<tr>
-				<th> Tag </th>
+				<th style="border-bottom: hidden;"> Tag </th>
 			</tr>
 			<tr>
-				<td>${data.tag }</td>
+				<td height="50px">${data.tag }</td>
 			</tr>
 			<tr>
 				<td colspan="4" align="center">

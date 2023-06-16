@@ -35,18 +35,18 @@ CONSTRAINT ggiri_test FOREIGN KEY(freeNum) REFERENCES ggirimember(memberNum) ON 
 // 프리랜서 테이블 시퀀스 >> CREATE SEQUENCE ggiriFree_seq NOCACHE NOCYCLE;
 
 
-//프로젝트 테이블
+-- 프로젝트 테이블
 
 create table ggiriProject(
 memberNum NUMBER(20),
-projectNum NUMBER(20) primary key,
-title VARCHAR2(200),
-content VARCHAR2(2000),
-members VARCHAR2(100),
-prodate DATE DEFAULT SYSDATE,
-proHit NUMBER(10) DEFAULT 0,
-id VARCHAR2(100) NOT NULL,
-skill VARCHAR2(50),
+projectNum NUMBER(20) primary key,  -- 프로젝트 번호
+title VARCHAR2(200),                -- 제목
+project VARCHAR2(50),               -- 진행 상태
+content VARCHAR2(2000),             -- 내용
+prodate DATE DEFAULT SYSDATE,       -- 시간
+proHit NUMBER(10) DEFAULT 0,        -- 조회수
+id VARCHAR2(100) NOT NULL,          -- 아이디
+skill VARCHAR2(50),                 -- 스킬
 CONSTRAINT ggiri_project FOREIGN KEY(memberNum) REFERENCES ggirimember(memberNum) ON DELETE CASCADE
 );
 
