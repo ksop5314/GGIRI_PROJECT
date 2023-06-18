@@ -161,8 +161,8 @@ a{
 	<div class="projectListSize">
 		<div class="freeTxt">
 			<p>끼리가 보증하는 IT파트너</p>
-			<p id="h">프로젝트 등록하면<br>
-			더 정확한 추천을 받을 수 있어요</p>
+			<p id="h">프로젝트를 등록하고<br>
+			함께 할 팀원들을 구해보세요.</p>
 			<br>
 		</div> 
 		<div>

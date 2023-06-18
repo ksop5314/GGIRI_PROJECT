@@ -14,79 +14,6 @@
 
 var contextPath = "${pageContext.request.contextPath}";
 var job;
-	
-	/* GetList(1); */
-	
-	/* $.ajax({
-		url : contextPath + '/ggiriMember/ajaxMemberList',
-		type : 'get',
-		success : function(list){
-			let html = "";
-			let length = list.length;
-			console.log(length);
-			$(list).each(function(index, item){
-				$("#devList").append("<a href='Info?id=" + item.id + "'><div id='id'>" + item.id + "</div></a>"+"<div>"+ item.introduce+"</div>" + "<div>" + item.job + "</div>"
-									+"<div>"+ item.skill + "<div>");
-			});
-		},
-		error : function(xhr, status, errorThrown){
-			alert(xhr);
-			alert(status);
-			alert(errorThrown);
-		}
-	}); */
-
-/* let page = 1;
-let isLoading = false;
-$(window).on("scroll", function(){
-    var scrollTop = $(window).scrollTop();
-    var windowHeight = $(window).height();
-    var documentHeight = $(document).height();
-    var isBottom = scrollTop + windowHeight + 100 >= documentHeight;
-	
-    if(isBottom){
-    	if(page == ${totalPageCount} || isLoading){
-    		return;
-    	}
-    	
-    	isLoading = true;
-    	
-    	$(".back-drop").show();
-    	
-    	page++;
-    	
-    	console.log("inscroll : "+page);
-    	GetList(page);
-    };
-});
-
-function GetList(page){
-	console.log("inGetList : " + page);
-	
-	$.ajax({
-		
-		url : contextPath + '/ggiriMember/ajaxMemberList',
-		type : "GET",
-		data : "pageNum="+page,
-		success : function(data){
-			console.log(data);
-			$("#devList").append(data);
-			$(data).each(function(index, item){
-				$("#devList").append("<a href='Info?id=" + item.id + "'><div id='id'>" + item.id + "</div></a>"+"<div>"+ item.introduce+"</div>" + "<div>" + item.job + "</div>"
-									+"<div>"+ item.skill + "<div>");
-			});
-			$(".back-drop").hide();
-			isLoading = false;
-			console.log("ajax GetList : " + page);
-		},
-		error : function(){
-			alert("무한스크롤 에러");
-		}
-	});
-	
-}; */
-
-
 
 function developer(){
 	$("#devList").empty();
@@ -94,16 +21,47 @@ function developer(){
 	
 	var contextPath = "${pageContext.request.contextPath}";
 	
-	
 	$.ajax({
 		url : contextPath + '/ggiriMember/selectJob?job=' + job,
 		type : 'get',
 		success : function(list){
 			let html = ""
-			$(list).each(function(index, item){
-				$("#devList").append("<a href='Info?id=" + item.id + "'><div id='id'>" + item.id + "</div></a>"+"<div>"+ item.introduce+"</div>" + "<div>" + item.job + "</div>"
-									+"<div>"+ item.skill + "<div>");
+			$(list).each(function(){
+				html += "<div id='mem'>";
+			    html += "<a href='Info?id=" + this.id + "'><p id='id'>" + this.id + "</p></a>";
+			    html += "<div id='hi'>";
+			    html += "<div><h2>" + this.introduce + "</h2></div>";
+			    html += "<div>" + this.job + "</div><br><br>";
+			    html += "<div style='display:inline'>" + this.skill + "</div><br><br>";
+			    html += "</div><hr>"
+			    html += "</div>"
 			});
+			
+			$("#devList").html(html);
+			
+			$("#devList p#id").each(function() {
+				var randomColor;
+				var iterations = 0;
+
+			    do {
+			      randomColor = getRandomColor(); // 랜덤 색상 생성
+
+			      iterations++;
+			      if (iterations > 100) {
+			        // 100번 시도해도 유효한 색상을 찾지 못한 경우
+			        randomColor = null;
+			        break;
+			      }
+			    } while (!randomColor || randomColor === "#ffffff" || isColorUsed(randomColor));
+
+			    if (randomColor) {
+			      $(this).css("background-color", randomColor); // 배경 색상 적용
+			      $(this).attr("data-color", randomColor); // 배경 색상 속성 설정
+			      var textColor = getTextColorByBackgroundColor(randomColor);
+			      $(this).css("color", textColor); // 글자 색상 설정
+			    }
+			});
+			
 		},
 		error : function(xhr, status, errorThrown){
 			alert(xhr);
@@ -126,9 +84,41 @@ function publisher(){
 		success : function(list){
 			let html = ""
 			$(list).each(function(){
-				html += "<a href='Info?id="+ this.id +"'><div id='id'>" + this.id + "</div></a>" + "<div>" + this.job + "</div>";
+				html += "<div id='mem'>";
+			    html += "<a href='Info?id=" + this.id + "'><p id='id'>" + this.id + "</p></a>";
+			    html += "<div id='hi'>";
+			    html += "<div><h2>" + this.introduce + "</h2></div>";
+			    html += "<div>" + this.job + "</div><br><br>";
+			    html += "<div style='display:inline'>" + this.skill + "</div><br><br>";
+			    html += "</div><hr>"
+			    html += "</div>"
 			});
+			
 			$("#devList").html(html);
+			
+			$("#devList p#id").each(function() {
+				var randomColor;
+				var iterations = 0;
+
+			    do {
+			      randomColor = getRandomColor(); // 랜덤 색상 생성
+
+			      iterations++;
+			      if (iterations > 100) {
+			        // 100번 시도해도 유효한 색상을 찾지 못한 경우
+			        randomColor = null;
+			        break;
+			      }
+			    } while (!randomColor || randomColor === "#ffffff" || isColorUsed(randomColor));
+
+			    if (randomColor) {
+			      $(this).css("background-color", randomColor); // 배경 색상 적용
+			      $(this).attr("data-color", randomColor); // 배경 색상 속성 설정
+			      var textColor = getTextColorByBackgroundColor(randomColor);
+			      $(this).css("color", textColor); // 글자 색상 설정
+			    }
+			});
+			
 		},
 		error : function(xhr, status, errorThrown){
 			alert(xhr);
@@ -152,9 +142,40 @@ function designer(){
 		success : function(list){
 			let html = ""
 			$(list).each(function(){
-				html += "<a href='Info?id="+ this.id +"'><div id='id'>" + this.id + "</div></a>" + "<div>" + this.job + "</div>";
+				html += "<div id='mem'>";
+			    html += "<a href='Info?id=" + this.id + "'><p id='id'>" + this.id + "</p></a>";
+			    html += "<div id='hi'>";
+			    html += "<div><h2>" + this.introduce + "</h2></div>";
+			    html += "<div>" + this.job + "</div><br><br>";
+			    html += "<div style='display:inline'>" + this.skill + "</div><br><br>";
+			    html += "</div><hr>"
+			    html += "</div>"
 			});
+			
 			$("#devList").html(html);
+			
+			$("#devList p#id").each(function() {
+				var randomColor;
+				var iterations = 0;
+
+			    do {
+			      randomColor = getRandomColor(); // 랜덤 색상 생성
+
+			      iterations++;
+			      if (iterations > 100) {
+			        // 100번 시도해도 유효한 색상을 찾지 못한 경우
+			        randomColor = null;
+			        break;
+			      }
+			    } while (!randomColor || randomColor === "#ffffff" || isColorUsed(randomColor));
+
+			    if (randomColor) {
+			      $(this).css("background-color", randomColor); // 배경 색상 적용
+			      $(this).attr("data-color", randomColor); // 배경 색상 속성 설정
+			      var textColor = getTextColorByBackgroundColor(randomColor);
+			      $(this).css("color", textColor); // 글자 색상 설정
+			    }
+			});
 		},
 		error : function(xhr, status, errorThrown){
 			alert(xhr);
@@ -178,9 +199,40 @@ function planner(){
 		success : function(list){
 			let html = ""
 			$(list).each(function(){
-				html += "<table><a href='Info?id="+ this.id +"'><div id='id'>" + this.id + "</div></a>" + "<div>" + this.job + "</div></table>";
+				html += "<div id='mem'>";
+			    html += "<a href='Info?id=" + this.id + "'><p id='id'>" + this.id + "</p></a>";
+			    html += "<div id='hi'>";
+			    html += "<div><h2>" + this.introduce + "</h2></div>";
+			    html += "<div>" + this.job + "</div><br><br>";
+			    html += "<div style='display:inline'>" + this.skill + "</div><br><br>";
+			    html += "</div><hr>"
+			    html += "</div>"
 			});
+			
 			$("#devList").html(html);
+			
+			$("#devList p#id").each(function() {
+				var randomColor;
+				var iterations = 0;
+
+			    do {
+			      randomColor = getRandomColor(); // 랜덤 색상 생성
+
+			      iterations++;
+			      if (iterations > 100) {
+			        // 100번 시도해도 유효한 색상을 찾지 못한 경우
+			        randomColor = null;
+			        break;
+			      }
+			    } while (!randomColor || randomColor === "#ffffff" || isColorUsed(randomColor));
+
+			    if (randomColor) {
+			      $(this).css("background-color", randomColor); // 배경 색상 적용
+			      $(this).attr("data-color", randomColor); // 배경 색상 속성 설정
+			      var textColor = getTextColorByBackgroundColor(randomColor);
+			      $(this).css("color", textColor); // 글자 색상 설정
+			    }
+			});
 		},
 		error : function(xhr, status, errorThrown){
 			alert(xhr);
@@ -214,29 +266,30 @@ $(document).ready(function() {
 	      $(this).css("color", textColor); // 글자 색상 설정
 	    }
 	  });
-
-  function getRandomColor() {
-    var letters = "0123456789ABCDEF";
-    var color = "#";
-
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-
-    return color;
-  }
-
-  function isColorUsed(color) {
-    var used = false;
-    $("#devList p#id").each(function() {
-      if ($(this).attr("data-color") === color) {
-        used = true;
-        return false; // 반복문 종료
-      }
-    });
-    return used;
-  }
 });
+
+function getRandomColor() {
+  var letters = "0123456789ABCDEF";
+  var color = "#";
+
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+
+  return color;
+}
+
+function isColorUsed(color) {
+  var used = false;
+  $("#devList p#id").each(function() {
+    if ($(this).attr("data-color") === color) {
+      used = true;
+      return false; // 반복문 종료
+    }
+  });
+  return used;
+}
+
 function getTextColorByBackgroundColor(hexColor) {
 	  const c = hexColor.substring(1); // 색상 앞의 # 제거
 	  const rgb = parseInt(c, 16); // rrggbb를 10진수로 변환
@@ -246,51 +299,7 @@ function getTextColorByBackgroundColor(hexColor) {
 	  const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
 	  // 색상 선택
 	  return luma < 135 ? "white" : "black"; 
-	}
-/* $(document).ready(function() {
-  $("#devList p#id").each(function() {
-    var randomColor;
-    var iterations = 0;
-
-    do {
-      randomColor = getRandomColor(); // 랜덤 색상 생성
-
-      iterations++;
-      if (iterations > 100) {
-        // 100번 시도해도 유효한 색상을 찾지 못한 경우
-        randomColor = null;
-        break;
-      }
-    } while (!randomColor || randomColor === "#ffffff" || isColorUsed(randomColor));
-
-    if (randomColor) {
-      $(this).css("background-color", randomColor); // 배경 색상 적용
-      $(this).attr("data-color", randomColor); // 배경 색상 속성 설정
-    }
-  });
-
-  function getRandomColor() {
-    var letters = "0123456789ABCDEF";
-    var color = "#";
-
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-
-    return color;
-  }
-
-  function isColorUsed(color) {
-    var used = false;
-    $("#devList p#id").each(function() {
-      if ($(this).attr("data-color") === color) {
-        used = true;
-        return false; // 반복문 종료
-      }
-    });
-    return used;
-  }
-}); */
+}
 
 </script>
 <style type="text/css">

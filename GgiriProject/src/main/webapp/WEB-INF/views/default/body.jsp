@@ -98,16 +98,6 @@ div{
       color: white;
 }
 
-
-#chat {
-    position: fixed;
-    right: 60px;
-    bottom: 150px;
-    width: 110px;
-    height: 100px;
-    cursor: pointer;
-}
-
 .mainBodySize {
 	width: 1500px;
 }
