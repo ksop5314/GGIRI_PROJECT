@@ -1,7 +1,6 @@
 package com.ggiri.root.admin.controller;
 
 
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -13,10 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.ggiri.root.complete.service.CompleteService;
-import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
+import com.ggiri.root.help.service.GgiriHelpService;
 import com.ggiri.root.member.service.GgiriFreeInsertService;
 import com.ggiri.root.member.service.GgiriService;
-import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.service.ProjectService;
 
 @Controller
@@ -31,6 +29,8 @@ public class AdminController {
 	private ProjectService ps;
 	@Autowired
 	private CompleteService cs;
+	@Autowired
+	private GgiriHelpService ghs;
 	
 	
 //	@GetMapping("adminList")
@@ -133,6 +133,13 @@ public class AdminController {
 		return "ggiriAdmin/adminCompleteList";
 	}
 	
+	@GetMapping("comDelete")
+	@ResponseBody
+	public String comDelete(@RequestParam("deleteCompleteNum") int completeNum) {
+		cs.comDelete(completeNum);
+		return "OK";
+	}
+	
 	@GetMapping("adminReplyList")
 	public String adminReplyList(Model model) {
 		ps.adminReplyList(model);
@@ -140,7 +147,8 @@ public class AdminController {
 	}
 	
 	@GetMapping("adminHelpList")
-	public String adminHelpList() {
+	public String adminHelpList(Model model) {
+		ghs.adminHelpList(model);
 		return "/ggiriAdmin/adminHelpList";
 	}
 	

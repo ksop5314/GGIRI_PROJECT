@@ -294,15 +294,11 @@ function getTextColorByBackgroundColor(hexColor) {
 
 </script>
 <style type="text/css">
-.wrap{
-	width: 1000px;
-	margin: auto;
-	text-align: left;
-}
 .skill{
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	display: inline-block;
 }
+
 #skillCheck {
 	 padding: 10px;
      font-size: 20px;
@@ -312,15 +308,18 @@ function getTextColorByBackgroundColor(hexColor) {
      border-radius: 40px;
      background-color: #EBF7FF;
 }
+
 div{
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	margin-right: auto;
 	margin-left: auto;
 }
+
 form{
 	float:left; 
 	margin-right: 15px;
 }
+
 .box_area{
 	border: 1px solid white;
 	width: 1000px;
@@ -335,11 +334,13 @@ form{
 	border-color: gray;
 	font-family: 'IBM Plex Sans KR', sans-serif;
 }
+
 .h3:hover{
 	background-color: #EAEAEA;
 	border-color: black;
 	cursor: pointer;
 }
+
 p#id {	
     line-height: 300px;
     border-radius: 40px;
@@ -351,7 +352,7 @@ p#id {
     color: white;
     font-size: 30px;
     display: inline-block;
-  }
+}
 /* #id{
     line-height: 300px;
 	border-radius: 40px 80px / 80px 40px;
@@ -371,14 +372,18 @@ p#id {
 	font-weight: bold;
 	float:left;
 }
-div #h{
+
+div #h {
 	font-size: 24px;
 	font-weight: bolder;
 }
-a{
-	text-decoration: none;
-	color: black;
+
+a {
+   text-decoration: none;
+   color: black;
+   font-weight: bold;
 }
+
 #freeInput {
  	border-radius: 15px;
 	font-size: 15px;
@@ -390,10 +395,12 @@ a{
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	cursor: pointer;
 }
+
 #freeInput:hover {
 	background-color: white;
 	transition: 0.5s;
 }
+
 #hi {
   	vertical-align: middle;
     display: inline-block;
@@ -401,7 +408,7 @@ a{
 }
 
 .body {
-	padding: 0 20%;	
+	width: 900px;	
 }
 </style>
 </head>
@@ -411,7 +418,7 @@ a{
 	<div class="body">
 		<div class="freeTxt">
 			<p>끼리가 보증하는 IT파트너</p>
-			<p id="h">프로젝트 등록하면<br>
+			<p id="h">프리렌서로 등록하면<br>
 			더 정확한 추천을 받을 수 있어요</p>
 			<br>
 		</div>
@@ -429,28 +436,28 @@ a{
 		 	<button class="h3" type="submit" style=" border-radius: 30px;" onclick="designer()" id="des"> 🎨  디자이너 </button> 
 			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="planner()" id="pla"> 📝  기획자 </button> 
 		</div>
-			<br><br>
-			<hr>
-				<div id="devList">
-				<%-- <c:forEach var="list" items="${boardList }">
-                  <a href="Info?id=${list.id}"><p id="id">${list.id }</p></a>
-                  <div>${list.introduce }</div>
-                  <div>${list.skill }</div>
-               </c:forEach> --%>
-				 <c:forEach var="list" items="${boardList}">
-				    <div id="mem">
-				      <a href="Info?id=${list.id}"><p id="id" >${list.id}</p></a>
-				      <div id="hi">
-				        <div><h2>${list.introduce}</h2></div>
-				         <div>${list.job}</div> <br><br>
-				         <c:forEach var="selectedSkill" items="${list.skill}">
-				          <div style="display:inline" id="skillCheck">${selectedSkill}</div>
-				        </c:forEach>
-				      </div><hr>
-				    </div>
-				  </c:forEach> 
-				</div>
-			</div>
+		<br><br>
+		<hr>
+		<div id="devList">
+		<%-- <c:forEach var="list" items="${boardList }">
+                <a href="Info?id=${list.id}"><p id="id">${list.id }</p></a>
+                <div>${list.introduce }</div>
+                <div>${list.skill }</div>
+             </c:forEach> --%>
+		 <c:forEach var="list" items="${boardList}">
+		    <div id="mem">
+		      <a href="Info?id=${list.id}"><p id="id" >${list.id}</p></a>
+		      <div id="hi">
+		        <div><h2>${list.introduce}</h2></div>
+		         <div>${list.job}</div> <br><br>
+		         <c:forEach var="selectedSkill" items="${list.skill}">
+		          <div style="display:inline" id="skillCheck">${selectedSkill}</div>
+		        </c:forEach>
+		      </div><hr>
+		    </div>
+		  </c:forEach> 
+		</div>
+	</div>
 	<c:import url="../default/footer.jsp"/>
 </body>
 </html>

@@ -110,6 +110,38 @@ h1 {
 
 </style>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+	var contextPath = "${pageContext.request.contextPath}";
+	
+	function comDelete(completeNum) {
+		
+		var result = confirm("완료된 프로젝트를 삭제 하시겠습니까?");
+		
+		if(result == true){
+			
+			$.ajax({
+				
+				url : contextPath + "/ggiriAdmin/comDelete?deleteCompleteNum=" + completeNum,
+				type : "GET",
+				success : function(data){
+					if(data == 'OK'){
+						location.href="/root/ggiriAdmin/adminCompleteList";
+					} else {
+						alert("회원삭제 실패");
+						location.href="/root/ggiriAdmin/adminCompleteList";
+					}
+				},
+				error : function(){
+					console.log("회원 삭제 오류");
+				}
+			});
+		} else {
+			result = false;
+		}
+				
+	}
+		
+</script>
 </head>
 <body>
 	<c:import url="../defaultAdmin/header.jsp"/>
@@ -126,11 +158,16 @@ h1 {
 				<h1 style="margin-right: auto; padding-bottom: 30px;"> GGIRI <b style="color: red;">관리자</b> 완료된 프로젝트관리 페이지 </h1><br>
 				<table style="margin: auto; width: 80%;">
 					<tr>
-						<th>프로젝트 번호</th><th>회원ID</th><th>프로젝트 이름</th><th>프로젝트 등록날짜</th><th></th>
+						<th>프로젝트 번호</th><th>회원ID</th><th>프로젝트 이름</th><th>프로젝트 등록날짜</th><th>완료된 프로젝트 삭제</th>
 					</tr>
 					<c:forEach var="list" items="${adminCompleteList }">
 						<tr>
 							<td>${list.projectNum }</td><td>${list.id }</td><td>${list.title }</td><td>${list.comdate }</td>
+							<td>
+								<div class="delDiv" style="border: 1px solid red; border-radius: 12px; background: red;" onclick="comDelete('${list.completeNum}')">
+									<span id="comDel"> 삭제 </span>
+								</div>
+							</td>
 						</tr>
 					</c:forEach>
 				</table>

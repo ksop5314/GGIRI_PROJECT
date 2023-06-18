@@ -16,6 +16,7 @@
 	margin: 100px 0 0 0;
 	text-align: center;
 	background-color: #002266;
+	width: 1500px;
 }
 .logoDark {
 	margin: 0 210px;

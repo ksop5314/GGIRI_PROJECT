@@ -16,4 +16,6 @@ public interface GgiriHelpService {
 	
 	public void helpDelete(int helpNo);
 	
+	// 관리자 페이지
+	public void adminHelpList(Model model);
 }

@@ -15,17 +15,17 @@
 	margin: 0;
 	font-family: 'IBM Plex Sans KR', sans-serif;
 }
-.wrap{
-	width: 95%;
-	margin: auto;
-	text-align: left;
+
+div{
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	margin-right: auto;
+	margin-left: auto;
 }
-.header {
-	width: 1000px;
-}
+
 .navdiv {
-	width: 100%;
+	width: 1300px;
 }
+
 nav {
 	display: flex;
 	justify-content: flex-end;
@@ -34,14 +34,17 @@ nav {
 	border-radius: 40px;
 	border: 2px solid navy;
 }
+
 nav ul {
 	list-style: none;
 	display: flex;
 	justify-content: end;
 }
+
 nav ul li {
 	padding: 10px;	
 }
+
 nav ul li:last-child{
 	padding-right: 30px;
 }
@@ -51,18 +54,22 @@ nav ul a {
 	text-decoration: none;
 	color: black;
 }
+
 nav ul li a {
 	display: flex;
 	text-decoration: none;
 	color: black;
 }
+
 nav ul li a:hover {
 	/* color: #D8D8D8; */
 }
+
 .subImg {
     /* max-width: 100%; */
     width: 30px;
 }
+
 .subImg-hover {
     position: absolute;
     top: 0px;
@@ -74,6 +81,7 @@ nav ul li a:hover {
 .subImg:hover .subImg-hover {
     display: block;
 }
+
 .subButton{
 	padding: 6.5px 0 0 0;
 	background-color: white;
@@ -85,15 +93,18 @@ nav ul li a:hover {
 	display: inline-block;
 	cursor: pointer;
 }
+
 .dropdown {
 	width: 30px;
 	height: 30px;
     margin: 0px auto;
 }
+
 #drop-content{
     position: absolute;
     z-index: 1;
 }
+
 #drop-content a{
     display:block;
     font-size: 14px;
@@ -103,6 +114,7 @@ nav ul li a:hover {
     padding: 10px 36px;
     margin: 2px 0px 0px 0px;
 }
+
 #drop-content p {
 	display:block;
     font-size: 14px;
@@ -148,7 +160,7 @@ body {
 }
 
 .mainSlideShow {
-	width: 100%;
+	width: 1500px;
 	height: 100%;
 	margin-bottom: 20px;
 }
@@ -225,6 +237,10 @@ input:checked + .slide-container  .slide {
     }
 }
 
+.mainPageSize {
+	width: 1500px;
+}
+
 </style>
 <script type="text/javascript">
 
@@ -253,87 +269,40 @@ function showSlides() {
 </script>
 </head>
 <body>
-	<div class="mainSlideShow">
-		<div class="slides">
-		    <input type="radio" name="radio-btn" id="img-1" checked />
-		    <div class="slide-container">
-			    <div class="slide fade">
-			      <img src="/root/resources/image/mainImage2.png" />
-		        </div>
-		    </div>
-		
-		    <input type="radio" name="radio-btn" id="img-2" />
-		    <div class="slide-container">
-		        <div class="slide fade">
-		          <img src="/root/resources/image/mainImage.jpg" />
-		        </div>
-		    </div>
-		
-		    <input type="radio" name="radio-btn" id="img-3" />
-		    <div class="slide-container">
-		        <div class="slide fade">
-		          <img src="/root/resources/image/mainImage3.jpg" />
-		        </div>
-		    </div>
+	<div class="mainPageSize">
+		<div class="mainSlideShow">
+			<div class="slides">
+			    <input type="radio" name="radio-btn" id="img-1" checked />
+			    <div class="slide-container">
+				    <div class="slide fade">
+				      <img src="/root/resources/image/mainImage2.png" />
+			        </div>
+			    </div>
+			
+			    <input type="radio" name="radio-btn" id="img-2" />
+			    <div class="slide-container">
+			        <div class="slide fade">
+			          <img src="/root/resources/image/mainImage.jpg" />
+			        </div>
+			    </div>
+			
+			    <input type="radio" name="radio-btn" id="img-3" />
+			    <div class="slide-container">
+			        <div class="slide fade">
+			          <img src="/root/resources/image/mainImage3.jpg" />
+			        </div>
+			    </div>
+			</div>
 		</div>
-	</div>
-	<!-- // wrap -->
-	<div class="navdiv">
-		<div class="wrap">
-			<a href="/root/index"><img width="400px" height="120px" src="/root/resources/image/logo6.png"></a>
+		<!-- // wrap -->
+		<div class="navdiv">
+			<a href="/root/index"><img width="270px" height="90px" src="/root/resources/image/logo6.png"></a>
 			<nav>
 				<ul>
 					<li><a href="/root/ggiriMember/memberList"> 프리랜서 보기 </a></li>
 					<li><a href="/root/ggiriProject/projectList"> 프로젝트 보기 </a></li>
 					<li><a href="/root/ggiriComplete/completeList"> 완성된 프로젝트 </a></li>
 					<li><a href="/root/ggiriHelp/helpList"> 고객센터 </a></li>
-					<!-- <li> | </li>
-					<li><a href="/root/ggiriMessage/messageList">chat</a></li>
-					 -->
-					<!-- <li> | </li> -->
-					<%-- <c:if test="${kakaoMember != null}">
-						<li><a>${kakaoMember.name}</a></li>
-					<li> | </li>
-					<c:if test="${kakaoMember != null}">
-						<li style="font-size: 12px;"><a>${kakaoMember.name}</a></li>
-						<li style="font-size: 10px;"><a>${kakaoMember.email}</a></li>
-						<li style="font-size: 12px;"><p><b>Kakao</b> 계정으로 접속중</p></li>
-						<li> | </li>
-						<li><a href="/root/ggiriMember/snsInfo">내 정보</a></li>
-						<li> | </li>
-						<li><a href="/root/ggiriMember/kakaoLogout">LOGOUT</a></li>
-					</c:if> --%>
-			<%-- 		<c:if test="${naverMember != null}">
-						<li><a>${naverMember.name}</a></li>
-					</c:if>
-					<c:if test="${naverMember != null}">
-						<li style="font-size: 12px;"><a>${naverMember.name}</a></li>
-						<li style="font-size: 10px;"><a>${naverMember.id}</a></li>
-						<li style="font-size: 12px;"><p><b>Naver</b> 계정으로 접속중</p></li>
-						<li> | </li>
-						<li><a href="/root/ggiriMember/snsInfo">내 정보</a></li>
-						<li> | </li>
-						<li><a href="/root/ggiriMember/naverLogout">Logout</a></li>
-					</c:if>
-					<c:if test="${googleMember != null}">
-						<li style="font-size: 10px;"><a>${googleMember.name}</a></li>
-						<li style="font-size: 10px;"><a>${googleMember.id}</a></li>
-						<li style="font-size: 12px;"><p><b>Google</b> 계정으로 접속중</p></li>
-						<li> | </li>
-						<li><a href="/root/ggiriMember/snsInfo">내 정보</a></li>
-						<li> | </li>
-						<li><a href="/root/ggiriMember/googleLogout">Logout</a></li>
-					</c:if>
-					<c:if test="${kakaoMember == null && loginUser == null && naverMember == null && googleMember == null}">
-						<li><a href="/root/ggiriMember/ggiriLogin"> LOGIN </a></li>
-					</c:if> --%>
-					
-					<%-- <c:if test="${loginUser != null}">
-						<li><a href="/root/ggiriMember/myInfo">내 정보</a></li>
-						<li> | </li>
-						<li><a href="/root/ggiriMember/ggiriLogout"> LOGOUT </a></li>
-						
-					</c:if>	 --%>
 					<li>
 						<div class="dropdown"> 
 							<button onclick="dp_menu()" class="subButton">

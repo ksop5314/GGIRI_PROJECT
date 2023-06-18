@@ -13,21 +13,11 @@ public class GgiriHelpServiceImpl implements GgiriHelpService{
 	@Autowired
 	private GgiriHelpMapper ghm;
 	
-	
-	
-	
+
 	@Override
 	public void HelpList(Model model) {
 		model.addAttribute("helpList", ghm.HelpList());
 	}
-
-	
-
-
-
-
-
-
 
 	@Override
 	public int helpWrite(GgiriHelpDTO dto) {
@@ -39,27 +29,11 @@ public class GgiriHelpServiceImpl implements GgiriHelpService{
 		return 0;
 	}
 
-
-
-
-
-
-
-
-
 	@Override
 	public void helpView(int helpNo, Model model) {
 		// TODO Auto-generated method stub
 		model.addAttribute("data", ghm.helpView(helpNo));
 	}
-
-
-
-
-
-
-
-
 
 	@Override
 	public void modify(GgiriHelpDTO dto) {
@@ -67,19 +41,16 @@ public class GgiriHelpServiceImpl implements GgiriHelpService{
 		
 	}
 
-
-
-
-
-
-
-
-
 	@Override
 	public void helpDelete(int helpNo) {
 		ghm.helpDelete(helpNo);
 	}
 	
+	// 관리자 페이지
+	@Override
+	public void adminHelpList(Model model) {
+		model.addAttribute("adminHelpList", ghm.adminHelpList());
+	}
 	
 	
 	

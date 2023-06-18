@@ -74,12 +74,14 @@ function replyData() {
                   html += "            <tr>";
                   html += "               <pre><td width='850px'>"+ rep[i].content +"</td></pre>";
                   html += "               <td>";
-                  html += "                  <input type='hidden' name='repProjectNum' id='repProjectNum' value='" + projectNum + "'>";      
-                  html += "                  <input type='hidden' name='repNo' id='repNo' value='" + rep[i].no + "'>";      
-                  html += "                  <input type='hidden' name='repId' id='repId' value='" + rep[i].id + "'>";         
-                  html += "                  <input type='hidden' name='repContent' id='repContent' value='" + rep[i].content + "'>";         
+                  html += "                  <input type='hidden' name='repProjectNum' id='repProjectNum' value='" + rep[i].projectNum + "'>";      
+                  html += "                  <input type='hidden' name='repNo' id='repNo' value='" + rep[i].no + "'>";
+                  html += "                  <input type='hidden' name='repId' id='repId' value='" + rep[i].id + "'>";
+                  html += "                  <input type='hidden' name='contentList' id='contentList" + rep[i].no + "' value='" + rep[i].content + "'>";         
                   html += "                  <button type='button' id='deleteRep' name='deleteRep' style='width:50px;height:30px;' onclick='deleteRep()'> 삭제 </button>";
-                  html += "                  <button type='button' id='modifyRep' name='modifyRep' style='width:50px;height:30px;' onclick='modifyRep()'> 수정 </button>";
+                  html += "                  <button type='button' id='modifyRep' name='modifyRep' style='width:50px;height:30px;' onclick='modifyRep(" + rep[i].no + ")'> 수정 </button>";
+                  html += "                  <div id='modal' class='modal-overlay'>";
+                  html += "                  </div>";
                   html += "               </td>";
                   html += "            </tr>";
                   html += "         </table>";
@@ -146,38 +148,27 @@ function deleteRep() {
          
 }
 
-function modifyRep() {
+function modifyRep(replyNo) {
    var contextPath = "${pageContext.request.contextPath}";
-   var no = $("#repNo").val();
-   var id = $("#repId").val();
-   var repContent = $("#repContent").val();
+   let no = replyNo;
+   let contentList = $("#contentList" + no).val();
    
    var modal = document.getElementById("modal");
-   var modifyRep = document.getElementById("modifyRep");
-   var modifyModalRep = document.getElementById("modifyModalRep");
    
-   modifyRep.addEventListener("click", e => {
-       modal.style.display = "flex";
-       let html;
-       html += "<div class='modal-window'>";
-       html += "<div class='title'><h2>댓글 수정 &nbsp; </h2></div>";
-       html += "<div class='close-area'>X</div>";
-       html += "<b>작성자 : " + id + " </b><br>";
-       html += " <input type='hidden' id='modifyNo' name='modifyNo' value='" + no + "'>";
-       html += " <div class='modalContent' id='modalContent' name='modalContent'>";
-       html += "<textarea id='modalTextArea' rows='1' cols='50'>" + repContent + "</textarea>";
-       html += "<input type='button' id='modalButton' name='modalButton' onclick='modifyModalRep()' value='수정'>";
-       html += "</div>";
-       html += "</div>";
-       
-       $("#modal").html(html);
-       
-       modifyModalClose();
-   });
-}
+   modal.style.display = "flex";
+   let html;
+   html += "<div class='modal-window'>";
+   html += "<div class='title'><h2>댓글 수정 &nbsp; </h2></div>";
+   html += "<div class='close-area'>X</div>";
+   html += " <input type='hidden' id='modifyNo' name='modifyNo' value='" + no + "'>";
+   html += " <div class='modalContent' id='modalContent' name='modalContent'>";
+   html += "<textarea id='modalTextArea' rows='1' cols='50'>" + contentList + "</textarea>";
+   html += "<input type='button' id='modalButton' name='modalButton' onclick='modifyModalRep(" + no + ")' value='수정'>";
+   html += "</div>";
+   html += "</div>";
+   
+   $("#modal").html(html);
 
-
-function modifyModalClose(){
    var closeBtn = modal.querySelector(".close-area");
    closeBtn.addEventListener("click", e => {
        modal.style.display = "none";
@@ -189,14 +180,15 @@ function modifyModalClose(){
            modal.style.display = "none";
        }
    });
+       
 }
 
-function modifyModalRep(){
+function modifyModalRep(modalNo){
    var contextPath = "${pageContext.request.contextPath}";
-   let no = $("#modifyNo").val();
-   let repContent = $("#modalTextArea").val();
-   let enContent = encodeURI(repContent);
+   let modalTextArea = $("#modalTextArea").val();
+   let enContent = encodeURI(modalTextArea);
    let content = decodeURI(enContent);
+   let no = modalNo;
    console.log(content);
    
    let form = { no:no, content:content};
@@ -207,7 +199,6 @@ function modifyModalRep(){
       
       url : contextPath + "/ggiriProject/modifyModalRep",
       type : "post",
-      async : false,
       data : JSON.stringify(form),
       contentType : "application/json",
       success : function(data){
@@ -227,31 +218,26 @@ function modifyModalRep(){
     
 
    
-/*  */
 	
 /* 좋아요 */
 function like(){
 	var contextPath = "${pageContext.request.contextPath}";
-	let memberNum = $("#myHeart").val();
-	let projectNum = $("#projectNum").val();
 	var clickLikeUrl = contextPath + "/resources/image/heart.png"
 	var emptyLikeUrl = contextPath + "/resources/image/empty_heart.png"
-	console.log(memberNum);
-    console.log(projectNum);
+	console.log($('#like_check').val())
+	console.log($('#like_check').html())
 	$.ajax({
 		url: contextPath + "/ggiriProject/like_check/"+$('#projectNum').val(),
 		type:"post",
-		data: JSON.stringify(),
 		dataType:"json",
 		contentType: "application/json; charset=utf-8",
 		success: function(data){
-			alert('좋아요 기능 성공..!!' + data + " 입니단");
-			if($('#like_check').val() > data) {
+			if($('#like_check').html() > data) {
 				$("#myHeart").attr("src", emptyLikeUrl);
 			} else {
 				$("#myHeart").attr("src", clickLikeUrl);
 			}
-			$('#like_check').val(data);
+			$('#like_check').html(data);
 			
 			},
 			error: function() {
@@ -328,7 +314,7 @@ input[type=button]:hover {
     height: 100%;
     position: absolute;
     left: 0;
-    top: 90%;
+    top: 1200px;
     display: none;
     flex-direction: column;
     align-items: center;
@@ -348,7 +334,7 @@ input[type=button]:hover {
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
     width: 400px;
-    height: 130px;
+    height: 150px;
     position: relative;
     top: -100px;
     padding: 10px;
@@ -379,6 +365,9 @@ input[type=button]:hover {
     color: white;
 }
 
+textarea {
+	resize: none;
+}
 
 </style>
 </head>
@@ -400,17 +389,29 @@ input[type=button]:hover {
         <br><br><hr><br>
         <div id="select">
 			<input type="button" style=" border-radius: 40px;" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'"> &nbsp;
-			<c:if test="${loginUser == null }">
-				<button type="button" class="img-button" id="newLogin" onclick="alert('로그인 후에 사용가능합니다')"><img width="40px" height="40px" src="../resources/image/empty_heart.png" alt="빈하트">${likeCount }</button><br/>
-				<span class="rec_count"></span>					
+			 
+		<!-- 좋아요 -->
+		<c:if test="${loginUser != null}">
+			<button onclick="like()">
+			<c:if test="${like == 0}">
+			<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
 			</c:if>
-				
-				
-										
-			<c:if test="${loginUser != null }">
-				<button id="myHeart" onclick="like()" value="${ggiriMemberInfo.memberNum }"><img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
-				<span class="rec_count"></span>${likeCount }</button> 
-			</c:if> 
+			<c:if test="${like == 1}">
+			<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
+			</c:if>
+			<div id="like_check">${likeCount }</div></button> 
+		</c:if> 
+			
+		<c:if test="${kakaoMember != null || naverMember != null || googleMember != null }">
+			<button onclick="like()">
+			<c:if test="${like == 0}">
+			<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
+			</c:if>
+			<c:if test="${like == 1}">
+			<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
+			</c:if>
+			<div id="like_check">${likeCount }</div></button> 
+		</c:if> 	
 			
 			<c:if test="${data.id == loginUser && data.project == '완료' }">
 				<button type="submit" style=" border-radius: 40px;" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
@@ -430,6 +431,13 @@ input[type=button]:hover {
 				<button type="submit" style=" border-radius: 40px;" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
 			</c:if>
 			<c:if test="${data.id == naverMember.id && data.project == '진행중'}">
+				<input type="button" value="수정" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="삭제" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+			</c:if>
+			<c:if test="${data.id == googleMember.id && data.project == '완료'}">
+				<button type="submit" style=" border-radius: 40px;" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
+			</c:if>
+			<c:if test="${data.id == googleMember.id && data.project == '진행중'}">
 				<input type="button" value="수정" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
 				<input type="button" value="삭제" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
 			</c:if>
@@ -469,9 +477,6 @@ input[type=button]:hover {
            </div>
         </div>
      </div>
-     <div id="modal" class="modal-overlay">
-      
-    </div>
 	<c:import url="../default/footer.jsp"></c:import>
 </body>
 </html>

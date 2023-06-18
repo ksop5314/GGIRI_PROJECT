@@ -14,6 +14,7 @@ textarea{
     resize: none;
     background-color: #d8d8d8;
 }
+
 input{
 	background-color: #d8d8d8;
 }
@@ -30,11 +31,11 @@ input{
 		<hr>
 		<br>
 		<c:if test="${loginUser != null}">
-		<b>아이디 </b> &nbsp; <input type="text" name="id" id="id" value="${loginUser }" readonly><br>
+			<b>아이디 </b> &nbsp; <input type="text" name="id" id="id" value="${loginUser }" readonly><br>
 			<input type="hidden" name="memberNum" id="memberNum" value="${ggiriMemberInfo.memberNum }">
 		</c:if>
 		<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
-			<input type="text" name="id" id="id" value="${ggiriSnsInfo.id }" readonly><br>
+			<b>아이디 </b> &nbsp; <input type="text" name="id" id="id" value="${ggiriSnsInfo.id }" readonly><br>
 			<input type="hidden" name="memberNum" id="memberNum" value="${ggiriSnsInfo.memberNum }">
 		</c:if>
 		

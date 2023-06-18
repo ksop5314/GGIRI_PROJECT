@@ -11,29 +11,12 @@
 <title>ggiriComplete/completeList.jsp</title>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <style type="text/css">
-table {
-	width: 1100px;
-	margin: 0 auto;
-	font-family: 'IBM Plex Sans KR', sans-serif;
-}
-table th {
-	text-align: center;
-}
-table th,td {
-	border-bottom: 2px solid gray;
-	padding: 20px 0 20px 0;
+.board_table{
+   width: 900px;
+   margin: auto;
+   text-align: left;
 }
 
-table td {
-	padding: 5px 0 7px 8px;
-	text-align: center;
-	width: 100px;
-}
-.wrap{
-	width: 1000px;
-	margin: auto;
-	text-align: left;
-}
 #h3{
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	border: hidden;
@@ -45,15 +28,24 @@ table td {
 	font-size: 20px;
 	float: right;
 }
+
+div {
+   font-family: 'IBM Plex Sans KR', sans-serif;
+   margin-right: auto;
+   margin-left: auto;
+}
+
 form{
 	float:left; 
 	margin-right: 15px;
 }
+
 .box_area{
 	border: 1px solid white;
 	width: 1000px;
 	height: 200px;
 }
+
 h3{
 	margin-bottom: 20px;
 	font-size: 20px;
@@ -62,11 +54,13 @@ h3{
 	border-color: gray;
 	font-family: 'IBM Plex Sans KR', sans-serif;
 }
+
 #mem {
    padding: 30px;
    border: 2px solid navy;
    border-radius: 40px;
 }
+
 #id{
 	border: 1px solid white;
 	background-color: blue;
@@ -77,18 +71,24 @@ h3{
 	color: black;
 	font-size: 30px;
 }
+
 div #h{
 	font-size: 24px;
 	font-weight: bolder;
 }
+
 a{
-	text-decoration: none;
+   text-decoration: none;
+   color: black;
+   font-weight: bold;
 }
+
 .freeTxt {
    font-family: 'IBM Plex Sans KR', sans-serif;
    font-weight: bold;
    float:left;
 }
+
 #button1 {
 	width: 60px;
 	height: 28px;
@@ -99,10 +99,12 @@ a{
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	cursor: pointer;
 }
+
 #button1:hover {
 	background-color:#EBF7FF;
     transition: 0.5s;
 }
+
 #skill {
     padding: 10px;
     font-size: 20px;
@@ -112,9 +114,11 @@ a{
     border-radius: 40px;
     background-color: #EBF7FF;
 }
+
 .search{
 	text-align: center;
 }
+
 #hit{
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	padding: 5px 20px;
@@ -126,16 +130,22 @@ a{
 	font-weight: bold;
 	float: right; 
 }
+
 #title {
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	font-size: 34px;
+}
+
+.completeListSize {
+	width: 900px;
+	margin: 0 auto;
 }
 </style>
 </head>
 <body>
 	<c:import url="../default/header.jsp"></c:import>
 	<br>
-	<div class="wrap">
+	<div class="completeListSize">
 		<div class="freeTxt">
 			<p>끼리가 보증하는 IT파트너</p>
 			<p id="h">파트너들이 진행한<br>
@@ -149,83 +159,82 @@ a{
 			<button id="h3" type="submit" style=" border-radius: 30px;"> 2020 </button> &nbsp;&nbsp;
 		</div>
 		<br><br><hr>
-	</div>
-	<div class="wrap board_table">
+		<div class="board_table">
 		<h1></h1>
 		<br>
-		<div id="devList">
-			<c:if test="${completeList.size()==0 }">	
-			    <h3>등록된 글이 없습니다</h3>
-			</c:if>
-			<c:if test="${loginUser == null}">
-				<c:forEach var="dto" items="${completeList }">
-					<div id="mem">
-						<input type="hidden" id="id" value="${dto.id }">
-						<input type="hidden" id="completeNum" value="${dto.completeNum }">
-						<h3>${dto.comdate }</h3>
-						<a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a>
-						<div class="skill">
-						<br>
-			                <c:forEach var="selectedSkill" items="${dto.skill}">
-			                    <div style="display:inline" id="skill">${selectedSkill}</div>
-			                    <p id="hit">조회수 ${dto.comHit }</p>
-			                </c:forEach>
+			<div id="devList">
+				<c:if test="${completeList.size()==0 }">	
+				    <h3>등록된 글이 없습니다</h3>
+				</c:if>
+				<c:if test="${loginUser == null && kakaoMember == null && naverMember == null && googleMember == null}">
+					<c:forEach var="dto" items="${completeList }">
+						<div id="mem">
+							<input type="hidden" id="id" value="${dto.id }">
+							<input type="hidden" id="completeNum" value="${dto.completeNum }">
+							<h3>${dto.comdate }</h3>
+							<a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a>
+							<div class="skill">
+								<br>
+				                <c:forEach var="selectedSkill" items="${dto.skill}">
+				                    <div style="display:inline" id="skill">${selectedSkill}</div>
+				                </c:forEach>
+				                <p id="hit">조회수 ${dto.comHit }</p>
+							</div>
 						</div>
-					</div>
-					<br><br>
-				</c:forEach>
-			</c:if>
-			<c:if test="${loginUser != null}">
-				<c:forEach var="dto" items="${completeList }">
-					<div id="mem">
-						<input type="hidden" id="id" value="${dto.id }">
-						<input type="hidden" id="completeNum" value="${dto.completeNum }">
-						<h3>${dto.comdate }</h3>
-						<a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a>
-						<div class="skill">
-						<br>
-			                <c:forEach var="selectedSkill" items="${dto.skill}">
-			                    <div style="display:inline" id="skill">${selectedSkill}</div>
-			                    <p id="hit">조회수 ${dto.comHit }</p>
-			                </c:forEach>
+						<br><br>
+					</c:forEach>
+				</c:if>
+				<c:if test="${loginUser != null}">
+					<c:forEach var="dto" items="${completeList }">
+						<div id="mem">
+							<input type="hidden" id="id" value="${dto.id }">
+							<input type="hidden" id="completeNum" value="${dto.completeNum }">
+							<h3>${dto.comdate }</h3>
+							<a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a>
+							<div class="skill">
+								<br>
+				                <c:forEach var="selectedSkill" items="${dto.skill}">
+				                    <div style="display:inline" id="skill">${selectedSkill}</div>
+				                </c:forEach>
+				                <p id="hit">조회수 ${dto.comHit }</p>
+							</div>
 						</div>
-					</div>
-					<br><br>
-				</c:forEach>
-			</c:if>
-			<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
-				<c:forEach var="dto" items="${completeList }">
-					<div id="mem">
-						<input type="hidden" id="id" value="${dto.id }">
-						<input type="hidden" id="completeNum" value="${dto.completeNum }">
-						<h3>${dto.comdate }</h3>
-						<a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a>
-						<div class="skill">
-						<br>
-			                <c:forEach var="selectedSkill" items="${dto.skill}">
-			                    <div style="display:inline" id="skill">${selectedSkill}</div>
-			                    <p id="hit">조회수 ${dto.comHit }</p>
-			                </c:forEach>
+						<br><br>
+					</c:forEach>
+				</c:if>
+				<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
+					<c:forEach var="dto" items="${completeList }">
+						<div id="mem">
+							<input type="hidden" id="id" value="${dto.id }">
+							<input type="hidden" id="completeNum" value="${dto.completeNum }">
+							<h3>${dto.comdate }</h3>
+							<a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a>
+							<div class="skill">
+								<br>
+				                <c:forEach var="selectedSkill" items="${dto.skill}">
+				                    <div style="display:inline" id="skill">${selectedSkill}</div>
+				                </c:forEach>
+				                <p id="hit">조회수 ${dto.comHit }</p>
+							</div>
 						</div>
+						<br><br>
+					</c:forEach>
+				</c:if>
+				<form action="projectList.do" method="get">
+					<div class="search">
+						<select name="condition" id="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">
+							<option value="titleContent" <c:if test="${condition eq 'titleContent' }">selected</c:if>>제목 + 본문</option>
+							<option value="title" <c:if test="${condition eq 'title' }">selected</c:if>>제목</option>
+							<option value="id" <c:if test="${condition eq 'id' }">selected</c:if>>작성자</option>
+						</select>
+						<input type="text" name="keyword" id="keyword" style="font-family: 'IBM Plex Sans KR', sans-serif"
+								placeholder="검색어" value="${keyword }"/>
+						<button id="button1" type="submit">검색</button>
 					</div>
-					<br><br>
-				</c:forEach>
-			</c:if>
-		<br>
-		<form action="projectList.do" method="get">
-			<div class="search">
-				<select name="condition" id="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">
-					<option value="titleContent" <c:if test="${condition eq 'titleContent' }">selected</c:if>>제목 + 본문</option>
-					<option value="title" <c:if test="${condition eq 'title' }">selected</c:if>>제목</option>
-					<option value="id" <c:if test="${condition eq 'id' }">selected</c:if>>작성자</option>
-				</select>
-				<input type="text" name="keyword" id="keyword" style="font-family: 'IBM Plex Sans KR', sans-serif"
-						placeholder="검색어" value="${keyword }"/>
-				<button id="button1" type="submit">검색</button>
+				</form>
 			</div>
-		</form>
-	</div>
-	<br>
+			<br>
+		</div>
 	</div>
 	<c:import url="../default/footer.jsp"></c:import>
 </body>

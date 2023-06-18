@@ -22,6 +22,7 @@ public class CompleteDTO {
 	
 	private int memberNum;
 	private int completeNum;
+	private int projectNum;
 	private String title;
 	private String content;
 	private String skill;
@@ -46,6 +47,14 @@ public class CompleteDTO {
 
 	public void setCompleteNum(int completeNum) {
 		this.completeNum = completeNum;
+	}
+	
+	public int getProjectNum() {
+		return projectNum;
+	}
+
+	public void setProjectNum(int projectNum) {
+		this.projectNum = projectNum;
 	}
 
 	public String getTitle() {

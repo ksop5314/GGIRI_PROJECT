@@ -18,4 +18,8 @@ public interface GgiriHelpMapper {
 	public void modify(GgiriHelpDTO dto);
 	
 	public void helpDelete(int helpNo);
+	
+	// 관리자 페이지
+	public List<GgiriHelpDTO> adminHelpList();
+	
 }

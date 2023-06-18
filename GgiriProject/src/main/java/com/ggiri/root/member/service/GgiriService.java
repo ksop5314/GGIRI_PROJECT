@@ -30,4 +30,9 @@ public interface GgiriService {
 	// 관리자 페이지 멤버 리스트
 	public void allMember(Model model, String id);
 	
+	
+	// 좋아요를 위한 작업
+	public void heartMemberInfo(int memberNum, Model model);
+	
+	public void heartSnsInfo(int memberNum, Model model);
 }

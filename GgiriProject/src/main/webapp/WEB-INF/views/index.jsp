@@ -6,12 +6,26 @@
 <head>
 <meta charset="UTF-8">
 <title>index</title>
+<style type="text/css">
+a{
+   text-decoration: none;
+   color: black;
+   font-weight: bold;
+}
+
+div{
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+</style>
 </head>
 <body>
-	<c:import url="default/header.jsp"/>
-		<div class="wrap">
-			<c:import url="default/body.jsp"/>
-		</div>
-	<c:import url="default/footer.jsp"/>
+	<div class="wrap">
+		<c:import url="default/header.jsp"/>
+		<c:import url="default/body.jsp"/>
+		<c:import url="default/footer.jsp"/>
+	</div>
 </body>
 </html>

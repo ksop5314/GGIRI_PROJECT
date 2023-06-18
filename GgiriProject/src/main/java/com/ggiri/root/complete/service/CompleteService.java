@@ -20,4 +20,6 @@ public interface CompleteService {
 	// 관리자 페이지
 	public void adminCompleteList(Model model);
 	
+	public void comDelete(int completeNum);
+	
 }

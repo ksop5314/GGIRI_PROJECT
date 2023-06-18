@@ -35,4 +35,9 @@
 	<delete id="helpDelete">
 		DELETE ggirihelp WHERE helpNo=#{helpNo}
 	</delete>
+	
+	<!-- 관리자 페이지 -->
+	<select id="adminHelpList" resultMap="help">
+		SELECT * FROM ggirihelp
+	</select>
 </mapper>

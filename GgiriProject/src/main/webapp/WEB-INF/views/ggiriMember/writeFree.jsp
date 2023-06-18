@@ -146,13 +146,13 @@ input.insert:hover {
 					<label for="available_5">Jenkins</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_6" value="webView" onclick="count_check(this)">
 					<label for="available_6">WebView</label>
-					<input type="checkbox" class="hidden" name="skill" id="available_7" value="node.js" onclick="count_check(this)">
+					<input type="checkbox" class="hidden" name="skill" id="available_7" value="node-js" onclick="count_check(this)">
 					<label for="available_7">node.js</label>
-					<input type="checkbox" class="hidden" name="skill" id="available_8" value="react.js" onclick="count_check(this)">
+					<input type="checkbox" class="hidden" name="skill" id="available_8" value="react-js" onclick="count_check(this)">
 					<label for="available_8">React.js</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_9" value="react-native" onclick="count_check(this)">
 					<label for="available_9">react-native</label>
-					<input type="checkbox" class="hidden" name="skill" id="available_10" value="Vue.js" onclick="count_check(this)"><br>
+					<input type="checkbox" class="hidden" name="skill" id="available_10" value="Vue-js" onclick="count_check(this)"><br>
 					<label for="available_10">Vue.js</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_11" value="javaScript" onclick="count_check(this)">
 					<label for="available_11">JavaScript</label>

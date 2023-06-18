@@ -59,7 +59,7 @@ public interface ProjectMapper {
 
     public void deleteLike(@Param("projectNum") int projectNum, @Param("user_no") int user_no);
     
-    public List<ProjectDTO> getProjectInfo(@Param("projectNum") int projectNum, Model model);
+    public ProjectDTO getProjectInfo(int projectNum);
     
     public int getLikeCount(int projectNum);
     
@@ -95,10 +95,11 @@ public interface ProjectMapper {
 	// 좋아요
 	public void insert_heart(GgiriBoardLikeDTO dto);
 	
-//	public int select_heart(GgiriBoardLikeDTO dto);
-    
+	public void insert_sns_heart(GgiriBoardLikeDTO dto);
+	
     public int select_heart(GgiriBoardLikeDTO dto);
     
     public void deleteHeart(GgiriBoardLikeDTO dto);
     
+    public int select_all_heart(GgiriBoardLikeDTO dto);
 }

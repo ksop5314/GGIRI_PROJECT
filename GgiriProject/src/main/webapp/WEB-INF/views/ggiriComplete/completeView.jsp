@@ -60,7 +60,7 @@ table { border-collapse: collapse; }
 			<tr>
 				<td colspan="4" align="center">
 					<div id="reply"></div>
-					<c:if test="${data.id==loginUser }">
+					<c:if test="${data.id==loginUser || data.id==kakaoMember.id || data.id==naverMember.id || data.id==googleMember.id}">
 						<input type="button" value="수정" onclick="location.href='../ggiriComplete/completeModify?completeNum=${data.completeNum }'"> &nbsp;
 						<input type="button" value="삭제" onclick="location.href='../ggiriComplete/delete?completeNum=${data.completeNum }'"> &nbsp;
 					</c:if>

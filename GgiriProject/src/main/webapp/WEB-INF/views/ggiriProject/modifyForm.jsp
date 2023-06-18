@@ -27,6 +27,9 @@
 				<c:if test="${naverMember != null}">
 				<input type="text" name="id" id="id" value="${naverMember.id}" readonly>
 				</c:if><br>
+				<c:if test="${googleMember != null}">
+				<input type="text" name="id" id="id" value="${googleMember.id}" readonly>
+				</c:if><br>
 				<b> 제 목 </b><br>
 				<input type="text" name="title" size="50" value="${data.title }"><br><br>
 				<b>프로젝트 상태</b><br>
@@ -35,7 +38,6 @@
 				<label for="complete"> 완료 </label>
 				<input type="radio" class="hidden" name="project" id="complete" value="완료">
 				<br><br>
-				<input type="text" name="title" size="50" value="${data.title }"><br>
 <!-- 			<b> 스 킬 </b><br>
 				<ul>
 					<li>

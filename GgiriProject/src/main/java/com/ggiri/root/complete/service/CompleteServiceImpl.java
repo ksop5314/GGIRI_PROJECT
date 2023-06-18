@@ -22,8 +22,8 @@ public class CompleteServiceImpl implements CompleteService {
 	
 	@Override
 	public void comView(int completeNum, Model model) {
-		model.addAttribute("data", cm.comView(completeNum));
 		cm.comHit(completeNum);
+		model.addAttribute("data", cm.comView(completeNum));
 	}
 	
 	@Override
@@ -47,5 +47,9 @@ public class CompleteServiceImpl implements CompleteService {
 		model.addAttribute( "adminCompleteList", cm.adminCompleteList());
 	}
 	
+	@Override
+	public void comDelete(int completeNum) {
+		cm.comDelete(completeNum);
+	}
 	
 }
