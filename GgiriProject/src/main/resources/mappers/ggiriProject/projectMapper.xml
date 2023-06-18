@@ -44,30 +44,39 @@
    
    <!-- 좋아요 -->
     <resultMap type="com.ggiri.root.project.dto.GgiriBoardLikeDTO" id="like">
+   		<id property="like_no" column="like_no"/>
    		<result property="projectNum" column="projectNum"/>
-   		<result property="memberNum" column="memberNum"/>
+   		<result property="id" column="id"/>
    		<result property="like_check" column="like_check"/>
     </resultMap>
    
 	<!-- 좋아요 -->
 	
 	<insert id="insert_heart">
-		INSERT INTO heart(projectNum, memberNum, like_check)
-		VALUES(#{projectNum}, #{memberNum}, 1)
+		INSERT INTO heart(like_no,projectNum, id, like_check)
+		VALUES(heart_seq.nextval,#{projectNum}, #{id}, 1)
 	</insert>
 	
+	
+	<insert id="insert_sns_heart">
+		INSERT INTO heart(like_no,projectNum, id, like_check)
+		VALUES(heart_seq.nextval,#{projectNum}, #{id}, 1)
+	</insert> 
+	
 	<delete id="deleteHeart">
-		DELETE FROM heart WHERE memberNum=#{memberNum} AND projectNum=#{projectNum}
+		DELETE FROM heart WHERE id=#{id} AND projectNum=#{projectNum}
 	</delete>
 	
-	<!-- 좋아요 총 수 -->
+	
 	<select id="select_heart" resultType="integer">
+		SELECT COUNT(*) FROM heart WHERE projectNum=#{projectNum} AND id=#{id}
+	</select>
+	
+	<!-- 좋아요 총 수 -->
+	<select id="select_all_heart" resultType="integer">
 		SELECT COUNT(*) FROM heart WHERE projectNum=#{projectNum}
 	</select>
 	
-	<!-- <select id="select_heart" resultType="integer">
-		SELECT COUNT(*) FROM heart WHERE projectNum=#{projectNum} AND like_check=#{like_check}
-	</select> -->
 	
 	<!-- 프로젝트 리스트  -->
 	<select id="selectJob" resultMap="projectjop">

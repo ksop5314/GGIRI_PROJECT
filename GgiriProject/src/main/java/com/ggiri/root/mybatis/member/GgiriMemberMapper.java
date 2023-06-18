@@ -26,5 +26,8 @@ public interface GgiriMemberMapper {
 	
 	public List<ProjectDTO> getProjectListBySearch(String keyword, String condition);
 	
+	// 좋아요를 위한 작업
+	public GgiriMemberDTO heartMemberInfo(int memberNum);
 	
+	public GgiriMemberDTO heartSnsInfo(int memberNum);
 }

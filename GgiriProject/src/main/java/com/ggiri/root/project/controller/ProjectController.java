@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.bag.SynchronizedSortedBag;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -73,35 +74,72 @@ public class ProjectController implements GgiriMemberSession{
 
     @GetMapping("projectView")
     public String projectView(@RequestParam("projectNum") int projectNum, Model model, HttpSession session) throws Exception {
-       if(session.getAttribute(LOGIN) != null) {
-    	GgiriBoardLikeDTO Dto = new GgiriBoardLikeDTO();
-       Dto.setProjectNum(projectNum);
-//       Dto.setMemberNum(memberNum) = (String)session.getAttribute(LOGIN);
-       Dto.setLike_check(0);
-       int a = ps.select_heart(Dto);
-       model.addAttribute("likeCount",a);
-       }
+
     	
+    		// 좋아요 하트 총 갯수
+	    	GgiriBoardLikeDTO dto = new GgiriBoardLikeDTO();
+	    	if(session.getAttribute(LOGIN) != null) {
+		        String id = (String)session.getAttribute(LOGIN);
+		        dto.setId(id);
+	    	}
+	    	else if(session.getAttribute("kakaoMember") != null){
+	    		GgiriMemberDTO Dto = (GgiriMemberDTO)session.getAttribute("kakaoMember");	
+	    		dto.setId(Dto.getId());
+	    	}else if(session.getAttribute("naverMember") != null){
+	    		GgiriMemberDTO Dto = (GgiriMemberDTO)session.getAttribute("naverMember");	
+	    		dto.setId(Dto.getId());
+	    	}else if(session.getAttribute("googleMember") != null){
+	    		GgiriMemberDTO Dto = (GgiriMemberDTO)session.getAttribute("googleMember");	
+	    		dto.setId(Dto.getId());
+	    	}	
+	        dto.setProjectNum(projectNum);
+	    	dto.setLike_check(0);
+	        int a = ps.select_all_heart(dto);
+	        model.addAttribute("likeCount",a);
+	        
+	        // 좋아요 하트 여부를 위한 작업
+	        GgiriBoardLikeDTO Dto = new GgiriBoardLikeDTO();
+	        if(session.getAttribute(LOGIN) != null) {
+	        	String Id = (String)session.getAttribute(LOGIN);
+	    		Dto.setId(Id);
+	        }else if(session.getAttribute("kakaoMember") != null) {
+	        	GgiriMemberDTO DTo = (GgiriMemberDTO)session.getAttribute("kakaoMember");
+	        	Dto.setId(DTo.getId());
+	        }else if(session.getAttribute("naverMember") != null) {
+	        	GgiriMemberDTO DTo = (GgiriMemberDTO)session.getAttribute("naverMember");
+	        	Dto.setId(DTo.getId());
+	        }else if(session.getAttribute("googleMember") != null) {
+	        	GgiriMemberDTO DTo = (GgiriMemberDTO)session.getAttribute("googleMember");
+	        	Dto.setId(DTo.getId());
+	        }
+	        Dto.setProjectNum(projectNum);
+	    	Dto.setLike_check(0);
+	        int b = ps.select_heart(Dto);
+	        model.addAttribute("like",b);
+    	
+
+        
+        
     	if(session.getAttribute(LOGIN) != null) {
          String id = (String)session.getAttribute(LOGIN);
          gs.ggiriMemberInfo(id, model);         
          ps.projectView(projectNum, model);
            return "ggiriProject/projectView";
       } else if(session.getAttribute("kakaoMember") != null){
-         GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("kakaoMember");
+         GgiriMemberDTO DTO = (GgiriMemberDTO)session.getAttribute("kakaoMember");
          ps.projectView(projectNum, model);
-         gs.ggiriSnsInfo(dto.getId(), model);
+         gs.ggiriSnsInfo(DTO.getId(), model);
            return "ggiriProject/projectView";
       } else if(session.getAttribute("naverMember") != null){
-         GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("naverMember");
+         GgiriMemberDTO DTO = (GgiriMemberDTO)session.getAttribute("naverMember");
          ps.projectView(projectNum, model);
-         gs.ggiriSnsInfo(dto.getId(), model);
+         gs.ggiriSnsInfo(DTO.getId(), model);
            return "ggiriProject/projectView";
       } else if(session.getAttribute("googleMember") != null){
-         GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("googleMember");
+         GgiriMemberDTO DTO = (GgiriMemberDTO)session.getAttribute("googleMember");
          //ps.modalContent(projectNum, model);
          ps.projectView(projectNum, model);
-         gs.ggiriSnsInfo(dto.getId(), model);
+         gs.ggiriSnsInfo(DTO.getId(), model);
            return "ggiriProject/projectView";
       }
         return "ggiriProject/projectView";
@@ -249,26 +287,46 @@ public class ProjectController implements GgiriMemberSession{
 	// 좋아요
 	@PostMapping(value="like_check/{projectNum}", produces="application/json; charset=utf-8")
 	@ResponseBody
-	public int like(@PathVariable("projectNum") String projectNum,@RequestParam("memberNum") int memberNum){
+	public int like(@PathVariable("projectNum") String projectNum,HttpSession session
+		    )throws Exception{
+		
+		
+		
+			GgiriBoardLikeDTO dto = new GgiriBoardLikeDTO();
+			if(session.getAttribute(LOGIN) != null) {
+				dto.setId((String)session.getAttribute(LOGIN));
+				System.out.println("플젝 컨드롤러 토클 아이디 : "+ session.getAttribute(LOGIN));
+			}
+			else if(session.getAttribute("kakaoMember") != null){
+				GgiriMemberDTO kakao = (GgiriMemberDTO)session.getAttribute("kakaoMember");
+				dto.setId(kakao.getId());
+				System.out.println("플젝 컨트롤러 토글 카카오 아이디 : " + dto.getId());
+			}else if(session.getAttribute("naverMember") != null){
+				GgiriMemberDTO naver = (GgiriMemberDTO)session.getAttribute("naverMember");
+				dto.setId(naver.getId());
+				System.out.println("플젝 컨트롤러 토글 네이버 아이디 : " + dto.getId());
+			}else if(session.getAttribute("googleMember") != null){
+				GgiriMemberDTO google = (GgiriMemberDTO)session.getAttribute("googleMember");
+				dto.setId(google.getId());
+				System.out.println("플젝 컨트롤러 토글 구글 아이디 : " + dto.getId());
+			}	
+			System.out.println("플젝 컨트롤러 토클 번호 : " + projectNum);
+			dto.setLike_check(1);
+			dto.setProjectNum(Integer.parseInt(projectNum));
+			if(session.getAttribute(LOGIN)!=null) {
+				ps.like_check(Integer.parseInt(projectNum), (String)session.getAttribute(LOGIN));
+			
+			}else if(session.getAttribute("kakaoMember") != null) {
+				ps.insert_sns_heart(Integer.parseInt(projectNum), (GgiriMemberDTO)session.getAttribute("kakaoMember"));
+			}else if(session.getAttribute("naverMember") != null) {
+				ps.insert_sns_heart(Integer.parseInt(projectNum), (GgiriMemberDTO)session.getAttribute("naverMember"));
+			}else if(session.getAttribute("googleMember") != null) {
+				ps.insert_sns_heart(Integer.parseInt(projectNum), (GgiriMemberDTO)session.getAttribute("googleMember"));
+			}
+			return ps.select_all_heart(dto);
+		
 
-		System.err.println("글번호 : " + projectNum);
 		
-		GgiriBoardLikeDTO dto = new GgiriBoardLikeDTO();
-		dto.setMemberNum(memberNum); 
-		
-		System.out.println(projectNum);
-		System.out.println(memberNum);
-		
-//		dto.setProjectNum(Integer.parseInt((String)map.get(projectNum)));
-		dto.setLike_check(1);
-//		System.out.println("번호 : " + projectNum);
-//		System.out.println("맴버번호 : "+ (GgiriMemberDTO)gmm.ggiriMemberInfo());
-//		ps.like_check(Integer.parseInt(projectNum), (String)session.getAttribute(LOGIN));
-//		GgiriBoardLikeDTO dto = new GgiriBoardLikeDTO();
-//		dto.setMemberNum((String)session.getAttribute(LOGIN));
-//		dto.setLike_check(1);
-//		dto.setProjectNum(Integer.parseInt(projectNum));
-		return ps.select_heart(dto);
 	}
 	@PostMapping("modifyModalRep")
 	@ResponseBody

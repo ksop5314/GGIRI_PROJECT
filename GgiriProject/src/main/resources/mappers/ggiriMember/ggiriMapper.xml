@@ -90,4 +90,12 @@
 	</delete>
 	
 	
+	<!-- 좋아요를 위한 작업 -->
+	<select id="heartMemberInfo" resultMap="ggiri">
+		SELECT * FROM ggirimember WHERE memberNum=#{memberNum}
+	</select>
+	
+	<select id="heartSnsInfo" resultMap="ggiri">
+		SELECT * FROM ggirimember WHERE memberNum=#{memberNum}
+	</select>
 </mapper>

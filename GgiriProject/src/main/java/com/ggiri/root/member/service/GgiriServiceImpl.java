@@ -141,7 +141,27 @@ public class GgiriServiceImpl implements GgiriService{
 	public void deleteId(String deleteId) {
 		gmm.deleteId(deleteId);
 	}
+
+	
 	
 	// 강준호 끝
+	
+	
+	// 좋아요를 위한 작업
+	
+	
+	@Override
+	public void heartMemberInfo(int memberNum, Model model) {
+		GgiriMemberDTO dto = gmm.heartMemberInfo(memberNum);
+		model.addAttribute("heartMemberInfo", dto);
+	}
+
+	@Override
+	public void heartSnsInfo(int memberNum, Model model) {
+		GgiriMemberDTO dto = gmm.heartSnsInfo(memberNum);
+		model.addAttribute("heartSnsInfo", dto);
+		
+	}
+	
 	
 }

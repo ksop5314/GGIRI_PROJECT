@@ -3,6 +3,8 @@ package com.ggiri.root.project.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -148,12 +150,12 @@ public class ProjectServiceImpl implements ProjectService {
 	//좋아요
 	
 	@Override
-	public void like_check(int projectNum, int memberNum) {
+	public void like_check(int projectNum, String id) {
 		try {
 			GgiriBoardLikeDTO dto = new GgiriBoardLikeDTO();
-			dto.setMemberNum(memberNum);
+			dto.setId(id);
 			dto.setProjectNum(projectNum);
-			System.out.println("맴버 넘버 : " + memberNum);
+			System.out.println("맴버  : " + id);
 			System.out.println("플젝 넘버 : " + projectNum);
 			int a = pm.select_heart(dto);
 			
@@ -166,11 +168,44 @@ public class ProjectServiceImpl implements ProjectService {
 		}
 		 
 	}
+	
+	
+	
+	
+	
+	
+
+	@Override
+	public void insert_sns_heart(int projectNum, GgiriMemberDTO dto) {
+		try {
+			GgiriBoardLikeDTO Dto = new GgiriBoardLikeDTO();
+			
+			Dto.setId(dto.getId());
+			Dto.setProjectNum(projectNum);
+			System.out.println("맴버  : " + dto.getId());
+			System.out.println("플젝 넘버 : " + projectNum);
+			int a = pm.select_heart(Dto);
+			
+			if(a == 0) {
+				pm.insert_heart(Dto);
+			}else
+				pm.deleteHeart(Dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	@Override
 	public int select_heart(GgiriBoardLikeDTO dto) {
 		// TODO Auto-generated method stub
-		return 0;
+		return pm.select_heart(dto);
+	}
+
+	@Override
+	public int select_all_heart(GgiriBoardLikeDTO dto) {
+		// TODO Auto-generated method stub
+		return pm.select_all_heart(dto);
 	}
 	
 	

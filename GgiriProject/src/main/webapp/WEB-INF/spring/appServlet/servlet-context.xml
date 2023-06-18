@@ -93,4 +93,14 @@
 		</interceptor>
 	</interceptors>
 	
+	<!-- 프로젝트 글쓰기 누를 때 로그인 check -->
+	<beans:bean id="completeInterceptor" class="com.ggiri.root.complete.Interceptor.completeInterceptor"/>
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/ggiriComplete/completeView"/>
+			<beans:ref bean="completeInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>

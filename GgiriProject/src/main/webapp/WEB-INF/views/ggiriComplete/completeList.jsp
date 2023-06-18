@@ -157,6 +157,24 @@ a{
 			<c:if test="${completeList.size()==0 }">	
 			    <h3>등록된 글이 없습니다</h3>
 			</c:if>
+			<c:if test="${loginUser == null}">
+				<c:forEach var="dto" items="${completeList }">
+					<div id="mem">
+						<input type="hidden" id="id" value="${dto.id }">
+						<input type="hidden" id="completeNum" value="${dto.completeNum }">
+						<h3>${dto.comdate }</h3>
+						<a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a>
+						<div class="skill">
+						<br>
+			                <c:forEach var="selectedSkill" items="${dto.skill}">
+			                    <div style="display:inline" id="skill">${selectedSkill}</div>
+			                    <p id="hit">조회수 ${dto.comHit }</p>
+			                </c:forEach>
+						</div>
+					</div>
+					<br><br>
+				</c:forEach>
+			</c:if>
 			<c:if test="${loginUser != null}">
 				<c:forEach var="dto" items="${completeList }">
 					<div id="mem">

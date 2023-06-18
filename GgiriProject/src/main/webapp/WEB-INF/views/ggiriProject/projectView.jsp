@@ -227,31 +227,27 @@ function modifyModalRep(){
     
 
    
-/*  */
 	
 /* 좋아요 */
 function like(){
 	var contextPath = "${pageContext.request.contextPath}";
-	let memberNum = $("#myHeart").val();
-	let projectNum = $("#projectNum").val();
 	var clickLikeUrl = contextPath + "/resources/image/heart.png"
 	var emptyLikeUrl = contextPath + "/resources/image/empty_heart.png"
-	console.log(memberNum);
-    console.log(projectNum);
+	console.log($('#like_check').val())
+	console.log($('#like_check').html())
 	$.ajax({
 		url: contextPath + "/ggiriProject/like_check/"+$('#projectNum').val(),
 		type:"post",
-		data: JSON.stringify(),
 		dataType:"json",
 		contentType: "application/json; charset=utf-8",
 		success: function(data){
-			alert('좋아요 기능 성공..!!' + data + " 입니단");
-			if($('#like_check').val() > data) {
+			alert('좋아요 기능 성공..!!' + data + " 입니다");
+			if($('#like_check').html() > data) {
 				$("#myHeart").attr("src", emptyLikeUrl);
 			} else {
 				$("#myHeart").attr("src", clickLikeUrl);
 			}
-			$('#like_check').val(data);
+			$('#like_check').html(data);
 			
 			},
 			error: function() {
@@ -400,17 +396,47 @@ input[type=button]:hover {
         <br><br><hr><br>
         <div id="select">
 			<input type="button" style=" border-radius: 40px;" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'"> &nbsp;
-			<c:if test="${loginUser == null }">
-				<button type="button" class="img-button" id="newLogin" onclick="alert('로그인 후에 사용가능합니다')"><img width="40px" height="40px" src="../resources/image/empty_heart.png" alt="빈하트">${likeCount }</button><br/>
-				<span class="rec_count"></span>					
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+		<!-- 좋아요 -->
+		<c:if test="${loginUser != null}">
+			<button onclick="like()">
+			<c:if test="${like == 0}">
+			<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
 			</c:if>
-				
-				
-										
-			<c:if test="${loginUser != null }">
-				<button id="myHeart" onclick="like()" value="${ggiriMemberInfo.memberNum }"><img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
-				<span class="rec_count"></span>${likeCount }</button> 
-			</c:if> 
+			<c:if test="${like == 1}">
+			<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
+			</c:if>
+			<div id="like_check">${likeCount }</div></button> 
+		</c:if> 
+			
+		<c:if test="${kakaoMember != null || naverMember != null || googleMember != null }">
+			<button onclick="like()">
+			<c:if test="${like == 0}">
+			<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
+			</c:if>
+			<c:if test="${like == 1}">
+			<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
+			</c:if>
+			<div id="like_check">${likeCount }</div></button> 
+		</c:if> 	
+			
+			
+			
+			
+			
+			
+			
+			
 			
 			<c:if test="${data.id == loginUser && data.project == '완료' }">
 				<button type="submit" style=" border-radius: 40px;" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
