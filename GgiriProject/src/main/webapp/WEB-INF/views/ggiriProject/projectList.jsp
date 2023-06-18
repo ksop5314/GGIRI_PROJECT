@@ -189,6 +189,12 @@ a {
 			<c:if test="${loginUser == null}">
 		    <c:forEach var="dto" items="${list }">
 		        <div id="mem">
+		        	<c:if test="${dto.project == '완료' }">
+						<span id="project_1">${dto.project }</span>
+					</c:if>
+					<c:if test="${dto.project == '진행중' }">
+						<span id="project_2">${dto.project }</span>
+					</c:if>
 		            <h3>${dto.prodate }</h3>
 		            <a id="title" href="/root/ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a>
 		            <br>

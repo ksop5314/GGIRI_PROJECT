@@ -161,13 +161,12 @@ table td {
 					<tr>
 						<th>작성자 </th>
 						<td>
-							<input type="text" id="id" name="id" value="${loginUser }">
 							<c:if test="${loginUser != null}">
-								<input type="hidden" name="id" id="id" value="${loginUser }" readonly>
+								<input type="text" id="id" name="id" value="${loginUser }" readonly="readonly">
 								<input type="hidden" name="memberNum" id="memberNum" value="${ggiriMemberInfo.memberNum }">
 							</c:if>
 							<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
-								<input type="hidden" name="id" id="id" value="${ggiriSnsInfo.id }" readonly>
+								<input type="text" id="id" name="id" value="${ggiriSnsInfo.id }" readonly="readonly">
 								<input type="hidden" name="memberNum" id="memberNum" value="${ggiriSnsInfo.memberNum }">
 							</c:if>
 						</td>

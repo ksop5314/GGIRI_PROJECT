@@ -13,7 +13,7 @@ addr varchar2(100),
 logtime date default sysdate
 );
 
-// 끼리 멤버 테이블 시퀀스 >> CREATE SEQUENCE ggiriMember_seq NOCACHE NOCYCLE;
+
 
 
 // 프리랜서 테이블
@@ -32,7 +32,7 @@ insertdate date default sysdate,
 CONSTRAINT ggiri_test FOREIGN KEY(freeNum) REFERENCES ggirimember(memberNum) ON DELETE CASCADE
 );
 
-// 프리랜서 테이블 시퀀스 >> CREATE SEQUENCE ggiriFree_seq NOCACHE NOCYCLE;
+
 
 
 -- 프로젝트 테이블
@@ -50,7 +50,7 @@ skill VARCHAR2(50),                 -- 스킬
 CONSTRAINT ggiri_project FOREIGN KEY(memberNum) REFERENCES ggirimember(memberNum) ON DELETE CASCADE
 );
 
-// 프로젝트 테이블 시퀀스 >> CREATE SEQUENCE ggiriProject_seq NOCACHE NOCYCLE;
+
 
 
 //완성된 프로젝트 테이블
@@ -69,7 +69,7 @@ id VARCHAR2(100) NOT NULL,
 CONSTRAINT ggiri_complete FOREIGN KEY(memberNum) REFERENCES ggiriMember(memberNum) ON DELETE CASCADE
 );
 
-// 완성된 프로젝트 테이블 시퀀스 >> CREATE SEQUENCE ggiriComplete_seq NOCACHE NOCYCLE;
+
 
 
 // 댓글 테이블
@@ -85,24 +85,7 @@ CONSTRAINT fk_rep1 FOREIGN KEY(bno) REFERENCES ggiriProject(projectNum) ON DELET
 CONSTRAINT fk_rep2 FOREIGN KEY(memberNum) REFERENCES ggiriMember(memberNum) ON DELETE CASCADE
 );
 
-// 댓글 테이블 시퀀스 >> CREATE SEQUENCE reply_seq NOCACHE NOCYCLE;
 
-// 대댓글 테이블
-
-CREATE TABLE reGgiriReply (
-memberNum NUMBER(20),
-reno NUMBER(10) primary key,        -- 대댓글 번호
-no NUMBER(10) not null,          -- 댓글 번호
-bno NUMBER(10) not null,         -- 게시물 번호
-id VARCHAR2(100) not null,       -- 회원ID
-content VARCHAR2(1000),          -- 내용
-wdate DATE DEFAULT SYSDATE,      -- 작성일
-CONSTRAINT fk_rep3 FOREIGN KEY(no) REFERENCES ggiriReply(no) ON DELETE CASCADE,
-CONSTRAINT fk_rep4 FOREIGN KEY(bno) REFERENCES ggiriProject(projectNum) ON DELETE CASCADE,
-CONSTRAINT fk_rep5 FOREIGN KEY(memberNum) REFERENCES ggiriMember(memberNum) ON DELETE CASCADE
-);
-
-// 대댓글 테이블 시퀀스 >> CREATE SEQUENCE Rereply_seq NOCACHE NOCYCLE;
 
 
 // 좋아요 테이블
@@ -114,6 +97,19 @@ like_check NUMBER DEFAULT 1, -- 좋아요 = 1 / 취소 = null
 CONSTRAINT heart_no foreign key(project_no) references ggiriproject(projectNum) on delete cascade,
 CONSTRAINT heart_id FOREIGN KEY(memberNum) REFERENCES ggiriMember(memberNum) ON DELETE CASCADE
 );
+
+// 끼리 멤버 테이블 시퀀스 >> 
+CREATE SEQUENCE ggiriMember_seq NOCACHE NOCYCLE;
+// 프리랜서 테이블 시퀀스 >> 
+CREATE SEQUENCE ggiriFree_seq NOCACHE NOCYCLE;
+// 프로젝트 테이블 시퀀스 >> 
+CREATE SEQUENCE ggiriProject_seq NOCACHE NOCYCLE;
+// 완성된 프로젝트 테이블 시퀀스 >> 
+CREATE SEQUENCE ggiriComplete_seq NOCACHE NOCYCLE;
+// 댓글 테이블 시퀀스 >> 
+CREATE SEQUENCE reply_seq NOCACHE NOCYCLE;
+
+commit;
 
 
 

@@ -157,6 +157,24 @@ a{
 			<c:if test="${completeList.size()==0 }">	
 			    <h3>등록된 글이 없습니다</h3>
 			</c:if>
+			<c:if test="${loginUser == null}">
+				<c:forEach var="dto" items="${completeList }">
+					<div id="mem">
+						<input type="hidden" id="id" value="${dto.id }">
+						<input type="hidden" id="completeNum" value="${dto.completeNum }">
+						<h3>${dto.comdate }</h3>
+						<a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a>
+						<div class="skill">
+						<br>
+			                <c:forEach var="selectedSkill" items="${dto.skill}">
+			                    <div style="display:inline" id="skill">${selectedSkill}</div>
+			                    <p id="hit">조회수 ${dto.comHit }</p>
+			                </c:forEach>
+						</div>
+					</div>
+					<br><br>
+				</c:forEach>
+			</c:if>
 			<c:if test="${loginUser != null}">
 				<c:forEach var="dto" items="${completeList }">
 					<div id="mem">
@@ -175,26 +193,24 @@ a{
 					<br><br>
 				</c:forEach>
 			</c:if>
-		<%-- <table style="border:1px solid white;">
-			<tr>
-				<th style="display: none" width="50px"> 글번호 </th>
-				<th style="display: none" width="100px"> 작성자 </th>
-				<th width="700px"> 제 목 </th>
-				<th width="150px"> 날 짜 </th>
-				<th width="75px"> 조회수 </th>
-				<!-- <th width="50px"> 좋아요 </th> -->
-			</tr>
-			<c:forEach var="dto" items="${completeList }">
-				<tr style="text-align: right">
-					<td style="display: none" >${dto.completeNum }</td>
-					<td style="display: none">${dto.id }</td>
-					<td height="100px"><a href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a></td>
-					<td>${dto.comdate }</td>
-					<td>${dto.comHit }</td>
-			        <td>${dto.likeCount }</td>
-				</tr>
-			</c:forEach>
-		</table> --%>
+			<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
+				<c:forEach var="dto" items="${completeList }">
+					<div id="mem">
+						<input type="hidden" id="id" value="${dto.id }">
+						<input type="hidden" id="completeNum" value="${dto.completeNum }">
+						<h3>${dto.comdate }</h3>
+						<a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a>
+						<div class="skill">
+						<br>
+			                <c:forEach var="selectedSkill" items="${dto.skill}">
+			                    <div style="display:inline" id="skill">${selectedSkill}</div>
+			                    <p id="hit">조회수 ${dto.comHit }</p>
+			                </c:forEach>
+						</div>
+					</div>
+					<br><br>
+				</c:forEach>
+			</c:if>
 		<br>
 		<form action="projectList.do" method="get">
 			<div class="search">
