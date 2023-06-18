@@ -130,7 +130,7 @@ h1 {
 					</tr>
 					<c:forEach var="list" items="${adminCompleteList }">
 						<tr>
-							<td>${list.projectNum }</td><td>${list.id }</td><td>${list.title }</td><td>${list.prodate }</td>
+							<td>${list.completeNum }</td><td>${list.id }</td><td>${list.title }</td><td>${list.comdate }</td>
 						</tr>
 					</c:forEach>
 				</table>

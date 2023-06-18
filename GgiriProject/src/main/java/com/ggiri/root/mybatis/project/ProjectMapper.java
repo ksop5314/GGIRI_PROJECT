@@ -95,10 +95,11 @@ public interface ProjectMapper {
 	// 좋아요
 	public void insert_heart(GgiriBoardLikeDTO dto);
 	
-//	public int select_heart(GgiriBoardLikeDTO dto);
-    
+	public void insert_sns_heart(GgiriBoardLikeDTO dto);
+	
     public int select_heart(GgiriBoardLikeDTO dto);
     
     public void deleteHeart(GgiriBoardLikeDTO dto);
     
+    public int select_all_heart(GgiriBoardLikeDTO dto);
 }
