@@ -53,7 +53,7 @@ table th,td {
 
 table td {
 	padding: 5px 0 7px 8px;
-	text-align: center;
+	text-align: left;
 }
 div.button {
 	border-radius: 15px;
@@ -87,11 +87,40 @@ input.insert:hover {
 	background-color: white;
 	transition: 0.5s;
 }
+.check input[type="checkbox"] {
+    -webkit-appearance: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    outline: none !important;
+    border: 1px solid #9999;
+    vertical-align: middle;
+}
+.check input[type="checkbox"]::before {
+    content: "\2713";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    transform: scale(0) translate(-50%, -50%);
+    line-height: 1;
+}
+.check input[type="checkbox"]:checked {
+    background-color: #63aeff;
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+.check input[type="checkbox"]:checked::before {
+    border-radius: 4px;
+    transform: scale(1) translate(-50%, -50%)
+}
 </style>
 </head>
 <body>
 	<c:import url="../default/header.jsp"/>
-	<br>
 	<h1>프리랜서 등록하기</h1>
 	<form action="${contextPath }/ggiriMember/writeSave" method="post">
 		<table>
@@ -132,6 +161,7 @@ input.insert:hover {
 			<tr>
 			<th> 활용가능<br>기술 </th>
 				<td><br>
+					<div class="check">
 					<input type="checkbox" class="hidden" name="skill" id="available_0" value="frontEnd" onclick="count_check(this)">
 					<label for="available_0">Front-End</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_1" value="backEnd" onclick="count_check(this)">
@@ -145,27 +175,27 @@ input.insert:hover {
 					<input type="checkbox" class="hidden" name="skill" id="available_5" value="jenkins" onclick="count_check(this)">
 					<label for="available_5">Jenkins</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_6" value="webView" onclick="count_check(this)">
-					<label for="available_6">WebView</label>
-					<input type="checkbox" class="hidden" name="skill" id="available_7" value="node-js" onclick="count_check(this)">
+					<label for="available_6">WebView</label><br>
+					<input type="checkbox" class="hidden" name="skill" id="available_7" value="node.js" onclick="count_check(this)">
 					<label for="available_7">node.js</label>
-					<input type="checkbox" class="hidden" name="skill" id="available_8" value="react-js" onclick="count_check(this)">
+					<input type="checkbox" class="hidden" name="skill" id="available_8" value="react.js" onclick="count_check(this)">
 					<label for="available_8">React.js</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_9" value="react-native" onclick="count_check(this)">
 					<label for="available_9">react-native</label>
-					<input type="checkbox" class="hidden" name="skill" id="available_10" value="Vue-js" onclick="count_check(this)"><br>
+					<input type="checkbox" class="hidden" name="skill" id="available_10" value="Vue.js" onclick="count_check(this)">
 					<label for="available_10">Vue.js</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_11" value="javaScript" onclick="count_check(this)">
-					<label for="available_11">JavaScript</label>
+					<label for="available_11">JavaScript</label><br>
 					<input type="checkbox" class="hidden" name="skill" id="available_12" value="oracle" onclick="count_check(this)">
 					<label for="available_12">Oracle</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_13" value="msSql" onclick="count_check(this)">
 					<label for="available_13">MSSQL</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_14" value="mySql" onclick="count_check(this)">
 					<label for="available_14">MySQL</label>
-					<input type="checkbox" class="hidden" name="skill" id="available_15" value="mariaDB" onclick="count_check(this)"><br>
+					<input type="checkbox" class="hidden" name="skill" id="available_15" value="mariaDB" onclick="count_check(this)">
 					<label for="available_15">MariaDB</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_16" value="mongoDB" onclick="count_check(this)">
-					<label for="available_16">MongoDB</label>
+					<label for="available_16">MongoDB</label><br>
 					<input type="checkbox" class="hidden" name="skill" id="available_17" value="android" onclick="count_check(this)">
 					<label for="available_17">Android</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_18" value="lot" onclick="count_check(this)">
@@ -174,12 +204,12 @@ input.insert:hover {
 					<label for="available_19">PHP</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_20" value="jquery" onclick="count_check(this)">
 					<label for="available_20">jQuery</label>
-					<input type="checkbox" class="hidden" name="skill" id="available_21" value="aduino" onclick="count_check(this)"><br>
+					<input type="checkbox" class="hidden" name="skill" id="available_21" value="aduino" onclick="count_check(this)">
 					<label for="available_21">Aduino</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_22" value="hybrid" onclick="count_check(this)">
 					<label for="available_22">Hybrid</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_23" value="unix" onclick="count_check(this)">
-					<label for="available_23">UNIX</label>
+					<label for="available_23">UNIX</label><br>
 					<input type="checkbox" class="hidden" name="skill" id="available_24" value="c#" onclick="count_check(this)">
 					<label for="available_24">C#</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_25" value="c" onclick="count_check(this)">
@@ -188,7 +218,7 @@ input.insert:hover {
 					<label for="available_26">C++</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_27" value="qt" onclick="count_check(this)">
 					<label for="available_27">Qt</label>
-					<input type="checkbox" class="hidden" name="skill" id="available_28" value="server" onclick="count_check(this)"><br>
+					<input type="checkbox" class="hidden" name="skill" id="available_28" value="server" onclick="count_check(this)">
 					<label for="available_28">Server</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_29" value="miplatform" onclick="count_check(this)">
 					<label for="available_29">Miplatform</label>
@@ -198,6 +228,8 @@ input.insert:hover {
 					<label for="available_31">flutter</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_32" value="ios" onclick="count_check(this)">
 					<label for="available_32">ios</label>
+					</div>
+					<br>
 				</td>
 			</tr>
 			<tr>
@@ -207,7 +239,7 @@ input.insert:hover {
 				<th>선호하는 근무장소  </th><td><br><input type="text" name="place_of_work" id="place_of_work" size="35" placeholder="도시입력 예)서울:인천:대전"></td>
 			</tr>
 			<tr>
-				<th>소개할 url  </th><td><br><input type="text" name="url_name" id="url_name" size="40" placeholder="예) github.com/프로젝트주소 "></td>
+				<th>나를 소개할 URL  </th><td><br><input type="text" name="url_name" id="url_name" size="40"  value="https://"+"${info.url_name }"></td>
 			</tr>
 		</table>
 		<br>

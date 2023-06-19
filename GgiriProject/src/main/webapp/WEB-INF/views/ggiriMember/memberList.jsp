@@ -2,7 +2,8 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>     
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>  
+   
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
@@ -264,6 +265,7 @@ $(document).ready(function() {
 	      $(this).attr("data-color", randomColor); // 배경 색상 속성 설정
 	      var textColor = getTextColorByBackgroundColor(randomColor);
 	      $(this).css("color", textColor); // 글자 색상 설정
+	      var randomColor = getRandomColor();
 	    }
 	  });
 });
@@ -289,6 +291,33 @@ function isColorUsed(color) {
   });
   return used;
 }
+//랜덤 컬러 가져오기
+function getStoredColor() {
+  var storedColor = localStorage.getItem("randomColor");
+  if (storedColor) {
+    return storedColor;
+  } else {
+    return getRandomColor();
+  }
+}
+
+// 랜덤 컬러 저장하기
+function storeColor(color) {
+  localStorage.setItem("randomColor", color);
+}
+
+// 페이지 로드 시 실행
+window.onload = function() {
+  var color = getStoredColor();
+  document.querySelector("#id").style.color = color;
+};
+
+// 사용자가 새로운 랜덤 컬러를 생성할 경우
+function generateNewColor() {
+  var color = getRandomColor();
+  document.querySelector("#id").style.color = color;
+  storeColor(color);
+}
 
 function getTextColorByBackgroundColor(hexColor) {
 	  const c = hexColor.substring(1); // 색상 앞의 # 제거
@@ -300,11 +329,12 @@ function getTextColorByBackgroundColor(hexColor) {
 	  // 색상 선택
 	  return luma < 135 ? "white" : "black"; 
 }
-
 </script>
 <style type="text/css">
-.skill{
+* {
 	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+.skill{
 	display: inline-block;
 }
 
@@ -313,13 +343,11 @@ function getTextColorByBackgroundColor(hexColor) {
      font-size: 20px;
      width: fit-content;
      margin: auto;
-     font-family: 'IBM Plex Sans KR', sans-serif;
      border-radius: 40px;
      background-color: #EBF7FF;
 }
 
 div{
-	font-family: 'IBM Plex Sans KR', sans-serif;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -341,7 +369,6 @@ form{
 	text-align: center;
 	background-color: white;
 	border-color: gray;
-	font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
 .h3:hover{
@@ -377,7 +404,6 @@ p#id {
 	display: inline-block;
 } */
 .freeTxt {
-	font-family: 'IBM Plex Sans KR', sans-serif;
 	font-weight: bold;
 	float:left;
 }
@@ -401,7 +427,6 @@ a {
 	float: right;
     min-height: 50px; 
     min-width: 170px;
-	font-family: 'IBM Plex Sans KR', sans-serif;
 	cursor: pointer;
 }
 
@@ -417,7 +442,15 @@ a {
 }
 
 .body {
-	width: 900px;	
+	width: 1400px;	
+}
+#job {
+	 padding: 5px;
+     font-size: 14px;
+     width: fit-content;
+     border-radius: 40px;
+     border: 1px solid #4374D9;
+     float: left;
 }
 </style>
 </head>
@@ -458,7 +491,7 @@ a {
 		      <a href="Info?id=${list.id}"><p id="id" >${list.id}</p></a>
 		      <div id="hi">
 		        <div><h2>${list.introduce}</h2></div>
-		         <div>${list.job}</div> <br><br>
+		         <div id="job">${list.job}</div> <br><br>
 		         <c:forEach var="selectedSkill" items="${list.skill}">
 		          <div style="display:inline" id="skillCheck">${selectedSkill}</div>
 		        </c:forEach>

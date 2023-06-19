@@ -19,36 +19,19 @@ public class ProjectDTO {
 	private int pageNo; // 페이지 번호
 	private int pageSize; // 페이지 크기
 	
-	
-	
 	private String job;
-	
-	
-	
 	
 	public ProjectDTO() {
 		super();
 	}
 	
-	
-	
-	
-	
 	public String getJob() {
 		return job;
 	}
 
-
-
-
-
 	public void setJob(String job) {
 		this.job = job;
 	}
-
-
-
-
 
 	public int getMemberNum() {
 		return memberNum;
