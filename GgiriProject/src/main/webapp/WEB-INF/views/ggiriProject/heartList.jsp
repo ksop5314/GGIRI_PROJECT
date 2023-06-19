@@ -56,6 +56,7 @@ a{
 		<c:if test="${heartSnslist.size() == 0 }">
 			<h3>좋아요한 글이 없습니다</h3>
 		</c:if>
+		<h1>[나의 찜 목록]</h1>
 		<c:forEach var="list" items="${heartlist }">
 		<div id="mem">
 			<c:if test="${list.id == loginUser }">
@@ -65,7 +66,7 @@ a{
 			</c:if>
 		</div>
 		</c:forEach>
-		<h1>[나의 찜 목록]</h1>
+		
 		<br>
 		<c:forEach var="list" items="${heartSnslist }">
 		<br>

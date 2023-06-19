@@ -204,6 +204,7 @@ public class ProjectController implements GgiriMemberSession{
             model.addAttribute("projectList", projectList);
             model.addAttribute("currentPage", page);
             model.addAttribute("totalPages", totalPages);
+            
         } else {
             // 검색어가 없는 경우 전체 프로젝트 목록 조회
             List<ProjectDTO> projectList = ps.getProjectList(page, perPage);

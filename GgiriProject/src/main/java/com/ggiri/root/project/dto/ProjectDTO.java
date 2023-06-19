@@ -72,17 +72,9 @@ public class ProjectDTO {
 		return job;
 	}
 
-
-
-
-
 	public void setJob(String job) {
 		this.job = job;
 	}
-
-
-
-
 
 	public int getMemberNum() {
 		return memberNum;
