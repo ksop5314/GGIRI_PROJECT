@@ -15,7 +15,7 @@ body{
     margin: 0;
     padding: 0;
     background-color: #fff;
-    width: 1300px;
+    width: 1920px;
 }
 
 div{
@@ -28,7 +28,7 @@ div{
     padding: 10px;
     position: absolute;
     margin: 0 auto;
-    left: 50%;
+	left: 950px;
     transform: translate(-50%,-50%);
     height: 30px;
     background-color: #fff;
@@ -99,7 +99,7 @@ div{
 }
 
 .mainBodySize {
-	width: 1500px;
+	width: 1600px;
 }
 
 </style>
@@ -132,7 +132,7 @@ div{
    
 </script>
 </head>
-<body>
+<body style="overflow-x: hidden">
 	<div class="mainBodySize">
 		<div class="search-box">
 	    	<input type="text" id="searchTxt" name="s" placeholder="어떤 프로젝트를 찾으세요?" class="search-txt" />

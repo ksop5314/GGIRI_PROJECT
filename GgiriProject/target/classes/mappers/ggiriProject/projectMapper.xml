@@ -135,24 +135,24 @@
 		SELECT * FROM ggiriProject
 	</select>
 	
-	<!-- 전체 프로젝트 개수 조회 -->
+		<!-- 전체 프로젝트 개수 조회 -->
 	<select id="getProjectCount" resultType="int">
 	    SELECT COUNT(*) FROM ggiriProject
 	</select>
 	
 	<!-- 페이지 단위로 프로젝트 목록 조회 -->
 	<select id="getProjectList" parameterType="map" resultMap="project">
-	    SELECT *
+<!-- 	    SELECT *
 	    FROM (
 	        SELECT ROWNUM AS rnum, p.*
-	        FROM ( 
+	        FROM ( -->
 	            SELECT *
 	            FROM ggiriProject
 	            ORDER BY projectNum DESC
-	        ) p
+<!-- 	        ) p
 	        WHERE ROWNUM &lt;= #{endRow}
 	    )
-	    WHERE rnum &gt;= #{startRow} 
+	    WHERE rnum &gt;= #{startRow} -->
 	</select>
 	
 	<!-- 검색 조건에 따른 프로젝트 개수 조회 -->
@@ -174,10 +174,6 @@
 	
 	<!-- 검색 조건에 따른 프로젝트 목록 조회 -->
 	<select id="getProjectListBySearch" parameterType="map" resultMap="project">
-		SELECT *
-	    FROM (
-	        SELECT ROWNUM AS rnum, p.*
-	        FROM (
 	            SELECT *
 	            FROM ggiriProject
 	            WHERE
@@ -193,10 +189,6 @@
 	                </when>
 	            </choose>
 	            ORDER BY projectNum DESC
-	        ) p
-	        WHERE ROWNUM &lt;= #{endRow}
-	    )
-	    WHERE rnum &gt;= #{startRow}
 	</select>
 	
 	<!-- 댓글 -->
