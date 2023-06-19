@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style type="text/css">
 .board_table{
    width: 900px;
@@ -52,6 +53,9 @@ a{
 		<c:if test="${heartlist.size() == 0 }">
 			<h3>좋아요한 글이 없습니다</h3>
 		</c:if>
+		<c:if test="${heartSnslist.size() == 0 }">
+			<h3>좋아요한 글이 없습니다</h3>
+		</c:if>
 		<c:forEach var="list" items="${heartlist }">
 		<div id="mem">
 			<c:if test="${list.id == loginUser }">
@@ -61,13 +65,14 @@ a{
 			</c:if>
 		</div>
 		</c:forEach>
+		<h1>[나의 찜 목록]</h1>
+		<br>
 		<c:forEach var="list" items="${heartSnslist }">
+		<br>
 		<div id="mem">
-			<c:if test="${list.id == kakaoMember }">
-				<p>${list.prodate }</p>
-				<p>${list.like_no }</p>
-				<a id="title" href="../ggiriProject/projectView?projectNum=${list.projectNum }">${list.title }</a>
-			</c:if>
+			<p>${list.prodate }</p>
+			<p>${list.like_no }</p>
+			<a id="title" href="../ggiriProject/projectView?projectNum=${list.projectNum }">${list.title }</a>
 		</div>
 		</c:forEach>
 	</div>

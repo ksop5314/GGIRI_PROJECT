@@ -66,30 +66,6 @@
 	</resultMap>
    
    
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
    <!-- 좋아요 리스트 -->
 	
 	<select id="heartList" resultMap="HeartList">
@@ -110,6 +86,21 @@
 		LEFT OUTER JOIN ggiriProject P
 		ON P.projectNum = H.projectNum
 		WHERE H.id=#{id}
+	</select>
+	
+	<!-- index 좋아요 순위 -->
+	<select id="indexRank" resultMap="like">
+		<![CDATA[
+		SELECT projectNum, like_count, rank
+		FROM(
+			SELECT projectNum, COUNT(*) AS like_count,
+			RANK() OVER(ODER BY COUNT(*) DESC) AS rank
+		FROM heart
+		WHERE like_check = 1
+		GROUP BY projectNum
+		ORDER BY like_check DESC
+		)WHERE rank <=3
+		]]>
 	</select>
 	
 	
@@ -139,53 +130,6 @@
 	<select id="select_all_heart" resultType="integer">
 		SELECT COUNT(*) FROM heart WHERE projectNum=#{projectNum}
 	</select>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	<!-- 프로젝트 리스트  -->

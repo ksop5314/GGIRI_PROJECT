@@ -67,12 +67,12 @@ public interface ProjectService {
     public int select_all_heart(GgiriBoardLikeDTO dto);
 
     // 좋아요 리스트
-    public List<Map<String, Object>> heartList(Model model);
-   
-    
-    
     public List<Map<String, Object>> selectHeart(String id,Model model);
     
     public List<Map<String, Object>> selectSnsHeart(String id,Model model);
+    
+    
+    // 인덱스 좋아요 리스트
+    public List<GgiriBoardLikeDTO> indexRank(Model model);
 
 }

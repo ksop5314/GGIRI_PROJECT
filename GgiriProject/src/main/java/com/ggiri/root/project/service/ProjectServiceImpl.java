@@ -146,11 +146,7 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	// 좋아요 리스트
-	@Override
-	public List<Map<String, Object>> heartList(Model model) {
-		model.addAttribute("heartList", pm.heartList());
-		return pm.heartList();
-	}
+	
 	
 	
 	@Override
@@ -229,10 +225,16 @@ public class ProjectServiceImpl implements ProjectService {
 		// TODO Auto-generated method stub
 		return pm.select_all_heart(dto);
 	}
+
 	
 	
 	
-	
+	// 인덱스 좋아요 리스트
+	@Override
+	public List<GgiriBoardLikeDTO> indexRank(Model model) {
+		model.addAttribute("rank",model);
+		return null;
+	}
 	
 }
 

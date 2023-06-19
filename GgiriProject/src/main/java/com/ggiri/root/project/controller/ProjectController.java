@@ -358,18 +358,6 @@ public class ProjectController implements GgiriMemberSession{
 	        return "ggiriProject/heartList";
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		return "ggiriProject/heartList";
 	}
 	
