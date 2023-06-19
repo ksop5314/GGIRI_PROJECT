@@ -313,11 +313,13 @@ function showSlides() {
 										<b>Ggiri 계정 접속</b><br>
 							            <a href='/root/ggiriMember/myInfo'>내 정보</a>
 							            <a href="/root/ggiriMember/ggiriLogout">LOGOUT</a>
+							            <a href="/root/ggiriProject/heartList">찜 목록</a>
 							        </c:if>   
 							        <c:if test="${kakaoMember != null}">
 										<b>Kakao 계정 접속</b><br>
 										<a href="/root/ggiriMember/snsInfo">내 정보</a>
 										<a href="/root/ggiriMember/kakaoLogout">LOGOUT</a>
+										 <a href="/root/ggiriProject/heartList">찜 목록</a>
 									</c:if>	
 									<c:if test="${naverMember != null}">
 										<b>Naver 계정 접속</b><br>

@@ -102,4 +102,12 @@ public interface ProjectMapper {
     public void deleteHeart(GgiriBoardLikeDTO dto);
     
     public int select_all_heart(GgiriBoardLikeDTO dto);
+    
+    // 좋아요 리스트
+    
+    public List<Map<String, Object>> heartList();
+    
+    public List<Map<String, Object>> selectHeart(String id);
+    
+    public List<Map<String, Object>> selectSnsHeart(String id);
 }

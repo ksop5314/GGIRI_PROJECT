@@ -328,6 +328,52 @@ public class ProjectController implements GgiriMemberSession{
 
 		
 	}
+	// 좋아요 리스트
+	@GetMapping("heartList")
+	public String heartList(Model model, HttpSession session)throws Exception {
+		if(session.getAttribute(LOGIN) != null) {
+			GgiriBoardLikeDTO dto = new GgiriBoardLikeDTO();
+        	String id = (String)session.getAttribute(LOGIN);
+        	dto.setId(id);
+        	List<Map<String, Object>> list = ps.selectHeart(dto.getId(),model);
+	        return "ggiriProject/heartList";
+        }
+		else if(session.getAttribute("kakaoMember") != null){
+			GgiriBoardLikeDTO Dto = new GgiriBoardLikeDTO();
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("kakaoMember");
+			Dto.setId(dto.getId());
+			List<Map<String, Object>> list = ps.selectSnsHeart(Dto.getId(),model);
+	        return "ggiriProject/heartList";
+		} else if(session.getAttribute("naverMember") != null){
+			GgiriBoardLikeDTO Dto = new GgiriBoardLikeDTO();
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("naverMember");
+			Dto.setId(dto.getId());
+			List<Map<String, Object>> list = ps.selectSnsHeart(Dto.getId(),model);
+	        return "ggiriProject/heartList";
+		} else if(session.getAttribute("googleMember") != null){
+			GgiriBoardLikeDTO Dto = new GgiriBoardLikeDTO();
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("googleMember");
+			Dto.setId(dto.getId());
+			List<Map<String, Object>> list = ps.selectSnsHeart(Dto.getId(),model);
+	        return "ggiriProject/heartList";
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return "ggiriProject/heartList";
+	}
+	
+	
 	@PostMapping("modifyModalRep")
 	@ResponseBody
 	public String modifyModalRep(@RequestBody ProjectRepDTO dto) {

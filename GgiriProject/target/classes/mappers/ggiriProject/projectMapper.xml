@@ -49,7 +49,71 @@
    		<result property="id" column="id"/>
    		<result property="like_check" column="like_check"/>
     </resultMap>
+    
+    <!-- 좋아요 리스트 페이지를 위한 작업 -->
+	
+	<resultMap type="com.ggiri.root.project.dto.ProjectDTO" id="HeartList">
+		<id property="projectNum" column="projectNum"/>
+		<result property="memberNum" column="memberNum"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="prodate" column="prodate"/>
+		<result property="proHit" column="proHit"/>
+		<result property="id" column="id"/>
+		<result property="like_check" column="like_check"/>
+		<result property="skill" column="skill"/>
+		<result property="like_check" column="like_check"/>
+		<result property="like_no" column="like_no"/>
+	</resultMap>
    
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   <!-- 좋아요 리스트 -->
+	
+	<select id="heartList" resultMap="HeartList">
+		SELECT * FROM heart
+	</select>
+	
+	<select id="selectHeart" resultMap="HeartList">
+		SELECT P.prodate, p.title, H.id, H.like_no, p.projectNum
+		FROM heart H
+		LEFT OUTER JOIN ggiriProject P
+		ON P.projectNum = H.projectNum
+		WHERE H.id=#{id}
+	</select>
+	
+	<select id="selectSnsHeart" resultMap="HeartList">
+		SELECT P.prodate, p.title, H.id, H.like_no, p.projectNum
+		FROM heart H
+		LEFT OUTER JOIN ggiriProject P
+		ON P.projectNum = H.projectNum
+		WHERE H.id=#{id}
+	</select>
+	
+	
 	<!-- 좋아요 -->
 	
 	<insert id="insert_heart">
@@ -76,6 +140,53 @@
 	<select id="select_all_heart" resultType="integer">
 		SELECT COUNT(*) FROM heart WHERE projectNum=#{projectNum}
 	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	<!-- 프로젝트 리스트  -->

@@ -145,10 +145,30 @@ public class ProjectServiceImpl implements ProjectService {
 		
 	}
 
+	// 좋아요 리스트
+	@Override
+	public List<Map<String, Object>> heartList(Model model) {
+		model.addAttribute("heartList", pm.heartList());
+		return pm.heartList();
+	}
 	
+	
+	@Override
+	public List<Map<String, Object>> selectHeart(String id,Model model) {
+		model.addAttribute("heartlist", pm.selectHeart(id));
+		return pm.selectHeart(id);
+	}
+	
+	@Override
+	public List<Map<String, Object>> selectSnsHeart(String id,Model model) {
+		model.addAttribute("heartSnslist", pm.selectSnsHeart(id));
+		return pm.selectSnsHeart(id);
+	}
 	
 	//좋아요
 	
+	
+
 	@Override
 	public void like_check(int projectNum, String id) {
 		try {
@@ -173,6 +193,8 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	
 	
+	
+
 	
 
 	@Override
