@@ -11,8 +11,25 @@
 		<result property="title" column="title"/>
 		<result property="content" column="content"/>
 		<result property="helpDate" column="helpDate"/>
-		
 	</resultMap>
+
+	<resultMap type="com.ggiri.root.help.dto.GgiriAdminHelpDTO" id="adminHelp">
+		<id property="adminRepNo" column="adminRepNo"/>
+		<result property="helpNo" column="helpNo"/>		
+		<result property="helpMember" column="helpMember"/>
+		<result property="adminRep" column="adminRep"/>
+		<result property="adminRepDate" column="adminRepDate"/>
+	</resultMap>
+	
+	<!-- 관리자 답변 -->
+	<insert id="adminHelpReply">
+		INSERT INTO ggiriAdminHelpRep(adminRepNo, helpNo, helpMember, adminRep)
+		VALUES(adminHelpRep_seq.nextval, #{helpNo}, #{helpMember}, #{adminRep})
+	</insert>
+	
+	<select id="adminRepData" resultMap="adminHelp">
+		SELECT * FROM ggiriAdminHelpRep WHERE helpNo=#{helpNo}
+	</select>
 	
 	
 	<select id="HelpList" resultMap="help">
@@ -40,4 +57,5 @@
 	<select id="adminHelpList" resultMap="help">
 		SELECT * FROM ggirihelp
 	</select>
+	
 </mapper>
