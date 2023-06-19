@@ -8,10 +8,10 @@
 <meta charset="UTF-8">
 <title>helpView</title>
 <style type="text/css">
-	.helpViewSize {
-		margin: 40px 290px;
-		text-align: left;
-	}
+.helpViewSize {
+	margin: 40px 290px;
+	text-align: left;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script type="text/javascript">

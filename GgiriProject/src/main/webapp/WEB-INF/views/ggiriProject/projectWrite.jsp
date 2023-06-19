@@ -85,6 +85,7 @@ table td {
     font-size: 18px;     
     border-radius: 9999px;
     cursor: pointer;
+    text-align: center;
 }
 #submit:hover{
     background-color: #EBF7FF;
