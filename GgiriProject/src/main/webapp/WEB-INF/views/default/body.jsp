@@ -140,7 +140,7 @@ div{
 		        <i class="fas fa-search"></i>
 		    </a>
 		</div>
-	
+		
 	    <br><br>
 	    <div class="background">
 			<div class="back" style="text-align:center; padding-top:8rem; padding-bottom:2rem; font-family: 'IBM Plex Sans KR', sans-serif;">

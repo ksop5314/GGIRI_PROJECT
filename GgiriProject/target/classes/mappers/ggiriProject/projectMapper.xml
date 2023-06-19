@@ -48,7 +48,62 @@
    		<result property="id" column="id"/>
    		<result property="like_check" column="like_check"/>
     </resultMap>
+    
+    <!-- 좋아요 리스트 페이지를 위한 작업 -->
+	
+	<resultMap type="com.ggiri.root.project.dto.ProjectDTO" id="HeartList">
+		<id property="projectNum" column="projectNum"/>
+		<result property="memberNum" column="memberNum"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="prodate" column="prodate"/>
+		<result property="proHit" column="proHit"/>
+		<result property="id" column="id"/>
+		<result property="like_check" column="like_check"/>
+		<result property="skill" column="skill"/>
+		<result property="like_check" column="like_check"/>
+		<result property="like_no" column="like_no"/>
+	</resultMap>
    
+   
+   <!-- 좋아요 리스트 -->
+	
+	<select id="heartList" resultMap="HeartList">
+		SELECT * FROM heart
+	</select>
+	
+	<select id="selectHeart" resultMap="HeartList">
+		SELECT P.prodate, p.title, H.id, H.like_no, p.projectNum
+		FROM heart H
+		LEFT OUTER JOIN ggiriProject P
+		ON P.projectNum = H.projectNum
+		WHERE H.id=#{id}
+	</select>
+	
+	<select id="selectSnsHeart" resultMap="HeartList">
+		SELECT P.prodate, p.title, H.id, H.like_no, p.projectNum
+		FROM heart H
+		LEFT OUTER JOIN ggiriProject P
+		ON P.projectNum = H.projectNum
+		WHERE H.id=#{id}
+	</select>
+	
+	<!-- index 좋아요 순위 -->
+	<select id="indexRank" resultMap="like">
+		<![CDATA[
+		SELECT projectNum, like_count, rank
+		FROM(
+			SELECT projectNum, COUNT(*) AS like_count,
+			RANK() OVER(ODER BY COUNT(*) DESC) AS rank
+		FROM heart
+		WHERE like_check = 1
+		GROUP BY projectNum
+		ORDER BY like_check DESC
+		)WHERE rank <=3
+		]]>
+	</select>
+	
+	
 	<!-- 좋아요 -->
 	
 	<insert id="insert_heart">
