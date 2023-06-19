@@ -6,6 +6,53 @@
 <head>
 <meta charset="UTF-8">
 <title>modifyMyInfo</title>
+<style>
+table {
+	width: 1000px;
+	margin: 0 auto;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+table th {
+	text-align: center;
+}
+table th,td {
+	border-bottom: 2px solid gray;
+	padding: 20px 0 20px 0;
+}
+
+table td {
+	padding: 5px 0 7px 8px;
+	text-align: center;
+	width: 700px;
+}
+.wrap {
+	width: 1200px;
+	margin: 0 auto;
+}
+.sub {
+	width: 1000px;
+	margin: 0 auto;
+}
+#submit{
+	background-color: #B2CCFF;
+    color: black;
+    border: none;
+    width: 145px;
+    height: 50px;
+    font-size: 18px;     
+    border-radius: 9999px;
+    cursor: pointer;
+    text-align: center;
+}
+#submit:hover{
+    background-color: #EBF7FF;
+    transition: 0.5s;
+}
+.but {
+    display: flex;
+    justify-content: center;
+}
+</style>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script>
@@ -138,7 +185,7 @@ function daumPost(){
 	<c:import url="../default/header.jsp"/>
 	<div class="wrap">
 		<br>
-		<h1 id="title">내정보 수정</h1>
+		<h1 id="title">내 정보 수정</h1>
 			<c:if test="${ggiriMemberInfo != null }">
 				<form id="modify_my_info" action="modifyResult" method="post">
 				<table>
@@ -166,7 +213,7 @@ function daumPost(){
 						<th> 생년월일 </th>
 						<td>
 							<input type="text" name="birth" id="birth" maxlength="8" placeholder="ex)19901231" value="${ggiriMemberInfo.birth}"><br>
-							<span class="point successBirthChk"></span><br>
+								<span class="point successBirthChk"></span>
 							<input type="hidden" id="birthChkResult" value="false">
 						</td>
 					</tr>
@@ -196,7 +243,7 @@ function daumPost(){
 					<tr>
 						<th> Tel </th>
 						<td>
-							<input type="text" name="tel" id="tel" size="10" maxlength="13" value="${ggiriMemberInfo.tel}">
+							<input type="text" name="tel" id="tel" size="20" maxlength="13" value="${ggiriMemberInfo.tel}">
 						</td>
 					</tr>
 					<!-- 
@@ -213,16 +260,20 @@ function daumPost(){
 						<th> 주소 </th>
 						<td>
 							<input type="text" id="addr1" name="addr" placeholder="우편번호" readonly>
-							<input type="button" id="daumAddr" class="btn btn-info" value="우편번호 찾기" onclick="daumPost()"><br>
-							<input type="text" id="addr2" placeholder="주소" readonly><br>
-							<input type="text" id="addr3" placeholder="상세주소" ><br>
+							<input type="button" id="daumAddr" size="20" class="btn btn-info" value="우편번호 찾기" onclick="daumPost()"><br>
+							<input type="text" id="addr2" placeholder="주소" size="33" readonly><br>
+							<input type="text" id="addr3" placeholder="상세주소"size="33" ><br>
 							<span class="point successAddrChk"></span><br>
 							<input type="hidden" id="addrChk" value="false">
 						</td>
 					</tr>
 				</table>
-				<span class="point">※ sns 사용자는 비어있는 칸들을 채워주세요.</span><br><br>
-				<input type="submit" id="button1" value="수정완료">
+				<div class="sub">
+					<span class="point">※ sns 사용자는 비어있는 칸들을 채워주세요.</span><br><br>
+					<div class="but">
+						<input type="submit" id="submit" value="내 정보 수정">
+					</div>
+				</div>
 			</form>
 		</c:if>
 	</div>

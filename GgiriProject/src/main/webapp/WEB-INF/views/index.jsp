@@ -23,6 +23,7 @@ div{
 </head>
 <body>
 	<div class="wrap">
+		<c:import url="default/banner.jsp"/>
 		<c:import url="default/header.jsp"/>
 		<c:import url="default/body.jsp"/>
 		<c:import url="default/footer.jsp"/>
