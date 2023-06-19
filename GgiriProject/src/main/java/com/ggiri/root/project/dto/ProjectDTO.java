@@ -19,7 +19,6 @@ public class ProjectDTO {
 	private int pageNo; // 페이지 번호
 	private int pageSize; // 페이지 크기
 	
-	
 	// 프로젝트 리스트
 	private String job;
 	
@@ -32,41 +31,21 @@ public class ProjectDTO {
 		super();
 	}
 	
-	
-	
-	
-	
 	public int getLike_no() {
 		return like_no;
 	}
-
-
-
-
 
 	public void setLike_no(int like_no) {
 		this.like_no = like_no;
 	}
 
-
-
-
-
 	public int getLike_check() {
 		return like_check;
 	}
 
-
-
-
-
 	public void setLike_check(int like_check) {
 		this.like_check = like_check;
 	}
-
-
-
-
 
 	public String getJob() {
 		return job;

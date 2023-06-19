@@ -7,12 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>helpView</title>
-<style type="text/css">
-	.helpViewSize {
-		margin: 40px 290px;
-		text-align: left;
-	}
-</style>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	var contextPath = "${pageContext.request.contextPath}";
@@ -94,14 +88,50 @@
 	}
 	
 </script>
+<style type="text/css">
+
+* {
+	margin: 0 auto;
+}
+.helpViewSize {
+	width: 800px;
+	margin-left: 150px;
+}
+input[type=button] {
+    background-color: #E2EAE9 ;
+    color: #333333;
+    border: none;
+    width: 100px;
+    height: 30px;
+    font-size: 14px;
+	border-radius: 40px 80px / 80px 40px;
+    cursor: pointer;
+}
+input[type=button]:hover {
+    background-color: #EBF7FF;
+    transition: 0.5s;
+}
+hr {
+    background: gray;
+    height: 1px;
+    border: 0;
+}
+</style>
 </head>
 <body>
 	<c:import url="../default/header.jsp"></c:import>
 	<div class="helpViewSize">
 		<input type="hidden" id="helpNo" name="helpNo" value="${data.helpNo }">
-		<span><b> 문의 번호 </b> ${data.helpNo }</span><span><b> 문의 날짜 </b> ${data.helpDate }</span>
-		<div><b> 회원 아이디 </b> ${data.id }<span><b> 제목 </b> ${data.title }</span></div>
-		<div><b> 문의 내용 </b> ${data.content }</div>
+		<b> 문의 번호 ) &nbsp; </b>${data.helpNo }<br>
+		<div id="head">
+			<b> 회원 아이디 ) &nbsp; </b> ${data.id }<br><b> 제목 ) &nbsp; </b> ${data.title }
+			<p style="float: right">${data.helpDate }</p><b style="float: right"> 문의 날짜 ) &nbsp; </b>
+		</div>
+		<hr>
+		<div>
+			<b>문의 내용 )</b><p style="height: 80px; border: 1px solid gray; padding: 5px">${data.content }</p>
+		</div>
+		<br>
 		<c:if test="${data.id==loginUser || data.id == kakaoMember.id || data.id == googleMember.id || data.id == naverMember.id }">
 			<td colspan="4" align="right">
 				<input type="button" value="수정" onclick="location.href='../ggiriHelp/helpModifyForm?helpNo=${data.helpNo }'"> &nbsp;

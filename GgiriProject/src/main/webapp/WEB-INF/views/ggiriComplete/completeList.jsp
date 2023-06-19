@@ -12,7 +12,7 @@
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <style type="text/css">
 .board_table{
-   width: 900px;
+   width: 1200px;
    margin: auto;
    text-align: left;
 }
@@ -50,15 +50,15 @@ h3{
 	margin-bottom: 20px;
 	font-size: 20px;
 	text-align: left;
-	background-color: white;
 	border-color: gray;
 	font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
 #mem {
    padding: 30px;
-   border: 2px solid navy;
+   border: 2px solid #FFDB37;
    border-radius: 40px;
+   background-color: #FFFAE3;
 }
 
 #id{
@@ -84,9 +84,9 @@ a{
 }
 
 .freeTxt {
-   font-family: 'IBM Plex Sans KR', sans-serif;
-   font-weight: bold;
-   float:left;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-weight: bold;
+	float:left;
 }
 
 #button1 {
@@ -126,7 +126,7 @@ a{
 	border-radius: 40px;
 	color: gray;
 	width: fit-content;
-	background-color: beige;
+	background-color: #FAC4A4;
 	font-weight: bold;
 	float: right; 
 }
@@ -135,9 +135,8 @@ a{
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	font-size: 34px;
 }
-
 .completeListSize {
-	width: 900px;
+	width: 1400px;
 	margin: 0 auto;
 }
 </style>
@@ -171,7 +170,7 @@ a{
 						<div id="mem">
 							<input type="hidden" id="id" value="${dto.id }">
 							<input type="hidden" id="completeNum" value="${dto.completeNum }">
-							<h3>${dto.comdate }</h3>
+							<input type="hidden" id="comdate" value="${dto.comdate }">
 							<a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a>
 							<div class="skill">
 								<br>
@@ -189,10 +188,10 @@ a{
 						<div id="mem">
 							<input type="hidden" id="id" value="${dto.id }">
 							<input type="hidden" id="completeNum" value="${dto.completeNum }">
-							<h3>${dto.comdate }</h3>
+							<input type="hidden" id="comdate" value="${dto.comdate }">
 							<a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a>
 							<div class="skill">
-								<br>
+								<br><br>
 				                <c:forEach var="selectedSkill" items="${dto.skill}">
 				                    <div style="display:inline" id="skill">${selectedSkill}</div>
 				                </c:forEach>
@@ -205,12 +204,13 @@ a{
 				<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
 					<c:forEach var="dto" items="${completeList }">
 						<div id="mem">
+							<h3>${dto.comdate }</h3>
 							<input type="hidden" id="id" value="${dto.id }">
 							<input type="hidden" id="completeNum" value="${dto.completeNum }">
-							<h3>${dto.comdate }</h3>
+							<input type="hidden" id="comdate" value="${dto.comdate }">
 							<a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a>
 							<div class="skill">
-								<br>
+								<br><br>
 				                <c:forEach var="selectedSkill" items="${dto.skill}">
 				                    <div style="display:inline" id="skill">${selectedSkill}</div>
 				                </c:forEach>
