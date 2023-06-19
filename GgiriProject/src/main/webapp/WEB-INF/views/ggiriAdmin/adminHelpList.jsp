@@ -98,27 +98,6 @@ h1 {
 <script type="text/javascript">
 	var contextPath = "${pageContext.request.contextPath}";
 	
-	function helpReply(no) {
-			
-		$.ajax({
-			
-			url : contextPath + "/ggiriAdmin/helpReply?helpNo=" + no,
-			type : "GET",
-			success : function(data){
-				if(data == 'OK'){
-					location.href="/root/ggiriAdmin/adminHelpList";
-				} else {
-					alert("회원삭제 실패");
-					location.href="/root/ggiriAdmin/adminHelpList";
-				}
-			},
-			error : function(){
-				console.log("회원 삭제 오류");
-			}
-		});
-				
-	}
-	
 	function helpDelete(no) {
 		
 		var result = confirm("선택한 문의사항을 삭제 하시겠습니까?");
@@ -170,8 +149,8 @@ h1 {
 						<tr>
 							<td>${list.helpNo }</td><td>${list.id }</td><td>${list.title }</td><td>${list.content }</td><td>${list.helpDate }</td>
 							<td>
-								<div class="repDiv" style="border: 1px solid blue; border-radius: 12px; background: blue;" onclick="helpReply('${list.helpNo}')">
-									<span id="helpRep"> 답변달기 </span>
+								<div class="repDiv" style="border: 1px solid blue; border-radius: 12px; background: blue;">
+									<span id="helpRep" onclick="location.href='/root/ggiriHelp/helpView?helpNo=${list.helpNo}'"> 답변달기 </span>
 								</div>
 							</td>
 							<td>

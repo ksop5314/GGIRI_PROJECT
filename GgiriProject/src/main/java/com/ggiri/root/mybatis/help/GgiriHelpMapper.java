@@ -1,5 +1,6 @@
 package com.ggiri.root.mybatis.help;
 
+import com.ggiri.root.help.dto.GgiriAdminHelpDTO;
 import com.ggiri.root.help.dto.GgiriHelpDTO;
 import java.util.List;
 
@@ -21,5 +22,7 @@ public interface GgiriHelpMapper {
 	
 	// 관리자 페이지
 	public List<GgiriHelpDTO> adminHelpList();
+	public int adminHelpReply(GgiriAdminHelpDTO dto);
+	public List<GgiriAdminHelpDTO> adminRepData(int helpNo);
 	
 }

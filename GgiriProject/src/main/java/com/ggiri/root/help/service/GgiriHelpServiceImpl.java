@@ -1,11 +1,16 @@
 package com.ggiri.root.help.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.ggiri.root.help.dto.GgiriAdminHelpDTO;
 import com.ggiri.root.help.dto.GgiriHelpDTO;
 import com.ggiri.root.mybatis.help.GgiriHelpMapper;
+
+import oracle.net.aso.h;
 
 @Service
 public class GgiriHelpServiceImpl implements GgiriHelpService{
@@ -52,6 +57,14 @@ public class GgiriHelpServiceImpl implements GgiriHelpService{
 		model.addAttribute("adminHelpList", ghm.adminHelpList());
 	}
 	
+	@Override
+	public int adminHelpReply(GgiriAdminHelpDTO dto) {
+		return ghm.adminHelpReply(dto);
+	}
 	
+	@Override
+	public List<GgiriAdminHelpDTO> adminRepData(int helpNo) {
+		return ghm.adminRepData(helpNo);
+	}
 	
 }

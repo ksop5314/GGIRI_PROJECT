@@ -1,8 +1,11 @@
 package com.ggiri.root.help.service;
 
 
+import java.util.List;
+
 import org.springframework.ui.Model;
 
+import com.ggiri.root.help.dto.GgiriAdminHelpDTO;
 import com.ggiri.root.help.dto.GgiriHelpDTO;
 public interface GgiriHelpService {
 	
@@ -18,4 +21,7 @@ public interface GgiriHelpService {
 	
 	// 관리자 페이지
 	public void adminHelpList(Model model);
+	public int adminHelpReply(GgiriAdminHelpDTO dto);
+	public List<GgiriAdminHelpDTO> adminRepData(int helpNo);
+	
 }

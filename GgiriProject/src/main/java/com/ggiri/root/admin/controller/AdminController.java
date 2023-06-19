@@ -2,20 +2,28 @@ package com.ggiri.root.admin.controller;
 
 
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.ggiri.root.complete.service.CompleteService;
+import com.ggiri.root.help.dto.GgiriAdminHelpDTO;
 import com.ggiri.root.help.service.GgiriHelpService;
 import com.ggiri.root.member.service.GgiriFreeInsertService;
 import com.ggiri.root.member.service.GgiriService;
 import com.ggiri.root.project.service.ProjectService;
+
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("ggiriAdmin")
@@ -152,4 +160,33 @@ public class AdminController {
 		return "/ggiriAdmin/adminHelpList";
 	}
 	
+//	@GetMapping("helpView")
+//	public String adminHelpReply() {
+//		return "../ggiriHelp/helpView";
+//	}
+	
+	@PostMapping("adminHelpReply")
+	@ResponseBody
+	public int adminHelpReply(@RequestBody GgiriAdminHelpDTO dto) {
+		
+//		GgiriAdminHelpDTO dto = new GgiriAdminHelpDTO();
+//		
+//		String helpMember = (String)map.get("helpMember");
+//		String helpNo = (String)map.get("helpNo");
+//		String adminRep = (String)map.get("adminRep");
+//		
+//		dto.setHelpNo(Integer.parseInt(helpNo));
+//		dto.setHelpMember(helpMember);
+//		dto.setAdminRep(adminRep);
+		
+		int su = ghs.adminHelpReply(dto);
+		return su;
+	}
+	
+	@GetMapping("adminRepData")
+	@ResponseBody
+	public List<GgiriAdminHelpDTO> adminRepData(@RequestParam("helpNo") int helpNo) {
+		System.out.println(helpNo);
+		return ghs.adminRepData(helpNo);
+	}
 }
