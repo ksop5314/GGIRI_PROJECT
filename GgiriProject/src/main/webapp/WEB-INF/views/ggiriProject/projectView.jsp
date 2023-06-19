@@ -244,21 +244,15 @@ function like(){
 			}
 		})
 		
-
-	
-		
-		
 	}
 </script>
 <style type="text/css">
 * {
     font-family: 'IBM Plex Sans KR', sans-serif;
-
+	margin: 0 auto;
 }
-table {
-   border-collapse: collapse;
-} 
-#date {
+#pro {
+    color: black;
     float: right;
 }
 #select {
@@ -266,13 +260,13 @@ table {
     justify-content: center;
 }
 button{
-    background-color: #B2CCFF;
-    color: black;
+    background-color: #bdf9cf;
+    color: #3b3b3b;
     border: none;
     width: 145px;
     height: 50px;
     font-size: 18px;
-    border-radius: 9999px;
+    border-radius: 40px 80px / 80px 40px;
     cursor: pointer;
 }
 button:hover{
@@ -280,13 +274,13 @@ button:hover{
     transition: 0.5s;
 }
 input[type=button] {
-    background-color: #B2CCFF;
-    color: black;
+    background-color: #bdf9cf;
+    color: #3b3b3b;
     border: none;
     width: 145px;
     height: 50px;
     font-size: 18px;
-    border-radius: 9999px;
+	border-radius: 40px 80px / 80px 40px;
     cursor: pointer;
 }
 input[type=button]:hover {
@@ -299,11 +293,28 @@ input[type=button]:hover {
     width: fit-content;
     margin: auto;
     border-radius: 40px 80px / 80px 40px;
-    background-color: #EBF7FF;
+    background-color: #faeec7;
 }
 
 #container_1 {
    display: inline-block;
+}
+
+hr {
+    background: #688f4e;
+    height: 1px;
+    border: 0;
+}
+.wrap {
+	margin-top: 30px;
+	padding: 0 30px 30px 30px;
+	border-radius: 50% 20% / 10% 40%;
+	background-color: #e8fdee;
+	width: 1000px;
+} 
+
+#like_check {
+	color: #e8fdee;
 }
 
 /* 모달창 css */
@@ -374,20 +385,21 @@ textarea {
     
 	<c:import url="../default/header.jsp"></c:import>
     <div class="wrap">
-        <br>
+        <br><br>
+        <b style='font-size: 16px;'>작성자:</b><b style='font-size: 16px;'>${data.id }</b><b id="pro">${data.prodate }</b><br>
         <h1>${data.title }</h1>
-        <b>작성자: </b><b>${data.id }</b><b id="date">${data.prodate }</b><br><hr><br>
+        <hr><br>
+        <b style='font-size: 20px;'>프로젝트 내용</b>
+        <div id="content">
+            <pre><c:out value="${data.content }"/></pre>
+        </div><br><br>
+        	<b style='font-size: 20px;'>요구 스킬</b><br><br>
         <c:forEach var="selectedSkill" items="${data.skill}">
             <div style="display:inline" id="skill">${selectedSkill}</div>
         </c:forEach>
-        <br><br>
-        <br><br>
-        <div id="content">
-            <pre><c:out value="${data.content }"/></pre>
-        </div>
-        <br><br><hr><br>
+        <br><br><br>
         <div id="select">
-			<input type="button" style=" border-radius: 40px;" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'"> &nbsp;
+			<input type="button" style="background-color: #bdf9cf" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'"> &nbsp;
 			 
 		<!-- 좋아요 -->
 		<c:if test="${loginUser != null}">
@@ -398,7 +410,7 @@ textarea {
 			<c:if test="${like == 1}">
 			<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
 			</c:if>
-			<div id="like_check">${likeCount }</div></button> 
+			<div id="like_check">${likeCount }</div></button>  &nbsp;
 		</c:if> 
 			
 		<c:if test="${kakaoMember != null || naverMember != null || googleMember != null }">
@@ -409,36 +421,36 @@ textarea {
 			<c:if test="${like == 1}">
 			<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
 			</c:if>
-			<div id="like_check">${likeCount }</div></button> 
+			<div id="like_check">${likeCount }</div></button>  &nbsp;
 		</c:if> 	
 			
 			<c:if test="${data.id == loginUser && data.project == '완료' }">
-				<button type="submit" style=" border-radius: 40px;" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
+				<button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
 			</c:if>
 			<c:if test="${data.id == loginUser && data.project == '진행중' }">
-				<input type="button" value="수정" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-				<input type="button" value="삭제" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="수정" style="background-color: #bdf9cf;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="삭제" style="background-color: #bdf9cf;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
 			</c:if>
 			<c:if test="${data.id == kakaoMember.id && data.project == '완료'}">
-				<button type="submit" style=" border-radius: 40px;" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
+				<button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
 			</c:if>
 			<c:if test="${data.id == kakaoMember.id && data.project == '진행중'}">
-				<input type="button" value="수정" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-				<input type="button" value="삭제" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="수정" style="background-color: #bdf9cf;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="삭제" style="background-color: #bdf9cf;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
 			</c:if>
 			<c:if test="${data.id == naverMember.id && data.project == '완료'}">
-				<button type="submit" style=" border-radius: 40px;" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
+				<button type="submit"onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
 			</c:if>
 			<c:if test="${data.id == naverMember.id && data.project == '진행중'}">
-				<input type="button" value="수정" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-				<input type="button" value="삭제" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="수정" style="background-color: #bdf9cf;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="삭제" style="background-color: #bdf9cf;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
 			</c:if>
 			<c:if test="${data.id == googleMember.id && data.project == '완료'}">
-				<button type="submit" style=" border-radius: 40px;" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
+				<button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
 			</c:if>
 			<c:if test="${data.id == googleMember.id && data.project == '진행중'}">
-				<input type="button" value="수정" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-				<input type="button" value="삭제" style=" border-radius: 40px;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="수정" style="background-color: #bdf9cf;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="삭제" style="background-color: #bdf9cf;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
 			</c:if>
 		</div>
     </div>
@@ -464,8 +476,8 @@ textarea {
                  <br><br>
                  <div>
                     <textarea id="repContent" name="repContent" rows="3" cols="100"></textarea> &nbsp;
-                    <button type="button" style=" border-radius: 40px;" onclick="rep()">등 록</button> &nbsp;
-                    <button type="reset" style=" border-radius: 40px;">취 소</button>
+                    <button type="button"  onclick="rep()">등 록</button> &nbsp;
+                    <button type="reset" style="border-radius: 40px 80px / 80px 40px;">취 소</button>
                  </div>
               </form>
               <br><br>
