@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>         
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>       
+  
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>info</title>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script type='text/javascript'>
+window.onload = function() {
+	  var color = '<%= session.getAttribute("randomColor") %>';
+	  document.querySelector("#id").style.color = color;
+	};
 </script>
 <style type="text/css">
 *{
@@ -39,14 +44,15 @@ div{
 #id{
 	margin-right: auto;
     margin-left: auto;
-    background-color: ;
     border: none;
     width: 800px;
+    border-radius: 40px;
     height: 100px;
     text-align: center;
     padding: 50px 0 50px 0;
     font-size: 50px;
     color: white;
+    vertical-align: middle;
 }
 #id p {
 	color:white;
@@ -76,17 +82,24 @@ table td{
 			<br>
 			<table>
 				<tr>
-					<td><b>소개 : </b>"${info.introduce }"</td>
+					<td>소개</td>
+					<td>${info.introduce }</td>
 				</tr>
 				<tr>	
-					<td><b>가능한 기술 : </b>"${info.skill }"</td>
+					<td>나의 Skill</td>
+					<td>
+						<c:forEach var="selectedSkill" items="${info.skill}">
+				        	<div style="display:inline" id="skill">${selectedSkill}</div>
+				    	</c:forEach>
+					</td>
 				</tr>
 				<tr>
 				<tr>
 					<td>
 						<input type="hidden" id="freeNum" name="freeNum" value="${info.memberNum }">
-						<b>${info.id}님의 깃주소 : </b><a href="${info.url_name }" target="_blank">${info.url_name }</a>
+						<b>${info.id}님을 소개합니다-! </b>
 					</td>
+					<td><a href="${info.url_name }" target="_blank">${info.url_name }</a></td>
 				</tr>
 				<c:set var="id" value="${info.id }"/>
 				<c:if test="${info.id == loginUser }">
