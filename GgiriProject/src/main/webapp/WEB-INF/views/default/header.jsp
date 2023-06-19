@@ -195,7 +195,9 @@ body {
 			<a href="/root/index"><img width="300px" height="90px" src="/root/resources/image/logo6.png"></a>
 			<nav>
 				<ul>
-				
+					<c:if test="${loginUser == 'GGIRIADMIN'}">
+						<li><a href="/root/indexAdmin"> 관리자 페이지 </a></li>
+					</c:if>
 					<li><a href="/root/ggiriMember/memberList"> 프리랜서 보기 </a></li>
 					<li><a href="/root/ggiriProject/projectList"> 프로젝트 보기 </a></li>
 					<li><a href="/root/ggiriComplete/completeList"> 완성된 프로젝트 </a></li>
@@ -209,6 +211,13 @@ body {
 						        <div style="display: none;" id="drop-content">
 							        <c:if test="${loginUser != null}">
 										<b id="ggiri">Ggiri 접속</b>
+									</c:if>
+						        	<c:if test="${loginUser == 'GGIRIADMIN'}">
+										<b>관리자 계정 접속</b><br>
+							            <a href='/root/ggiriMember/myInfo'>내 정보</a>
+							            <a href="/root/ggiriMember/ggiriLogout">LOGOUT</a>
+							        </c:if>
+							        <c:if test="${loginUser != 'GGIRIADMIN' && loginUser != null}">
 							            <a href='/root/ggiriMember/myInfo'>내 정보</a>
 							            <a href="/root/ggiriMember/ggiriLogout">LOGOUT</a>
 							        </c:if>   

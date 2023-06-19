@@ -6,7 +6,6 @@
 
 	<resultMap type="com.ggiri.root.project.dto.ProjectDTO" id="project">
 		<id property="projectNum" column="projectNum"/>
-		<result property="projectNum" column="projectNum"/>
 		<result property="memberNum" column="memberNum"/>
 		<result property="title" column="title"/>
 		<result property="project" column="project"/>

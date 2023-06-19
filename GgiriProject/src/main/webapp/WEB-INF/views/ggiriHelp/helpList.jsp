@@ -54,10 +54,10 @@ span{
 }
 table {
 	margin: 0 auto;
-	font-family: 'IBM Plex Sans KR', sans-serif;
 }
 table th {
 	text-align: center;
+	font-size: 18px;
 }
 table th,td {
 	border-bottom: 2px solid gray;
@@ -112,7 +112,7 @@ table td {
 	    </c:if>
 	    <c:forEach var="list" items="${helpList }">
 	      <tr>
-	      <td style="text-align: center"><a href="../ggiriHelp/helpView?helpNo=${list.helpNo }"></a></td>
+	      <td style="text-align: center"><a href="../ggiriHelp/helpView?helpNo=${list.helpNo }">${list.helpNo }</a></td>
 	      <td style="text-align: left">${list.title }</td>
 	      <td style="text-align: center">${list.helpDate }</td>
 	      </tr>

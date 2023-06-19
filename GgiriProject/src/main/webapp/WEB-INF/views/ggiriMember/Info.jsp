@@ -10,15 +10,10 @@
 <title>info</title>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script type='text/javascript'>
-//페이지 로드 시 실행
 window.onload = function() {
-  var color = localStorage.getItem("customColor");
-  if (color) {
-    document.querySelector("#id").style.color = color;
-    localStorage.removeItem("customColor");
-  }
-};
-
+	  var color = '<%= session.getAttribute("randomColor") %>';
+	  document.querySelector("#id").style.color = color;
+	};
 </script>
 <style type="text/css">
 *{
