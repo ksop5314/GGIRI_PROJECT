@@ -94,12 +94,12 @@
 		SELECT projectNum, like_count, rank
 		FROM(
 			SELECT projectNum, COUNT(*) AS like_count,
-			RANK() OVER(ODER BY COUNT(*) DESC) AS rank
+			RANK() OVER(ODER BY COUNT(*) DESC) AS RANK
 		FROM heart
 		WHERE like_check = 1
 		GROUP BY projectNum
 		ORDER BY like_check DESC
-		)WHERE rank <=3
+		)WHERE RANK <=3
 		]]>
 	</select>
 	

@@ -233,7 +233,7 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public List<GgiriBoardLikeDTO> indexRank(Model model) {
 		model.addAttribute("rank",model);
-		return null;
+		return pm.indexRank();
 	}
 	
 }
