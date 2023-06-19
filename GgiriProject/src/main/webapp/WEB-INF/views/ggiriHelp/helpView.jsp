@@ -62,7 +62,7 @@
 			 let id = $("#loginId").val();
 			 console.log(rep);
 	         
-             if(rep[0] != null && rep[0].adminid != 'GGIRIADMIN' ){
+             if(rep[0] != null && id != 'GGIRIADMIN' ){
 		         let date = new Date(rep[0].adminRepDate);
 	             let adminRepDate = date.getFullYear()+"년 "+(date.getMonth()+1)+"월 ";
 	             adminRepDate += date.getDate()+"일 "+date.getHours()+"시 ";
@@ -73,14 +73,14 @@
 	             html += "                <th width='150px' height='40px'> Ggiri 관리자 </th>"+"<td width='150px'>"+ rep[0].adminRepDate +"</td>";
 	             html += "            </tr>";
 	             html += "            <tr>";
-	             html += "               <pre><td width='500px'>"+ rep[0].adminRep +"</td></pre>";
+	             html += "               <td width='500px'><pre>"+ rep[0].adminRep +"</pre></td>";
 	             html += "            </tr>";
 	             html += "         </table>";
 	             html += "      </div>";
 	             
 	        	 $("#adminRepDiv").html(html);
 	        	 
-             } else if(rep[0] != null && rep[0].adminid == 'GGIRIADMIN' ){
+             } else if(rep[0] != null && id == 'GGIRIADMIN' ){
             	 let date = new Date(rep[0].adminRepDate);
 	             let adminRepDate = date.getFullYear()+"년 "+(date.getMonth()+1)+"월 ";
 	             adminRepDate += date.getDate()+"일 "+date.getHours()+"시 ";
@@ -88,12 +88,12 @@
 	             html += "      <br><hr><div id='adminReply'>";
 	             html += "         <table class='table'>";
 	             html += "             <tr>";
-	             html += "                <th width='150px' height='40px'> Ggiri 관리자 </th>"+"<td width='150px'>"+ rep[0].adminRepDate +"</td>";
+	             html += "                <th width='150px' height='40px'> Ggiri 관리자의 답변 </th>"+"<td width='150px'>"+ rep[0].adminRepDate +"</td>";
 	             html += "            </tr>";
 	             html += "            <tr>";
 	             html += "               <input type='hidden' name='adminRepNo' id='adminRepNo' value='" + rep[0].adminRepNo + "'>";
 	             html += "               <input type='hidden' name='contentList' id='contentList" + rep[0].adminRepNo + "' value='" + rep[0].adminRep + "'>";
-	             html += "               <pre><td width='850px'>"+ rep[0].adminRep +"</td></pre>";
+	             html += "               <td width='850px'><pre id='adminMainRep'>"+ rep[0].adminRep +"</pre><div id='modifyAdminRep' name='modifyAdminRep' style='display: none;'></div></td>";
             	 html += "               <td><button type='button' id='deleteRep' name='deleteRep' style='width:50px;height:30px;' onclick='deleteAdminRep()'> 삭제 </button>";
                  html += "               <button type='button' id='modifyRep' name='modifyRep' style='width:50px;height:30px;' onclick='modifyAdminRep(" + rep[0].adminRepNo + ")'> 수정 </button></td>";
 	             html += "            </tr>";
@@ -148,55 +148,57 @@
 		   let contentList = $("#contentList" + adminRepNo).val();
 		   
 		   $("#modifyAdminRep").css("display", "flex");
+		   $("#adminMainRep").css("display", "none");
 		   
-		   let html;
-		   html += "<div class='title'><h2>답변 수정 &nbsp; </h2></div>";
+		   let html = "";
+		   html += "<div class='title'><h4>답변 수정 &nbsp; </h4></div><br>";
 		   html += "<input type='hidden' id='modifyNo' name='modifyNo' value='" + no + "'>";
 		   html += "<div class='adminContent' id='adminContent' name='adminContent'>";
-		   html += "<textarea id='adminTextArea' rows='1' cols='50'>" + contentList + "</textarea>";
+		   html += "<textarea id='adminTextArea' rows='10' cols='50'>" + contentList + "</textarea>";
 		   html += "<input type='button' id='modifyButton' name='modifyButton' onclick='modifyAdminRepResult(" + adminRepNo + ")' value='수정'>";
 		   html += "<input type='button' id='modifyCancelButton' name='modifyCancelButton' onclick='modifyAdminRepCancel()' value='취소'>";
 		   html += "</div>";
 		   
 		   $("#modifyAdminRep").html(html);
 		   
-		   function modifyAdminRepCancel() {
-				$("#modifyAdminRep").css("display", "none");		   
-		   }
-		   
 	}
+	
+	function modifyAdminRepCancel() {
+		$("#modifyAdminRep").css("display", "none");
+		adminRepList();
+    }
 	
 	function modifyAdminRepResult(repNo) {
 		
-		   let adminTextArea = $("#adminTextArea").val();
-		   let enContent = encodeURI(adminTextArea);
-		   let adminRep = decodeURI(enContent);
-		   let adminRepNo = repNo;
-		   console.log(adminRep);
-		   
-		   let form = { adminRepNo:adminRepNo, adminRep:adminRep};
-		   
-		   console.log(form);
-		   
-		   $.ajax({
-		      
-		      url : contextPath + "/ggiriAdmin/modifyAdminRep",
-		      type : "post",
-		      data : JSON.stringify(form),
-		      contentType : "application/json",
-		      success : function(data){
-		         if(data == 'OK'){
-		            $("#modal").css("display","none");
-		            replyData();
-		         } else {
-		            alert("success 안에서 댓글 수정 실패");
-		            replyData();
-		         }
-		      },
-		      error : function(){
-		         console.log("error 댓글 수정 오류");
-		      }
-		   });
+	   let adminTextArea = $("#adminTextArea").val();
+	   let enContent = encodeURI(adminTextArea);
+	   let adminRep = decodeURI(enContent);
+	   let adminRepNo = repNo;
+	   console.log(adminRep);
+	   
+	   let form = { adminRepNo:adminRepNo, adminRep:adminRep};
+	   
+	   console.log(form);
+	   
+	   $.ajax({
+	      
+	      url : contextPath + "/ggiriAdmin/modifyAdminRep",
+	      type : "post",
+	      data : JSON.stringify(form),
+	      contentType : "application/json",
+	      success : function(data){
+	         if(data == 'OK'){
+	            $("#modifyAdminRep").css("display","none");
+	            adminRepList();
+	         } else {
+	            alert("success 안에서 댓글 수정 실패");
+	            adminRepList();
+	         }
+	      },
+	      error : function(){
+	         console.log("error 댓글 수정 오류");
+	      }
+	   });
 		
 	}
 	
@@ -264,9 +266,7 @@ hr {
 			</div>
 		</c:if>
 		<div id="adminRepDiv">
-			<div id='modifyAdminRep' name='modifyAdminRep' style='display: none;'>
 			
-			</div>
 		</div>
 	</div>
 	<c:import url="../default/footer.jsp"></c:import>

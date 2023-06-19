@@ -36,6 +36,10 @@
 		DELETE FROM ggiriAdminHelpRep WHERE adminRepNo=#{adminRepNo}
 	</delete>
 	
+	<update id="modifyAdminRep">
+		UPDATE ggiriAdminHelpRep SET adminRep=#{adminRep} WHERE adminRepNo=#{adminRepNo}
+	</update>
+	
 	<!-- 고객센터 -->
 	<select id="HelpList" resultMap="help">
 		SELECT * FROM ggirihelp

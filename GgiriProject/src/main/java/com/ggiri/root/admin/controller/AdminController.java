@@ -199,4 +199,11 @@ public class AdminController {
 		return "OK";
 	}
 	
+	@PostMapping("modifyAdminRep")
+	@ResponseBody
+	public String modifyAdminRep(@RequestBody GgiriAdminHelpDTO dto) {
+		ghs.modifyAdminRep(dto);
+		return "OK";
+	}
+	
 }
