@@ -10,7 +10,7 @@
 <body>
 	<c:import url="../default/header.jsp"></c:import>
 	<div class="wrap modify_form">
-	<h1>프로젝트 등록</h1>
+	<h1>문의사항 수정</h1>
 		<div class="modify">
 			<form action="../ggiriHelp/modify" method="post">
 				<input type="hidden" name="helpNo" value="${data.helpNo }">
@@ -27,7 +27,7 @@
 				<input type="text" name="title" size="50" value="${data.title }"><br>
 				<b> 내 용 </b><br>
 				<textarea rows="20" cols="100" name="content">${data.content }</textarea><br>
-				<br>
+				<br><br><br>
 				<input type="submit" value="수정완료"> &nbsp;
 				<input type="button" value="프로젝트 목록" onclick="location.href='../ggiriHelp/helpView'">
 			</form>

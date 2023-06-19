@@ -118,16 +118,6 @@ table td {
 	      </tr>
 	    </c:forEach>
 	</table>
-	<%-- <br>
-		  <form action="helpList.do" method="get">
-		    <select name="condition" id="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">
-		      <option value="titleContent" <c:if test="${condition eq 'titleContent' }">selected</c:if>>제목 + 본문</option>
-		      <option value="title" <c:if test="${condition eq 'title' }">selected</c:if>>제목</option>
-		      <option value="id" <c:if test="${condition eq 'id' }">selected</c:if>>작성자</option>
-		    </select>
-		    <input type="text" name="keyword" id="keyword" placeholder="검색어" value="${keyword }"/>
-		    <button id="button1" type="submit">검색</button>
-		  </form> --%>
 	</div>
 	<c:import url="../default/footer.jsp"></c:import>
 </body>
