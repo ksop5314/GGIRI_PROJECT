@@ -9,8 +9,7 @@
 <title>member/login.jsp</title>
 <style type="text/css">
 .ggiriPage {
-	width: 1000px;
-	margin: auto;
+	width: 1200px;
 }
 .ggiriPage login {
 	text-align: left;	
@@ -24,7 +23,7 @@
 .ggiriLogin {
 	border-radius: 40px;
 	background-color: #EBF7FF;
-	height: 500px;
+	height: 270px;
 }
 
 .ggiriLogin submit {
@@ -88,21 +87,20 @@
 }
 
 .loginPageSize {
-	width: 1500px;
+	width: 1250px;
+	margin: 0 auto;
 }
-
 #snsLogin > a > img {
-	display: block;
 	margin: 0;
 	padding: 2px;
 }
-
+a {
+	text-decoration: none;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script src = "https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type='text/javascript'>
-
-
 
 </script>
 </head>
@@ -136,18 +134,19 @@
 						<button class="findIdPwd" id="findIdPwd" type="button" onclick="location.href='${contextPath }/ggiriMember/findIdPwd'">아이디/비밀번호 찾기</button>
 					</form>
 					<br>
-					<div id="snsLogin" align ="center" >
+				</div>
+				<br>
+				<div id="snsLogin" align ="center" >
 						<a href="https://kauth.kakao.com/oauth/authorize?client_id=0bc794d215c15ba457b2eb709fecd070&redirect_uri=http://localhost:8080/root/ggiriMember/kakao_callback&response_type=code">
-				    		<img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" class="button-login" width="240px" height ="60px" />
-				    	</a>
+				    		<img src="https://play-lh.googleusercontent.com/Ob9Ys8yKMeyKzZvl3cB9JNSTui1lJwjSKD60IVYnlvU2DsahysGENJE-txiRIW9_72Vd" class="button-login" width="50px" height ="50px" style="border-radius: 10px;" />
+				    	</a> &nbsp;
 				    	<a href="${contextPath }/ggiriMember/naver_login">
-				    		<img src="http://static.nid.naver.com/oauth/small_g_in.PNG" class="button-login" width="240px" height ="60px" />
-				    	</a>
+				    		<img src="https://play-lh.googleusercontent.com/jYtnK__ibJh9emODIgTyjZdbKym1iAj4RfoVhQZcfbG-DuTSHR5moHVx9CQnqg1yoco9" class="button-login" width="50px" height ="50px" style="border-radius: 10px;" />
+				    	</a> &nbsp;
 				    	<a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=15714476982-d6tnk6tv8f7hptqjh6qrhqsm42aglq72.apps.googleusercontent.com&redirect_uri=http://localhost:8080/root/ggiriMember/google_callback&response_type=code&scope=email%20profile%20openid&access_type=offline">
-				    		<img src="${contextPath }/resources/image/btn_google_signin_light_focus_web@2x.png" style="width: 240px;height: 60px; border-radius: 5px;">
+				    		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/800px-Google_%22G%22_Logo.svg.png" class="button-login" width= "50px" height= "50px">
 				    	</a>
 	   			 	</div>
-				</div>
 			</div>
 		</div>
 	</div>

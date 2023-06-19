@@ -29,11 +29,6 @@ function count_check(obj){
 <style type="text/css">
 *{
 	margin: 0;
-}
-.write_save {
-    font-family: 'IBM Plex Sans KR', sans-serif;
-}
-input {
 	font-family: 'IBM Plex Sans KR', sans-serif;
 }
 textarea {
@@ -89,7 +84,6 @@ table td {
     height: 50px;
     font-size: 18px;     
     border-radius: 9999px;
-    font-family: 'IBM Plex Sans KR', sans-serif;
     cursor: pointer;
 }
 #submit:hover{
@@ -244,7 +238,7 @@ table td {
 		</table>
 		<br>
 		<div id="select">
-			<input type="submit" id="submit" value="등록"> &nbsp;
+			<input type="submit" id="submit" value="등록하기"> &nbsp;
 			<input type="button" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'">
 		</div>
 	</form>

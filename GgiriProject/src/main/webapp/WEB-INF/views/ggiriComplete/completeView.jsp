@@ -98,7 +98,6 @@ textarea {
 	<c:import url="../default/header.jsp"></c:import>
 	<form id="view">
 		<div class="wrap">
-	        <br><br>
 	        <div class="head">
 		        <b style='font-size: 16px;'>작성자:</b><b style='font-size: 16px;'>${data.id }</b><b id="com">${data.comdate }</b><br>
 		        <h1>${data.title }</h1>

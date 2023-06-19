@@ -50,15 +50,15 @@ h3{
 	margin-bottom: 20px;
 	font-size: 20px;
 	text-align: left;
-	background-color: white;
 	border-color: gray;
 	font-family: 'IBM Plex Sans KR', sans-serif;
 }
 
 #mem {
    padding: 30px;
-   border: 2px solid navy;
+   border: 2px solid #FFDB37;
    border-radius: 40px;
+   background-color: #FFFAE3;
 }
 
 #id{
@@ -126,7 +126,7 @@ a{
 	border-radius: 40px;
 	color: gray;
 	width: fit-content;
-	background-color: beige;
+	background-color: #FAC4A4;
 	font-weight: bold;
 	float: right; 
 }
@@ -135,7 +135,6 @@ a{
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	font-size: 34px;
 }
-
 .completeListSize {
 	width: 1400px;
 	margin: 0 auto;

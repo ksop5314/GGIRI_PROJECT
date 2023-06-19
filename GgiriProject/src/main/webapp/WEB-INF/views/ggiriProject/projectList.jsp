@@ -10,7 +10,7 @@
 
 <style type="text/css">
 .board_table{
-   width: 900px;
+   width: 1200px;
    margin: auto;
    text-align: left;
 }
@@ -72,13 +72,13 @@ a{
 }
 
 #freeInput {
-    border-radius: 15px;
+   border-radius: 15px;
    font-size: 15px;
    padding-top: 5px;
    padding-bottom: 5px;
    float: right;
-    min-height: 50px; 
-    min-width: 170px;
+   min-height: 50px; 
+   min-width: 170px;
    font-family: 'IBM Plex Sans KR', sans-serif;
    cursor: pointer;
 }
@@ -111,7 +111,7 @@ a{
 #mem {
    padding: 30px;
    border: 2px solid navy;
-   border-radius: 40px;
+   border-radius: 50px;
 }
 
 #project_1 {
@@ -149,10 +149,15 @@ a{
 }
 
 .projectListSize {
-	width: 900px;
+	width: 1400px;
 	margin: 0 auto;
 }
-
+#search {
+ 	float: left;
+    position: relative;
+    left: 800px;
+    
+}
 </style>
 </head>
 <body>
@@ -239,6 +244,8 @@ a{
 				<br>
 			</div>
 		</div>
+	</div>
+	<div id="search">
 		<form action="projectList.do" method="get">
 			<select name="condition" id="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">
 				<option value="titleContent" <c:if test="${condition eq 'titleContent' }">selected</c:if>>제목 + 본문</option>
