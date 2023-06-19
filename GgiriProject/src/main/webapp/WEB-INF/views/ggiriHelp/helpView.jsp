@@ -64,8 +64,12 @@
 	      success: function(rep) {
 	    	 console.log(rep[0]);
 	         let html = "";
+			 let id = $("#loginId").val();
+			 let admin = "GGIRIADMIN";
+			 console.log(id);
+			 console.log(admin);
 	         
-             if(rep[0] != null){
+             if(rep[0] != null && id != admin){
 		         let date = new Date(rep[0].adminRepDate);
 	             let adminRepDate = date.getFullYear()+"년 "+(date.getMonth()+1)+"월 ";
 	             adminRepDate += date.getDate()+"일 "+date.getHours()+"시 ";
@@ -82,7 +86,25 @@
 	             html += "      </div>";
 	             
 	        	 $("#adminRepDiv").html(html);
-             } else {
+	        	 
+             } else if(rep[0] != null && id == admin){
+            	 let date = new Date(rep[0].adminRepDate);
+	             let adminRepDate = date.getFullYear()+"년 "+(date.getMonth()+1)+"월 ";
+	             adminRepDate += date.getDate()+"일 "+date.getHours()+"시 ";
+	             adminRepDate += date.getMinutes()+"분 "+date.getSeconds()+"초";
+	             html += "      <br><hr><div id='adminReply'>";
+	             html += "         <table class='table'>";
+	             html += "             <tr>";
+	             html += "                <th width='150px' height='40px'> Ggiri 관리자 </th>"+"<td width='150px'>"+ rep[0].adminRepDate +"</td>";
+	             html += "            </tr>";
+	             html += "            <tr>";
+	             html += "               <pre><td width='850px'>"+ rep[0].adminRep +"</td></pre>";
+            	 html += "               <td><button type='button' id='deleteRep' name='deleteRep' style='width:50px;height:30px;' onclick='deleteRep()'> 삭제 </button>";
+                 html += "               <button type='button' id='modifyRep' name='modifyRep' style='width:50px;height:30px;' onclick='modifyRep(" + rep[0].helpNo + ")'> 수정 </button></td>";
+	             html += "            </tr>";
+	             html += "         </table>";
+	             html += "      </div>";
+	      	 } else {
             	 html += "<br><hr><br><div> 해당 문의사항은 빠른시간내에 답변 드리겠습니다. </div>";
 	        	 $("#adminRepDiv").html(html);
              }
@@ -99,6 +121,7 @@
 	<c:import url="../default/header.jsp"></c:import>
 	<div class="helpViewSize">
 		<input type="hidden" id="helpNo" name="helpNo" value="${data.helpNo }">
+		<input type="hidden" id="loginId" name="loginId" value="${loginUser }">
 		<span><b> 문의 번호 </b> ${data.helpNo }</span><span><b> 문의 날짜 </b> ${data.helpDate }</span>
 		<div><b> 회원 아이디 </b> ${data.id }<span><b> 제목 </b> ${data.title }</span></div>
 		<div><b> 문의 내용 </b> ${data.content }</div>
