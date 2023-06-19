@@ -23,5 +23,5 @@ public interface GgiriHelpService {
 	public void adminHelpList(Model model);
 	public int adminHelpReply(GgiriAdminHelpDTO dto);
 	public List<GgiriAdminHelpDTO> adminRepData(int helpNo);
-	
+	public void deleteAdminRep(int adminRepNo);
 }

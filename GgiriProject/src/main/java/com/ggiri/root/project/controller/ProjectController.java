@@ -261,6 +261,7 @@ public class ProjectController implements GgiriMemberSession{
 		String content = (String)map.get("content");
 		System.out.println(content);
 		
+		
 		dto.setId((String)map.get("id"));
 		dto.setMemberNum(Integer.parseInt((String)map.get("memberNum")));
 		dto.setBno(Integer.parseInt((String)map.get("projectNum")));

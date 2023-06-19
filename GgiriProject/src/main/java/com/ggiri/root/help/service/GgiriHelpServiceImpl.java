@@ -67,4 +67,10 @@ public class GgiriHelpServiceImpl implements GgiriHelpService{
 		return ghm.adminRepData(helpNo);
 	}
 	
+	@Override
+	public void deleteAdminRep(int adminRepNo) {
+		ghm.deleteAdminRep(adminRepNo);
+	}
+	
+	
 }
