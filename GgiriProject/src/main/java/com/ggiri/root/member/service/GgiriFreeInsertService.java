@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 
 import com.ggiri.root.complete.dto.CompleteDTO;
 import com.ggiri.root.member.dto.GgiriFreeInsertDTO;
+import com.ggiri.root.project.dto.GgiriBoardLikeDTO;
 import com.ggiri.root.project.dto.ProjectDTO;
 
 
@@ -51,6 +52,7 @@ public interface GgiriFreeInsertService {
 	public List<GgiriFreeInsertDTO> getAdminList(int page, int perPage);
 
 	public int getAdminListCount();
+	
 
 
 	public List<GgiriFreeInsertDTO> ajaxMemberList();

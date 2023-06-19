@@ -29,6 +29,7 @@ import com.ggiri.root.member.service.MailSendService;
 import com.ggiri.root.member.service.SystemUtil;
 import com.ggiri.root.mybatis.member.GgiriFreeInsertMapper;
 import com.ggiri.root.naver.service.NaverServiceImpl;
+import com.ggiri.root.project.dto.GgiriBoardLikeDTO;
 import com.ggiri.root.session.login.GgiriMemberSession;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 
@@ -321,6 +322,7 @@ public class GgiriController implements GgiriMemberSession {
 			gs.ggiriMemberInfo(loginUser, model);
 		return "ggiriMember/myInfo";
 	}
+	
 	
 	@RequestMapping("snsInfo")
 	public String ggiriSnsInfo(HttpSession session, Model model) {

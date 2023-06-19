@@ -54,13 +54,13 @@ button:hover {
 			<input type="hidden" name="memberNum" id="memberNum" value="${ggiriMemberInfo.memberNum }">
 		</c:if>
 		<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
-			<b>아이디 ${ggiriSnsInfo.id } </b> &nbsp; <input type="hidden" name="id" id="id" value="${ggiriSnsInfo.id }" readonly><br>
+			<b>아이디 &nbsp; ${ggiriSnsInfo.id }</b> <input type="hidden" name="id" id="id" value="${ggiriSnsInfo.id }" readonly><br>
 			<input type="hidden" name="memberNum" id="memberNum" value="${ggiriSnsInfo.memberNum }">
 		</c:if>
 		<br>
 		<b>제 목</b> &nbsp; &nbsp; <input type="text" id="title" name="title" size="50"><br>
 		<br>
-		<b style="display: block;">내용</b><br>
+		<b style="display: block;">내용</b>
 		<textarea rows="50px" cols="50px" id="content" name="content"></textarea>
 		<br>
 		</div>

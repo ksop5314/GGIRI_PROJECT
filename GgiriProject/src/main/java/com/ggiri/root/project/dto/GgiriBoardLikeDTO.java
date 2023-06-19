@@ -16,11 +16,21 @@ public class GgiriBoardLikeDTO {
 	private int projectNum;
 	private String id;
 	private int like_check;
+	private int memberNum;
 	
 	
 	
 	
 	
+	
+	
+	
+	public int getMemberNum() {
+		return memberNum;
+	}
+	public void setMemberNum(int memberNum) {
+		this.memberNum = memberNum;
+	}
 	public int getLike_no() {
 		return like_no;
 	}
