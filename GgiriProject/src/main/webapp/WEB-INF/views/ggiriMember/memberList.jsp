@@ -460,7 +460,7 @@ a {
 	<div class="body">
 		<div class="freeTxt">
 			<p>끼리가 보증하는 IT파트너</p>
-			<p id="h">프리렌서로 등록하면<br>
+			<p id="h">프리랜서로 등록하면<br>
 			더 정확한 추천을 받을 수 있어요</p>
 			<br>
 		</div>

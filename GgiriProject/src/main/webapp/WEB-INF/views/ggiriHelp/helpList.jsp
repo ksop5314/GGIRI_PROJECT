@@ -112,9 +112,9 @@ table td {
 	    </c:if>
 	    <c:forEach var="list" items="${helpList }">
 	      <tr>
-		      <td style="text-align: center">${list.helpNo }</td>
-		      <td style="text-align: left"><a href="../ggiriHelp/helpView?helpNo=${list.helpNo }">${list.title }</a></td>
-		      <td style="text-align: center">${list.helpDate }</td>
+	      <td style="text-align: center">${list.helpNo }</td>
+	      <td style="text-align: left"><a href="../ggiriHelp/helpView?helpNo=${list.helpNo }">${list.title }</a></td>
+	      <td style="text-align: center">${list.helpDate }</td>
 	      </tr>
 	    </c:forEach>
 	</table>
