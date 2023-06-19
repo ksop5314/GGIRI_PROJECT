@@ -145,10 +145,26 @@ public class ProjectServiceImpl implements ProjectService {
 		
 	}
 
+	// 좋아요 리스트
 	
+	
+	
+	@Override
+	public List<Map<String, Object>> selectHeart(String id,Model model) {
+		model.addAttribute("heartlist", pm.selectHeart(id));
+		return pm.selectHeart(id);
+	}
+	
+	@Override
+	public List<Map<String, Object>> selectSnsHeart(String id,Model model) {
+		model.addAttribute("heartSnslist", pm.selectSnsHeart(id));
+		return pm.selectSnsHeart(id);
+	}
 	
 	//좋아요
 	
+	
+
 	@Override
 	public void like_check(int projectNum, String id) {
 		try {
@@ -173,6 +189,8 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	
 	
+	
+
 	
 
 	@Override
@@ -207,10 +225,16 @@ public class ProjectServiceImpl implements ProjectService {
 		// TODO Auto-generated method stub
 		return pm.select_all_heart(dto);
 	}
+
 	
 	
 	
-	
+	// 인덱스 좋아요 리스트
+	@Override
+	public List<GgiriBoardLikeDTO> indexRank(Model model) {
+		model.addAttribute("rank",model);
+		return null;
+	}
 	
 }
 
