@@ -62,6 +62,12 @@ public class GgiriController implements GgiriMemberSession {
 	@Autowired
 	private GgiriFreeInsertMapper gfi;
 	
+	
+	@GetMapping("/indexAdmin")
+	public String indexAdmin() {
+		return "indexAdmin";
+	}
+	
 	@GetMapping("ggiriLogin")
 	public String login() {
 		return "ggiriMember/ggiriLogin";
@@ -85,7 +91,7 @@ public class GgiriController implements GgiriMemberSession {
 			return "redirect:successLogin";
 		} else if(result == 2) {
 			ra.addAttribute("id", request.getParameter("id"));
-			return "redirect:successAdmin";
+			return "redirect:successLogin";
 		}
 		return "redirect:failLogin";
 	}

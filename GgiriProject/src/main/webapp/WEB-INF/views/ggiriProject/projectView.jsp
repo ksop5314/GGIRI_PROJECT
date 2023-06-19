@@ -106,10 +106,9 @@ function replyData() {
          
          $("#reply").html(html);
          
-         
       }, 
       error: function() {
-         alert("댓글 가져오기 실패!")
+         alert("댓글 가져오기 실패!");
       }
    });
 }
