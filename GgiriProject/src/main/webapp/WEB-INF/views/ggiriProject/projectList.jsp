@@ -111,7 +111,7 @@ a{
 #mem {
    padding: 30px;
    border: 2px solid navy;
-   border-radius: 40px;
+   border-radius: 50px;
 }
 
 #project_1 {
