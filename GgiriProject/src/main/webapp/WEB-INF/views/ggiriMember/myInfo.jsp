@@ -6,14 +6,56 @@
 <head>
 <meta charset="UTF-8">
 <title>myInfo</title>
+<style type="text/css">
+table {
+	width: 1000px;
+	margin: 0 auto;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+table th {
+	text-align: center;
+}
+table th,td {
+	border-bottom: 2px solid gray;
+	padding: 20px 0 20px 0;
+}
+
+table td {
+	padding: 5px 0 7px 8px;
+	text-align: center;
+	width: 700px;
+}
+.wrap {
+	width: 1200px;
+	margin: auto;
+}
+input[type=button] {
+	background-color: #B2CCFF;
+    color: black;
+    border: none;
+    width: 145px;
+    height: 50px;
+    font-size: 18px;     
+    border-radius: 9999px;
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    cursor: pointer;
+}
+input[type=button]:hover {
+    background-color: #EBF7FF;
+    transition: 0.5s;
+}
+.but {
+    display: flex;
+    justify-content: center;
+}
+</style>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 </head>
 <body>
 	<c:import url="../default/header.jsp"/>
 	<div class="wrap">
-	<br>
-		<h1 id="title">내정보</h1>
+		<h1>내 정보</h1>
 		<table>
 				<c:if test="${naverMember != null }">
 					<tr>
@@ -160,10 +202,10 @@
 					</tr>
 				</c:if>
 			</table><br>
-			<div style="border: 1px solid gray; border-radius: 20px; width: 130px; height: 30px; text-align: center; padding-top: 10px; background: orange;">
-				<a href="/root/ggiriMember/modifyMyInfo" style="text-decoration: none; font-weight: bold; color: white;">내 정보 수정</a>
+			<div class="but">
+				<input type="button" value="정보 수정" onclick="location.href='../ggiriMember/modifyMyInfo'">
 			</div>
-	</div>
+		</div>
 	<c:import url="../default/footer.jsp"/>
 </body>
 </html>
