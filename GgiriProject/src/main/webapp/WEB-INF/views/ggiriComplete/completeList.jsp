@@ -111,8 +111,8 @@ a{
     width: fit-content;
     margin: auto;
     font-family: 'IBM Plex Sans KR', sans-serif;
-    border-radius: 40px;
-    background-color: #EBF7FF;
+    border-radius: 40px 80px / 80px 40px;
+    background-color: #faeec7;
 }
 
 .search{
