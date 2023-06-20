@@ -37,6 +37,9 @@ a{
    color: black;
    font-weight: bold;
 }
+h3 {
+	color: gray;
+}
 </style>
 </head>
 <body>
@@ -50,13 +53,14 @@ a{
 		</c:if>
 	</c:forEach>  --%>
 	<div class="board_table">
+		<h1>[나의 찜 ꯁ 목록]</h1>
+		<br>
 		<c:if test="${heartlist.size() == 0 }">
-			<h3>좋아요한 글이 없습니다</h3>
+			<h3>좋아요한 글이 없습니다.</h3>
 		</c:if>
 		<c:if test="${heartSnslist.size() == 0 }">
-			<h3>좋아요한 글이 없습니다</h3>
+			<h3>좋아요한 글이 없습니다.</h3>
 		</c:if>
-		<h1>[나의 찜 목록]</h1>
 		<c:forEach var="list" items="${heartlist }">
 		<div id="mem">
 			<c:if test="${list.id == loginUser }">
@@ -65,7 +69,6 @@ a{
 			</c:if>
 		</div>
 		</c:forEach>
-		
 		<br>
 		<c:forEach var="list" items="${heartSnslist }">
 		<br>

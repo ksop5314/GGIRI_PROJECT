@@ -257,6 +257,7 @@ function like(){
 	border-radius: 30px 0 30px 0;
 	border: 5px solid navy;
 	width: 1000px;
+	margin: 0 auto;
 }
 .content {
 	margin-top: 10px;
@@ -424,9 +425,24 @@ textarea {
         <br>
         <div class="head">
 	        <b style='font-size: 16px;'>작성자:</b><b style='font-size: 16px;'>${data.id }</b><b id="pro">${data.prodate }</b><br>
-	        
 	        <!-- 좋아요 -->
 			<c:if test="${loginUser != null}">
+			<div class="heart">
+					<c:if test="${like == 0}">
+						<button id="like" onclick="like()">
+							<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
+						</button>
+					</c:if>
+					<c:if test="${like == 1}">
+						<button id="like" onclick="like()">
+							<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
+						</button>
+					</c:if>
+					<div id="like_check">${likeCount }</div>
+			</div>
+			</c:if> 
+				
+			<c:if test="${kakaoMember != null || naverMember != null || googleMember != null }">
 				<button id="like" onclick="like()">
 				<c:if test="${like == 0}">
 				<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
@@ -435,18 +451,8 @@ textarea {
 				<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
 				</c:if>
 				<div id="like_check">${likeCount }</div></button>  &nbsp;
-			</c:if> 
-				
-			<c:if test="${kakaoMember != null || naverMember != null || googleMember != null }">
-				<button onclick="like()">
-				<c:if test="${like == 0}">
-				<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
-				</c:if>
-				<c:if test="${like == 1}">
-				<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
-				</c:if>
-				<div id="like_check">${likeCount }</div></button>  &nbsp;
 			</c:if>
+			
 			<h1>${data.title }</h1>
         </div>
         <div class="content">
