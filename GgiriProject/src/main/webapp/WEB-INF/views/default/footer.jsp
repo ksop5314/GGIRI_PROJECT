@@ -13,7 +13,7 @@
 	margin: 0;
 }
 .footer {
-	margin: 100px 0 0 0;
+	margin: 200px 0 0 0;
 	text-align: center;
 	background-color: #002266;
 	width: 1920px;
