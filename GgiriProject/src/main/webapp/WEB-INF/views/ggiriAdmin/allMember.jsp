@@ -44,6 +44,10 @@
 		background: orange;
 	}
 	
+	.wrap {
+		width: 1100px;
+	}
+	
 </style>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 <script type="text/javascript">
@@ -52,12 +56,13 @@
 	function memberDelete(id) {
 		
 		var result = confirm("선택한 회원을 삭제 하시겠습니까?");
+		var deleteId = id;
 		
 		if(result == true){
 			
 			$.ajax({
 				
-				url : contextPath + "/ggiriAdmin/memberDelete?deleteId=" + id,
+				url : contextPath + "/ggiriAdmin/memberDelete?deleteId=" + deleteId,
 				type : "GET",
 				success : function(data){
 					if(data == 'OK'){

@@ -57,9 +57,9 @@ public class AdminController {
 	
 	@GetMapping("allMember")
 	public String allMember(Model model, HttpSession session) {
-		String id = (String)session.getAttribute("ADMIN");
-		System.out.println(id);
-		gs.allMember(model, id);
+//		String id = (String)session.getAttribute("ADMIN");
+//		System.out.println(id);
+		gs.allMember(model);
 		return "ggiriAdmin/allMember";
 	}
 	
