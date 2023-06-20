@@ -51,13 +51,8 @@ div{
     text-align: center;
     padding: 50px 0 50px 0;
     font-size: 50px;
-    color: white;
+    color: black;
     vertical-align: middle;
-}
-#id p {
-	color:white;
-  	font-size:25px;
-  	line-height:300px;
 }
 table {
 	margin-right: auto;
@@ -78,7 +73,7 @@ table td{
 			
 			<!-- <input type="hidden" id="writeNo" name="writeNo"> -->
 			<br>
-			<p id="id">"${info.id }"</p>
+			<div style="background-color: '<%= session.getAttribute("randomColor") %>'"><p id="id">"${info.id }"</p></div>
 			<br>
 			<table>
 				<tr>

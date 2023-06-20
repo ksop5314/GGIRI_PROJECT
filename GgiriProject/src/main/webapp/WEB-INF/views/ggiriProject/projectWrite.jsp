@@ -19,8 +19,8 @@ function count_check(obj){
 			chkCnt++;
 		}
 	}
-	if(chkCnt > 5){
-		alert("요구 스킬은 5개까지 선택할 수 있습니다.");
+	if(chkCnt > 10){
+		alert("요구 스킬은 10개까지 선택할 수 있습니다.");
 		obj.checked = false;
 		return false;
 	}
@@ -176,14 +176,14 @@ table td {
 					<label for="available_5">Jenkins</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_6" value="webView" onclick="count_check(this)">
 					<label for="available_6">WebView</label><br>
-					<input type="checkbox" class="hidden" name="skill" id="available_7" value="node.js" onclick="count_check(this)">
-					<label for="available_7">node.js</label>
-					<input type="checkbox" class="hidden" name="skill" id="available_8" value="react.js" onclick="count_check(this)">
-					<label for="available_8">React.js</label>
+					<input type="checkbox" class="hidden" name="skill" id="available_7" value="nodeJs" onclick="count_check(this)">
+					<label for="available_7">node-js</label>
+					<input type="checkbox" class="hidden" name="skill" id="available_8" value="reactJs" onclick="count_check(this)">
+					<label for="available_8">React-js</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_9" value="react-native" onclick="count_check(this)">
 					<label for="available_9">react-native</label>
-					<input type="checkbox" class="hidden" name="skill" id="available_10" value="Vue.js" onclick="count_check(this)">
-					<label for="available_10">Vue.js</label>
+					<input type="checkbox" class="hidden" name="skill" id="available_10" value="VueJs" onclick="count_check(this)">
+					<label for="available_10">Vue-js</label>
 					<input type="checkbox" class="hidden" name="skill" id="available_11" value="javaScript" onclick="count_check(this)">
 					<label for="available_11">JavaScript</label><br>
 					<input type="checkbox" class="hidden" name="skill" id="available_12" value="oracle" onclick="count_check(this)">

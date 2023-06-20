@@ -455,7 +455,7 @@ a {
 </style>
 </head>
 <body>
-<c:import url="../default/header.jsp"/>
+	<c:import url="../default/header.jsp"/>
 	<br>
 	<div class="body">
 		<div class="freeTxt">
@@ -481,11 +481,6 @@ a {
 		<br><br>
 		<hr>
 		<div id="devList">
-		<%-- <c:forEach var="list" items="${boardList }">
-                <a href="Info?id=${list.id}"><p id="id">${list.id }</p></a>
-                <div>${list.introduce }</div>
-                <div>${list.skill }</div>
-             </c:forEach> --%>
 		 <c:forEach var="list" items="${boardList}">
 		    <div id="mem">
 		      <a href="Info?id=${list.id}" ><p id="id">${list.id}</p></a>

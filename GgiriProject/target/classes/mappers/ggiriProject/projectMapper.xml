@@ -190,7 +190,7 @@
 	</update>
 	
 	<update id="modify">
-		UPDATE ggiriProject SET title=#{title}, content=#{content}, project=#{project} WHERE projectNum=#{projectNum}
+		UPDATE ggiriProject SET title=#{title}, id=#{id}, skill=#{skill}, content=#{content}, project=#{project} WHERE projectNum=#{projectNum}
 	</update>
 	
 	<delete id="delete">
@@ -256,7 +256,7 @@
 	            WHERE
 	            <choose>
 	                <when test="condition == 'titleContent'">
-	                    (title LIKE '%' || #{keyword} || '%' OR content LIKE '%' || #{keyword} || '%')
+	                    title LIKE '%' || #{keyword} || '%' OR content LIKE '%' || #{keyword} || '%'
 	                </when>
 	                <when test="condition == 'title'">
 	                    title LIKE '%' || #{keyword} || '%'

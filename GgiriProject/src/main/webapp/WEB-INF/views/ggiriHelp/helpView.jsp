@@ -67,7 +67,8 @@
 	             let adminRepDate = date.getFullYear()+"년 "+(date.getMonth()+1)+"월 ";
 	             adminRepDate += date.getDate()+"일 "+date.getHours()+"시 ";
 	             adminRepDate += date.getMinutes()+"분 "+date.getSeconds()+"초";
-	             html += "      <br><div id='adminReply'>";
+	             html += "      <br><br><br><br><br><br><br>";
+	             html += "      <div id='adminReply'>";
 	             html += "         <div style='padding: 12px; border: 4px solid silver; margin-bottom: 10px; border-radius: 30px 0 30px 0;'>";
 	             html += "            <b style='width:400px; height:40px; text-align:center'>작성자 )</b> &nbsp; Ggiri 관리자<p style='float:right'>"+ rep[0].adminRepDate + "</p><br>";
 	             html += "         </div>";
@@ -279,7 +280,7 @@ textarea:focus {
 					<input type="hidden" id="helpMember" name="helpMember" value="${data.id }">
 					<input type="hidden" id="adminHelpNo" name="adminHelpNo" value="${data.helpNo }">
 					<h4> 답변 내용 )</h4>
-					<textarea rows="10" cols="117" id="adminRep" name="adminRep" style="border-radius: 30px; resize: none; padding:10px;"></textarea><br>
+					<textarea rows="5" cols="117" id="adminRep" name="adminRep" style="border-radius: 30px; resize: none; padding:10px;"></textarea><br>
 				</div>
 				<br>
 				<div style="text-align: center;">
