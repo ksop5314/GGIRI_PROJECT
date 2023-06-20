@@ -58,7 +58,7 @@ function replyData() {
       success: function(rep) {
          console.log(rep.length);
          console.log(projectNum);
-         let html = ""
+         let html = "";
             for(i = 0; i < rep.length; i++){
                let date = new Date(rep[i].wdate);
                let wdate = date.getFullYear()+"년 "+(date.getMonth()+1)+"월 ";

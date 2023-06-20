@@ -488,7 +488,7 @@ a {
              </c:forEach> --%>
 		 <c:forEach var="list" items="${boardList}">
 		    <div id="mem">
-		      <a href="Info?id=${list.id}"><p id="id" >${list.id}</p></a>
+		      <a href="Info?id=${list.id}" ><p id="id">${list.id}</p></a>
 		      <div id="hi">
 		        <div><h2>${list.introduce}</h2></div>
 		         <div id="job">${list.job}</div> <br><br>
