@@ -329,6 +329,7 @@ function getTextColorByBackgroundColor(hexColor) {
 	  // 색상 선택
 	  return luma < 135 ? "white" : "black"; 
 }
+
 </script>
 <style type="text/css">
 * {

@@ -27,15 +27,15 @@ b {
 }
 .head {
 	margin-top: 30px;
-	padding: 0 30px 30px 30px;
+	padding: 20px;
 	border-radius: 30px 0 30px 0;
-	background: linear-gradient(30deg, #bdf9cf, #e8fdee);
+	border: 5px solid brown;
 	width: 1000px;
 }
 .content {
 	margin-top: 10px;
 	padding: 0 30px 30px 30px;
-	background: linear-gradient(45deg, #F3FEFA, #bdf9cf);
+	background-color: #FFFAE3;
 	border-radius: 30Px;
 	width: 1000px;
 }
@@ -43,7 +43,7 @@ b {
 	margin-top: 10px;
 	padding: 0 30px 30px 30px;
 	border-radius: 30px 0 30px 0;
-	background: linear-gradient(30deg, #bdf9cf, #e8fdee);
+	background-color: #FFFAE3;
 	width: 1000px;
 }
 #com {
@@ -56,7 +56,7 @@ b {
     justify-content: center;
 }
 input[type=button] {
-    background-color: #bdf9cf;
+    background-color: #faeec7;
     border-radius: 40px 80px / 80px 40px;
     color: #3b3b3b;
     border: none;
