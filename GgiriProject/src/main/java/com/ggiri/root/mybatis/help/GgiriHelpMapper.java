@@ -24,5 +24,6 @@ public interface GgiriHelpMapper {
 	public List<GgiriHelpDTO> adminHelpList();
 	public int adminHelpReply(GgiriAdminHelpDTO dto);
 	public List<GgiriAdminHelpDTO> adminRepData(int helpNo);
-	
+	public void deleteAdminRep(int adminRepNo);
+	public int modifyAdminRep(GgiriAdminHelpDTO dto);
 }
