@@ -249,12 +249,21 @@ function like(){
    margin: 0 auto;
 }
 .head {
+<<<<<<< HEAD
    margin: 0 auto;
    margin-top: 30px;
    padding: 20px;
    border-radius: 30px 0 30px 0;
    border: 5px solid navy;
    width: 1000px;
+=======
+	margin-top: 30px;
+	padding: 20px;
+	border-radius: 30px 0 30px 0;
+	border: 5px solid navy;
+	width: 1000px;
+	margin: 0 auto;
+>>>>>>> branch 'main' of https://github.com/ksop5314/junho.git
 }
 .content {
    margin: 0 auto;
@@ -422,37 +431,37 @@ textarea {
     <div class="proViewPage">
         <br>
         <div class="head">
-           <b style='font-size: 16px;'>작성자:</b><b style='font-size: 16px;'>${data.id }</b><b id="pro">${data.prodate }</b><br>
-           
-           <!-- 좋아요 -->
-         <c:if test="${loginUser != null}">
-            <div class="likeDiv">
-	            <c:if test="${like == 0}">
-		            <button id="like" onclick="like()">
-	            	<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트"></button>
-	            </c:if>
-	            <c:if test="${like == 1}">
-	            	<button id="like" onclick="like()">
-	           		<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트"></button>
-	            </c:if>
-	            <div id="like_check">${likeCount }</div>  &nbsp;
-            </div>
-         </c:if> 
-            
-         <c:if test="${kakaoMember != null || naverMember != null || googleMember != null }">
-         	<div class="likeDiv">
-	            <c:if test="${like == 0}">
-		            <button id="like" onclick="like()">
-	            	<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트"></button>
-	            </c:if>
-	            <c:if test="${like == 1}">
-	            	<button id="like" onclick="like()">
-	           		<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트"></button>
-	            </c:if>
-	            <div id="like_check">${likeCount }</div>  &nbsp;
-            </div>
-         </c:if>
-         <h1>${data.title }</h1>
+	        <b style='font-size: 16px;'>작성자:</b><b style='font-size: 16px;'>${data.id }</b><b id="pro">${data.prodate }</b><br>
+	           
+	           <!-- 좋아요 -->
+	         <c:if test="${loginUser != null}">
+	            <div class="likeDiv">
+		            <c:if test="${like == 0}">
+			            <button id="like" onclick="like()">
+		            	<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트"></button>
+		            </c:if>
+		            <c:if test="${like == 1}">
+		            	<button id="like" onclick="like()">
+		           		<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트"></button>
+		            </c:if>
+		            <div id="like_check">${likeCount }</div>  &nbsp;
+	            </div>
+	         </c:if> 
+	            
+	         <c:if test="${kakaoMember != null || naverMember != null || googleMember != null }">
+	         	<div class="likeDiv">
+		            <c:if test="${like == 0}">
+			            <button id="like" onclick="like()">
+		            	<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트"></button>
+		            </c:if>
+		            <c:if test="${like == 1}">
+		            	<button id="like" onclick="like()">
+		           		<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트"></button>
+		            </c:if>
+		            <div id="like_check">${likeCount }</div>  &nbsp;
+	            </div>
+	         </c:if>
+	         <h1>${data.title }</h1>
         </div>
         <div class="content">
            <b style='font-size: 20px;'>프로젝트 내용</b>
@@ -467,10 +476,6 @@ textarea {
         <br>
 		<div id="select">
 			<input type="button" style="background-color: #C5F5F5" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'"> &nbsp;
-<<<<<<< HEAD
-=======
-			
->>>>>>> branch 'main' of https://github.com/ksop5314/junho.git
 			<c:if test="${data.id == loginUser && data.project == '완료' }">
 			   <button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
 			</c:if>
