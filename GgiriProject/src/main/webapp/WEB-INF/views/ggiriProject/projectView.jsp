@@ -315,7 +315,7 @@ input[type=button]:hover {
     width: fit-content;
     margin: auto;
     border-radius: 40px 80px / 80px 40px;
-    background-color: #C5F5F5;
+    background-color: #b6d0e1;
 }
 
 #container_1 {
@@ -347,7 +347,7 @@ hr {
 	padding-top: 8px;
 }
 #like {
-	width: 70px; height: 20px;
+	width: 60px; height: 20px;
 	background-color: white;
 	float: right;
 	padding-top: 20px;
@@ -444,29 +444,15 @@ textarea {
 				
 			<c:if test="${kakaoMember != null || naverMember != null || googleMember != null }">
 				<button id="like" onclick="like()">
-				<c:if test="${like == 0}">
-				<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
-				</c:if>
-				<c:if test="${like == 1}">
-				<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
-				</c:if>
-				<div id="like_check">${likeCount }</div></button>  &nbsp;
-<<<<<<< HEAD
+					<c:if test="${like == 0}">
+					<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
+					</c:if>
+					<c:if test="${like == 1}">
+					<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
+					</c:if>
+					<div id="like_check">${likeCount }</div>
+				</button>  &nbsp;
 			</c:if> 
-				
-			<c:if test="${kakaoMember != null || naverMember != null || googleMember != null }">
-				<button id="like" onclick="like()">
-				<c:if test="${like == 0}">
-				<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
-				</c:if>
-				<c:if test="${like == 1}">
-				<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
-				</c:if>
-				<div id="like_check">${likeCount }</div></button>  &nbsp;
-=======
->>>>>>> branch 'main' of https://github.com/Jh1227/junho.git
-			</c:if>
-			
 			<h1>${data.title }</h1>
         </div>
         <div class="content">
@@ -481,38 +467,34 @@ textarea {
         </div>
         <br>
         <div id="select">
-			<input type="button" style="background-color: #C5F5F5" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'"> &nbsp;
-<<<<<<< HEAD
-=======
-			
->>>>>>> branch 'main' of https://github.com/Jh1227/junho.git
+			<input type="button" style="background-color: #b6d0e1" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'"> &nbsp;
 			<c:if test="${data.id == loginUser && data.project == '완료' }">
 				<button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
 			</c:if>
 			<c:if test="${data.id == loginUser && data.project == '진행중' }">
-				<input type="button" value="수정" style="background-color: #C5F5F5;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-				<input type="button" value="삭제" style="background-color: #C5F5F5;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="수정" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="삭제" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
 			</c:if>
 			<c:if test="${data.id == kakaoMember.id && data.project == '완료'}">
 				<button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
 			</c:if>
 			<c:if test="${data.id == kakaoMember.id && data.project == '진행중'}">
-				<input type="button" value="수정" style="background-color: #C5F5F5;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-				<input type="button" value="삭제" style="background-color: #C5F5F5;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="수정" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="삭제" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
 			</c:if>
 			<c:if test="${data.id == naverMember.id && data.project == '완료'}">
 				<button type="submit"onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
 			</c:if>
 			<c:if test="${data.id == naverMember.id && data.project == '진행중'}">
-				<input type="button" value="수정" style="background-color: #C5F5F5;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-				<input type="button" value="삭제" style="background-color: #C5F5F5;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="수정" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="삭제" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
 			</c:if>
 			<c:if test="${data.id == googleMember.id && data.project == '완료'}">
 				<button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
 			</c:if>
 			<c:if test="${data.id == googleMember.id && data.project == '진행중'}">
-				<input type="button" value="수정" style="background-color: #C5F5F5;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-				<input type="button" value="삭제" style="background-color: #C5F5F5;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="수정" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="삭제" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
 			</c:if>
 		</div>
     </div>
