@@ -211,7 +211,7 @@
 	margin: 0 auto;
 }
 .helpViewSize {
-	width: 1050px;
+	width: 900px;
 	margin: 0 auto;
 }
 input[type=button] {
@@ -259,6 +259,7 @@ textarea:focus {
 	<div class="helpViewSize">
 		<input type="hidden" id="helpNo" name="helpNo" value="${data.helpNo }">
 		<input type="hidden" id="loginId" name="loginId" value="${loginUser }">
+		<h1 style="border-bottom: 2px solid gray;"> 문의사항 </h1><br>
 		<div id="head">
 			<b> 문의 번호 ) &nbsp; </b>${data.helpNo }<br>
 			<b> 회원 아이디 ) &nbsp; </b> ${data.id }<br><b> 제목 ) &nbsp; </b> ${data.title }

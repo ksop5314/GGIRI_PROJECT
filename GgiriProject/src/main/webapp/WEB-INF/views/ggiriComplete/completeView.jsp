@@ -96,6 +96,10 @@ textarea {
 	resize: none;
 }
 
+a {
+	font-weight: bold;
+}
+
 </style>
 </head>
 <body>
