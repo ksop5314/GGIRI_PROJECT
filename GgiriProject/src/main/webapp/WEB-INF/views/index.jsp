@@ -23,11 +23,9 @@ div{
 </head>
 <body>
 	<div class="wrap">
+		<c:import url="default/banner.jsp"/>
 		<c:import url="default/header.jsp"/>
 		<c:import url="default/body.jsp"/>
-		<c:forEach var="list" items="rank">
-			<p>${list}</p>
-		</c:forEach>
 		<c:import url="default/footer.jsp"/>
 	</div>
 </body>

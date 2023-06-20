@@ -361,9 +361,9 @@ public class ProjectController implements GgiriMemberSession{
 		
 		return "ggiriProject/heartList";
 	}
-	@GetMapping("redirect:/index")
+	@GetMapping("rank")
 	public void indexRank(Model model,HttpSession session) {
-		if(session.getAttribute(LOGIN) == null) {
+		if(session.getAttribute(LOGIN) != null) {
 			String id = (String)session.getAttribute(LOGIN);
 			ps.indexRank(model);
 		}

@@ -219,26 +219,26 @@ body {
 							        </c:if>
 							        <c:if test="${loginUser != 'GGIRIADMIN' && loginUser != null}">
 							            <a href='/root/ggiriMember/myInfo'>내 정보</a>
-							            <a href="/root/ggiriMember/ggiriLogout">LOGOUT</a>
 							            <a href="/root/ggiriProject/heartList">찜 목록</a>
+							            <a href="/root/ggiriMember/ggiriLogout">LOGOUT</a>
 							        </c:if>   
 							        <c:if test="${kakaoMember != null}">
 										<b id="kakao">Kakao 접속</b>
 										<a href="/root/ggiriMember/snsInfo">내 정보</a>
-										<a href="/root/ggiriMember/kakaoLogout">LOGOUT</a>
 										<a href="/root/ggiriProject/heartList">찜 목록</a>
+										<a href="/root/ggiriMember/kakaoLogout">LOGOUT</a>
 									</c:if>	
 									<c:if test="${naverMember != null}">
 										<b id="naver">Naver 접속</b>
 										<a href="/root/ggiriMember/snsInfo">내 정보</a>
-										<a href="/root/ggiriMember/naverLogout">LOGOUT</a>
 										<a href="/root/ggiriProject/heartList">찜 목록</a>
+										<a href="/root/ggiriMember/naverLogout">LOGOUT</a>
 									</c:if>
 									<c:if test="${googleMember != null}">
 										<b id="google">Google 접속</b>
 										<a href="/root/ggiriMember/snsInfo">내 정보</a>
-										<a href="/root/ggiriMember/googleLogout">LOGOUT</a>
 										<a href="/root/ggiriProject/heartList">찜 목록</a>
+										<a href="/root/ggiriMember/googleLogout">LOGOUT</a>
 									</c:if>
 									<c:if test="${kakaoMember == null && loginUser == null && naverMember == null && googleMember == null}">
 										<a href="/root/ggiriMember/ggiriLogin"> LOGIN </a>

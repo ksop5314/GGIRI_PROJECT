@@ -48,11 +48,9 @@ public class HomeController implements GgiriMemberSession{
 	
 	
 	@GetMapping("index")
-	public String index(HttpSession session, Model model) {
-		if(session.getAttribute(LOGIN) == null) {
-			String id = (String)session.getAttribute(LOGIN);
-			ps.indexRank(model);
-		}
+	public String index() {
+		
+		
 		System.out.println("- index controller -");
 		
 		return "index";
