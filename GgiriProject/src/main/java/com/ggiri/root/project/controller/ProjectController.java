@@ -364,9 +364,22 @@ public class ProjectController implements GgiriMemberSession{
 	}
 	@GetMapping("rank")
 	public void indexRank(Model model,HttpSession session) {
+		if(session.getAttribute(LOGIN) == null) {
+			String id = (String)session.getAttribute(LOGIN);
+			List<Map<String, Object>> list = ps.indexRank(model);
+		}
 		if(session.getAttribute(LOGIN) != null) {
 			String id = (String)session.getAttribute(LOGIN);
-			ps.indexRank(model);
+			List<Map<String, Object>> list = ps.indexRank(model);
+		}else if(session.getAttribute("kakaoMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("kakaoMember");
+			List<Map<String, Object>> list = ps.indexRank(model);
+		}else if(session.getAttribute("naverMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("naverMember");
+			List<Map<String, Object>> list = ps.indexRank(model);
+		}else if(session.getAttribute("googleMember") != null){
+			GgiriMemberDTO dto = (GgiriMemberDTO)session.getAttribute("googleMember");
+			List<Map<String, Object>> list = ps.indexRank(model);
 		}
 	}
 	

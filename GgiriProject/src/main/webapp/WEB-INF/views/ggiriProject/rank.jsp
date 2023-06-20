@@ -12,14 +12,31 @@
 .id{
 	text-align: center;
 	margin: auto;
-	margin-left: 180px;
-	margin-right: 180px; 
+	margin-left: 110px;
+	margin-right: 50px;  
 	float:left;
+}
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    width: 200px;
+    height: 200px;
+}
+
+td {
+    border: 1px solid black;
+    border-radius: 30px;
+    padding: 10px;
+}
+.center-parent {
+    display: flex;
+    justify-content: center;
 }
 </style>
 </head>
 <body>
-	<div>
+	<div class="center-parent">
 		<c:if test="${list.size() == 0 }">
 			<h1>좋아요수 집계중입니다</h1>
 		</c:if>
@@ -27,9 +44,16 @@
 			<c:forEach var="list" items="${rank }">
 			<c:set var="i" value="${i+1}"></c:set>
 				<div class="id">
+					<table >
+					<tr>
+					<td>
 					<img style="width: 140px; height: 140px; "
 					onclick="location.href='${contextPath }/ggiriProject/projectView?projectNum=${list.projectNum}'" src="${contextPath }/resources/image/${i }.png">
-					<div style="font-size: 15px;">글 번호 : ${list.projectNum }</div>
+					<div style="font-size: 15px;"><a href="${contextPath}/ggiriProject/projectView?projectNum=${list.projectNum}">글 번호 : ${list.projectNum }</a></div>
+					<div style="font-size: 15px;"><a href="${contextPath}/ggiriProject/projectView?projectNum=${list.projectNum}">${list.title }</a></div>
+					</td>
+					<tr>
+					</table>
 				</div>
 			</c:forEach>
 		</div>

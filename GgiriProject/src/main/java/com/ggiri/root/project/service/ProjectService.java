@@ -73,6 +73,6 @@ public interface ProjectService {
     
     
     // 인덱스 좋아요 리스트
-    public List<GgiriBoardLikeDTO> indexRank(Model model);
+    public List<Map<String, Object>> indexRank(Model model);
 
 }
