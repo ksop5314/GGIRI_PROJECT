@@ -43,16 +43,12 @@ public class HomeController implements GgiriMemberSession{
 		return "home";
 	}
 	
-	@Autowired
-	private ProjectService ps;
+	
 	
 	
 	@GetMapping("index")
-	public String index(Model model,HttpSession session) {
-		if(session.getAttribute(LOGIN) == null) {
-			String id = (String)session.getAttribute(LOGIN);
-			ps.indexRank(model);
-		}
+	public String index() {
+		
 		
 		System.out.println("- index controller -");
 		

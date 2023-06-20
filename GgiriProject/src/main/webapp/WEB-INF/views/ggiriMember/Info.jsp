@@ -19,6 +19,7 @@ String color = request.getParameter("color");
 *{
 	margin: 0;
 }
+
 /* #modal_wrap{
 	position: fixed;
 	z-index: 9;
@@ -53,8 +54,9 @@ String color = request.getParameter("color");
     font-size: 50px;
     color: black;
     vertical-align: middle;
-    background-color: <%= color %>;
-}
+<%--     background-color: <%= color %>;
+ --%>}
+
 /* #id p{
 	color: green;
   	font-size:25px;
@@ -82,7 +84,7 @@ a {
 		<div class="all">
 			<div class="intro">
 			<br>
-			<p id="id">"${info.id }"</p>
+			<p id="id" style="background-color:<%= color %>">"${info.id }"</p>
 			<br>
 				<h1>${info.introduce }</h1>
 				<b>${info.id }</b><br><br>

@@ -106,6 +106,7 @@ div{
 <script type="text/javascript">
    
 	<!--Start of Tawk.to Script-->
+
 	
 	var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 	(function(){
@@ -159,7 +160,6 @@ div{
 				<button class="signup" type="button" onclick="location.href='/root/ggiriMember/signup_free'">프리랜서 회원가입</button>
 				</c:if>
 				<br><br><br><br><br>
-				<a href="${path}/board/best_list.do">베스트 게시물 게시판</a>
 				<br>
 				
 				<!-- <div class="eblock-project">

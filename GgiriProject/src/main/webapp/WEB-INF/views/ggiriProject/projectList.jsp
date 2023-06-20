@@ -112,6 +112,7 @@ a{
    border: 2px solid navy;
    background-color: #EBF7FF;
    border-radius: 50px;
+   cursor: pointer;
 }
 
 #project_1 {
@@ -145,7 +146,7 @@ a{
     margin: auto;
     font-family: 'IBM Plex Sans KR', sans-serif;
     border-radius: 40px 80px / 80px 40px;
-    background-color: #CAFCFC;
+    background-color: #b6d0e1;
 }
 
 .projectListSize {
@@ -219,7 +220,7 @@ a{
 			    </c:if>
 	   			<c:if test="${loginUser != null || kakaoMember != null || naverMember != null || googleMember != null}">
 					<c:forEach var="dto" items="${list }">
-						<div id="mem">
+						<div id="mem" onclick="location.href='/root/ggiriProject/projectView?projectNum=${dto.projectNum }'">
 							<c:if test="${dto.project == '완료' }">
 								<span id="project_1">${dto.project }</span>
 							</c:if>
@@ -227,7 +228,7 @@ a{
 								<span id="project_2">${dto.project }</span>
 							</c:if>
 	            			<h3>${dto.prodate }</h3>
-	            			<a id="title" href="/root/ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a>
+	            			<h1>${dto.title }</h1>
 	            			<br>
 							<p>${dto.id }</p>
 							<p>${dto.job }</p>
@@ -255,6 +256,9 @@ a{
 				<input type="text" name="keyword" id="keyword" style="font-family: 'IBM Plex Sans KR', sans-serif" placeholder="검색어" value="${keyword }"/>
 				<button id="button1" type="submit">검색</button>
 		</form>
+	</div>
+	<div style="position: fixed; bottom: 20px; right:20px;">
+		<a href="#"><img style="width:50px; height: 50px;"src="/root/resources/image/top1.png"></a>
 	</div>
 	<c:import url="../default/footer.jsp"></c:import>
 </body>
