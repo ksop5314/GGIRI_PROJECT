@@ -20,7 +20,7 @@ public interface GgiriMemberMapper {
 	public int modifyResult(GgiriMemberDTO modifyMember);
 	public GgiriMemberDTO ggiriMemberInfo(String id);
 	public GgiriMemberDTO ggiriSnsInfo(String id);
-	public List<GgiriMemberDTO> allMember(String id);
+	public List<GgiriMemberDTO> allMember();
 	public int getProjectCount();
 	public void deleteId(String id);
 	

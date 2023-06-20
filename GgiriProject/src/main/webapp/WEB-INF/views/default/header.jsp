@@ -213,7 +213,7 @@ body {
 										<b id="ggiri">Ggiri 접속</b>
 									</c:if>
 						        	<c:if test="${loginUser == 'GGIRIADMIN'}">
-										<b>관리자 계정 접속</b><br>
+										<b style="text-indent: 20px; padding-left: 18px;"> 관리자 계정 접속</b><br>
 							            <a href='/root/ggiriMember/myInfo'>내 정보</a>
 							            <a href="/root/ggiriMember/ggiriLogout">LOGOUT</a>
 							        </c:if>

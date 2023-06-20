@@ -1,7 +1,6 @@
 package com.ggiri.root.member.service;
 
 
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,7 +10,6 @@ import org.springframework.ui.Model;
 
 import com.ggiri.root.member.dto.GgiriMemberDTO;
 import com.ggiri.root.mybatis.member.GgiriMemberMapper;
-import com.ggiri.root.project.dto.ProjectDTO;
 
 @Service
 public class GgiriServiceImpl implements GgiriService{
@@ -133,8 +131,8 @@ public class GgiriServiceImpl implements GgiriService{
 	}
 	
 	@Override
-	public void allMember(Model model, String id) {
-		model.addAttribute("allMember", gmm.allMember(id));
+	public void allMember(Model model) {
+		model.addAttribute("allMember", gmm.allMember());
 	}
 
 	@Override

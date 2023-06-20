@@ -14,7 +14,7 @@
 	margin: 0;
 }
 .wrap{
-	width: 95%;
+	width: 1860px;
 	margin: auto;
 	text-align: left;
 }
@@ -22,7 +22,7 @@
 	width: 1000px;
 }
 .navdiv {
-	width: 100%;
+	width: 1860px;
 }
 li {
 	padding: 10px;
@@ -59,12 +59,9 @@ nav ul li a:hover {
 </style>
 </head>
 <body>
-	<div class="wrap">
-	<div class="header"></div>	
-	</div>
 	<!-- // wrap -->
-	<div class="navdiv">
-		<div class="wrap">
+	<div class="wrap">
+		<div class="navdiv">
 			<a href="/root/indexAdmin"><img width="300px" height="95px" src="/root/resources/image/logo6.png"></a>
 			<nav>
 				<ul>
