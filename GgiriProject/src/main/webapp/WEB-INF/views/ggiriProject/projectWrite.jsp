@@ -19,8 +19,8 @@ function count_check(obj){
 			chkCnt++;
 		}
 	}
-	if(chkCnt > 5){
-		alert("요구 스킬은 5개까지 선택할 수 있습니다.");
+	if(chkCnt > 10){
+		alert("요구 스킬은 10개까지 선택할 수 있습니다.");
 		obj.checked = false;
 		return false;
 	}
