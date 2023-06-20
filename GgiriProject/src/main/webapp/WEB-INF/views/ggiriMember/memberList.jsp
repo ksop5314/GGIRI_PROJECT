@@ -382,6 +382,7 @@ p#id {
     color: white;
     font-size: 30px;
     display: inline-block;
+    overflow: hidden;
 }
 /* #id{
     line-height: 300px;
@@ -440,13 +441,14 @@ a {
 }
 
 #job {
-    padding: 5px;
+     padding: 5px;
      font-size: 14px;
      width: fit-content;
      border-radius: 40px;
      border: 1px solid #4374D9;
      float: left;
 }
+
 .topBtn {cursor:pointer;}
 
 </style>

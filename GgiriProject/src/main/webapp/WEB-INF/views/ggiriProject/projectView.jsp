@@ -249,24 +249,14 @@ function like(){
    margin: 0 auto;
 }
 .head {
-<<<<<<< HEAD
-   margin: 0 auto;
    margin-top: 30px;
    padding: 20px;
    border-radius: 30px 0 30px 0;
    border: 5px solid navy;
    width: 1000px;
-=======
-	margin-top: 30px;
-	padding: 20px;
-	border-radius: 30px 0 30px 0;
-	border: 5px solid navy;
-	width: 1000px;
-	margin: 0 auto;
->>>>>>> branch 'main' of https://github.com/ksop5314/junho.git
+   margin: 0 auto;
 }
 .content {
-   margin: 0 auto;
    margin-top: 10px;
    padding: 0 30px 30px 30px;
    background-color: #EBF7FF;
@@ -274,7 +264,6 @@ function like(){
    width: 1000px;
 }
 .body {
-   margin: 0 auto;
    margin-top: 10px;
    padding: 0 30px 30px 30px;
    border-radius: 30px 0 30px 0;
@@ -286,6 +275,7 @@ function like(){
     float: right;
 }
 #select {
+	margin: auto;
     display: flex;
     justify-content: center;
 }
@@ -323,11 +313,10 @@ input[type=button]:hover {
     width: fit-content;
     margin: auto;
     border-radius: 40px 80px / 80px 40px;
-    background-color: #C5F5F5;
+    background-color: #b6d0e1;
 }
 
 #container_1 {
-   margin-left: 550px;
    display: inline-block;
 }
 
@@ -336,29 +325,33 @@ hr {
     height: 1px;
     border: 0;
 }
+#head {
+   margin: auto;
+   margin-top: 30px;
+   padding: 20px;
+   border-radius: 30px 0 30px 0;
+   border: 5px solid brown;
+   width: 1000px;
+}
 #content {
+   margin: auto;
    margin-top: 10px;
    padding: 0 30px 30px 30px;
    background-color: #FFFAE3;
    border-radius: 30Px;
    width: 1000px;
 }
-
-.likeDiv {
-	float: right;
-}
-
 #like_check {
-   
+   float: right;
    display: inline-block;
    padding-top: 8px;
 }
 #like {
-   width: 70px; height: 20px;
+   width: 60px; height: 20px;
    background-color: white;
+   float: right;
    padding-top: 20px;
 }
-
 /* 모달창 css */
 
 #modal.modal-overlay {
@@ -421,7 +414,8 @@ textarea {
    resize: none;
 }
 .proViewPage {
-   margin: auto;
+	width: 1050px;
+	margin: 0 auto;
 }
 </style>
 </head>
@@ -429,115 +423,120 @@ textarea {
     
    <c:import url="../default/header.jsp"></c:import>
     <div class="proViewPage">
-        <br>
-        <div class="head">
-	        <b style='font-size: 16px;'>작성자:</b><b style='font-size: 16px;'>${data.id }</b><b id="pro">${data.prodate }</b><br>
-	           
-	           <!-- 좋아요 -->
-	         <c:if test="${loginUser != null}">
-	            <div class="likeDiv">
-		            <c:if test="${like == 0}">
-			            <button id="like" onclick="like()">
-		            	<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트"></button>
-		            </c:if>
-		            <c:if test="${like == 1}">
-		            	<button id="like" onclick="like()">
-		           		<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트"></button>
-		            </c:if>
-		            <div id="like_check">${likeCount }</div>  &nbsp;
-	            </div>
-	         </c:if> 
-	            
-	         <c:if test="${kakaoMember != null || naverMember != null || googleMember != null }">
-	         	<div class="likeDiv">
-		            <c:if test="${like == 0}">
-			            <button id="like" onclick="like()">
-		            	<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트"></button>
-		            </c:if>
-		            <c:if test="${like == 1}">
-		            	<button id="like" onclick="like()">
-		           		<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트"></button>
-		            </c:if>
-		            <div id="like_check">${likeCount }</div>  &nbsp;
-	            </div>
-	         </c:if>
-	         <h1>${data.title }</h1>
-        </div>
-        <div class="content">
-           <b style='font-size: 20px;'>프로젝트 내용</b>
-            <pre><c:out value="${data.content }"/></pre>
-        </div>
-        <div class="body">
-           <b style='font-size: 20px;'>요구 스킬</b><br><br>
-           <c:forEach var="selectedSkill" items="${data.skill}">
-               <div style="display:inline" id="skill">${selectedSkill}</div>
-           </c:forEach>
-        </div>
-        <br>
+		<br>
+		<div class="head">
+			<b style='font-size: 16px;'>작성자:</b><b style='font-size: 16px;'>${data.id }</b><b id="pro">${data.prodate }</b><br>
+			<!-- 좋아요 -->
+			<c:if test="${loginUser != null}">
+				<div class="heart">
+					<c:if test="${like == 0}">
+						<button id="like" onclick="like()">
+						<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
+						</button>
+					</c:if>
+					<c:if test="${like == 1}">
+						<button id="like" onclick="like()">
+						<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
+						</button>
+					</c:if>
+					<div id="like_check">${likeCount }</div>
+				</div>
+			</c:if> 
+			
+			<c:if test="${kakaoMember != null || naverMember != null || googleMember != null }">
+				<div class="heart">
+					<c:if test="${like == 0}">
+						<button id="like" onclick="like()">
+						<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
+						</button>
+					</c:if>
+					<c:if test="${like == 1}">
+						<button id="like" onclick="like()">
+							<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
+						</button>
+					</c:if>
+					<div id="like_check">${likeCount }</div>
+				</div>
+			</c:if> 
+			<h1>${data.title }</h1>
+		</div>
+		<div class="content">
+			<b style='font-size: 20px;'>프로젝트 내용</b>
+			<pre><c:out value="${data.content }"/></pre>
+		</div>
+		<div class="body">
+			<b style='font-size: 20px;'>요구 스킬</b><br><br>
+			<c:forEach var="selectedSkill" items="${data.skill}">
+				<div style="display:inline" id="skill">${selectedSkill}</div>
+			</c:forEach>
+		</div>
+		<br>
 		<div id="select">
-			<input type="button" style="background-color: #C5F5F5" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'"> &nbsp;
+			<input type="button" style="background-color: #b6d0e1" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'"> &nbsp;
 			<c:if test="${data.id == loginUser && data.project == '완료' }">
-			   <button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
+				<button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
 			</c:if>
 			<c:if test="${data.id == loginUser && data.project == '진행중' }">
-			   <input type="button" value="수정" style="background-color: #C5F5F5;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-			   <input type="button" value="삭제" style="background-color: #C5F5F5;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="수정" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="삭제" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
 			</c:if>
 			<c:if test="${data.id == kakaoMember.id && data.project == '완료'}">
-			   <button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
+				<button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
 			</c:if>
 			<c:if test="${data.id == kakaoMember.id && data.project == '진행중'}">
-			   <input type="button" value="수정" style="background-color: #C5F5F5;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-			   <input type="button" value="삭제" style="background-color: #C5F5F5;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="수정" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="삭제" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
 			</c:if>
 			<c:if test="${data.id == naverMember.id && data.project == '완료'}">
-			   <button type="submit"onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
+				<button type="submit"onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
 			</c:if>
 			<c:if test="${data.id == naverMember.id && data.project == '진행중'}">
-			   <input type="button" value="수정" style="background-color: #C5F5F5;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-			   <input type="button" value="삭제" style="background-color: #C5F5F5;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="수정" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="삭제" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
 			</c:if>
 			<c:if test="${data.id == googleMember.id && data.project == '완료'}">
-			   <button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
+				<button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
 			</c:if>
 			<c:if test="${data.id == googleMember.id && data.project == '진행중'}">
-			   <input type="button" value="수정" style="background-color: #C5F5F5;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-			   <input type="button" value="삭제" style="background-color: #C5F5F5;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="수정" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+				<input type="button" value="삭제" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
 			</c:if>
 		</div>
 	    <br>
 	    <br>
-		<div id="container_1">
-			 <div style="width: 80%; padding-top: 20px;">
-			      <form id="frm">
-			         <input type="hidden" name="projectNum" id="projectNum" value="${data.projectNum }">
-			         <b>댓글을 작성해보세요.</b>
-			         <hr>
-			         <c:if test="${loginUser != null}">
-			            <b>작성자 : ${loginUser }</b><br>
-			            <input type="hidden" name="id" id="id" value="${loginUser }">
-			            <input type="hidden" name="memberNum" id="memberNum"  value="${ggiriMemberInfo.memberNum }">
-			         </c:if>
-			         <c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
-			            <b>작성자 : ${ggiriSnsInfo.id }</b><br>
-			            <input type="hidden" name="id" id="id" value="${ggiriSnsInfo.id }">
-			            <input type="hidden" name="memberNum" id="memberNum"  value="${ggiriSnsInfo.memberNum }">
-			         </c:if>
-			         <br><br>
-			         <div>
-			            <textarea id="repContent" name="repContent" rows="3" cols="100"></textarea> &nbsp;
-			            <button type="button"  onclick="rep()">등 록</button> &nbsp;
-			            <button type="reset" style="border-radius: 40px 80px / 80px 40px;">취 소</button>
-			         </div>
-			      </form>
-			      <br><br>
-			      <div id="reply" class="reply">
-			      
-			      </div>
-			      <br>
-			</div>
-		</div>
-     </div>
+	    <div id="container_1" style="margin: auto;">
+	        <div id="first">
+	           <div style="width: 80%; margin: 0 auto; padding-top: 20px;">
+	              <form id="frm">
+	                 <input type="hidden" name="projectNum" id="projectNum" value="${data.projectNum }">
+	                 <b>댓글을 작성해보세요.</b>
+	                 <hr>
+	                 <c:if test="${loginUser != null}">
+	                    <b>작성자 : ${loginUser }</b><br>
+	                    <input type="hidden" name="id" id="id" value="${loginUser }">
+	                    <input type="hidden" name="memberNum" id="memberNum"  value="${ggiriMemberInfo.memberNum }">
+	                 </c:if>
+	                 <c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
+	                    <b>작성자 : ${ggiriSnsInfo.id }</b><br>
+	                    <input type="hidden" name="id" id="id" value="${ggiriSnsInfo.id }">
+	                    <input type="hidden" name="memberNum" id="memberNum"  value="${ggiriSnsInfo.memberNum }">
+	                 </c:if>
+	                 <br><br>
+	                 <div>
+	                    <textarea id="repContent" name="repContent" rows="3" cols="100"></textarea> &nbsp;
+	                    <button type="button"  onclick="rep()">등 록</button> &nbsp;
+	                    <button type="reset" style="border-radius: 40px 80px / 80px 40px;">취 소</button>
+	                 </div>
+	              </form>
+	              <br><br>
+	              <div id="reply" class="reply">
+	                 
+	              </div>
+	              <br>
+	           </div>
+	        </div>
+	     </div>
+	  </div>
    <c:import url="../default/footer.jsp"></c:import>
 </body>
 </html>

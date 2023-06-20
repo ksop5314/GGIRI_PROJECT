@@ -115,7 +115,7 @@ h1 {
 	
 	function repDelete(no) {
 		
-		var result = confirm("선택한 프로젝트를 삭제 하시겠습니까?");
+		var result = confirm("선택한 댓글을 삭제 하시겠습니까?");
 		
 		if(result == true){
 			

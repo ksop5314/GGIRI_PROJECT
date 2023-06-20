@@ -188,7 +188,7 @@ $(function(){
 	
 	$("#tel_3").blur(function(){
 		var contextPath = "${pageContext.request.contextPath}";
-		var tel = $("#tel_1").val() + $("#tel_2").val() + $("#tel_3").val();
+		var tel = $("#tel_1").val() + "-" + $("#tel_2").val() + "-" + $("#tel_3").val();
 			
 		$.ajax({
 			url : contextPath + "/ggiriMember/telCheck?tel=" + tel,
@@ -273,6 +273,11 @@ $(function(){
 		var addr = $("#addr1").val() + $("#addr2").val() + $("#addr3").val();
 		var email = $("#email1").val() + $("#email2").val();
 		
+		if($("#name").val() == ""){
+			alert("이름을 입력해주세요.");
+			$("#name").focus();
+			return rv = false;
+		}
 		
 		if($("#idDoubleChk").val() != "true"){
 			alert("아이디를 확인해주세요.");
@@ -297,25 +302,23 @@ $(function(){
 			$("#userEmail").focus();
 			return rv = false;
 		}
-		
-		<%--
+		/* 
 		if($("#telDoubleChk").val() != "true"){
 			alert("휴대폰 인증을 확인해주세요.");
 			$("#userTelChk").focus();
 			return rv = false;;
 		}	
-		--%>
 		
 		if($("#tel_1").val() == "" || $("#tel_2").val() == "" || $("#tel_3").val() == "" || $("#telDoubleChk").val() != "true"){
 			alert("휴대폰 번호를 확인해주세요.");
 			$("#tel_2").focus();
 			return rv = false;
-		}
+		} 
 		
 		if($("#userTelChk").val() == "") {
 			$(".successTelChk").text("");
 			$("#telDoubleChk").val("false");
-		}
+		} */
 		
 		if($("#addrChk").val() != "true"){
 			alert("주소를 확인해주세요.");

@@ -49,7 +49,7 @@
 	</select>
 	
 	<select id="boardAllList" resultMap="ggiri">
-		SELECT * FROM ggiriFree_insert 
+		SELECT * FROM ggiriFree_insert ORDER BY insertdate DESC
 	</select>
 	
 	<!-- 무한 스크롤 sql -->

@@ -1,6 +1,7 @@
 
 package com.ggiri.root.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -287,7 +288,7 @@ public class ProjectController implements GgiriMemberSession{
 	@GetMapping("replyData")
 	@ResponseBody
 	public List<ProjectRepDTO> replyData(@RequestParam("projectNum") int bno) {
-		
+
 		return ps.getRepList(bno);
 		
 	}

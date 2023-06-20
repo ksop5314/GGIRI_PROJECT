@@ -46,6 +46,7 @@
   }
 }
 #all{
+	border-radius: 40px;
 	background-color: #ebe8e3;
 	width: 1600px;
 }

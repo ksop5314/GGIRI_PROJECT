@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>projectList.jsp</title>
 <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
-
 <style type="text/css">
 .board_table{
    width: 1200px;
@@ -18,6 +17,7 @@
 .skill{
    font-family: 'IBM Plex Sans KR', sans-serif;
    display: inline-block;
+   margin-left: -60px;
 }
 form{
    float:left; 
@@ -143,10 +143,26 @@ a{
     padding: 10px;
     font-size: 20px;
     width: fit-content;
-    margin: auto;
+    float: left;
     font-family: 'IBM Plex Sans KR', sans-serif;
     border-radius: 40px 80px / 80px 40px;
     background-color: #b6d0e1;
+}
+
+#job {
+     padding: 5px;
+     font-size: 14px;
+     width: fit-content;
+     border-radius: 40px;
+     border: 1px solid #4374D9;
+     float: left;
+     margin: 5px 0 -5px 0;
+}
+
+#projectViewID {
+	font-size: 20px;
+	font-weight: bold;
+	color: green;
 }
 
 .projectListSize {
@@ -157,7 +173,24 @@ a{
  	float: left;
     position: relative;
     left: 800px;
-    
+}
+
+#proHit {
+	margin-top: 50px;
+	margin-right: 10px;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	padding: 5px 20px;
+	border-radius: 40px;
+	color: gray;
+	width: 40px;
+	background-color: #FAC4A4;
+	font-weight: bold;
+	float: right;
+	text-align: center;
+}
+
+#proHit p {
+	font-size: 12px;
 }
 </style>
 </head>
@@ -195,14 +228,15 @@ a{
 				            <h3>${dto.prodate }</h3>
 				            <a id="title" href="/root/ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a>
 				            <br>
-				            <p>${dto.id }</p>
-				            <p>${dto.job }</p>
+				            <p id="projectViewID">프리랜서 ${dto.id }님</p>
+				            <p id="job">${dto.job }</p><br>
 				            <div class="skill">
 				            <br>
 				                <c:forEach var="selectedSkill" items="${dto.skill}">
-				                    <div style="display:inline" id="skill">${selectedSkill}</div>
+				                    <div style="display:inline-block;" id="skill">${selectedSkill}</div>
 				                </c:forEach>
 				            </div>
+				            <span id="proHit"><p>조회수<p> ${dto.proHit}</span>
 				        </div>
 				  		<br>
 				    </c:forEach>
@@ -219,14 +253,15 @@ a{
 	            			<h3>${dto.prodate }</h3>
 	            			<h1>${dto.title }</h1>
 	            			<br>
-							<p>${dto.id }</p>
-							<p>${dto.job }</p>
+							<p id="projectViewID">프리랜서 ${dto.id }님</p>
+							<p id="job">${dto.job }</p><br>
 							<div class="skill">
 							<br>
 				                <c:forEach var="selectedSkill" items="${dto.skill}">
 				                    <div style="display:inline" id="skill">${selectedSkill}</div>
 				                </c:forEach>
 							</div>
+							<span id="proHit"><p>조회수<p> ${dto.proHit}</span>
 						</div>
 						<br>
 					</c:forEach>
@@ -240,17 +275,18 @@ a{
 							<c:if test="${dto.project == '진행중' }">
 								<span id="project_2">${dto.project }</span>
 							</c:if>
-	            			<h3>${dto.prodate }</h3>
+		            			<h3>${dto.prodate }</h3>
 	            			<a id="title" href="/root/ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a>
 	            			<br>
-							<p>${dto.id }</p>
-							<p>${dto.job }</p>
+							<p id="projectViewID">프리랜서 ${dto.id }님</p>
+							<p id="job">${dto.job }</p><br>
 							<div class="skill">
-							<br>
+								<br>
 				                <c:forEach var="selectedSkill" items="${dto.skill}">
 				                    <div style="display:inline" id="skill">${selectedSkill}</div>
 				                </c:forEach>
 							</div>
+		                	<span id="proHit"><p>조회수<p> ${dto.proHit}</span>
 						</div>
 						<br>
 					</c:forEach>

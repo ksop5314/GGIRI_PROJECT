@@ -110,6 +110,30 @@ $(function(){
 		}
 	});
 	
+	$("#tel").blur(function(){
+		var contextPath = "${pageContext.request.contextPath}";
+		var tel = $("#tel").val();
+			
+		$.ajax({
+			url : contextPath + "/ggiriMember/telCheck?tel=" + tel,
+			type : "GET",
+			cache : false,
+			success : function(data) {
+				if(data == 0){
+					$(".successTelChk").text("");
+					$("#telDoubleChk").val("true");
+				} else {
+					$(".successTelChk").text("이미 가입 되어있는 휴대폰번호 입니다.");
+					$(".successTelChk").css("color", "red");
+					$("#telDoubleChk").val("false");
+				}
+			},
+			error : function(){
+				console.log("실패");
+			}
+		});
+	});
+	
 	$("#birth").blur(function(){
 		var birth = $("#birth").val();
 		if(birth.length < 8) { 
@@ -243,7 +267,9 @@ function daumPost(){
 					<tr>
 						<th> Tel </th>
 						<td>
-							<input type="text" name="tel" id="tel" size="20" maxlength="13" value="${ggiriMemberInfo.tel}">
+							<input type="text" name="tel" id="tel" size="10" maxlength="13" value="${ggiriMemberInfo.tel}">
+							<span class="point successTelChk"></span>
+							<input type="hidden" id="telDoubleChk" value="false">
 						</td>
 					</tr>
 					<!-- 

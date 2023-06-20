@@ -27,10 +27,6 @@ public class ProjectDTO {
 	private int like_no;
 	
 	
-	public ProjectDTO() {
-		super();
-	}
-	
 	public int getLike_no() {
 		return like_no;
 	}

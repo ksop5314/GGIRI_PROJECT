@@ -113,7 +113,14 @@ public class AdminController {
 	        
 			return "ggiriAdmin/adminList";
 	    }
-
+	 
+	@GetMapping("repDelete")
+	@ResponseBody
+	public String repDelete(@RequestParam("no") int no) {
+		ps.repDelete(no);
+		return "OK";
+	}
+	 
 	@GetMapping("proDelete")
 	@ResponseBody
 	public String proDelete(@RequestParam("projectNum") int projectNum) {

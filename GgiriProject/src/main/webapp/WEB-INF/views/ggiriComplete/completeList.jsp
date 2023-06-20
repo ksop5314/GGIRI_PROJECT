@@ -149,7 +149,7 @@ a{
 		<div class="freeTxt">
 			<p>끼리가 보증하는 IT파트너</p>
 			<p id="h">파트너들이 진행한<br>
-			프로젝트를 참고해 보세요</p>
+			프로젝트를 참고해 보세요 :)</p>
 		</div>
 		<br><br>
 		<div class="cal">
@@ -168,11 +168,13 @@ a{
 				</c:if>
 				<c:if test="${loginUser == null && kakaoMember == null && naverMember == null && googleMember == null}">
 					<c:forEach var="dto" items="${completeList }">
-						<div id="mem">
+						<div id="mem" onclick="location.href='../ggiriComplete/completeView?completeNum=${dto.completeNum}'">
+							<h3>${dto.comdate }</h3>
+							<h1>${dto.title }</h1>
 							<input type="hidden" id="id" value="${dto.id }">
 							<input type="hidden" id="completeNum" value="${dto.completeNum }">
 							<input type="hidden" id="comdate" value="${dto.comdate }">
-							<a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a>
+							<%-- <a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a> --%>
 							<div class="skill">
 								<br>
 				                <c:forEach var="selectedSkill" items="${dto.skill}">
@@ -187,8 +189,8 @@ a{
 				<c:if test="${loginUser != null}">
 					<c:forEach var="dto" items="${completeList }">
 						<div id="mem" onclick="location.href='../ggiriComplete/completeView?completeNum=${dto.completeNum}'">
-							<h1>${dto.title }</h1>
 							<h3>${dto.comdate }</h3>
+							<h1>${dto.title }</h1>
 							<input type="hidden" id="id" value="${dto.id }">
 							<input type="hidden" id="completeNum" value="${dto.completeNum }">
 							<input type="hidden" id="comdate" value="${dto.comdate }">
