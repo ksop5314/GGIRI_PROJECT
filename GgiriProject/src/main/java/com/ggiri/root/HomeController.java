@@ -43,8 +43,7 @@ public class HomeController implements GgiriMemberSession{
 		return "home";
 	}
 	
-	@Autowired
-	private ProjectService ps;
+	
 	
 	
 	@GetMapping("index")
