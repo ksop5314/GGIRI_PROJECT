@@ -32,7 +32,6 @@ form{
  h3{
    font-size: 20px;
    text-align: left;
-   background-color: white;
    border-color: gray;
    font-family: 'IBM Plex Sans KR', sans-serif;
 }
@@ -111,6 +110,7 @@ a{
 #mem {
    padding: 30px;
    border: 2px solid navy;
+   background-color: #EBF7FF;
    border-radius: 50px;
 }
 
@@ -144,8 +144,8 @@ a{
     width: fit-content;
     margin: auto;
     font-family: 'IBM Plex Sans KR', sans-serif;
-    border-radius: 40px;
-    background-color: #EBF7FF;
+    border-radius: 40px 80px / 80px 40px;
+    background-color: #CAFCFC;
 }
 
 .projectListSize {

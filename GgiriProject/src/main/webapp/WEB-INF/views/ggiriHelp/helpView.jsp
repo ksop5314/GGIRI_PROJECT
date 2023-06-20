@@ -240,13 +240,11 @@ hr {
 	<div class="helpViewSize">
 		<input type="hidden" id="helpNo" name="helpNo" value="${data.helpNo }">
 		<input type="hidden" id="loginId" name="loginId" value="${loginUser }">
-		<b> 문의 번호 ) &nbsp; </b>${data.helpNo }<br>
 		<div id="head">
+			<b> 문의 번호 ) &nbsp; </b>${data.helpNo }<br>
 			<b> 회원 아이디 ) &nbsp; </b> ${data.id }<br><b> 제목 ) &nbsp; </b> ${data.title }
 			<p style="float: right">${data.helpDate }</p><b style="float: right"> 문의 날짜 ) &nbsp; </b>
-		</div>
 		<hr>
-		<div>
 			<b>문의 내용 )</b><p style="height: 80px; border: 1px solid gray; padding: 5px">${data.content }</p>
 		</div>
 		<br>
