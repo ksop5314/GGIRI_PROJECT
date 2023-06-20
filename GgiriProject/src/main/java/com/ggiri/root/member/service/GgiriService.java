@@ -28,7 +28,7 @@ public interface GgiriService {
 	// 관리자 페이지 멤버 삭제
 	public void deleteId(String deleteId);
 	// 관리자 페이지 멤버 리스트
-	public void allMember(Model model, String id);
+	public void allMember(Model model);
 	
 	
 	// 좋아요를 위한 작업

@@ -149,6 +149,8 @@
 		   
 		   $("#modifyAdminRep").css("display", "flex");
 		   $("#adminMainRep").css("display", "none");
+		   $("#deleteRep").css("display", "none");
+		   $("#modifyRep").css("display", "none");
 		   
 		   let html = "";
 		   html += "<div class='title'><h4>답변 수정 &nbsp; </h4></div><br>";
