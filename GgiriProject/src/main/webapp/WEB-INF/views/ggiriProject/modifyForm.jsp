@@ -31,7 +31,7 @@
 				<input type="text" name="id" id="id" value="${googleMember.id}" readonly>
 				</c:if><br>
 				<b> 제 목 </b><br>
-				<input type="text" name="title" size="50" value="${data.title }"><br><br>
+				<input type="text" name="title" maxlength="15" size="50" value="${data.title }"><br><br>
 				<b>프로젝트 상태</b><br>
 				<label for="proceeding"> 진행중 </label>
 				<input type="radio" class="hidden" name="project" id="proceeding" value="진행중" checked>

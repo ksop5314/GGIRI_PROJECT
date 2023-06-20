@@ -18,6 +18,8 @@ public class GgiriBoardLikeDTO {
 	private int like_check;
 	private int memberNum;
 	
+	// 인덱스에 띄울 title
+	private String title;
 	
 	
 	
@@ -25,6 +27,12 @@ public class GgiriBoardLikeDTO {
 	
 	
 	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public int getMemberNum() {
 		return memberNum;
 	}

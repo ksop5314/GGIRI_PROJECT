@@ -113,6 +113,6 @@ public interface ProjectMapper {
     
     // 좋아요 인덱스 리스트
     
-    public List<GgiriBoardLikeDTO> indexRank();
+    public List<Map<String, Object>> indexRank();
     
 }

@@ -26,6 +26,7 @@ div{
 		<c:import url="default/banner.jsp"/>
 		<c:import url="default/header.jsp"/>
 		<c:import url="default/body.jsp"/>
+		<c:import url="/ggiriProject/rank"/>
 		<c:import url="default/footer.jsp"/>
 	</div>
 </body>
