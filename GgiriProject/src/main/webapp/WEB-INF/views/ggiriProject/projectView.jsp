@@ -318,7 +318,7 @@ input[type=button]:hover {
 }
 
 #container_1 {
-   margin: auto;
+   margin-left: 550px;
    display: inline-block;
 }
 
@@ -334,15 +334,19 @@ hr {
    border-radius: 30Px;
    width: 1000px;
 }
+
+.likeDiv {
+	float: right;
+}
+
 #like_check {
-   float: right;
+   
    display: inline-block;
    padding-top: 8px;
 }
 #like {
    width: 70px; height: 20px;
    background-color: white;
-   float: right;
    padding-top: 20px;
 }
 
@@ -422,25 +426,31 @@ textarea {
            
            <!-- 좋아요 -->
          <c:if test="${loginUser != null}">
-            <button id="like" onclick="like()">
-            <c:if test="${like == 0}">
-            <img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
-            </c:if>
-            <c:if test="${like == 1}">
-            <img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
-            </c:if>
-            <div id="like_check">${likeCount }</div></button>  &nbsp;
+            <div class="likeDiv">
+	            <c:if test="${like == 0}">
+		            <button id="like" onclick="like()">
+	            	<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트"></button>
+	            </c:if>
+	            <c:if test="${like == 1}">
+	            	<button id="like" onclick="like()">
+	           		<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트"></button>
+	            </c:if>
+	            <div id="like_check">${likeCount }</div>  &nbsp;
+            </div>
          </c:if> 
             
          <c:if test="${kakaoMember != null || naverMember != null || googleMember != null }">
-            <button id="like" onclick="like()">
-            <c:if test="${like == 0}">
-            <img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
-            </c:if>
-            <c:if test="${like == 1}">
-            <img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
-            </c:if>
-            <div id="like_check">${likeCount }</div></button>  &nbsp;
+         	<div class="likeDiv">
+	            <c:if test="${like == 0}">
+		            <button id="like" onclick="like()">
+	            	<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트"></button>
+	            </c:if>
+	            <c:if test="${like == 1}">
+	            	<button id="like" onclick="like()">
+	           		<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트"></button>
+	            </c:if>
+	            <div id="like_check">${likeCount }</div>  &nbsp;
+            </div>
          </c:if>
          <h1>${data.title }</h1>
         </div>

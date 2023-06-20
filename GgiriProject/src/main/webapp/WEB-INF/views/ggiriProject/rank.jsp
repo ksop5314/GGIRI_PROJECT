@@ -47,10 +47,9 @@ td {
 					<table >
 					<tr>
 					<td>
-					<img style="width: 140px; height: 140px; "
-					onclick="location.href='${contextPath }/ggiriProject/projectView?projectNum=${list.projectNum}'" src="${contextPath }/resources/image/${i }.png">
-					<div style="font-size: 15px;"><a href="${contextPath}/ggiriProject/projectView?projectNum=${list.projectNum}">글 번호 : ${list.projectNum }</a></div>
-					<div style="font-size: 15px;"><a href="${contextPath}/ggiriProject/projectView?projectNum=${list.projectNum}">${list.title }</a></div>
+						<img style="width: 140px; height: 140px; "
+						onclick="location.href='${contextPath }/ggiriProject/projectView?projectNum=${list.projectNum}'" src="${contextPath }/resources/image/${i }.png">
+						<div style="font-size: 14px;"><a href="${contextPath}/ggiriProject/projectView?projectNum=${list.projectNum}">${list.title }</a></div>
 					</td>
 					<tr>
 					</table>

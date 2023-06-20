@@ -174,17 +174,6 @@ a{
 			<button id="freeInput" type="button" onclick="location.href='../ggiriProject/projectWrite'">프로젝트 등록하기</button>
 		</div>
 		<br><br><br><br><br><hr>
-		<!-- <div class="skill">
-			<input type="hidden" name="skill" id="jobDev" value="develop">
-			<input type="hidden" name="skill" id="jobPub" value="publish">
-			<input type="hidden" name="skill" id="jobDes" value="design">
-			<input type="hidden" name="skill" id="jobPla" value="plan">
-			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="develop()" id="dev"> ⚙️  개발 </button>
-			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="publish()" id="pub"> 🛠  퍼블리싱  </button> 
-			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="design()" id="des"> 🎨  디자인 </button> 
-			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="plan()" id="pla"> 📝  기획 </button> 
-		</div>
-		<br><br><hr> -->
 		<div class="board_table">
 			<h1></h1>
 			<br>
@@ -194,31 +183,55 @@ a{
 				</c:if>
 				<br>
 				<c:if test="${loginUser == null && kakaoMember == null && naverMember == null && googleMember == null}">
-			    <c:forEach var="dto" items="${list }">
-			        <div id="mem">
-			        	<c:if test="${dto.project == '완료' }">
-							<span id="project_1">${dto.project }</span>
-						</c:if>
-						<c:if test="${dto.project == '진행중' }">
-							<span id="project_2">${dto.project }</span>
-						</c:if>
-			            <h3>${dto.prodate }</h3>
-			            <a id="title" href="/root/ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a>
-			            <br>
-			            <p>${dto.id }</p>
-			            <p>${dto.job }</p>
-			            <div class="skill">
-			            <br>
-			                <c:forEach var="selectedSkill" items="${dto.skill}">
-			                    <div style="display:inline" id="skill">${selectedSkill}</div>
-			                </c:forEach>
-			            </div>
-			        </div>
-			        <br>
-			    </c:forEach>
+				    <c:forEach var="dto" items="${list }">
+				        <div id="mem">
+				        	<c:if test="${dto.project == '완료' }">
+								<span id="project_1">${dto.project }</span>
+							</c:if>
+							<c:if test="${dto.project == '진행중' }">
+								<span id="project_2">${dto.project }</span>
+							</c:if>
+				            <h3>${dto.prodate }</h3>
+				            <a id="title" href="/root/ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a>
+				            <br>
+				            <p>${dto.id }</p>
+				            <p>${dto.job }</p>
+				            <div class="skill">
+				            <br>
+				                <c:forEach var="selectedSkill" items="${dto.skill}">
+				                    <div style="display:inline" id="skill">${selectedSkill}</div>
+				                </c:forEach>
+				            </div>
+				        </div>
+				  		<br>
+				    </c:forEach>
 			    </c:if>
 	   			<c:if test="${loginUser != null || kakaoMember != null || naverMember != null || googleMember != null}">
 					<c:forEach var="dto" items="${list }">
+						<div id="mem">
+							<c:if test="${dto.project == '완료' }">
+								<span id="project_1">${dto.project }</span>
+							</c:if>
+							<c:if test="${dto.project == '진행중' }">
+								<span id="project_2">${dto.project }</span>
+							</c:if>
+	            			<h3>${dto.prodate }</h3>
+	            			<a id="title" href="/root/ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a>
+	            			<br>
+							<p>${dto.id }</p>
+							<p>${dto.job }</p>
+							<div class="skill">
+							<br>
+				                <c:forEach var="selectedSkill" items="${dto.skill}">
+				                    <div style="display:inline" id="skill">${selectedSkill}</div>
+				                </c:forEach>
+							</div>
+						</div>
+						<br>
+					</c:forEach>
+				</c:if>
+				<c:if test="${projectList != null }">
+					<c:forEach var="dto" items="${projectList }">
 						<div id="mem">
 							<c:if test="${dto.project == '완료' }">
 								<span id="project_1">${dto.project }</span>

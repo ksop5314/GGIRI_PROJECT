@@ -182,15 +182,15 @@ public class ProjectController implements GgiriMemberSession{
         return "redirect:/ggiriProject/projectList";
     }
 
-    @GetMapping("projectList")
+    @GetMapping(value = "projectList.do")
     public String projectList(
         @RequestParam(value = "page", defaultValue = "1") int page,
         @RequestParam(value = "keyword", required = false) String keyword,
         @RequestParam(value = "condition", defaultValue = "title") String condition,
-        Model model, HttpSession session
-    )throws Exception  {
+        Model model
+    ) {
         int perPage = 10; // 한 페이지에 보여줄 프로젝트 개수
-        
+
         if (keyword != null && !keyword.isEmpty()) {
             // 검색어가 입력된 경우 검색 기능 적용
             int totalCount = ps.getProjectCountBySearch(keyword, condition);
@@ -204,7 +204,6 @@ public class ProjectController implements GgiriMemberSession{
             model.addAttribute("projectList", projectList);
             model.addAttribute("currentPage", page);
             model.addAttribute("totalPages", totalPages);
-            
         } else {
             // 검색어가 없는 경우 전체 프로젝트 목록 조회
             List<ProjectDTO> projectList = ps.getProjectList(page, perPage);
@@ -215,6 +214,13 @@ public class ProjectController implements GgiriMemberSession{
             model.addAttribute("currentPage", page);
             model.addAttribute("totalPages", totalPages);
         }
+
+        return "ggiriProject/projectList";
+    }
+    
+    @GetMapping("projectList")
+    public String projectList(Model model, HttpSession session)  {
+    	
         if(session.getAttribute(LOGIN) == null) {
         	String id = (String)session.getAttribute(LOGIN);
         	List<Map<String, Object>> list = ps.selectJob(model);

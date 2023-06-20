@@ -102,6 +102,37 @@ div{
 	width: 1600px;
 }
 
+#bestProject {
+	font-weight: bold;
+	padding-top: 25px;
+	font-size: 23px;
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	background-image: linear-gradient(
+	  180deg,
+	  #ffb6ff 5%,
+	  #b344ff 10%,
+	  #ae38ff 33%,
+	  #ffb6ff 45%,
+	  #ffe3ff 50%,
+	  #ffb6ff 66%,
+	  #b344ff
+	);
+	background-size: 100% 300%;
+	background-position-y: 0%;
+	animation: gradient 3s infinite forwards;
+}
+
+@keyframes gradient {
+  from {
+    background-position-y: 0%;
+  }
+  to {
+    background-position-y: 100%;
+  }
+}
+
 </style>
 <script type="text/javascript">
    
@@ -160,7 +191,9 @@ div{
 				<button class="signup" type="button" onclick="location.href='/root/ggiriMember/signup_free'">프리랜서 회원가입</button>
 				</c:if>
 				<br><br><br><br><br>
-				<a href="${path}/board/best_list.do">베스트 게시물 게시판</a>
+				<div id="bestProject">
+					베스트 게시물 게시판
+				</div>
 				<br>
 				
 				<!-- <div class="eblock-project">

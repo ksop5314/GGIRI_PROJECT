@@ -134,7 +134,7 @@ table td {
 		<table>
 			<tr>
 				<th>제 목</th>
-				<td><input type="text" name="title" size="50" maxlength= "15"></td>
+				<td><input type="text" name="title" size="50" maxlength= "50"></td>
 			</tr>
 			<tr>
 				<th>작성자</th>
