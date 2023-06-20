@@ -61,7 +61,6 @@ a{
 		<div id="mem">
 			<c:if test="${list.id == loginUser }">
 				<p>${list.prodate }</p>
-				<p>${list.like_no }</p>
 				<a id="title" href="../ggiriProject/projectView?projectNum=${list.projectNum }">${list.title }</a>
 			</c:if>
 		</div>
@@ -72,7 +71,6 @@ a{
 		<br>
 		<div id="mem">
 			<p>${list.prodate }</p>
-			<p>${list.like_no }</p>
 			<a id="title" href="../ggiriProject/projectView?projectNum=${list.projectNum }">${list.title }</a>
 		</div>
 		</c:forEach>

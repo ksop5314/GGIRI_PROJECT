@@ -231,9 +231,9 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	// 인덱스 좋아요 리스트
 	@Override
-	public List<GgiriBoardLikeDTO> indexRank(Model model) {
-		model.addAttribute("rank",model);
-		return null;
+	public List<Map<String, Object>> indexRank(Model model) {
+		model.addAttribute("rank",pm.indexRank());
+		return pm.indexRank();
 	}
 	
 }
