@@ -51,8 +51,12 @@
 	</update>
 	
 	<select id="allMember" resultMap="ggiri">
-		SELECT * FROM ggirimember WHERE id!=#{id}
+		SELECT * FROM ggirimember WHERE memberNum!=0
 	</select>
+	
+	<delete id="deleteId">
+		DELETE FROM ggirimember WHERE id=#{id}
+	</delete>
 	
 	<!-- Google -->
 	
@@ -84,10 +88,6 @@
 		INSERT INTO ggirimember(memberNum, id, name, birth, gender, email, tel) VALUES(ggiriMember_seq.nextval, #{id}, #{name}, #{birth}, #{gender}, #{email}, #{tel})
 	</insert>
 	<!-- 강준호 끝 -->
-	
-	<delete id="deleteId">
-		DELETE FROM ggirimember WHERE id=#{id}
-	</delete>
 	
 	
 	<!-- 좋아요를 위한 작업 -->
