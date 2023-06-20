@@ -55,7 +55,7 @@ input[type=button]:hover {
 <body>
 	<c:import url="../default/header.jsp"/>
 	<div class="wrap">
-		<h1>내 정보</h1>
+		<h1>내 정보 ✌︎ </h1>
 		<table>
 				<c:if test="${naverMember != null }">
 					<tr>
