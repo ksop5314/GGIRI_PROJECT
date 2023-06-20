@@ -36,7 +36,7 @@ b {
 	margin-top: 10px;
 	padding: 0 30px 30px 30px;
 	background-color: #FFFAE3;
-	border-radius: 30Px;
+	border-radius: 30px;
 	width: 1000px;
 }
 .body {
@@ -115,7 +115,7 @@ textarea {
 	        <b>함께 진행한 팀원들을 소개할게요.</b>
 	        <p id="mb">${data.members }</p>
 	        <br><br>
-	        <b>- Tag</b>
+	        <b>Tag</b>
 	        <p>${data.tag }</p>
 	        </div>
 	        <br>

@@ -343,6 +343,7 @@ hr {
 #like_check {
 	float: right;
 	display: inline-block;
+	padding-top: 8px;
 }
 #like {
 	width: 70px; height: 20px;
@@ -438,7 +439,7 @@ textarea {
 			</c:if> 
 				
 			<c:if test="${kakaoMember != null || naverMember != null || googleMember != null }">
-				<button onclick="like()">
+				<button id="like" onclick="like()">
 				<c:if test="${like == 0}">
 				<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
 				</c:if>
