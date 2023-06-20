@@ -36,7 +36,7 @@ b {
 	margin-top: 10px;
 	padding: 0 30px 30px 30px;
 	background-color: #FFFAE3;
-	border-radius: 30Px;
+	border-radius: 30px;
 	width: 1000px;
 }
 .body {
@@ -115,7 +115,7 @@ textarea {
 	        <b>함께 진행한 팀원들을 소개할게요.</b>
 	        <p id="mb">${data.members }</p>
 	        <br><br>
-	        <b>- Tag</b>
+	        <b>Tag</b>
 	        <p>${data.tag }</p>
 	        </div>
 	        <br>
@@ -124,57 +124,6 @@ textarea {
 			</div>
 	    </div>
 	</form>
-		<%-- <table border="1">
-			<tr>
-				<th style="display: none"> 번 호 </th><td style="display: none">${data.completeNum }</td>
-			</tr>
-			<tr>
-				<th style="display: none"> 작성자 </th><td style="display: none"></td>
-			</tr>
-			<tr>
-				<th style="display: none"> 작성일 </th><td style="display: none">${data.comdate }</td>
-			</tr>
-			<tr>
-				<th style="border-bottom: hidden; width: 1000px"> 프로젝트 제목 </th>
-			</tr>
-			<tr>
-				<td height="50px">${data.title }</td>
-			</tr>
-			<tr>
-				<th style="border-bottom: hidden;"> 프로젝트 설명 </th>
-			</tr>
-			<tr>
-				<td height="300px"><pre><c:out value="${data.content }"/></pre></td>
-			</tr>
-			<tr>
-				<th style="border-bottom: hidden;"> 이런 스킬을 사용했어요. </th>
-			</tr>
-			<tr>
-				<td height="100px"><pre><c:out value="${data.skill }"/></pre></td>
-			</tr>
-			<tr>
-				<th style="border-bottom: hidden;"> 함께 진행한 팀원들을 소개할게요. </th>
-			</tr>
-			<tr>
-				<td height="50px">${data.members }</td>
-			</tr>
-			<tr>
-				<th style="border-bottom: hidden;"> Tag </th>
-			</tr>
-			<tr>
-				<td height="50px">${data.tag }</td>
-			</tr>
-			<tr>
-				<td colspan="4" align="center">
-					<div id="reply"></div>
-					<c:if test="${data.id==loginUser || data.id==kakaoMember.id || data.id==naverMember.id || data.id==googleMember.id}">
-						<input type="button" value="수정" onclick="location.href='../ggiriComplete/completeModify?completeNum=${data.completeNum }'"> &nbsp;
-						<input type="button" value="삭제" onclick="location.href='../ggiriComplete/delete?completeNum=${data.completeNum }'"> &nbsp;
-					</c:if>
-					<input type="button" value="프로젝트 목록" onclick="location.href='../ggiriComplete/completeList'">
-				</td>
-			</tr>
-		</table> --%>
 	<c:import url="../default/footer.jsp"></c:import>
 </body>
 </html>

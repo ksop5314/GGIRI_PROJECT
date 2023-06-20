@@ -54,6 +54,14 @@ String color = request.getParameter("color");
     font-size: 50px;
     color: black;
     vertical-align: middle;
+<<<<<<< HEAD
+}
+table {
+	margin-right: auto;
+	margin-left: auto;
+	
+	border-radious: 30px;
+=======
 <%--     background-color: <%= color %>;
  --%>}
 
@@ -73,6 +81,7 @@ String color = request.getParameter("color");
 }
 a {
 	text-decoration: none;
+>>>>>>> branch 'main' of https://github.com/Jh1227/junho.git
 }
 #but {
 	float: right;
@@ -84,7 +93,11 @@ a {
 		<div class="all">
 			<div class="intro">
 			<br>
+<<<<<<< HEAD
+			<div style="background-color: '<%= session.getAttribute("randomColor") %>'"><p id="id">"${info.id }"</p></div>
+=======
 			<p id="id" style="background-color:<%= color %>">"${info.id }"</p>
+>>>>>>> branch 'main' of https://github.com/Jh1227/junho.git
 			<br>
 				<h1>${info.introduce }</h1>
 				<b>${info.id }</b><br><br>

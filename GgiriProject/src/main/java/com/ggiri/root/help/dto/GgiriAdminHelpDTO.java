@@ -1,5 +1,7 @@
 package com.ggiri.root.help.dto;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class GgiriAdminHelpDTO {
 
@@ -44,8 +46,9 @@ public class GgiriAdminHelpDTO {
 	public String getAdminRepDate() {
 		return adminRepDate;
 	}
-	public void setAdminRepDate(String adminRepDate) {
-		this.adminRepDate = adminRepDate;
+	public void setAdminRepDate(Timestamp adminRepDate) {
+		SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-dd");
+		this.adminRepDate = format.format(adminRepDate);
 	}
 
 }

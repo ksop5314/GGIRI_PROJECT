@@ -67,15 +67,14 @@
 	             let adminRepDate = date.getFullYear()+"년 "+(date.getMonth()+1)+"월 ";
 	             adminRepDate += date.getDate()+"일 "+date.getHours()+"시 ";
 	             adminRepDate += date.getMinutes()+"분 "+date.getSeconds()+"초";
-	             html += "      <br><hr><div id='adminReply'>";
-	             html += "         <table class='table'>";
-	             html += "             <tr>";
-	             html += "                <th width='150px' height='40px'> Ggiri 관리자 </th>"+"<td width='150px'>"+ rep[0].adminRepDate +"</td>";
-	             html += "            </tr>";
-	             html += "            <tr>";
-	             html += "               <td width='500px'><pre>"+ rep[0].adminRep +"</pre></td>";
-	             html += "            </tr>";
-	             html += "         </table>";
+	             html += "      <br><br><br><br><br><br><br>";
+	             html += "      <div id='adminReply'>";
+	             html += "         <div style='padding: 12px; border: 4px solid silver; margin-bottom: 10px; border-radius: 30px 0 30px 0;'>";
+	             html += "            <b style='width:400px; height:40px; text-align:center'>작성자 )</b> &nbsp; Ggiri 관리자<p style='float:right'>"+ rep[0].adminRepDate + "</p><br>";
+	             html += "         </div>";
+	             html += "         <div style='padding: 12px; background-color: #f0f0f0; border-radius: 30px;'>";
+	             html += "            <b width='600px'>문의 답변 A )</b><br><pre>"+rep[0].adminRep +"</pre></td>";
+	             html += "         </div>";
 	             html += "      </div>";
 	             
 	        	 $("#adminRepDiv").html(html);
@@ -85,19 +84,20 @@
 	             let adminRepDate = date.getFullYear()+"년 "+(date.getMonth()+1)+"월 ";
 	             adminRepDate += date.getDate()+"일 "+date.getHours()+"시 ";
 	             adminRepDate += date.getMinutes()+"분 "+date.getSeconds()+"초";
-	             html += "      <br><hr><div id='adminReply'>";
-	             html += "         <table class='table'>";
-	             html += "             <tr>";
-	             html += "                <th width='150px' height='40px'> Ggiri 관리자의 답변 </th>"+"<td width='150px'>"+ rep[0].adminRepDate +"</td>";
-	             html += "            </tr>";
-	             html += "            <tr>";
-	             html += "               <input type='hidden' name='adminRepNo' id='adminRepNo' value='" + rep[0].adminRepNo + "'>";
-	             html += "               <input type='hidden' name='contentList' id='contentList" + rep[0].adminRepNo + "' value='" + rep[0].adminRep + "'>";
-	             html += "               <td width='850px'><pre id='adminMainRep'>"+ rep[0].adminRep +"</pre><div id='modifyAdminRep' name='modifyAdminRep' style='display: none;'></div></td>";
-            	 html += "               <td><button type='button' id='deleteRep' name='deleteRep' style='width:50px;height:30px;' onclick='deleteAdminRep()'> 삭제 </button>";
-                 html += "               <button type='button' id='modifyRep' name='modifyRep' style='width:50px;height:30px;' onclick='modifyAdminRep(" + rep[0].adminRepNo + ")'> 수정 </button></td>";
-	             html += "            </tr>";
-	             html += "         </table>";
+	             html += "		<br><div id='adminReply'>";
+	             html += "      	    <div style='padding: 12px; border: 4px solid silver; margin-bottom: 10px; border-radius: 30px 0 30px 0;'>";
+	             html += "      	       <b style='width:400px; height:40px; text-align:center'>Ggiri 관리자의 답변</b><p style='float:right'>"+ rep[0].adminRepDate + "</p><br>";
+	             html += "      	    </div>";
+	             html += "      	    <div style='padding: 12px; background-color: #f0f0f0; border-radius: 30px;'>";
+	             html += "        	        <input type='hidden' name='adminRepNo' id='adminRepNo' value='" + rep[0].adminRepNo + "'>";
+	             html += "        	        <input type='hidden' name='contentList' id='contentList" + rep[0].adminRepNo + "' value='" + rep[0].adminRep + "'>";
+	             html += "					<b width='850px'>문의 답변 A )</b><br><pre id='adminMainRep'>"+ rep[0].adminRep +"</pre><div id='modifyAdminRep' name='modifyAdminRep' style='display: none;'></div></b>";
+	             html += "      	    </div>";
+	             html += "      	    <br>";
+	             html += "      	    <div style='display: flex; justify-content: center;'>";
+            	 html += "					<b><button type='button' id='deleteRep' name='deleteRep' style='width:50px; height:30px; background-color: #E2EAE9; border-radius: 40px 80px / 80px 40px;' onclick='deleteAdminRep()'> 삭제 </button>";
+                 html += "					<button type='button' id='modifyRep' name='modifyRep' style='width:50px; height:30px; background-color: #E2EAE9; border-radius: 40px 80px / 80px 40px;' onclick='modifyAdminRep(" + rep[0].adminRepNo + ")'> 수정 </button></b>";
+	             html += "				</div>";
 	             html += "      </div>";
 	             
 	        	 $("#adminRepDiv").html(html);
@@ -153,12 +153,12 @@
 		   $("#modifyRep").css("display", "none");
 		   
 		   let html = "";
-		   html += "<div class='title'><h4>답변 수정 &nbsp; </h4></div><br>";
+		   html += "<div class='title'><h4>답변 수정 ) </h4></div><br>";
 		   html += "<input type='hidden' id='modifyNo' name='modifyNo' value='" + no + "'>";
-		   html += "<div class='adminContent' id='adminContent' name='adminContent'>";
-		   html += "<textarea id='adminTextArea' rows='10' cols='50'>" + contentList + "</textarea>";
-		   html += "<input type='button' id='modifyButton' name='modifyButton' onclick='modifyAdminRepResult(" + adminRepNo + ")' value='수정'>";
-		   html += "<input type='button' id='modifyCancelButton' name='modifyCancelButton' onclick='modifyAdminRepCancel()' value='취소'>";
+		   html += "<div class='adminContent' id='adminContent' name='adminContent'><br>";
+		   html += "<textarea id='adminTextArea' rows='10' cols='60' style='border-radius: 30px; resize: none; padding:10px;'>" + contentList + "</textarea>";
+		   html += "<input type='button' id='modifyButton' name='modifyButton' onclick='modifyAdminRepResult(" + adminRepNo + ")' style='width:50px; height:30px; background-color: #E2EAE9; border: 2px solid black; border-radius: 40px 80px / 80px 40px;' value='수정'>&nbsp;";
+		   html += "<input type='button' id='modifyCancelButton' name='modifyCancelButton' onclick='modifyAdminRepCancel()' style='width:50px; height:30px; background-color: #E2EAE9; border: 2px solid black; border-radius: 40px 80px / 80px 40px;' value='취소'>";
 		   html += "</div>";
 		   
 		   $("#modifyAdminRep").html(html);
@@ -211,7 +211,7 @@
 	margin: 0 auto;
 }
 .helpViewSize {
-	width: 800px;
+	width: 850px;
 	margin-left: 150px;
 }
 input[type=button] {
@@ -223,6 +223,7 @@ input[type=button] {
     font-size: 14px;
 	border-radius: 40px 80px / 80px 40px;
     cursor: pointer;
+    
 }
 input[type=button]:hover {
     background-color: #EBF7FF;
@@ -232,6 +233,24 @@ hr {
     background: gray;
     height: 1px;
     border: 0;
+}
+#head { 
+	margin-bottom: 10px;
+	border: 4px solid silver;
+	border-radius: 30px 0 30px 0;
+	padding: 10px;
+}
+#content {
+	background-color: #f0f0f0 ;
+	border-radius: 30px;
+	padding: 10px;
+}
+textarea:focus {
+	outline: none;
+}
+#select {
+    display: flex;
+    justify-content: center;
 }
 </style>
 </head>
@@ -244,25 +263,31 @@ hr {
 			<b> 문의 번호 ) &nbsp; </b>${data.helpNo }<br>
 			<b> 회원 아이디 ) &nbsp; </b> ${data.id }<br><b> 제목 ) &nbsp; </b> ${data.title }
 			<p style="float: right">${data.helpDate }</p><b style="float: right"> 문의 날짜 ) &nbsp; </b>
-		<hr>
-			<b>문의 내용 )</b><p style="height: 80px; border: 1px solid gray; padding: 5px">${data.content }</p>
+		</div>
+		<div id="content">
+			<b>문의 내용 Q )</b><br>${data.content }
 		</div>
 		<br>
-		<c:if test="${data.id==loginUser || data.id == kakaoMember.id || data.id == googleMember.id || data.id == naverMember.id }">
-			<td colspan="4" align="right">
+		<div id="select">
+			<c:if test="${data.id==loginUser || data.id == kakaoMember.id || data.id == googleMember.id || data.id == naverMember.id }">
 				<input type="button" value="수정" onclick="location.href='../ggiriHelp/helpModifyForm?helpNo=${data.helpNo }'"> &nbsp;
 				<input type="button" value="삭제" onclick="location.href='../ggiriHelp/helpDelete?helpNo=${data.helpNo }'"> &nbsp;
-			</td>
-		</c:if>
+			</c:if>
+		</div>
 		<c:if test="${loginUser == 'GGIRIADMIN' }">
 			<div class="adminHelpReplySize">
-				<div class="adminHelpRep">
+				<div class="adminHelpRep" style="padding: 10px; border-radius: 30px; background-color: #f0f0f0">
 					<input type="hidden" id="helpMember" name="helpMember" value="${data.id }">
 					<input type="hidden" id="adminHelpNo" name="adminHelpNo" value="${data.helpNo }">
-					<h4> 답변 내용 </h4>
-					<textarea rows="10" cols="50" id="adminRep" name="adminRep" style="resize: none;"></textarea><br>
-					<button type="button" id="adminRepResult" name="adminRepResult" onclick="adminRepResult()"> 완료 </button>
+					<h4> 답변 내용 )</h4>
+					<textarea rows="5" cols="117" id="adminRep" name="adminRep" style="border-radius: 30px; resize: none; padding:10px;"></textarea><br>
 				</div>
+				<br>
+				<div style="text-align: center;">
+					<button  style="width:50px; height:30px; background-color: #E2EAE9; border-radius: 40px 80px / 80px 40px; justify-content: center;"
+					 type="button" id="adminRepResult" name="adminRepResult" onclick="adminRepResult()"> 완료 </button>
+				</div>
+				<br>
 			</div>
 		</c:if>
 		<div id="adminRepDiv">

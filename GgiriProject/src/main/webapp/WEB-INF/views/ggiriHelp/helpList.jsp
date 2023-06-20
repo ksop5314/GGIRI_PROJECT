@@ -31,6 +31,7 @@ a{
 	text-decoration: none;
 	color: black;
 	text-align: left;
+	font-weight: bold;
 }
 
 span{

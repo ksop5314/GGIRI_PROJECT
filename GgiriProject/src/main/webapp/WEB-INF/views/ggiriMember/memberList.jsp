@@ -457,6 +457,47 @@ a {
 </style>
 </head>
 <body>
+<<<<<<< HEAD
+	<c:import url="../default/header.jsp"/>
+	<br>
+	<div class="body">
+		<div class="freeTxt">
+			<p>끼리가 보증하는 IT파트너</p>
+			<p id="h">프리랜서로 등록하면<br>
+			더 정확한 추천을 받을 수 있어요</p>
+			<br>
+		</div>
+		<div>
+			<button class="freeInput" id="freeInput" type="button" onclick="location.href='${contextPath}/ggiriMember/writeFree'">프리랜서 등록하기</button>
+		</div>
+		<br><br><br><br><br><br><br>
+		<div class="skill">
+			<input type="hidden" name="job" id="jobDev" value="developer">
+			<input type="hidden" name="job" id="jobPub" value="publisher">
+			<input type="hidden" name="job" id="jobDes" value="designer">
+			<input type="hidden" name="job" id="jobPla" value="planner">
+			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="developer()" id="dev"> ⚙️  개발자 </button>
+			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="publisher()" id="pub"> 🛠  퍼블리셔  </button> 
+		 	<button class="h3" type="submit" style=" border-radius: 30px;" onclick="designer()" id="des"> 🎨  디자이너 </button> 
+			<button class="h3" type="submit" style=" border-radius: 30px;" onclick="planner()" id="pla"> 📝  기획자 </button> 
+		</div>
+		<br><br>
+		<hr>
+		<div id="devList">
+		 <c:forEach var="list" items="${boardList}">
+		    <div id="mem">
+		      <a href="Info?id=${list.id}" ><p id="id">${list.id}</p></a>
+		      <div id="hi">
+		        <div><h2>${list.introduce}</h2></div>
+		         <div id="job">${list.job}</div> <br><br>
+		         <c:forEach var="selectedSkill" items="${list.skill}">
+		          <div style="display:inline" id="skillCheck">${selectedSkill}</div>
+		        </c:forEach>
+		      </div><hr>
+		    </div>
+		  </c:forEach> 
+		</div>
+=======
    <c:import url="../default/header.jsp"/>
    <br>
    <div class="body">
@@ -499,6 +540,7 @@ a {
    </div>
    	<div style="position: fixed; bottom: 20px; right:20px;">
 		<a href="#"><img style="width:50px; height: 50px;"src="/root/resources/image/top1.png"></a>
+>>>>>>> branch 'main' of https://github.com/Jh1227/junho.git
 	</div>
    <c:import url="../default/footer.jsp"/>
 </body>
