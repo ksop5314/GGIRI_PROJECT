@@ -284,8 +284,8 @@ button{
     background-color: #C5F5F5;
     color: #3b3b3b;
     border: none;
-    width: 145px;
-    height: 50px;
+    width: 140px;
+    height: 40px;
     font-size: 18px;
     border-radius: 40px 80px / 80px 40px;
     cursor: pointer;
@@ -298,8 +298,8 @@ input[type=button] {
     background-color: #C5F5F5;
     color: #3b3b3b;
     border: none;
-    width: 145px;
-    height: 50px;
+    width: 140px;
+    height: 40px;
     font-size: 18px;
 	border-radius: 40px 80px / 80px 40px;
     cursor: pointer;
@@ -341,7 +341,14 @@ hr {
 	width: 1000px;
 }
 #like_check {
-	color: #e8fdee;
+	float: right;
+	display: inline-block;
+}
+#like {
+	width: 70px; height: 20px;
+	background-color: white;
+	float: right;
+	padding-top: 20px;
 }
 
 /* 모달창 css */
@@ -405,17 +412,42 @@ hr {
 textarea {
 	resize: none;
 }
-
+.proViewPage {
+	margin: auto;
+}
 </style>
 </head>
 <body>
     
 	<c:import url="../default/header.jsp"></c:import>
-    <div class="wrap">
+    <div class="proViewPage">
         <br>
         <div class="head">
 	        <b style='font-size: 16px;'>작성자:</b><b style='font-size: 16px;'>${data.id }</b><b id="pro">${data.prodate }</b><br>
-	        <h1>${data.title }</h1>
+	        
+	        <!-- 좋아요 -->
+			<c:if test="${loginUser != null}">
+				<button id="like" onclick="like()">
+				<c:if test="${like == 0}">
+				<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
+				</c:if>
+				<c:if test="${like == 1}">
+				<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
+				</c:if>
+				<div id="like_check">${likeCount }</div></button>  &nbsp;
+			</c:if> 
+				
+			<c:if test="${kakaoMember != null || naverMember != null || googleMember != null }">
+				<button onclick="like()">
+				<c:if test="${like == 0}">
+				<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
+				</c:if>
+				<c:if test="${like == 1}">
+				<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
+				</c:if>
+				<div id="like_check">${likeCount }</div></button>  &nbsp;
+			</c:if>
+			<h1>${data.title }</h1>
         </div>
         <div class="content">
         	<b style='font-size: 20px;'>프로젝트 내용</b>
@@ -431,7 +463,7 @@ textarea {
         <div id="select">
 			<input type="button" style="background-color: #C5F5F5" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'"> &nbsp;
 			 
-		<!-- 좋아요 -->
+		<%-- <!-- 좋아요 -->
 		<c:if test="${loginUser != null}">
 			<button onclick="like()">
 			<c:if test="${like == 0}">
@@ -452,7 +484,7 @@ textarea {
 			<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
 			</c:if>
 			<div id="like_check">${likeCount }</div></button>  &nbsp;
-		</c:if> 	
+		</c:if> 	 --%>
 			
 			<c:if test="${data.id == loginUser && data.project == '완료' }">
 				<button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
