@@ -23,6 +23,8 @@ public interface GgiriMemberMapper {
 	public List<GgiriMemberDTO> allMember();
 	public int getProjectCount();
 	public void deleteId(String id);
+	public void memberWithdraw(String id);
+	
 	
 	public List<ProjectDTO> getProjectListBySearch(String keyword, String condition);
 	

@@ -40,16 +40,16 @@ public class GgiriServiceImpl implements GgiriService{
 	public int loginCheck(HttpServletRequest request) {
 		GgiriMemberDTO dto = gmm.loginCheck(request.getParameter("id"));
 		if(dto != null) {
-			if(dto.getId().equals("GGIRIADMIN")) {
-				if(request.getParameter("pwd").equals(dto.getPwd())) {
-					return 2;
-				}
-			}
 			if(request.getParameter("pwd").equals(dto.getPwd())) {
 				return 0;
 			}
 		}
 		return 1;
+	}
+	
+	@Override
+	public void memberWithdraw(String id) {
+		gmm.memberWithdraw(id);
 	}
 	
 	@Override

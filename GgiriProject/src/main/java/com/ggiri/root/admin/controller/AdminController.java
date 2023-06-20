@@ -47,13 +47,6 @@ public class AdminController {
 //		return "ggiriAdmin/adminList";
 //	}
 	
-	@GetMapping("adminLogout")
-	public String logout(HttpSession session) {
-		if(session.getAttribute("ADMIN") != null) {
-			session.invalidate();
-		}
-		return "ggiriAdmin/adminLogout";
-	}
 	
 	@GetMapping("allMember")
 	public String allMember(Model model, HttpSession session) {

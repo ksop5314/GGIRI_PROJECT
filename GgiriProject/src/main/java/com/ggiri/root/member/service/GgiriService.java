@@ -24,6 +24,9 @@ public interface GgiriService {
 	public int modifyResult(GgiriMemberDTO modifyMember);
 	public void ggiriMemberInfo(String id, Model model);
 	public void ggiriSnsInfo(String id, Model model);
+	public void memberWithdraw(String id);
+	
+	
 	
 	// 관리자 페이지 멤버 삭제
 	public void deleteId(String deleteId);

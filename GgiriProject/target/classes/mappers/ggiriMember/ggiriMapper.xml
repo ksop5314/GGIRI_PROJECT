@@ -22,6 +22,10 @@
 		INSERT INTO ggirimember(memberNum, id, name, pwd, birth, gender, email, tel, addr) VALUES(ggiriMember_seq.nextval, #{id}, #{name}, #{pwd}, #{birth}, #{gender}, #{email}, #{tel}, #{addr})
 	</insert>
 	
+	<delete id="memberWithdraw">
+		DELETE FROM ggirimember WHERE id=#{id}
+	</delete>
+	
 	<select id="idCheck" resultType="integer">
 		SELECT COUNT(id) FROM ggirimember WHERE id=#{id}
 	</select>

@@ -89,10 +89,7 @@ public class GgiriController implements GgiriMemberSession {
 		if(result == 0) {
 			ra.addAttribute("id", request.getParameter("id"));
 			return "redirect:successLogin";
-		} else if(result == 2) {
-			ra.addAttribute("id", request.getParameter("id"));
-			return "redirect:successLogin";
-		}
+		} 
 		return "redirect:failLogin";
 	}
 	
@@ -107,18 +104,20 @@ public class GgiriController implements GgiriMemberSession {
 		return "ggiriMember/successLogin";
 	}
 	
-	@RequestMapping("successAdmin")
-	public String successAdmin(@RequestParam("id") String id, HttpSession session) {
-		session.setAttribute("ADMIN", id);
-		return "ggiriMember/successAdmin";
-	}
-	
 	@GetMapping("ggiriLogout")
 	public String logout(HttpSession session) {
 		if(session.getAttribute("loginUser") != null) {
 			session.invalidate();
 		}
 		return "ggiriMember/ggiriLogout";
+	}
+	
+	@GetMapping("memberWithdraw")
+	@ResponseBody
+	public String memberWithdraw(@RequestParam("withdrawId") String id, HttpSession session) {
+		gs.memberWithdraw(id);
+		session.invalidate();
+		return "OK";
 	}
 	
 	@RequestMapping("register")
