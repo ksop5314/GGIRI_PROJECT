@@ -32,8 +32,8 @@ function developer(){
 			    html += "<a href='Info?id=" + this.id + "'><p id='id'>" + this.id + "</p></a>";
 			    html += "<div id='hi'>";
 			    html += "<div><h2>" + this.introduce + "</h2></div>";
-			    html += "<div>" + this.job + "</div><br><br>";
-			    html += "<div style='display:inline'>" + this.skill + "</div><br><br>";
+			    html += "<div id='job'>" + this.job + "</div><br><br>";
+			    html += "<div id='skillCheck' style='display:inline;'>" + this.skill + "</div><br><br>";
 			    html += "</div><hr>"
 			    html += "</div>"
 			});
@@ -89,8 +89,8 @@ function publisher(){
 			    html += "<a href='Info?id=" + this.id + "'><p id='id'>" + this.id + "</p></a>";
 			    html += "<div id='hi'>";
 			    html += "<div><h2>" + this.introduce + "</h2></div>";
-			    html += "<div>" + this.job + "</div><br><br>";
-			    html += "<div style='display:inline'>" + this.skill + "</div><br><br>";
+			    html += "<div id='job'>" + this.job + "</div><br><br>";
+			    html += "<div id='skillCheck' style='display:inline'>" + this.skill + "</div><br><br>";
 			    html += "</div><hr>"
 			    html += "</div>"
 			});
@@ -147,8 +147,8 @@ function designer(){
 			    html += "<a href='Info?id=" + this.id + "'><p id='id'>" + this.id + "</p></a>";
 			    html += "<div id='hi'>";
 			    html += "<div><h2>" + this.introduce + "</h2></div>";
-			    html += "<div>" + this.job + "</div><br><br>";
-			    html += "<div style='display:inline'>" + this.skill + "</div><br><br>";
+			    html += "<div id='job'>" + this.job + "</div><br><br>";
+			    html += "<div id='skillCheck' style='display:inline'>" + this.skill + "</div><br><br>";
 			    html += "</div><hr>"
 			    html += "</div>"
 			});
@@ -204,8 +204,8 @@ function planner(){
 			    html += "<a href='Info?id=" + this.id + "'><p id='id'>" + this.id + "</p></a>";
 			    html += "<div id='hi'>";
 			    html += "<div><h2>" + this.introduce + "</h2></div>";
-			    html += "<div>" + this.job + "</div><br><br>";
-			    html += "<div style='display:inline'>" + this.skill + "</div><br><br>";
+			    html += "<div id='job'>" + this.job + "</div><br><br>";
+			    html += "<div id='skillCheck' style='display:inline'>" + this.skill + "</div><br><br>";
 			    html += "</div><hr>"
 			    html += "</div>"
 			});
@@ -493,8 +493,8 @@ a {
 		        <div><h2>${list.introduce}</h2></div>
 		         <div id="job">${list.job}</div> <br><br>
 		         <c:forEach var="selectedSkill" items="${list.skill}">
-		          <div style="display:inline" id="skillCheck">${selectedSkill}</div>
-		        </c:forEach>
+		          	<div style="display:inline" id="skillCheck">${selectedSkill}</div>
+		         </c:forEach>
 		      </div><hr>
 		    </div>
 		  </c:forEach> 
