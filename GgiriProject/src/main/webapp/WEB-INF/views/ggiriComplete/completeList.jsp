@@ -59,6 +59,7 @@ h3{
    border: 2px solid #FFDB37;
    border-radius: 40px;
    background-color: #FFFAE3;
+   cursor: pointer;
 }
 
 #id{
@@ -186,12 +187,17 @@ a{
 				</c:if>
 				<c:if test="${loginUser != null}">
 					<c:forEach var="dto" items="${completeList }">
+<<<<<<< HEAD
 						<div id="mem">
+=======
+						<div id="mem" onclick="location.href='../ggiriComplete/completeView?completeNum=${dto.completeNum}'">
+							<h1>${dto.title }</h1>
+>>>>>>> branch 'main' of https://github.com/Jh1227/junho.git
 							<h3>${dto.comdate }</h3>
 							<input type="hidden" id="id" value="${dto.id }">
 							<input type="hidden" id="completeNum" value="${dto.completeNum }">
 							<input type="hidden" id="comdate" value="${dto.comdate }">
-							<a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a>
+							<%-- <a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a> --%>
 							<div class="skill">
 								<br><br>
 				                <c:forEach var="selectedSkill" items="${dto.skill}">
@@ -205,12 +211,13 @@ a{
 				</c:if>
 				<c:if test="${kakaoMember != null || naverMember != null || googleMember != null}">
 					<c:forEach var="dto" items="${completeList }">
-						<div id="mem">
+						<div id="mem" onclick="location.href='../ggiriComplete/completeView?completeNum=${dto.completeNum}'">
+							<h1>${dto.title }</h1>
 							<h3>${dto.comdate }</h3>
 							<input type="hidden" id="id" value="${dto.id }">
 							<input type="hidden" id="completeNum" value="${dto.completeNum }">
 							<input type="hidden" id="comdate" value="${dto.comdate }">
-							<a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a>
+							<%-- <a id="title" href="../ggiriComplete/completeView?completeNum=${dto.completeNum }">${dto.title }</a> --%>
 							<div class="skill">
 								<br><br>
 				                <c:forEach var="selectedSkill" items="${dto.skill}">
@@ -237,6 +244,9 @@ a{
 			</div>
 			<br>
 		</div>
+	</div>
+	<div style="position: fixed; bottom: 30px; right:100px;">
+		<a href="#"><img style="width:50px; height: 50px;"src="/root/resources/image/top1.png"></a>
 	</div>
 	<c:import url="../default/footer.jsp"></c:import>
 </body>

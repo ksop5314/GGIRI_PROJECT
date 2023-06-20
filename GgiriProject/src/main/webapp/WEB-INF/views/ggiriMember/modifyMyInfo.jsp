@@ -33,7 +33,7 @@ table td {
 	width: 1000px;
 	margin: 0 auto;
 }
-#submit{
+#button1{
 	background-color: #B2CCFF;
     color: black;
     border: none;
@@ -44,7 +44,7 @@ table td {
     cursor: pointer;
     text-align: center;
 }
-#submit:hover{
+#button1:hover{
     background-color: #EBF7FF;
     transition: 0.5s;
 }
@@ -271,7 +271,7 @@ function daumPost(){
 				<div class="sub">
 					<span class="point">※ sns 사용자는 비어있는 칸들을 채워주세요.</span><br><br>
 					<div class="but">
-						<input type="submit" id="submit" value="내 정보 수정">
+						<input type="submit" id="button1" value="내 정보 수정">
 					</div>
 				</div>
 			</form>
