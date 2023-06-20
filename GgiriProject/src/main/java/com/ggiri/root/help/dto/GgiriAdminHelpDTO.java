@@ -1,11 +1,11 @@
 package com.ggiri.root.help.dto;
 
-import java.sql.Date;
 
 public class GgiriAdminHelpDTO {
 
 	private int adminRepNo;
 	private int helpNo;
+	private String adminid;
 	private String helpMember;
 	private String adminRep;
 	private String adminRepDate;
@@ -22,6 +22,12 @@ public class GgiriAdminHelpDTO {
 	}
 	public void setHelpNo(int helpNo) {
 		this.helpNo = helpNo;
+	}
+	public String getAdminid() {
+		return adminid;
+	}
+	public void setAdminid(String adminid) {
+		this.adminid = adminid;
 	}
 	public String getHelpMember() {
 		return helpMember;

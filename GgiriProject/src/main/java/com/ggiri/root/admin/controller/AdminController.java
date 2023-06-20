@@ -167,17 +167,19 @@ public class AdminController {
 	
 	@PostMapping("adminHelpReply")
 	@ResponseBody
-	public int adminHelpReply(@RequestBody GgiriAdminHelpDTO dto) {
+	public int adminHelpReply(@RequestBody Map<String, Object> map) {
 		
-//		GgiriAdminHelpDTO dto = new GgiriAdminHelpDTO();
-//		
-//		String helpMember = (String)map.get("helpMember");
-//		String helpNo = (String)map.get("helpNo");
-//		String adminRep = (String)map.get("adminRep");
-//		
-//		dto.setHelpNo(Integer.parseInt(helpNo));
-//		dto.setHelpMember(helpMember);
-//		dto.setAdminRep(adminRep);
+		GgiriAdminHelpDTO dto = new GgiriAdminHelpDTO();
+		
+		String helpMember = (String)map.get("helpMember");
+		String helpNo = (String)map.get("helpNo");
+		String adminRep = (String)map.get("adminRep");
+		String adminid = (String)map.get("adminid");
+		
+		dto.setHelpNo(Integer.parseInt(helpNo));
+		dto.setHelpMember(helpMember);
+		dto.setAdminRep(adminRep);
+		dto.setAdminid(adminid);
 		
 		int su = ghs.adminHelpReply(dto);
 		return su;
@@ -189,4 +191,19 @@ public class AdminController {
 		System.out.println(helpNo);
 		return ghs.adminRepData(helpNo);
 	}
+	
+	@GetMapping("deleteAdminRep")
+	@ResponseBody
+	public String deleteAdminRep(@RequestParam("adminRepNo") int adminRepNo) {
+		ghs.deleteAdminRep(adminRepNo);
+		return "OK";
+	}
+	
+	@PostMapping("modifyAdminRep")
+	@ResponseBody
+	public String modifyAdminRep(@RequestBody GgiriAdminHelpDTO dto) {
+		ghs.modifyAdminRep(dto);
+		return "OK";
+	}
+	
 }
