@@ -462,29 +462,6 @@ textarea {
         <br>
         <div id="select">
 			<input type="button" style="background-color: #C5F5F5" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'"> &nbsp;
-			 
-		<%-- <!-- 좋아요 -->
-		<c:if test="${loginUser != null}">
-			<button onclick="like()">
-			<c:if test="${like == 0}">
-			<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
-			</c:if>
-			<c:if test="${like == 1}">
-			<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
-			</c:if>
-			<div id="like_check">${likeCount }</div></button>  &nbsp;
-		</c:if> 
-			
-		<c:if test="${kakaoMember != null || naverMember != null || googleMember != null }">
-			<button onclick="like()">
-			<c:if test="${like == 0}">
-			<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
-			</c:if>
-			<c:if test="${like == 1}">
-			<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
-			</c:if>
-			<div id="like_check">${likeCount }</div></button>  &nbsp;
-		</c:if> 	 --%>
 			
 			<c:if test="${data.id == loginUser && data.project == '완료' }">
 				<button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;

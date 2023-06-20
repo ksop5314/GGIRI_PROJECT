@@ -17,12 +17,45 @@ function count_check(obj){
 			chkCnt++;
 		}
 	}
-	if(chkCnt > 10){
-		alert("보유 기술은 10개까지 선택할 수 있습니다.");
+	if(chkCnt > 5){
+		alert("보유 기술은 5개까지 선택할 수 있습니다.");
 		obj.checked = false;
 		return false;
 	}
 }
+function checkFormSubmit() {
+	var introduceValue = document.getElementsByName("introduce")[0].value;
+	var chkBox = document.getElementsByName("skill");
+	var isChecked = false;
+	var project_periodValue = document.getElementsByName("project_period")[0].value;
+	var place_of_workValue = document.getElementsByName("place_of_work")[0].value;
+	var url_nameValue = document.getElementsByName("url_name")[0].value;
+	for(var i = 0; i < chkBox.length; i++){
+		if(chkBox[i].checked){
+			isChecked = true;
+			break;
+		}
+	}
+	
+	if (introduceValue.trim() === "") {
+		alert("자기소개를 입력해주세요.");
+		return false;
+	}else if (!isChecked) {
+		alert("활용가능 기술 5개까지 선택가능합니다.");
+		return false;
+	}else if (project_periodValue.trim() === "") {
+		alert("근무가능기간를 입력해주세요.");
+		return false;
+	}else if (place_of_workValue.trim() === "") {
+		alert("선호하는 근무장소를 입력해주세요.");
+		return false;
+	}else if(url_nameValue.trim() === "") {
+		alert("나를 소개할 URL를 입력해주세요.");
+		return false;
+	}
+	return true;
+}
+
 
 </script>
 <style type="text/css">
@@ -122,7 +155,7 @@ input.insert:hover {
 <body>
 	<c:import url="../default/header.jsp"/>
 	<h1>프리랜서 등록하기</h1>
-	<form action="${contextPath }/ggiriMember/writeSave" method="post">
+	<form action="${contextPath }/ggiriMember/writeSave" method="post" onsubmit="return checkFormSubmit();">
 		<table>
 			<tr>
 				<c:if test="${loginUser != null}">
@@ -239,7 +272,7 @@ input.insert:hover {
 				<th>선호하는 근무장소  </th><td><br><input type="text" name="place_of_work" id="place_of_work" size="35" placeholder="도시입력 예)서울:인천:대전"></td>
 			</tr>
 			<tr>
-				<th>나를 소개할 URL  </th><td><br><input type="text" name="url_name" id="url_name" size="40"  value="https://"+"${info.url_name }"></td>
+				<th>나를 소개할 URL  </th><td><br><input type="text" name="url_name" id="url_name" size="40"  placeholder="https://깃주소를 입력해주세요" ></td>
 			</tr>
 		</table>
 		<br>
