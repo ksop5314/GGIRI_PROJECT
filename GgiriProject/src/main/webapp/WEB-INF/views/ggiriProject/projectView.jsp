@@ -467,6 +467,10 @@ textarea {
         <br>
 		<div id="select">
 			<input type="button" style="background-color: #C5F5F5" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'"> &nbsp;
+<<<<<<< HEAD
+=======
+			
+>>>>>>> branch 'main' of https://github.com/ksop5314/junho.git
 			<c:if test="${data.id == loginUser && data.project == '완료' }">
 			   <button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
 			</c:if>

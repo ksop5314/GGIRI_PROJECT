@@ -512,13 +512,16 @@ public class GgiriController implements GgiriMemberSession {
 		return "ggiriMember/writeFreeFail";
 	}
 	
-	
+	@GetMapping("writeFreeSuccess")
+	public String writeFreeSuccess() {
+		return "ggiriMember/writeFreeSuccess";
+	}
 	
 	@PostMapping("writeSave")
 	public String writeSave(GgiriFreeInsertDTO dto){
 		int result = gfs.writeSave(dto);
 		if(result == 1) {
-			return "redirect:memberList";
+			return "redirect:writeFreeSuccess";
 		}
 		return "redirect:writeFreeFail";
 	}
