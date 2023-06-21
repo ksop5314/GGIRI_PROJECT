@@ -120,16 +120,20 @@ a{
 	text-align: center;
 }
 
-#hit{
+#comHit {
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	padding: 5px 20px;
-	margin: auto;
 	border-radius: 40px;
 	color: gray;
-	width: fit-content;
+	width: 50px;
 	background-color: #FAC4A4;
 	font-weight: bold;
-	float: right; 
+	float: right;
+	text-align: center;
+}
+
+#comHit p {
+	font-size: 13px;
 }
 
 #title {
@@ -180,7 +184,7 @@ a{
 				                <c:forEach var="selectedSkill" items="${dto.skill}">
 				                    <div style="display:inline" id="skill">${selectedSkill}</div>
 				                </c:forEach>
-				                <p id="hit">조회수 ${dto.comHit }</p>
+				                <span id="comHit"><p>조회수<p> ${dto.comHit}</span>
 							</div>
 						</div>
 						<br><br>
@@ -200,7 +204,7 @@ a{
 				                <c:forEach var="selectedSkill" items="${dto.skill}">
 				                    <div style="display:inline" id="skill">${selectedSkill}</div>
 				                </c:forEach>
-				                <p id="hit">조회수 ${dto.comHit }</p>
+								<span id="comHit"><p>조회수<p> ${dto.comHit}</span>
 							</div>
 						</div>
 						<br><br>
@@ -220,7 +224,7 @@ a{
 				                <c:forEach var="selectedSkill" items="${dto.skill}">
 				                    <div style="display:inline" id="skill">${selectedSkill}</div>
 				                </c:forEach>
-				                <p id="hit">조회수 ${dto.comHit }</p>
+				                <span id="comHit"><p>조회수<p> ${dto.comHit}</span>
 							</div>
 						</div>
 						<br><br>

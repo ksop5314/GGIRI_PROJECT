@@ -198,7 +198,7 @@ a {
 			<hr>
 			<br>
 			<div class="proCon">
-			<h1> 참여한 프로젝트 </h1>
+			<h1> 참여한 프로젝트 </h1><br>
 				<c:forEach var="list" items="${list }">
 					<h2><a href="${contextPath }/ggiriComplete/completeView?completeNum=${list.completeNum }">${list.title }</a></h2>
 						 <br>
@@ -207,7 +207,7 @@ a {
 					     </c:forEach>
 						<br><br>
 						<b>함께 진행한 팀원</b>
-						<br><b>${list.members }</b>
+						<br><b>${list.members }</b><br><br><br>
 				</c:forEach>
 			</div>
 		</div>

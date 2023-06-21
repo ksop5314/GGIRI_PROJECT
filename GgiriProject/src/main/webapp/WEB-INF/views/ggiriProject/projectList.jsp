@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +15,6 @@
    text-align: left;
 }
 
-.skill{
-   font-family: 'IBM Plex Sans KR', sans-serif;
-   display: inline-block;
-   margin-left: -60px;
-}
 form{
    float:left; 
    margin-right: 15px;
@@ -104,10 +100,11 @@ a{
 }
 
 #title {
-   font-size: 32px;
+   font-size: 23px;
 }
 
 #mem {
+   height: 230px;
    padding: 30px;
    border: 2px solid navy;
    background-color: #EBF7FF;
@@ -121,10 +118,11 @@ a{
 	margin: auto;
 	border-radius: 40px;
 	color: white;
-	width: fit-content;
+	width: 55px;
 	background-color: blue;
 	font-weight: bold;
 	float: right; 
+	text-align: center;
 }
 
 #project_2 {
@@ -133,10 +131,11 @@ a{
 	margin: auto;
 	border-radius: 40px;
 	color: white;
-	width: fit-content;
+	width: 55px;
 	background-color: red;
 	font-weight: bold;
-	float: right; 
+	float: right;
+	text-align: center;
 }
 
 #skill {
@@ -144,6 +143,7 @@ a{
     font-size: 20px;
     width: fit-content;
     float: left;
+    margin: auto;
     font-family: 'IBM Plex Sans KR', sans-serif;
     border-radius: 40px 80px / 80px 40px;
     background-color: #b6d0e1;
@@ -162,7 +162,7 @@ a{
 #projectViewID {
 	font-size: 20px;
 	font-weight: bold;
-	color: green;
+	color: navy;
 }
 
 .projectListSize {
@@ -176,7 +176,7 @@ a{
 }
 
 #proHit {
-	margin-top: 50px;
+	margin-top: 10px;
 	margin-right: 10px;
 	font-family: 'IBM Plex Sans KR', sans-serif;
 	padding: 5px 20px;
@@ -192,6 +192,7 @@ a{
 #proHit p {
 	font-size: 12px;
 }
+
 </style>
 </head>
 <body>
@@ -209,7 +210,6 @@ a{
 		</div>
 		<br><br><br><br><br><hr>
 		<div class="board_table">
-			<h1></h1>
 			<br>
 			<div id="devList">
 				<c:if test="${list.size()==0 }">	
@@ -225,11 +225,16 @@ a{
 							<c:if test="${dto.project == '진행중' }">
 								<span id="project_2">${dto.project }</span>
 							</c:if>
-				            <h3>${dto.prodate }</h3>
+				            <h4>${dto.prodate }</h4>
 				            <a id="title" href="/root/ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a>
 				            <br>
 				            <p id="projectViewID">프리랜서 ${dto.id }님</p>
-				            <p id="job">${dto.job }</p><br>
+				            <c:if test="${dto.job != null }">
+								<p id="job">${dto.job }</p><br>
+							</c:if>
+							<c:if test="${dto.job == null }">
+								<p id="job"> 아직 프리랜서 등록을 하지않은 회원입니다. </p><br>
+							</c:if>
 				            <div class="skill">
 				            <br>
 				                <c:forEach var="selectedSkill" items="${dto.skill}">
@@ -250,11 +255,16 @@ a{
 							<c:if test="${dto.project == '진행중' }">
 								<span id="project_2">${dto.project }</span>
 							</c:if>
-	            			<h3>${dto.prodate }</h3>
-	            			<h1>${dto.title }</h1>
+	            			<h4>${dto.prodate }</h4>
+	            			<h1 id="title">${dto.title }</h1>
 	            			<br>
 							<p id="projectViewID">프리랜서 ${dto.id }님</p>
-							<p id="job">${dto.job }</p><br>
+							<c:if test="${dto.job != null }">
+								<p id="job">${dto.job }</p><br>
+							</c:if>
+							<c:if test="${dto.job == null }">
+								<p id="job"> 아직 프리랜서 등록을 하지않은 회원입니다. </p><br>
+							</c:if>
 							<div class="skill">
 							<br>
 				                <c:forEach var="selectedSkill" items="${dto.skill}">
@@ -275,11 +285,16 @@ a{
 							<c:if test="${dto.project == '진행중' }">
 								<span id="project_2">${dto.project }</span>
 							</c:if>
-		            			<h3>${dto.prodate }</h3>
-	            			<a id="title" href="/root/ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a>
+		            		<h4>${dto.prodate }</h4>
+	            			<a id="title" href="/root/ggiriProject/projectView?projectNum=${dto.projectNum }">${dto.title }</a><br>
 	            			<br>
 							<p id="projectViewID">프리랜서 ${dto.id }님</p>
-							<p id="job">${dto.job }</p><br>
+							<c:if test="${dto.job != null }">
+								<p id="job">${dto.job }</p><br>
+							</c:if>
+							<c:if test="${dto.job == null }">
+								<p id="job"> 아직 프리랜서 등록을 하지않은 회원입니다. </p><br>
+							</c:if>
 							<div class="skill">
 								<br>
 				                <c:forEach var="selectedSkill" items="${dto.skill}">
@@ -296,7 +311,7 @@ a{
 		</div>
 	</div>
 	<div id="search">
-		<form action="projectList.do" method="get">
+		<form action="${contextPath }/ggiriProject/projectList.do" method="get">
 			<select name="condition" id="condition" style="font-family: 'IBM Plex Sans KR', sans-serif">
 				<option value="titleContent" <c:if test="${condition eq 'titleContent' }">selected</c:if>>제목 + 본문</option>
 				<option value="title" <c:if test="${condition eq 'title' }">selected</c:if>>제목</option>

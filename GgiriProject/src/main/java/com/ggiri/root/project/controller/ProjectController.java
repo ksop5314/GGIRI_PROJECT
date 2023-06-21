@@ -187,7 +187,7 @@ public class ProjectController implements GgiriMemberSession{
         return "redirect:/ggiriProject/projectList";
     }
 
-    @GetMapping(value = "projectList.do")
+    @GetMapping(value = "projectList.do", produces="application/json; charset=utf-8")
     public String projectList(
         @RequestParam(value = "page", defaultValue = "1") int page,
         @RequestParam(value = "keyword", required = false) String keyword,

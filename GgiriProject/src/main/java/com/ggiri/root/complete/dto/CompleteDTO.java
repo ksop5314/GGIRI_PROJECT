@@ -1,7 +1,6 @@
 
 package com.ggiri.root.complete.dto;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 

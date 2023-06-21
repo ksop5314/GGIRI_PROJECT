@@ -417,6 +417,11 @@ textarea {
 	width: 1050px;
 	margin: 0 auto;
 }
+
+#com {
+   background-color: #b6d0e1;
+}
+
 </style>
 </head>
 <body>
@@ -473,34 +478,23 @@ textarea {
 		<br>
 		<div id="select">
 			<input type="button" style="background-color: #b6d0e1" value="프로젝트 목록" onclick="location.href='../ggiriProject/projectList'"> &nbsp;
-			<c:if test="${data.id == loginUser && data.project == '완료' }">
-				<button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
-			</c:if>
-			<c:if test="${data.id == loginUser && data.project == '진행중' }">
-				<input type="button" value="수정" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-				<input type="button" value="삭제" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
-			</c:if>
-			<c:if test="${data.id == kakaoMember.id && data.project == '완료'}">
-				<button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
-			</c:if>
-			<c:if test="${data.id == kakaoMember.id && data.project == '진행중'}">
-				<input type="button" value="수정" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-				<input type="button" value="삭제" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
-			</c:if>
-			<c:if test="${data.id == naverMember.id && data.project == '완료'}">
-				<button type="submit"onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
-			</c:if>
-			<c:if test="${data.id == naverMember.id && data.project == '진행중'}">
-				<input type="button" value="수정" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-				<input type="button" value="삭제" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
-			</c:if>
-			<c:if test="${data.id == googleMember.id && data.project == '완료'}">
-				<button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
-			</c:if>
-			<c:if test="${data.id == googleMember.id && data.project == '진행중'}">
-				<input type="button" value="수정" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
-				<input type="button" value="삭제" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
-			</c:if>
+			<c:choose>
+	            <c:when test="${data.id == loginUser && data.project == '진행중'|| data.id == kakaoMember.id && data.project == '진행중' || data.id == naverMember.id && data.project == '진행중' || data.id == googleMember.id && data.project == '진행중' }">
+	               <input type="button" value="수정" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/modifyForm?projectNum=${data.projectNum }'"> &nbsp;
+	               <input type="button" value="삭제" style="background-color: #b6d0e1;" onclick="location.href='../ggiriProject/delete?projectNum=${data.projectNum }'"> &nbsp;
+	            </c:when>
+	            <c:when test="${data.id == loginUser  && data.project == '완료' && data.projectNum != compro.projectNum || data.id == kakaoMember.id  && data.project == '완료' && data.projectNum != compro.projectNum ||
+	                        data.id == naverMember.id  && data.project == '완료' && data.projectNum != compro.projectNum || data.id == googleMember.id  && data.project == '완료' && data.projectNum != compro.projectNum}">
+	               <button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
+	            </c:when>
+	            <c:when test="${data.id != loginUser && data.project == '진행중'|| data.id != kakaoMember.id && data.project == '진행중' || data.id != naverMember.id && data.project == '진행중' || data.id != googleMember.id && data.project == '진행중' ||
+	                        data.id != loginUser && data.project == '완료' && data.projectNum != compro.projectNum || data.id != kakaoMember.id && data.project == '완료' && data.projectNum != compro.projectNum ||data.id != naverMember.id && data.project == '완료' && data.projectNum != compro.projectNum ||
+	                        data.id != googleMember.id && data.project == '완료' && data.projectNum != compro.projectNum }">
+	            </c:when>
+	            <c:when test="${data.id == loginUser && data.project == '완료' && data.projectNum == compro.projectNum || data.id != kakaoMember.id || data.id != naverMember.id || data.id != googleMember.id}">
+	               <button type="submit" onclick="location='../ggiriComplete/completeView?completeNum=${compro.completeNum}'">완성된 프로젝트가기</button> &nbsp;
+	            </c:when>
+         	</c:choose>
 		</div>
 	    <br>
 	    <br>
