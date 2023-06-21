@@ -82,8 +82,8 @@
 	</delete>
 	
 	<select id="getProject" resultMap="complete">
-		SELECT * FROM ggiriComplete WHERE id=#{id}
-	</select>
+      SELECT * FROM ggiriComplete WHERE members LIKE '%' || #{id} || '%'
+   </select>
 	
 	<!-- 페이지 단위로 프로젝트 목록 조회 -->
 	<select id="getGgiriList" parameterType="map" resultMap="ggiri">

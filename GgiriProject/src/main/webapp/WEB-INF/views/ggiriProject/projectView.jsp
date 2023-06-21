@@ -344,13 +344,13 @@ hr {
 #like_check {
    float: right;
    display: inline-block;
-   padding-top: 8px;
+   padding: 20px 20px 0 0;
 }
 #like {
-   width: 60px; height: 20px;
+   width: 70px; height: 20px;
    background-color: white;
    float: right;
-   padding-top: 20px;
+   padding: 10px 0 0 30px;
 }
 /* 모달창 css */
 
@@ -429,6 +429,7 @@ textarea {
 			<!-- 좋아요 -->
 			<c:if test="${loginUser != null}">
 				<div class="heart">
+					<div id="like_check">${likeCount }</div>
 					<c:if test="${like == 0}">
 						<button id="like" onclick="like()">
 						<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
@@ -439,12 +440,12 @@ textarea {
 						<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
 						</button>
 					</c:if>
-					<div id="like_check">${likeCount }</div>
 				</div>
 			</c:if> 
 			
 			<c:if test="${kakaoMember != null || naverMember != null || googleMember != null }">
 				<div class="heart">
+					<div id="like_check">${likeCount }</div>
 					<c:if test="${like == 0}">
 						<button id="like" onclick="like()">
 						<img id="myHeart" width="40px" height="40px"  src="../resources/image/empty_heart.png" alt="빈하트">
@@ -455,7 +456,6 @@ textarea {
 							<img id="myHeart" width="40px" height="40px"  src="../resources/image/heart.png" alt="하트">
 						</button>
 					</c:if>
-					<div id="like_check">${likeCount }</div>
 				</div>
 			</c:if> 
 			<h1>${data.title }</h1>

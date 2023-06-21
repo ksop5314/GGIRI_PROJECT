@@ -18,7 +18,7 @@ public interface ProjectService {
 	
 	public int insertPro(ProjectDTO dto);
 	
-	public void modify(ProjectDTO dto);
+	public int modify(ProjectDTO dto);
 	
 	public void delete(int projectNum);
 	

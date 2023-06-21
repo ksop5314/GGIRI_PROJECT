@@ -1,22 +1,17 @@
 
 package com.ggiri.root.project.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.collections.bag.SynchronizedSortedBag;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +25,6 @@ import com.ggiri.root.project.dto.GgiriBoardLikeDTO;
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
 import com.ggiri.root.project.service.ProjectService;
-import com.ggiri.root.project.service.ProjectServiceImpl;
 import com.ggiri.root.session.login.GgiriMemberSession;
 
 @Controller
@@ -173,8 +167,18 @@ public class ProjectController implements GgiriMemberSession{
 
     @PostMapping("modify")
     public String modify(ProjectDTO dto) {
-        ps.modify(dto);
-        return "redirect:/ggiriProject/projectList";
+    	System.out.println(dto.getProjectNum());
+    	System.out.println(dto.getTitle());
+    	System.out.println(dto.getProject());
+    	System.out.println(dto.getContent());
+    	System.out.println(dto.getId());
+    	System.out.println(dto.getSkill());
+    	
+        int su = ps.modify(dto);
+        if(su == 1) {
+        	return "ggiriProject/projectModifySuccess";
+        }
+        return "ggiriProject/projectModifyFail";
     }
 
     @GetMapping("delete")

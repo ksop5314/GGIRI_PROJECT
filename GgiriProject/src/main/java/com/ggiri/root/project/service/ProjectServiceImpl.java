@@ -38,8 +38,8 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public void modify(ProjectDTO dto) {
-        pm.modify(dto);
+    public int modify(ProjectDTO dto) {
+    	return pm.modify(dto);
     }
 
     @Override

@@ -129,11 +129,14 @@ table td {
 	<div class="wrap modify_form">
 	<h1>프로젝트 수정</h1>
 		<div class="modify">
-			<form action="../ggiriProject/modify" method="post">
+			<form action="${contextPath }/ggiriProject/modify" method="post">
 				<table>
 					<tr>
 						<th>제 목</th>
-						<td><input type="text" name="title" value="${data.title }"></td>
+						<td>
+							<input type="hidden" name="projectNum" value="${data.projectNum }">
+							<input type="text" name="title" value="${data.title }">
+						</td>
 					</tr>
 					<tr>
 						<th>작성자</th>

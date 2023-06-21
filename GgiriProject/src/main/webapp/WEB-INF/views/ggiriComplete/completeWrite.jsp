@@ -65,8 +65,8 @@
             chkCnt++;
          }
       }
-      if(chkCnt > 5){
-         alert("요구 스킬은 5개까지 선택할 수 있습니다.");
+      if(chkCnt > 15){
+         alert("요구 스킬은 15개까지 선택할 수 있습니다.");
          obj.checked = false;
          return false;
       }

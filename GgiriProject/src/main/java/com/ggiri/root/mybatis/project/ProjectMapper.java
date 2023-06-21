@@ -21,7 +21,7 @@ public interface ProjectMapper {
     
     public void proHit(int projectNum);
     
-    public void modify(ProjectDTO dto);
+    public int modify(ProjectDTO dto);
     
     public void delete(int projectNum);
 
