@@ -119,22 +119,26 @@ public class ProjectController implements GgiriMemberSession{
          String id = (String)session.getAttribute(LOGIN);
          gs.ggiriMemberInfo(id, model);         
          ps.projectView(projectNum, model);
+         ps.complete(projectNum, model);
            return "ggiriProject/projectView";
       } else if(session.getAttribute("kakaoMember") != null){
          GgiriMemberDTO DTO = (GgiriMemberDTO)session.getAttribute("kakaoMember");
          ps.projectView(projectNum, model);
          gs.ggiriSnsInfo(DTO.getId(), model);
+         ps.complete(projectNum, model);
            return "ggiriProject/projectView";
       } else if(session.getAttribute("naverMember") != null){
          GgiriMemberDTO DTO = (GgiriMemberDTO)session.getAttribute("naverMember");
          ps.projectView(projectNum, model);
          gs.ggiriSnsInfo(DTO.getId(), model);
+         ps.complete(projectNum, model);
            return "ggiriProject/projectView";
       } else if(session.getAttribute("googleMember") != null){
          GgiriMemberDTO DTO = (GgiriMemberDTO)session.getAttribute("googleMember");
          //ps.modalContent(projectNum, model);
          ps.projectView(projectNum, model);
          gs.ggiriSnsInfo(DTO.getId(), model);
+         ps.complete(projectNum, model);
            return "ggiriProject/projectView";
       }
         return "ggiriProject/projectView";

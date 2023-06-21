@@ -81,6 +81,11 @@ public class ProjectServiceImpl implements ProjectService {
     	 model.addAttribute("getProjectInfo",pm.getProjectInfo(projectNum));
     }
     
+    @Override
+    public void complete(int prjectNum, Model model) {
+    	model.addAttribute("compro", pm.complete(prjectNum));
+    }
+    
     
     // 관리자 페이지
     @Override

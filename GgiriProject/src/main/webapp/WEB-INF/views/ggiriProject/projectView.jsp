@@ -420,6 +420,7 @@ textarea {
 
 #com {
    background-color: #b6d0e1;
+   width: 200px;
 }
 
 </style>
@@ -485,14 +486,14 @@ textarea {
 	            </c:when>
 	            <c:when test="${data.id == loginUser  && data.project == '완료' && data.projectNum != compro.projectNum || data.id == kakaoMember.id  && data.project == '완료' && data.projectNum != compro.projectNum ||
 	                        data.id == naverMember.id  && data.project == '완료' && data.projectNum != compro.projectNum || data.id == googleMember.id  && data.project == '완료' && data.projectNum != compro.projectNum}">
-	               <button type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
+	               <button id="com" type="submit" onclick="location='../ggiriComplete/completeWrite?projectNum=${data.projectNum }'">프로젝트 완성</button> &nbsp;
 	            </c:when>
 	            <c:when test="${data.id != loginUser && data.project == '진행중'|| data.id != kakaoMember.id && data.project == '진행중' || data.id != naverMember.id && data.project == '진행중' || data.id != googleMember.id && data.project == '진행중' ||
 	                        data.id != loginUser && data.project == '완료' && data.projectNum != compro.projectNum || data.id != kakaoMember.id && data.project == '완료' && data.projectNum != compro.projectNum ||data.id != naverMember.id && data.project == '완료' && data.projectNum != compro.projectNum ||
 	                        data.id != googleMember.id && data.project == '완료' && data.projectNum != compro.projectNum }">
 	            </c:when>
 	            <c:when test="${data.id == loginUser && data.project == '완료' && data.projectNum == compro.projectNum || data.id != kakaoMember.id || data.id != naverMember.id || data.id != googleMember.id}">
-	               <button type="submit" onclick="location='../ggiriComplete/completeView?completeNum=${compro.completeNum}'">완성된 프로젝트가기</button> &nbsp;
+	               <button id="com" type="submit" onclick="location='../ggiriComplete/completeView?completeNum=${compro.completeNum}'">완성된 프로젝트 보기</button> &nbsp;
 	            </c:when>
          	</c:choose>
 		</div>

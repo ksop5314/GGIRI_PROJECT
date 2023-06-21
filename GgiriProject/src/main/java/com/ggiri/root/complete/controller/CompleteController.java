@@ -1,9 +1,6 @@
 
 package com.ggiri.root.complete.controller;
 
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +17,7 @@ import com.ggiri.root.complete.dto.CompleteDTO;
 import com.ggiri.root.complete.service.CompleteService;
 import com.ggiri.root.member.dto.GgiriMemberDTO;
 import com.ggiri.root.member.service.GgiriService;
-import com.ggiri.root.project.dto.ProjectDTO;
+import com.ggiri.root.project.dto.GgiriBoardLikeDTO;
 import com.ggiri.root.project.service.ProjectService;
 import com.ggiri.root.session.login.GgiriMemberSession;
 

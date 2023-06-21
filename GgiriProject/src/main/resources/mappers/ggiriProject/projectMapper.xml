@@ -40,6 +40,20 @@
       <result property="wdate" column="wdate"/>
    </resultMap>
    
+   <!-- 완성된 프로젝트 중복 막기위한 작업 -->
+    <resultMap type="com.ggiri.root.complete.dto.CompleteDTO" id="complete">
+		<id property="completeNum" column="completeNum"/>
+		<result property="memberNum" column="memberNum"/>		
+		<result property="projectNum" column="projectNum"/>		
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="skill" column="skill"/>
+		<result property="members" column="members"/>
+		<result property="tag" column="tag"/>
+		<result property="comdate" column="comdate"/>
+		<result property="comHit" column="comHit"/>
+		<result property="id" column="id"/>
+	</resultMap>
    
    	<!-- 좋아요 -->
     <resultMap type="com.ggiri.root.project.dto.GgiriBoardLikeDTO" id="like">
@@ -75,6 +89,10 @@
     </resultMap>
    
    <!-- 좋아요 리스트 -->
+	
+	<select id="complete" resultMap="complete">
+		SELECT * FROM ggiriComplete WHERE projectNum=#{projectNum}
+	</select>
 	
 	<select id="heartList" resultMap="HeartList">
 		SELECT * FROM heart

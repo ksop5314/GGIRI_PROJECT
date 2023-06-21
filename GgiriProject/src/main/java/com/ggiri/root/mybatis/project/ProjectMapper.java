@@ -4,9 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
-import org.springframework.ui.Model;
 
-import com.ggiri.root.member.dto.GgiriMemberDTO;
+import com.ggiri.root.complete.dto.CompleteDTO;
 import com.ggiri.root.project.dto.GgiriBoardLikeDTO;
 import com.ggiri.root.project.dto.ProjectDTO;
 import com.ggiri.root.project.dto.ProjectRepDTO;
@@ -63,6 +62,8 @@ public interface ProjectMapper {
     public ProjectDTO getProjectInfo(int projectNum);
     
     public int getLikeCount(int projectNum);
+    
+    public CompleteDTO complete(int projectNum);
     
     // 댓글
     public int addReplyTest(ProjectRepDTO dto);

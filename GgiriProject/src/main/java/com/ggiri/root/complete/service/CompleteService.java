@@ -22,4 +22,6 @@ public interface CompleteService {
 	
 	public void comDelete(int completeNum);
 	
+	
+	
 }

@@ -34,6 +34,7 @@ public interface ProjectService {
     
     public void getProjectInfo(int projectNum, Model model);
     
+    public void complete(int prjectNum, Model model);
     
     // 관리자 페이지
     public void adminProjectList(Model model);
