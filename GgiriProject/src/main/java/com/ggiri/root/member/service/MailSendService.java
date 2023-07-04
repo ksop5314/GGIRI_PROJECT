@@ -29,9 +29,14 @@ public class MailSendService {
 		makeRandomNum();
 		String setFrom = "ksop6580@naver.com";
 		String toMail = userEmail;
-		String title = "회원가입 인증 메일입니다.";
-		String content = "홈페이지를 방문해주셔서 감사합니다." + "<br><br>"
-				+ "인증번호는 [ " + authNum + " ] 입니다.";
+		String title = "GGIRI 회원가입 인증 메일입니다.";
+		String content = "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>"
+				+ "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+				+ "<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi."
+				+ "<br><br>"
+				+ "Professional HTML Email FOR GGIRI JOIN! - No Coding & Design SKills Needed!"
+				+ "<br><br>인증번호는 [ " + authNum + " ] 입니다."
+				+ "<br><br> <h1>Email Check For GGIRI</h1>";
 		mailSend(setFrom, toMail, title, content);
 		return Integer.toString(authNum);
 	}

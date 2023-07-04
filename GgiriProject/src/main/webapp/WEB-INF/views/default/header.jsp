@@ -192,7 +192,7 @@ body {
 	<!-- // wrap -->
 	<div class="navdiv">
 		<div class="wrapHead">
-			<a href="/root/index"><img width="300px" height="90px" src="/root/resources/image/logo6.png"></a>
+			<a href="/root/index"><img width="300px" height="90px" src="/root/resources/image/logo6.png" ></a>
 			<nav>
 				<ul>
 					<c:if test="${loginUser == 'GGIRIADMIN'}">
