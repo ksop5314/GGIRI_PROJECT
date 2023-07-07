@@ -40,18 +40,8 @@ public class AdminController {
 	@Autowired
 	private GgiriHelpService ghs;
 	
-	
-//	@GetMapping("adminList")
-//	public String adminList(Model model) {
-//		gfs.boardAllList(model);
-//		return "ggiriAdmin/adminList";
-//	}
-	
-	
 	@GetMapping("allMember")
 	public String allMember(Model model, HttpSession session) {
-//		String id = (String)session.getAttribute("ADMIN");
-//		System.out.println(id);
 		gs.allMember(model);
 		return "ggiriAdmin/allMember";
 	}
@@ -69,46 +59,11 @@ public class AdminController {
 		gs.deleteId(deleteId);
 		return "OK";
 	}
-//	
-//	@GetMapping("projectList")
-//	public String projectList(Model model) {
-//		gfs.adminProjectList(model);
-//		return "ggiriAdmin/adminProjectList";
-//	}
 	
 	 @GetMapping("adminList")
-	    public String projectList(
-//	        @RequestParam(value = "page", defaultValue = "1") int page,
-//	        @RequestParam(value = "keyword", required = false) String keyword,
-//	        @RequestParam(value = "condition", defaultValue = "title") String condition,
-	        Model model
-	    ) {
-	        int perPage = 10; // 한 페이지에 보여줄 프로젝트 개수
+	    public String projectList(Model model) {
+	        int perPage = 10;
 
-//	        if (keyword != null && !keyword.isEmpty()) {
-//	            // 검색어가 입력된 경우 검색 기능 적용
-//	            int totalCount = ps.getProjectCountBySearch(keyword, condition);
-//	            int totalPages = (int) Math.ceil((double) totalCount / perPage);
-//	            int startRow = (page - 1) * perPage + 1;
-//	            int endRow = startRow + perPage - 1;
-//	            List<GgiriFreeInsertDTO> adminList = gfs.getAdminListBySearch(keyword, condition, startRow, endRow);
-//	            
-//	            model.addAttribute("keyword", keyword);
-//	            model.addAttribute("condition", condition);
-//	            model.addAttribute("adminList", adminList);
-//	            model.addAttribute("currentPage", page);
-//	            model.addAttribute("totalPages", totalPages);
-//	        }
-	            //	        } else {
-//	            // 검색어가 없는 경우 전체 프로젝트 목록 조회
-//	            List<GgiriFreeInsertDTO> adminList = gfs.getAdminList(page, perPage);
-//	            int totalCount = gfs.getAdminListCount();
-//	            int totalPages = (int) Math.ceil((double) totalCount / perPage);
-//	            
-//	            model.addAttribute("adminList", adminList);
-//	            model.addAttribute("currentPage", page);
-//	            model.addAttribute("totalPages", totalPages);
-//	        }
 	        gfs.boardAllList(model);
 	        
 			return "ggiriAdmin/adminList";
@@ -124,7 +79,6 @@ public class AdminController {
 	@GetMapping("proDelete")
 	@ResponseBody
 	public String proDelete(@RequestParam("projectNum") int projectNum) {
-		//int proNum = Integer.parseInt(projectNum);
 		ps.proDelete(projectNum);
 		return "OK";
 	}
@@ -159,12 +113,7 @@ public class AdminController {
 		ghs.adminHelpList(model);
 		return "/ggiriAdmin/adminHelpList";
 	}
-	
-//	@GetMapping("helpView")
-//	public String adminHelpReply() {
-//		return "../ggiriHelp/helpView";
-//	}
-	
+
 	@PostMapping("adminHelpReply")
 	@ResponseBody
 	public int adminHelpReply(@RequestBody Map<String, Object> map) {

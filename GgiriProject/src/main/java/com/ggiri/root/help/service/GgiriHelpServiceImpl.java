@@ -36,7 +36,6 @@ public class GgiriHelpServiceImpl implements GgiriHelpService{
 
 	@Override
 	public void helpView(int helpNo, Model model) {
-		// TODO Auto-generated method stub
 		model.addAttribute("data", ghm.helpView(helpNo));
 	}
 

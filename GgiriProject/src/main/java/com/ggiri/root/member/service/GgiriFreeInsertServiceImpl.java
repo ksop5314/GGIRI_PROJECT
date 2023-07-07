@@ -23,9 +23,6 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 	
 	@Autowired
 	private GgiriFreeInsertService gfs;
-	
-	@Autowired
-	private GgiriMessageService gm;
 
 	@Override
 	public int writeSave(GgiriFreeInsertDTO dto) {
@@ -40,7 +37,6 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 	
 	@Override
 	public void Info(String userid, Model model) {
-		// TODO Auto-generated method stub
 		GgiriFreeInsertDTO dto = gfm.getBoard(userid);
 		List<CompleteDTO> Dto = gfm.getProject(userid);
 		model.addAttribute("info", dto);
@@ -115,10 +111,6 @@ public class GgiriFreeInsertServiceImpl implements GgiriFreeInsertService{
 		return gfm.boardCount();
 	}
 	
-	
-//	GgiriFreeInsertDTO dto = gfm.getBoard(userid);
-//	model.addAttribute("info", dto);
-		
 	@Override
 	public List<GgiriFreeInsertDTO> ggiriMemberJob(Model model) {
 		List<GgiriFreeInsertDTO> dto = gfm.ggiriMemberJob();

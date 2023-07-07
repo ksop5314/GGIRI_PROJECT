@@ -27,8 +27,6 @@ public class GgiriHelpController implements GgiriMemberSession{
 	@Autowired
 	private GgiriHelpService ghs;
 	@Autowired
-	private ProjectService ps;
-	@Autowired
 	private GgiriService gs;
 	
 	

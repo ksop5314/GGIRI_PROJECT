@@ -17,10 +17,6 @@ public interface GgiriFreeInsertMapper {
 	
 	public List<GgiriMemberDTO> boardAllList();
 	
-//	public List<GgiriFreeInsertDTO> boardGetFirstList();
-//	
-//	public List<GgiriFreeInsertDTO> boardGetList(GgiriFreeInsertDTO dto);
-	
 	public int writeFreeModify(GgiriFreeInsertDTO dto);	
 	
 	public void writeFreeDelete(String userid);

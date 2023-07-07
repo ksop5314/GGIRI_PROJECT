@@ -40,10 +40,6 @@ public class ProjectController implements GgiriMemberSession{
 	@Autowired
 	private GgiriService gs;
 	
-	@Autowired
-	private GgiriMemberMapper gmm;
-	
-	
     @RequestMapping("projectWrite")
     public String proWrite(HttpSession session, Model model) {
     	if(session.getAttribute(LOGIN) != null) {
@@ -135,7 +131,6 @@ public class ProjectController implements GgiriMemberSession{
            return "ggiriProject/projectView";
       } else if(session.getAttribute("googleMember") != null){
          GgiriMemberDTO DTO = (GgiriMemberDTO)session.getAttribute("googleMember");
-         //ps.modalContent(projectNum, model);
          ps.projectView(projectNum, model);
          gs.ggiriSnsInfo(DTO.getId(), model);
          ps.complete(projectNum, model);
@@ -377,6 +372,7 @@ public class ProjectController implements GgiriMemberSession{
 		
 		return "ggiriProject/heartList";
 	}
+	
 	@GetMapping("rank")
 	public void indexRank(Model model,HttpSession session) {
 		if(session.getAttribute(LOGIN) == null) {

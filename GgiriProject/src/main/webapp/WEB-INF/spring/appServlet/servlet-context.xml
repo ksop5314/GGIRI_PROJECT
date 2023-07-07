@@ -39,7 +39,7 @@
 		</beans:property>
 	</beans:bean>
 	
-	<!-- 
+	<!--  채팅기능 구현
 	<websocket:handlers allowed-origins="http://127.0.0.1:1521, http://localhost:8080">
 		<websocket:mapping handler="echoHandler" path="/echo"/>
 		<websocket:handshake-interceptors>

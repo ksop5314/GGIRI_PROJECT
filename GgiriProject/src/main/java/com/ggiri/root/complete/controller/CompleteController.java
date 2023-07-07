@@ -42,7 +42,6 @@ public class CompleteController implements GgiriMemberSession {
 	
 	@RequestMapping("completeWrite")
 	public String comWrite(@RequestParam("projectNum") int projectNum, HttpSession session, Model model) {
-		//System.out.println(projectNum);
 		if(session.getAttribute(LOGIN) != null) {
 			String id = (String)session.getAttribute(LOGIN);
 			gs.ggiriMemberInfo(id, model);
@@ -77,23 +76,6 @@ public class CompleteController implements GgiriMemberSession {
 	@PostMapping("comSave")
 	   @ResponseBody
 	   public int comSave(@RequestBody CompleteDTO dto, HttpSession session) {
-	      
-//	      CompleteDTO cdto = new CompleteDTO();
-	      
-//	      String memberNum = (String) map.get("memberNum");
-//	      System.out.println(memberNum);
-//	      String id = (String)map.get("id");
-//	      System.out.println(id);
-	      
-	      
-//	      dto.setMemberNum(Integer.parseInt((String)map.get("memberNum")));
-//	      dto.setTitle((String)map.get("title"));
-//	      dto.setContent((String)map.get("content"));
-//	      dto.setSkill((String)map.get("skill"));
-//	      dto.setMembers((String)map.get("members"));
-//	      dto.setTag((String)map.get("tag"));
-//	      dto.setId((String)map.get("id"));
-	      
 	      
 	      int projectCom = cs.comSave(dto);
 	      

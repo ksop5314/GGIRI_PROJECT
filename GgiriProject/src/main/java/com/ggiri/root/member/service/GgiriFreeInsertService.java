@@ -45,7 +45,6 @@ public interface GgiriFreeInsertService {
 	
 	public List<CompleteDTO> projectInfo(String usertid, Model model);
 
-//	public void adminProjectList(Model model);
 
 	public List<GgiriFreeInsertDTO> getAdminListBySearch(String keyword, String condition, int startRow, int endRow);
 

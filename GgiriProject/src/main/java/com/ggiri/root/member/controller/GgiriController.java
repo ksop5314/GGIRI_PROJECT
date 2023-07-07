@@ -38,7 +38,6 @@ import com.github.scribejava.core.model.OAuth2AccessToken;
 @RequestMapping("ggiriMember")
 public class GgiriController implements GgiriMemberSession {
 	
-	//준호
 	private NaverServiceImpl naverLogin;
 	private String naverApiResult = null;
 	@Autowired
@@ -55,12 +54,8 @@ public class GgiriController implements GgiriMemberSession {
 	@Autowired
 	private MailSendService mss;
 	
-	
-	// 안태준
 	@Autowired
 	private GgiriFreeInsertService gfs;
-	@Autowired
-	private GgiriFreeInsertMapper gfi;
 	
 	
 	@GetMapping("/indexAdmin")
@@ -139,19 +134,12 @@ public class GgiriController implements GgiriMemberSession {
 		System.out.println("컨트롤러 출력 : " + result.get("id"));
 		System.out.println("컨트롤러 출력 : " + result.get("email"));
 		System.out.println("컨트롤러 출력 : " + result.get("nickname"));
-//		System.out.println("컨트롤러 출력 : " + result.getKakaoEmail());
-//		System.out.println("컨트롤러 출력 : " + result.getKakaoNickname());
-//		SessionConfigVO configVO = new SessionConfigVO();
 		
 		GgiriMemberDTO ggiriMember = new GgiriMemberDTO();
 		
 		String id = (String)result.get("id");
 		String email = (String)result.get("email");
 		String name = (String)result.get("nickname");
-		
-//		int index = email.indexOf("@");
-//		String id = email.substring(0, index);
-		
 		
 		ggiriMember.setName(name);
 		ggiriMember.setId(id);
@@ -220,9 +208,6 @@ public class GgiriController implements GgiriMemberSession {
 		System.out.println("birthday : " + birthday);
 		System.out.println("naverApiResult : " + (String)naverApiResult);
 		
-//		int index = email.indexOf("@");
-//		String id = email.substring(0, index);
-		
 		GgiriMemberDTO naverMember = new GgiriMemberDTO();
 		naverMember.setName(name);
 		naverMember.setId(id);
@@ -278,7 +263,6 @@ public class GgiriController implements GgiriMemberSession {
 		String name = (String)result.get("name");
 		String id = (String)result.get("id");
 		String email = (String)result.get("email");
-		//String name = (String)result.get("nickname");
 		
 		String idChk = id.substring(1, id.length()-1);
 		String nameChk = name.substring(1, name.length()-1);
@@ -404,84 +388,21 @@ public class GgiriController implements GgiriMemberSession {
 		return gfs.ajaxMemberList();
 	}
 	
-
-	// 안태준 
 	@GetMapping("memberList")
 	public String AllList(Model model, HttpServletRequest request, HttpSession session) {
-//		final int PAGE_ROW_COUNT = 4;
-//		
-//		int pageNum = 1;
-//		
-//		String strPageNum = request.getParameter("pageNum");
-//		System.out.println(strPageNum);
-//		if(strPageNum != null) {
-//			pageNum = Integer.parseInt(strPageNum);
-//		}
-//		
-//		int startRowNum = 0 + (pageNum - 1) * PAGE_ROW_COUNT;
-//		int endRowNum = pageNum * PAGE_ROW_COUNT;
-//		int rowCount = PAGE_ROW_COUNT;
-//		
-//		GgiriFreeInsertDTO pageDto = new GgiriFreeInsertDTO();
-//		pageDto.setStartRowNum(startRowNum);
-//		pageDto.setEndRowNum(endRowNum);
-//		pageDto.setRowCount(rowCount);
-//		
-//		int totalRow = gfs.boardCount();
-//		
-//		int totalPageCount = (int)Math.ceil(totalRow / (double)PAGE_ROW_COUNT);
-//		System.out.println(totalPageCount);
-//		request.setAttribute("totalPageCount", totalPageCount);
-//		request.setAttribute("totalRow", totalRow);
-//		gfs.boardGetFirstList(model);
 		gfs.boardAllList(model);
 		return "ggiriMember/memberList";
 	}
 	
-//	@GetMapping("ajaxMemberList")
-//	@ResponseBody
-//	public List<GgiriFreeInsertDTO> ajaxMemberList(Model model, HttpServletRequest request, HttpSession session) {
-//		final int PAGE_ROW_COUNT = 4;
-//		
-//		int pageNum = 0;
-//		
-//		String strPageNum = request.getParameter("pageNum");
-//		System.out.println(strPageNum);
-//		if(strPageNum != null) {
-//			pageNum = Integer.parseInt(strPageNum);
-//		}
-//		
-//		int startRowNum = 0 + (pageNum - 1) * PAGE_ROW_COUNT;
-//		int endRowNum = pageNum * PAGE_ROW_COUNT;
-//		int rowCount = PAGE_ROW_COUNT;
-//		
-//		GgiriFreeInsertDTO pageDto = new GgiriFreeInsertDTO();
-//		pageDto.setStartRowNum(startRowNum);
-//		pageDto.setEndRowNum(endRowNum);
-//		pageDto.setRowCount(rowCount);
-//		
-//		int totalRow = gfs.boardCount();
-//		
-//		int totalPageCount = (int)Math.ceil(totalRow / (double)PAGE_ROW_COUNT);
-//		System.out.println(totalPageCount);
-//		request.setAttribute("totalPageCount", totalPageCount);
-//		request.setAttribute("pageNum", pageNum);
-//		request.setAttribute("totalRow", totalRow);
-//		return gfs.boardGetList(pageDto);
-//	}
-	
 	@GetMapping("Info")
 	public String MemberList(@RequestParam("id") String userid, Model model) {
 		gfs.Info(userid ,model);
-		//gfs.projectInfo(userid, model);
 		return "ggiriMember/Info";
 	}
-//	@GetMapping(value="developer/{job}", produces="application/json; charset=utf-8")
+	
 	@GetMapping("selectJob")
 	@ResponseBody
 	public List<GgiriFreeInsertDTO> selectJob(@RequestParam("job") String job) {
-//	public List<GgiriFreeInsertDTO> developer(@PathVariable String job, Model model){	
-
 		return gfs.selectJob(job);
 	}
 	
@@ -553,8 +474,6 @@ public class GgiriController implements GgiriMemberSession {
 	}
 	
 	
-	// 안태준 끝
-
 	@PostMapping("findEmail")
 	public String findEmail(@RequestParam("findEmail") String email) {
 		GgiriMemberDTO dto = gs.findEmail(email);

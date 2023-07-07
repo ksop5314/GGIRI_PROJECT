@@ -18,7 +18,6 @@ public class GgiriServiceImpl implements GgiriService{
 	private GgiriMemberMapper gmm;
 	
 	
-	// 강준호
 	@Override
 	public int register(GgiriMemberDTO member) {
 		try {
@@ -139,11 +138,6 @@ public class GgiriServiceImpl implements GgiriService{
 	public void deleteId(String deleteId) {
 		gmm.deleteId(deleteId);
 	}
-
-	
-	
-	// 강준호 끝
-	
 	
 	// 좋아요를 위한 작업
 	
