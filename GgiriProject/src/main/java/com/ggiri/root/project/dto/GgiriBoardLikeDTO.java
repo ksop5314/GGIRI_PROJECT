@@ -1,15 +1,5 @@
 package com.ggiri.root.project.dto;
 
-/*-- 좋아요 테이블
-CREATE TABLE heart(
-project_no number not null, -- 좋아요를 누를 해당 게시판 넘버 
-memberNum number(20) not null, -- 해당 좋아요 누르는 아이디
-like_check NUMBER DEFAULT 1,
-CONSTRAINT heart_no foreign key(project_no) references ggiriproject(projectNum) on delete cascade,
-CONSTRAINT heart_id FOREIGN KEY(memberNum) REFERENCES ggiriMember(memberNum) ON DELETE CASCADE
-);
-*/
-
 public class GgiriBoardLikeDTO {
 	
 	private int like_no;
@@ -20,11 +10,6 @@ public class GgiriBoardLikeDTO {
 	
 	// 인덱스에 띄울 title
 	private String title;
-	
-	
-	
-	
-	
 	
 	
 	public String getTitle() {

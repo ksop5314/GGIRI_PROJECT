@@ -2,16 +2,6 @@ package com.ggiri.root.help.dto;
 
 import java.sql.Date;
 
-/*CREATE TABLE ggirihelp(
-help_no number(20) primary key, 
-memberNum number(20), 
-id varchar2(20),
-title varchar2(30), 
-content varchar2(500),
-CONSTRAINT help_member FOREIGN KEY(memberNum) REFERENCES ggiriMember(memberNum) ON DELETE CASCADE
-);*/
-
-
 public class GgiriHelpDTO {
 	
 	private int helpNo;

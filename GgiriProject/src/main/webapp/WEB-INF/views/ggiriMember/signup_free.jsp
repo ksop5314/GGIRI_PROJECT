@@ -210,8 +210,8 @@ $(function(){
 		});
 	});
 		
-	<%--
-	var code2 = "";
+	
+	/* var code2 = "";
 	$("#telChk").click(function(){
 		var contextPath = "${pageContext.request.contextPath}";
 		var userTel = $("#tel_1").val() + $("#tel_2").val() + $("#tel_3").val();
@@ -245,10 +245,10 @@ $(function(){
 				}
 			}
 		});
-	});
-	--%>
-	<%--
-	$("#userTelChk").blur(function(){
+	}); */
+	
+	
+	/* $("#userTelChk").blur(function(){
 		if($("#userTelChk").val() == "") { 
 			$(".successTelChk").text("");
 			$("#telDoubleChk").val("false");
@@ -264,8 +264,8 @@ $(function(){
 			$(".successTelChk").css("color", "red");
 			$("#telDoubleChk").val("false");
 		}
-	});
-	--%>
+	}); */
+	
 	
 	$("#button1").click(function(){
 		var rv = true;

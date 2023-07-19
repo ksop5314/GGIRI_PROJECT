@@ -22,8 +22,6 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     private ProjectMapper pm;
-    @Autowired
-	private GgiriMemberMapper gmm;
     
     
     @Override
@@ -127,10 +125,7 @@ public class ProjectServiceImpl implements ProjectService {
 		return pm.modifyModalRep(dto);
 	}
 	
-//	@Override
-//	public void modalContent(int projectNum, Model model) {
-//		model.addAttribute("modalContent", pm.modalContent(projectNum));
-//	}
+
 	// 프리랜서 리스트
 	@Override
 	public List<Map<String, Object>> selectJob(Model model) {
@@ -152,8 +147,6 @@ public class ProjectServiceImpl implements ProjectService {
 
 	// 좋아요 리스트
 	
-	
-	
 	@Override
 	public List<Map<String, Object>> selectHeart(String id,Model model) {
 		model.addAttribute("heartlist", pm.selectHeart(id));
@@ -168,8 +161,6 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	//좋아요
 	
-	
-
 	@Override
 	public void like_check(int projectNum, String id) {
 		try {
@@ -189,14 +180,6 @@ public class ProjectServiceImpl implements ProjectService {
 		}
 		 
 	}
-	
-	
-	
-	
-	
-	
-
-	
 
 	@Override
 	public void insert_sns_heart(int projectNum, GgiriMemberDTO dto) {
@@ -231,8 +214,6 @@ public class ProjectServiceImpl implements ProjectService {
 		return pm.select_all_heart(dto);
 	}
 
-	
-	
 	
 	// 인덱스 좋아요 리스트
 	@Override

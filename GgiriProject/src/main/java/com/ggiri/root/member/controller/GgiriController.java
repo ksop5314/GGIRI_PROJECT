@@ -244,13 +244,6 @@ public class GgiriController implements GgiriMemberSession {
 	public String googleLogin(@RequestParam("code") String code, HttpSession session) {
 		System.out.println(code);
 		
-    	String googleBaseURL = "https://accounts.google.com/o/oauth2/v2/auth";
-		String googleClientId = "15714476982-d6tnk6tv8f7hptqjh6qrhqsm42aglq72.apps.googleusercontent.com";
-		String googleClientSecret = "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";
-		String googleRedirectURL = "http://localhost:8080/root/ggiriMember/google_callback";
-		String googleTokenURL = "https://oauth2.googleapis.com/token";
-		String resultTokenURL = "https://oauth2.googleapis.com/tokeninfo";
-		
 		String access_token = googleService.getReturnAccessToken(code);
 		
 		Map<String, Object> result = googleService.getUserInfo(access_token);

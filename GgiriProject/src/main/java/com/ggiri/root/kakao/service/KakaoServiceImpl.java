@@ -113,13 +113,6 @@ public class KakaoServiceImpl implements KakaoService{
 			System.out.println("response body : " + result);
 			System.out.println("result type : " + result.getClass().getName());
 			
-//			ObjectMapper objectMapper = new ObjectMapper();
-//			Map<String, Object> jsonMap = objectMapper.readValue(result, new TypeReference<Map<String, Object>>() {});
-//			Map<String, Object> properties = (Map<String, Object>) jsonMap.get("properties");
-//			Map<String, Object> kakao_account = (Map<String, Object>) jsonMap.get("kakao_account");
-//			String nickname = properties.get("nickname").toString();
-//			String email = properties.get("email").toString();
-			
 			JsonParser parser = new JsonParser();
 			JsonObject jsonObject = (JsonObject)parser.parse(result);
 			JsonElement element = parser.parse(result);
@@ -143,15 +136,6 @@ public class KakaoServiceImpl implements KakaoService{
 			e.printStackTrace();
 		}
 		
-//		SessionConfigVO kakaoresult = gkm.findKakao(resultMap);
-//		
-//		if(kakaoresult == null) {
-//			gkm.kakaoinsert(resultMap);
-//			
-//			return gkm.findKakao(resultMap);
-//		} else {
-//			return kakaoresult;
-//		}
 		return resultMap;
 	}
 	

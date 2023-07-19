@@ -79,19 +79,6 @@ public class GoogleServiceImpl implements GoogleService {
 			
 		return access_token;
 		
-//		RestTemplate restTemplate = new RestTemplate();
-//        Map<String, Object> params = new HashMap<>();
-//        params.put("code", code);
-//        params.put("client_id", googleClientId);
-//        params.put("client_secret", googleClientSecret);
-//        params.put("redirect_uri", googleRedirectURL);
-//        params.put("grant_type", "authorization_code");
-        
-//        ResponseEntity<String> responseEntity = restTemplate.postForEntity(googleTokenURL, params, String.class);
-        
-//        if(responseEntity.getStatusCode() == HttpStatus.OK) {
-//        	return responseEntity;
-//        }
 	}
 
 	@Override
@@ -133,17 +120,6 @@ public class GoogleServiceImpl implements GoogleService {
 			
 			System.out.println("response body : " + result);
 			System.out.println("result type : " + result.getClass().getName());
-			
-//			ObjectMapper objectMapper = new ObjectMapper();
-//			Map<String, Object> jsonMap = objectMapper.readValue(result, new TypeReference<Map<String, Object>>() {});
-//			Map<String, Object> properties = (Map<String, Object>) jsonMap.get("properties");
-//			Map<String, Object> kakao_account = (Map<String, Object>) jsonMap.get("kakao_account");
-//			String nickname = properties.get("nickname").toString();
-//			String email = properties.get("email").toString();
-//			JsonElement element = parser.parse(result);
-//			JsonObject profile = element.getAsJsonObject().get("--account").getAsJsonObject();
-//			System.out.println("googleProfile : " + profile);
-			
 
 			JsonParser parser = new JsonParser();
 			JsonObject jsonObject = (JsonObject)parser.parse(result);
@@ -152,10 +128,6 @@ public class GoogleServiceImpl implements GoogleService {
 			String name =jsonObject.get("name").toString();
 			String id =jsonObject.get("id").toString();
 
-//			String email = profile.getAsJsonObject().get("email").getAsString();
-//			String name = profile.getAsJsonObject().get("name").getAsString();
-			
-			
 			System.out.println("googleEmail : " + email);
 			System.out.println("googleName : " + name);
 			System.out.println("googleID : " + id);
@@ -164,7 +136,6 @@ public class GoogleServiceImpl implements GoogleService {
 			resultMap.put("email", email);
 			resultMap.put("name", name);
 			resultMap.put("id", id);
-			//resultMap.put("name", name);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -175,7 +146,6 @@ public class GoogleServiceImpl implements GoogleService {
 	
 	@Override
 	public void getLogout(String access_token) {
-		// TODO Auto-generated method stub
 		
 	}
 }

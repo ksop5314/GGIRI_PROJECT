@@ -4,20 +4,6 @@ package com.ggiri.root.complete.dto;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-/*
-create table ggiriComplete(
-completeNum NUMBER(10) PRIMARY KEY,
-title VARCHAR2(300),
-content VARCHAR2(3000),
-skill VARCHAR2(500),
-members VARCHAR2(100),
-tag VARCHAR2(300),
-comdate DATE,
-comHit NUMBER(10) DEFAULT 0,
-id VARCHAR2(20) NOT NULL
-);
-*/
-
 
 public class CompleteDTO {
 	

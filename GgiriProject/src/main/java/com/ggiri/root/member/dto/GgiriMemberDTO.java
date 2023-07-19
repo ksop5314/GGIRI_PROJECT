@@ -3,22 +3,6 @@ package com.ggiri.root.member.dto;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-/*
-//create table ggirimember(
-//memberNum number(20) primary key,
-//name varchar2(30) not null,
-//id varchar2(30) primary key,
-//pwd varchar2(30) not null,
-//gender varchar2(3),
-//email varchar2(20) not null,
-//domain varchar2(20) not null,
-//tel varchar2(13),
-//addr varchar2(100) not null,
-//job varchar2(20),
-//skill varchar2(500),
-//logtime date default sysdate
-//);
-*/
 public class GgiriMemberDTO {
 
 	private int memberNum;
